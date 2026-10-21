@@ -1,16 +1,16 @@
 # Build kanban — Torob
 
-_Last updated:2026-10-22. Next action: implement/test M2 queue and authenticated worker routes; record real worker cancellation before closing runtime phase._
+_Last updated:2026-10-22. Next action: T1 importer tests against actual CSV headers, then full catalogue import._
 
 ## Doing
-- Model runtime M1–M3 — M1 client tests26 passed and actual model call passed; M2 transport in progress. No UI surface yet; QA N/A until API worker flow exists.
+- Catalogue T1/T2 — atomic streamed import, exact money/provenance, Persian FTS search, declared-hours/payment/geo eligibility and distinct-shop planner. No UI yet; real import/search acceptance still owed.
 
 ## Todo
-- Catalogue T1/T2 — full-data import, search, time/price/payment eligibility and distinct-shop planner.
 - Mission T3/T4 — grounded model tools, session ownership, observations and deterministic recovery.
 - Interface T5 — Persian mobile journey; written QA plus independent real-app pass.
-- Deployment T6 — persistent cloud app and real model-worker roundtrip; QA must include outage/reconnect.
-- Delivery — results, clean setup, five-minute demo, final independent review and submission artifacts.
+- Deployment T6 — persistent cloud app and actual HTTPS model-worker roundtrip; includes outage/reconnect QA.
+- Delivery — measured results, clean setup, five-minute demo, whole-branch independent review and submission artifacts.
 
 ## Done
-- Repository isolation — new independent repository, branch build/torob; no existing code affected. Initial baseline empty, no pre-existing test suite.
+- Local model runtime M1/M2/M3-local — tests:63 passed, one upstream TestClient deprecation warning · QA: test-plans/model-runtime.md12✅/12 with docs/qa-evidence/model-runtime.json. Actual Codex responses9.496s/9.964s; running-container cancellation and cleanup verified. Hosted HTTPS acceptance remains a separate T6 gate.
+- Repository isolation — independent repository, branch build/torob; no existing code affected. Initial baseline empty.

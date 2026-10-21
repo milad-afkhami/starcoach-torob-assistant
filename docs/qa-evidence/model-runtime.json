@@ -1,0 +1,1115 @@
+{
+  "started_utc": "2026-10-21T22:53:02.753355+00:00",
+  "rows": {
+    "1": {
+      "status": "pass",
+      "elapsed_seconds": 0.104,
+      "details": {
+        "codes": [
+          401,
+          401,
+          401
+        ],
+        "persisted_worker_count": 0
+      }
+    },
+    "8": {
+      "status": "pass",
+      "elapsed_seconds": 0.005,
+      "details": {
+        "bytes": 65537,
+        "http": 413,
+        "model_starts": 0
+      }
+    },
+    "9": {
+      "status": "pass",
+      "elapsed_seconds": 0.127,
+      "details": {
+        "http_codes": [
+          422,
+          422,
+          404
+        ],
+        "foreign_owner_read": "not_found",
+        "foreign_owner_cancel": "not_found",
+        "state": "leased"
+      }
+    },
+    "10": {
+      "status": "pass",
+      "elapsed_seconds": 0.143,
+      "details": {
+        "http_codes": [
+          409,
+          409,
+          422
+        ],
+        "stored": {
+          "id": "13f288522bca4c51b220354748f8554d",
+          "request_id": "dac7d52839494cea",
+          "mission_id": null,
+          "revision": null,
+          "state": "failed",
+          "created": 1792623183.1636457,
+          "expires": 1792623303.1636457,
+          "claim_by": 1792623198.1636457,
+          "lease_id": "e81039fe6704404dbd5f1e7a73750aff",
+          "lease_expires": 1792623248.1779668,
+          "schema_id": "qa-hold",
+          "prompt_version": "1",
+          "result": null,
+          "error_code": "invalid_output",
+          "provenance": null
+        }
+      }
+    },
+    "12": {
+      "status": "pass",
+      "elapsed_seconds": 0.102,
+      "details": {
+        "second_worker": "busy",
+        "same_owner": "busy",
+        "third_waiting": "queue_full",
+        "extra_claim": null,
+        "active_container_count": 1
+      }
+    },
+    "2": {
+      "status": "pass",
+      "elapsed_seconds": 9.165,
+      "details": {
+        "worker_outcome": "completed",
+        "stored": {
+          "id": "84e9b6dab03e4382b392f24ce4a60bfe",
+          "request_id": "e4ca7b5f02d25d3f",
+          "mission_id": null,
+          "revision": null,
+          "state": "completed",
+          "created": 1792623183.4994843,
+          "expires": 1792623303.4994843,
+          "claim_by": 1792623198.4994843,
+          "lease_id": "8407a760fc06407fb77cde10cbf8f11a",
+          "lease_expires": 1792623248.5343919,
+          "schema_id": "qa-hold",
+          "prompt_version": "1",
+          "result": {
+            "action": "HOLD",
+            "evidence_ids": [
+              "fixture-1"
+            ],
+            "reason_fa": "قیمت فعلی موجود نیست و حساب تأییدشده‌ای در دسترس نیست."
+          },
+          "error_code": null,
+          "provenance": {
+            "provider": "codex_cli",
+            "model": "gpt-6.1-sol",
+            "cli_version": "codex-cli 0.163.0",
+            "elapsed_ms": 9496
+          }
+        },
+        "container": {
+          "id": "b462e8c255f1",
+          "name": "/starcoach-model-1387cf717f49486eaf18bb24bf09ecae",
+          "label": "starcoach.model=torob",
+          "read_only": true,
+          "cap_drop": [
+            "ALL"
+          ],
+          "container_env_has_worker_token": false,
+          "mount_targets": [
+            "/work",
+            "/root/.codex/auth.json",
+            "/usr/local/bin/codex"
+          ]
+        },
+        "containers_after": []
+      }
+    },
+    "3": {
+      "status": "pass",
+      "elapsed_seconds": 0.003,
+      "details": {
+        "http": 409,
+        "original_unchanged": true,
+        "result_sha256": "a46a9059bbf2cb14259fd63c07e3f6518d9e9051ef4e58213d65374722fc1f11"
+      }
+    },
+    "4": {
+      "status": "pass",
+      "elapsed_seconds": 46.003,
+      "details": {
+        "wait_seconds": 46,
+        "available": false,
+        "enqueue_error": "unavailable",
+        "existing_result_state": "completed"
+      }
+    },
+    "5": {
+      "status": "pass",
+      "elapsed_seconds": 16.067,
+      "details": {
+        "wait_seconds": 16,
+        "stored": {
+          "id": "d276d612b6444a159f82924ad7c0d9a2",
+          "request_id": "33b1ab57c03eae00",
+          "mission_id": null,
+          "revision": null,
+          "state": "expired",
+          "created": 1792623239.1360023,
+          "expires": 1792623359.1360023,
+          "claim_by": 1792623254.1360023,
+          "lease_id": null,
+          "lease_expires": null,
+          "schema_id": "qa-hold",
+          "prompt_version": "1",
+          "result": null,
+          "error_code": "expired",
+          "provenance": null
+        },
+        "reconnect_outcome": "idle",
+        "model_starts_unchanged": true
+      }
+    },
+    "6": {
+      "status": "pass",
+      "elapsed_seconds": 0.43,
+      "details": {
+        "worker_outcome": "canceled",
+        "stored": {
+          "id": "7db43a583e9e4e9ca9d6d94d16cce899",
+          "request_id": "0dcb1c52f0329fa6",
+          "mission_id": null,
+          "revision": null,
+          "state": "canceled",
+          "created": 1792623255.2165823,
+          "expires": 1792623375.2165823,
+          "claim_by": 1792623270.2165823,
+          "lease_id": "40b2e6df193a4c52802f02db3063f3ab",
+          "lease_expires": 1792623320.290353,
+          "schema_id": "qa-hold",
+          "prompt_version": "1",
+          "result": null,
+          "error_code": "canceled",
+          "provenance": null
+        },
+        "late_completion_http": 409,
+        "observed_container": {
+          "id": "9e604c337471",
+          "name": "/starcoach-model-1387e1f246954534ab8090f2413ba203",
+          "label": "starcoach.model=torob",
+          "read_only": true,
+          "cap_drop": [
+            "ALL"
+          ],
+          "container_env_has_worker_token": false,
+          "mount_targets": [
+            "/work",
+            "/root/.codex/auth.json",
+            "/usr/local/bin/codex"
+          ]
+        },
+        "containers_after": []
+      }
+    },
+    "11": {
+      "status": "pass",
+      "elapsed_seconds": 9.741,
+      "details": {
+        "worker_outcome": "completed",
+        "stored": {
+          "id": "1720f4708a374f1f8eb779b89f46e124",
+          "request_id": "f11ad21fcb575a69",
+          "mission_id": null,
+          "revision": null,
+          "state": "completed",
+          "created": 1792623256.100506,
+          "expires": 1792623376.100506,
+          "claim_by": 1792623271.100506,
+          "lease_id": "535a404734dc4a329646862de12fa5b9",
+          "lease_expires": 1792623321.1219935,
+          "schema_id": "qa-hold",
+          "prompt_version": "1",
+          "result": {
+            "action": "HOLD",
+            "evidence_ids": [
+              "fixture-1"
+            ],
+            "reason_fa": "قیمت فعلی و حساب تأییدشده در دسترس نیست؛ تا دریافت این اطلاعات، اقدام متوقف می‌ماند."
+          },
+          "error_code": null,
+          "provenance": {
+            "provider": "codex_cli",
+            "model": "gpt-6.1-sol",
+            "cli_version": "codex-cli 0.163.0",
+            "elapsed_ms": 9964
+          }
+        },
+        "container": {
+          "id": "03472cf50b3e",
+          "name": "/starcoach-model-f71fb9ff874c44b2849a2c551e19b1f8",
+          "label": "starcoach.model=torob",
+          "read_only": true,
+          "cap_drop": [
+            "ALL"
+          ],
+          "container_env_has_worker_token": false,
+          "mount_targets": [
+            "/work",
+            "/root/.codex/auth.json",
+            "/usr/local/bin/codex"
+          ]
+        },
+        "old_backlog_state": "expired"
+      }
+    },
+    "7": {
+      "status": "pass",
+      "elapsed_seconds": 0.002,
+      "details": {
+        "reopened_rows": [
+          {
+            "id": "84e9b6dab03e4382b392f24ce4a60bfe",
+            "request_id": "e4ca7b5f02d25d3f",
+            "mission_id": null,
+            "revision": null,
+            "state": "completed",
+            "created": 1792623183.4994843,
+            "expires": 1792623303.4994843,
+            "claim_by": 1792623198.4994843,
+            "lease_id": "8407a760fc06407fb77cde10cbf8f11a",
+            "lease_expires": 1792623248.5343919,
+            "schema_id": "qa-hold",
+            "prompt_version": "1",
+            "result": {
+              "action": "HOLD",
+              "evidence_ids": [
+                "fixture-1"
+              ],
+              "reason_fa": "قیمت فعلی موجود نیست و حساب تأییدشده‌ای در دسترس نیست."
+            },
+            "error_code": null,
+            "provenance": {
+              "provider": "codex_cli",
+              "model": "gpt-6.1-sol",
+              "cli_version": "codex-cli 0.163.0",
+              "elapsed_ms": 9496
+            }
+          },
+          {
+            "id": "7db43a583e9e4e9ca9d6d94d16cce899",
+            "request_id": "0dcb1c52f0329fa6",
+            "mission_id": null,
+            "revision": null,
+            "state": "canceled",
+            "created": 1792623255.2165823,
+            "expires": 1792623375.2165823,
+            "claim_by": 1792623270.2165823,
+            "lease_id": "40b2e6df193a4c52802f02db3063f3ab",
+            "lease_expires": 1792623320.290353,
+            "schema_id": "qa-hold",
+            "prompt_version": "1",
+            "result": null,
+            "error_code": "canceled",
+            "provenance": null
+          },
+          {
+            "id": "d276d612b6444a159f82924ad7c0d9a2",
+            "request_id": "33b1ab57c03eae00",
+            "mission_id": null,
+            "revision": null,
+            "state": "expired",
+            "created": 1792623239.1360023,
+            "expires": 1792623359.1360023,
+            "claim_by": 1792623254.1360023,
+            "lease_id": null,
+            "lease_expires": null,
+            "schema_id": "qa-hold",
+            "prompt_version": "1",
+            "result": null,
+            "error_code": "expired",
+            "provenance": null
+          },
+          {
+            "id": "13f288522bca4c51b220354748f8554d",
+            "request_id": "dac7d52839494cea",
+            "mission_id": null,
+            "revision": null,
+            "state": "failed",
+            "created": 1792623183.1636457,
+            "expires": 1792623303.1636457,
+            "claim_by": 1792623198.1636457,
+            "lease_id": "e81039fe6704404dbd5f1e7a73750aff",
+            "lease_expires": 1792623248.1779668,
+            "schema_id": "qa-hold",
+            "prompt_version": "1",
+            "result": null,
+            "error_code": "invalid_output",
+            "provenance": null
+          },
+          {
+            "id": "1720f4708a374f1f8eb779b89f46e124",
+            "request_id": "f11ad21fcb575a69",
+            "mission_id": null,
+            "revision": null,
+            "state": "completed",
+            "created": 1792623256.100506,
+            "expires": 1792623376.100506,
+            "claim_by": 1792623271.100506,
+            "lease_id": "535a404734dc4a329646862de12fa5b9",
+            "lease_expires": 1792623321.1219935,
+            "schema_id": "qa-hold",
+            "prompt_version": "1",
+            "result": {
+              "action": "HOLD",
+              "evidence_ids": [
+                "fixture-1"
+              ],
+              "reason_fa": "قیمت فعلی و حساب تأییدشده در دسترس نیست؛ تا دریافت این اطلاعات، اقدام متوقف می‌ماند."
+            },
+            "error_code": null,
+            "provenance": {
+              "provider": "codex_cli",
+              "model": "gpt-6.1-sol",
+              "cli_version": "codex-cli 0.163.0",
+              "elapsed_ms": 9964
+            }
+          }
+        ],
+        "restart_claim": null
+      }
+    }
+  },
+  "http": [
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/heartbeat",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/heartbeat",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/heartbeat",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/heartbeat",
+      "status": 413
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/heartbeat",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/claim",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/heartbeat",
+      "status": 422
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/heartbeat",
+      "status": 422
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/13f288522bca4c51b220354748f8554d",
+      "status": 404
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/jobs/13f288522bca4c51b220354748f8554d/complete",
+      "status": 409
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/jobs/13f288522bca4c51b220354748f8554d/complete",
+      "status": 409
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/jobs/13f288522bca4c51b220354748f8554d/complete",
+      "status": 422
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/heartbeat",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/claim",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/heartbeat",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/claim",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe/complete",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/jobs/84e9b6dab03e4382b392f24ce4a60bfe/complete",
+      "status": 409
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/heartbeat",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/heartbeat",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/claim",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/heartbeat",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/claim",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/7db43a583e9e4e9ca9d6d94d16cce899",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/7db43a583e9e4e9ca9d6d94d16cce899",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/7db43a583e9e4e9ca9d6d94d16cce899",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/jobs/7db43a583e9e4e9ca9d6d94d16cce899/fail",
+      "status": 409
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/jobs/7db43a583e9e4e9ca9d6d94d16cce899/complete",
+      "status": 409
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/heartbeat",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/heartbeat",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/claim",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/internal/model-worker/jobs/1720f4708a374f1f8eb779b89f46e124/complete",
+      "status": 200
+    }
+  ],
+  "runtime": "real Uvicorn TCP / production JobQueue, worker_router, PullWorker, CodexCliClient",
+  "fixture": "Synthetic Persian HOLD; no private shopping evidence",
+  "model_starts": 3,
+  "origin": "http://127.0.0.1:34739",
+  "cli_version": "codex-cli 0.163.0",
+  "cleanup": {
+    "server_stopped": true,
+    "owned_survivors_before_cleanup": [],
+    "owned_survivors_after_cleanup": [],
+    "unrelated_containers_removed": false
+  },
+  "finished_utc": "2026-10-21T22:54:26.297570+00:00",
+  "all_passed": true,
+  "container_lifecycle_events": [
+    {
+      "container_id": "b462e8c255f1",
+      "action": "create",
+      "time_nano": 1792623183689005834
+    },
+    {
+      "container_id": "b462e8c255f1",
+      "action": "attach",
+      "time_nano": 1792623183690484111
+    },
+    {
+      "container_id": "b462e8c255f1",
+      "action": "start",
+      "time_nano": 1792623183838050326
+    },
+    {
+      "container_id": "b462e8c255f1",
+      "action": "die",
+      "time_nano": 1792623193016220369
+    },
+    {
+      "container_id": "b462e8c255f1",
+      "action": "destroy",
+      "time_nano": 1792623193051407573
+    },
+    {
+      "container_id": "9e604c337471",
+      "action": "create",
+      "time_nano": 1792623255445425885
+    },
+    {
+      "container_id": "9e604c337471",
+      "action": "attach",
+      "time_nano": 1792623255446358596
+    },
+    {
+      "container_id": "9e604c337471",
+      "action": "start",
+      "time_nano": 1792623255594968781
+    },
+    {
+      "container_id": "9e604c337471",
+      "action": "kill",
+      "time_nano": 1792623255821352748
+    },
+    {
+      "container_id": "9e604c337471",
+      "action": "die",
+      "time_nano": 1792623255929985068
+    },
+    {
+      "container_id": "9e604c337471",
+      "action": "destroy",
+      "time_nano": 1792623255964023099
+    },
+    {
+      "container_id": "03472cf50b3e",
+      "action": "create",
+      "time_nano": 1792623256264511707
+    },
+    {
+      "container_id": "03472cf50b3e",
+      "action": "attach",
+      "time_nano": 1792623256265588904
+    },
+    {
+      "container_id": "03472cf50b3e",
+      "action": "start",
+      "time_nano": 1792623256405712474
+    },
+    {
+      "container_id": "03472cf50b3e",
+      "action": "die",
+      "time_nano": 1792623266082761255
+    },
+    {
+      "container_id": "03472cf50b3e",
+      "action": "destroy",
+      "time_nano": 1792623266118671319
+    }
+  ]
+}
