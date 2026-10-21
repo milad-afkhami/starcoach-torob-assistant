@@ -21,3 +21,10 @@ Implement Torob fully, then Liara; move to Liara if Torob has a confirmed extern
 - Actual isolated application call: `docs/qa-evidence/model-smoke.json`, Codex CLI0.163.0 / gpt-6.1-sol,9046ms, valid Persian HOLD. Model-only smoke does not establish shopping intelligence. No OmniRoute switch needed.
 - Decision: use the existing pinned official OpenResty image as a neutral container filesystem for the static CLI, overriding its entrypoint; it runs no web server. Alternative: another image download adds no demonstrated benefit. Production configuration requires an explicit image digest.
 - No UI surface for this library phase; planned UI QA N/A. Full running-container cancellation verification remains to be recorded alongside worker QA; process cleanup behavior has automated real-process tests.
+
+## M2 — job transport / worker
+
+-57 tests passed before QA, covering real SQLite leases, private worker authentication, replay/expiry/cancel, session quotas, typed provenance and outbound worker behavior. Coverage was91% across current runtime modules; missing scenarios are reviewed by risk, not waived by that number. Upstream Starlette emits a TestClient/httpx deprecation warning; no runtime failure, not hidden.
+- Tests exposed same-timestamp queue ordering by random UUID: fixed to insertion order. A second red regression exposed late lease results reported as completed by the local worker: now discarded. Owner stop propagates cancellation during inference.
+- A reservation holds the shared local CLI lock before claiming a hosted job without spending quota until an actual call starts.100-start rolling ledger persists across requests and both products.
+- Dedicated QA is running the production HTTP router, actual isolated Codex and on-disk queue against `docs/insured-vibe-coding/test-plans/model-runtime.md`. Runtime phase remains Doing until all owed rows have evidence.

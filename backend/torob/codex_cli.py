@@ -31,7 +31,7 @@ class ModelGate:
             raise ModelError("unsafe_gate")
 
     @contextmanager
-    def claim(self, now: float):
+    def reserve(self):
         path = self.root / "worker.lock"
         try:
             fd = os.open(path, os.O_CREAT | os.O_RDWR | os.O_NOFOLLOW, 0o600)
@@ -42,26 +42,50 @@ class ModelGate:
                 fcntl.flock(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
             except BlockingIOError as exc:
                 raise ModelError("busy") from exc
+            permit = Reservation(self)
             try:
-                ledger = self.root / "starts.json"
-                if ledger.is_symlink():
-                    raise ModelError("unsafe_gate")
-                try:
-                    starts = json.loads(ledger.read_text()) if ledger.exists() else []
-                    if not isinstance(starts, list) or any(type(v) not in (int, float) for v in starts):
-                        raise ValueError()
-                except (ValueError, OSError) as exc:
-                    raise ModelError("invalid_budget_ledger") from exc
-                starts = [v for v in starts if v > now - 86400]
-                if len(starts) >= self.limit:
-                    raise ModelError("budget_exhausted")
-                pending = self.root / f"starts-{uuid.uuid4().hex}.tmp"
-                pending.write_text(json.dumps([*starts, now]))
-                pending.chmod(0o600)
-                pending.replace(ledger)
-                yield
+                yield permit
             finally:
+                permit.active = False
                 fcntl.flock(handle, fcntl.LOCK_UN)
+
+    def _charge(self, now, permit):
+        if permit.gate is not self or not permit.active or permit.used:
+            raise ModelError("invalid_reservation")
+        ledger = self.root / "starts.json"
+        if ledger.is_symlink():
+            raise ModelError("unsafe_gate")
+        try:
+            starts = json.loads(ledger.read_text()) if ledger.exists() else []
+            if not isinstance(starts, list) or any(type(v) not in (int, float) for v in starts):
+                raise ValueError()
+        except (ValueError, OSError) as exc:
+            raise ModelError("invalid_budget_ledger") from exc
+        starts = [v for v in starts if v > now - 86400]
+        if len(starts) >= self.limit:
+            raise ModelError("budget_exhausted")
+        pending = self.root / f"starts-{uuid.uuid4().hex}.tmp"
+        pending.write_text(json.dumps([*starts, now]))
+        pending.chmod(0o600)
+        pending.replace(ledger)
+        permit.used = True
+
+    @contextmanager
+    def claim(self, now, permit=None):
+        if permit is None:
+            with self.reserve() as owned:
+                self._charge(now, owned)
+                yield
+        else:
+            self._charge(now, permit)
+            yield
+
+
+@dataclass
+class Reservation:
+    gate: ModelGate
+    active: bool = True
+    used: bool = False
 
 
 @dataclass
@@ -158,7 +182,7 @@ class CodexCliClient:
         )
 
     def generate(
-        self, request: ModelRequest, schema: dict, cancel: threading.Event | None = None
+        self, request: ModelRequest, schema: dict, cancel: threading.Event | None = None, *, permit=None
     ) -> ModelResult:
         cancel = cancel or threading.Event()
         if cancel.is_set():
@@ -172,7 +196,10 @@ class CodexCliClient:
         if not self.binary.is_file() or not self.auth_file.is_file():
             raise ModelError("runtime_unavailable")
         started = time.monotonic()
-        with self.gate.claim(time.time()), tempfile.TemporaryDirectory(prefix="torob-model-") as scratch:
+        with (
+            self.gate.claim(time.time(), permit),
+            tempfile.TemporaryDirectory(prefix="torob-model-") as scratch,
+        ):
             root = Path(scratch)
             output = root / "result.json"
             (root / "schema.json").write_text(json.dumps(schema))

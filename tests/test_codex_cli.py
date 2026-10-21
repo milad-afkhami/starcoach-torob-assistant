@@ -298,3 +298,68 @@ def test_nonfinite_deadline_rejected(deadline):
     value["deadline_utc"] = deadline
     with pytest.raises(ValidationError):
         ModelRequest.model_validate(value)
+
+
+def test_reservation_before_claim_does_not_spend_until_generation(tmp_path):
+    from torob.model_types import ModelError
+
+    c = client(tmp_path, fake(), limit=1)
+    with c.gate.reserve() as permit:
+        with pytest.raises(ModelError, match="busy"):
+            with c.gate.claim(time.time()):
+                pass
+    assert not (tmp_path / "gate" / "starts.json").exists()
+    with c.gate.reserve() as permit:
+        assert c.generate(request(), SCHEMA, permit=permit).value == GOOD
+    with pytest.raises(ModelError, match="invalid_reservation"):
+        c.generate(request(), SCHEMA, permit=permit)
+
+
+@pytest.mark.parametrize("kind", ["permissions", "lock_symlink", "ledger_symlink", "corrupt_ledger"])
+def test_gate_rejects_unsafe_or_corrupt_state(tmp_path, kind):
+    from torob.codex_cli import ModelGate
+    from torob.model_types import ModelError
+
+    root = tmp_path / "gate"
+    root.mkdir(mode=0o700)
+    if kind == "permissions":
+        root.chmod(0o755)
+    elif kind == "lock_symlink":
+        (root / "worker.lock").symlink_to(tmp_path / "other")
+    elif kind == "ledger_symlink":
+        (root / "starts.json").symlink_to(tmp_path / "other")
+    else:
+        (root / "starts.json").write_text("{invalid")
+    with pytest.raises(ModelError):
+        with ModelGate(root).claim(100):
+            pass
+
+
+def test_bad_schema_and_missing_auth_fail_before_provider(tmp_path):
+    from torob.model_types import ModelError
+
+    c = client(tmp_path, fake())
+    with pytest.raises(ModelError, match="invalid_schema"):
+        c.generate(request(), {"type": "not-a-json-schema-type"})
+    c.auth_file.unlink()
+    with pytest.raises(ModelError, match="runtime_unavailable"):
+        c.generate(request(), SCHEMA)
+
+
+def test_missing_process_binary_still_runs_cleanup(tmp_path):
+    from torob.codex_cli import ProcessSpec, run_isolated
+    from torob.model_types import ModelError
+    import sys
+
+    marker = tmp_path / "cleanup"
+    spec = ProcessSpec(
+        ["/no-such-binary"],
+        [sys.executable, "-c", f"from pathlib import Path; Path({str(marker)!r}).touch()"],
+        {},
+        "",
+        tmp_path / "result",
+        1,
+    )
+    with pytest.raises(ModelError, match="runtime_unavailable"):
+        run_isolated(spec, threading.Event())
+    assert marker.exists()
