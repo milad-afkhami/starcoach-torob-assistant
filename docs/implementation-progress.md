@@ -41,3 +41,10 @@ Implement Torob fully, then Liara; move to Liara if Torob has a confirmed extern
 - Real import succeeded:6476 shops,225903 products,331506 offers; all three payload hashes match, foreign keys and SQLite quick_check pass.42.296s,655,405,056-byte database, peak RSS29,192KiB. Source null counts match previous research.909 prices flagged by precision/zero/comparative quality rules; this is a data-quality flag, not proof of incorrect source prices. Raw values remain preserved. Evidence: docs/qa-evidence/catalogue-import.json.
 - Ruling: one median price per distinct shop (itself the median of that shop's normal offers) prevents duplicate offers from dominating the cross-seller anomaly comparison. Exact Fraction arithmetic avoids float rounding. Alternative: count every offer, which overweights duplicate shops.
 - No UI surface; QA N/A for importer logic. Actual full import/read/integrity is the integration evidence. T2 search/hours/eligibility/planning next.
+
+## T2 — search and purchase planning
+
+- Tests cover timezone/overnight/dummy-hour semantics, literal FTS queries, category/budget, exact large prices, source evidence, candidate/unknown/ineligible distinction, distinct-shop fallbacks, payment requirements, radius and selected primary. A red regression caught filtering price after retrieval limit; moved budget eligibility into SQL before limiting results. Another red regression required product minimum prices to cite the actual supporting offer.
+- Real20-query benchmark and60 warm samples recorded in docs/qa-evidence/catalogue-evaluation.json; fixture independently matches the known primary/fallback and63.42m straight-line separation. These are source/fixture results, not stock or real purchase proof.
+- Ruling: empty payment categories do not prove the selected product is covered; when payment is a hard requirement, such source evidence stays needs_verification. This conservative interpretation does not affect the main fixture, which has no payment requirement.
+- T1/T2 local catalogue phase complete. T3/T4 starts next. Model integration, user-facing APIs/UI and deployment remain unimplemented.

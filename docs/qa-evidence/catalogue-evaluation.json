@@ -1,0 +1,4268 @@
+{
+  "scenario_count": 20,
+  "warm_sample_count": 60,
+  "warm_search_p95_ms": 57.04610695829615,
+  "fixture_plan_ms": 2.22659797873348,
+  "fixture_separation_m": 63.42143912544386,
+  "fixture": {
+    "revision": 1,
+    "primary": {
+      "offer": {
+        "offer_id": "offer_b08b779f43846d8e8c6aef1d",
+        "product_id": "product_adfdc73bc839d15cd7754318",
+        "shop_id": "shop_1ffc7576fed58fa57cd99a21",
+        "shop_name": "نیآرا آروان",
+        "identity_anonymized": true,
+        "address": "خیابان جمهوری اسلامی، نرسیده به خیابان حافظ، پاساژ بزرگمهر، طبقه همکف، پلاک ۱۸، واحد ۱۸",
+        "lat": 35.69497808523676,
+        "lon": 51.41133868706675,
+        "price_toman": "39200000",
+        "recorded_price_toman": "39200000",
+        "price_quality": "normal",
+        "price_changed_at": "2026-10-12T15:24:27.426943+00:00",
+        "straight_line_km": 0.017753648494932207,
+        "hours_state": "open",
+        "weekly_hours": {
+          "fri": {
+            "shifts": [
+              {
+                "end_time": "19:00:00",
+                "start_time": "11:00:00"
+              },
+              {
+                "end_time": "00:00:00",
+                "start_time": "00:00:00"
+              }
+            ],
+            "status": "declared"
+          },
+          "mon": {
+            "shifts": [
+              {
+                "end_time": "21:00:00",
+                "start_time": "10:30:00"
+              },
+              {
+                "end_time": "00:00:00",
+                "start_time": "00:00:00"
+              }
+            ],
+            "status": "declared"
+          },
+          "sat": {
+            "shifts": [
+              {
+                "end_time": "21:00:00",
+                "start_time": "10:00:00"
+              },
+              {
+                "end_time": "00:00:00",
+                "start_time": "00:00:00"
+              }
+            ],
+            "status": "declared"
+          },
+          "sun": {
+            "shifts": [
+              {
+                "end_time": "21:00:00",
+                "start_time": "10:30:00"
+              },
+              {
+                "end_time": "00:00:00",
+                "start_time": "00:00:00"
+              }
+            ],
+            "status": "declared"
+          },
+          "thu": {
+            "shifts": [
+              {
+                "end_time": "21:00:00",
+                "start_time": "10:30:00"
+              },
+              {
+                "end_time": "00:00:00",
+                "start_time": "00:00:00"
+              }
+            ],
+            "status": "declared"
+          },
+          "tue": {
+            "shifts": [
+              {
+                "end_time": "21:00:00",
+                "start_time": "10:30:00"
+              },
+              {
+                "end_time": "00:00:00",
+                "start_time": "00:00:00"
+              }
+            ],
+            "status": "declared"
+          },
+          "wed": {
+            "shifts": [
+              {
+                "end_time": "21:00:00",
+                "start_time": "10:30:00"
+              },
+              {
+                "end_time": "00:00:00",
+                "start_time": "00:00:00"
+              }
+            ],
+            "status": "declared"
+          }
+        },
+        "payment_state": "not_required",
+        "payment_evidence": [],
+        "stock_state": "unknown",
+        "evidence_ids": [
+          "offer_b08b779f43846d8e8c6aef1d",
+          "product_adfdc73bc839d15cd7754318",
+          "shop_1ffc7576fed58fa57cd99a21"
+        ],
+        "contact_links": [],
+        "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
+        "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
+        "observation_provenance": null,
+        "observation_id": null
+      },
+      "eligibility": "candidate",
+      "reason_codes": [],
+      "unresolved_checks": [
+        "current_price",
+        "current_stock"
+      ],
+      "tradeoffs": []
+    },
+    "fallback": {
+      "offer": {
+        "offer_id": "offer_dd4dc3e07a9bc3b94af79800",
+        "product_id": "product_adfdc73bc839d15cd7754318",
+        "shop_id": "shop_8281454d8fc1ff7c127aa603",
+        "shop_name": "ماهیار نیکینا",
+        "identity_anonymized": true,
+        "address": "خیابان جمهوری اسلامی، تقاطع خیابان حافظ، پاساژ چهارسو، طبقه اول، پلاک c۵۲",
+        "lat": 35.695050986028015,
+        "lon": 51.41203522682191,
+        "price_toman": "39500000",
+        "recorded_price_toman": "39500000",
+        "price_quality": "normal",
+        "price_changed_at": "2026-10-12T09:27:57.447082+00:00",
+        "straight_line_km": 0.050218213970066955,
+        "hours_state": "open",
+        "weekly_hours": {
+          "fri": {
+            "shifts": [
+              {
+                "end_time": "21:00:00",
+                "start_time": "11:00:00"
+              },
+              {
+                "end_time": "00:00:00",
+                "start_time": "00:00:00"
+              }
+            ],
+            "status": "declared"
+          },
+          "mon": {
+            "shifts": [
+              {
+                "end_time": "22:00:00",
+                "start_time": "11:00:00"
+              },
+              {
+                "end_time": "00:00:00",
+                "start_time": "00:00:00"
+              }
+            ],
+            "status": "declared"
+          },
+          "sat": {
+            "shifts": [
+              {
+                "end_time": "22:00:00",
+                "start_time": "11:00:00"
+              },
+              {
+                "end_time": "00:00:00",
+                "start_time": "00:00:00"
+              }
+            ],
+            "status": "declared"
+          },
+          "sun": {
+            "shifts": [
+              {
+                "end_time": "22:00:00",
+                "start_time": "11:00:00"
+              },
+              {
+                "end_time": "00:00:00",
+                "start_time": "00:00:00"
+              }
+            ],
+            "status": "declared"
+          },
+          "thu": {
+            "shifts": [
+              {
+                "end_time": "22:00:00",
+                "start_time": "11:00:00"
+              },
+              {
+                "end_time": "00:00:00",
+                "start_time": "00:00:00"
+              }
+            ],
+            "status": "declared"
+          },
+          "tue": {
+            "shifts": [
+              {
+                "end_time": "22:00:00",
+                "start_time": "11:00:00"
+              },
+              {
+                "end_time": "00:00:00",
+                "start_time": "00:00:00"
+              }
+            ],
+            "status": "declared"
+          },
+          "wed": {
+            "shifts": [
+              {
+                "end_time": "22:00:00",
+                "start_time": "11:00:00"
+              },
+              {
+                "end_time": "00:00:00",
+                "start_time": "00:00:00"
+              }
+            ],
+            "status": "declared"
+          }
+        },
+        "payment_state": "not_required",
+        "payment_evidence": [],
+        "stock_state": "unknown",
+        "evidence_ids": [
+          "offer_dd4dc3e07a9bc3b94af79800",
+          "product_adfdc73bc839d15cd7754318",
+          "shop_8281454d8fc1ff7c127aa603"
+        ],
+        "contact_links": [],
+        "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
+        "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"انتخاب سرویس حامی\"}",
+        "observation_provenance": null,
+        "observation_id": null
+      },
+      "eligibility": "candidate",
+      "reason_codes": [],
+      "unresolved_checks": [
+        "current_price",
+        "current_stock"
+      ],
+      "tradeoffs": []
+    },
+    "choices": [
+      {
+        "offer": {
+          "offer_id": "offer_b08b779f43846d8e8c6aef1d",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_1ffc7576fed58fa57cd99a21",
+          "shop_name": "نیآرا آروان",
+          "identity_anonymized": true,
+          "address": "خیابان جمهوری اسلامی، نرسیده به خیابان حافظ، پاساژ بزرگمهر، طبقه همکف، پلاک ۱۸، واحد ۱۸",
+          "lat": 35.69497808523676,
+          "lon": 51.41133868706675,
+          "price_toman": "39200000",
+          "recorded_price_toman": "39200000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-12T15:24:27.426943+00:00",
+          "straight_line_km": 0.017753648494932207,
+          "hours_state": "open",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "19:00:00",
+                  "start_time": "11:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_b08b779f43846d8e8c6aef1d",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_1ffc7576fed58fa57cd99a21"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
+          "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "candidate",
+        "reason_codes": [],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": [
+          "cheapest",
+          "closest",
+          "nearby_alternatives"
+        ]
+      }
+    ],
+    "excluded": [
+      {
+        "offer": {
+          "offer_id": "offer_37ecb8c104d5767901bcbd11",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_0855aaf14ffb471e3b579ce9",
+          "shop_name": "دیسانوش مهرین",
+          "identity_anonymized": true,
+          "address": "خیابان جمهوری، پاساژعلاءالدین، طبقه پنجم، واحد 564",
+          "lat": 35.69508821734553,
+          "lon": 51.41148102579503,
+          "price_toman": "38877700",
+          "recorded_price_toman": "38877700",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-12T19:03:46.322773+00:00",
+          "straight_line_km": 0.0,
+          "hours_state": "closed",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "00:00:01",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "10:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "10:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "10:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "18:30:00",
+                  "start_time": "10:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "10:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "10:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_37ecb8c104d5767901bcbd11",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_0855aaf14ffb471e3b579ce9"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی موبایل سامسونگ مدل گلکسی A07 4G ظرفیت 64 گیگابایت رم 4 گیگابایت | ریجسترشده",
+          "warranty": null,
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "closed_at_visit"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_e822bdf65bfa12e5549acf86",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_d31ef83bf64457123dccc6f2",
+          "shop_name": "نیینا نیان",
+          "identity_anonymized": true,
+          "address": "جمهوری اسلامی، جنب پل حافظ، پاساژ چارسو، طبقه اول، واحد C30",
+          "lat": 35.6947068118403,
+          "lon": 51.41224443912507,
+          "price_toman": "39300000",
+          "recorded_price_toman": "39300000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-12T10:31:16.391823+00:00",
+          "straight_line_km": 0.08094085601344177,
+          "hours_state": "closed",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "11:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_e822bdf65bfa12e5549acf86",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_d31ef83bf64457123dccc6f2"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
+          "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "closed_at_visit"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_6e4909c89f90fdbb2cfd1655",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_4934392f0e4fefe1526308c6",
+          "shop_name": "دیسورا پاکیار",
+          "identity_anonymized": true,
+          "address": "خیابان جمهوری، پاساژعلاالدین، طبقه 5، واحد 506",
+          "lat": 35.69494348354425,
+          "lon": 51.411446877781664,
+          "price_toman": "39550000",
+          "recorded_price_toman": "39550000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-12T14:34:02.247861+00:00",
+          "straight_line_km": 0.01638646547341567,
+          "hours_state": "unknown",
+          "weekly_hours": {},
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_6e4909c89f90fdbb2cfd1655",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_4934392f0e4fefe1526308c6"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی سامسونگ A07 4G | حافظه 64 رم 4 گیگابایت",
+          "warranty": "{\"description\":\"گارانتی 18 ماه شرکتی + تضمین رجیستری\",\"period_months\":null,\"provider\":null}",
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "needs_verification",
+        "reason_codes": [
+          "hours_unknown"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_b6ae998e658637181f88bbbf",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_7d4ab3fb8dd585be5d3d6db9",
+          "shop_name": "دیسیرا مانین",
+          "identity_anonymized": true,
+          "address": "خیابان جمهوری، قبل از پل حافظ، پلاک ۶۹۲",
+          "lat": 35.6950596997779,
+          "lon": 51.410654368695184,
+          "price_toman": "40000000",
+          "recorded_price_toman": "40000000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-12T07:56:54.656821+00:00",
+          "straight_line_km": 0.07471881176216229,
+          "hours_state": "closed",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "12:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "12:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "12:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "12:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "12:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "12:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "12:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_b6ae998e658637181f88bbbf",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_7d4ab3fb8dd585be5d3d6db9"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
+          "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"گروه هماهنگ\"}",
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "closed_at_visit"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_0ca99bd1cf92d7f90b7861ac",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_756f47bee536f661ae61626c",
+          "shop_name": "رامیار مهریار",
+          "identity_anonymized": true,
+          "address": "خیابان جمهوری، روبروی ساختمان الومینیوم، پاساژ کاوه، طبقه چهارم، واحد 43",
+          "lat": 35.695532974272915,
+          "lon": 51.40759772827372,
+          "price_toman": "40700000",
+          "recorded_price_toman": "40700000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-11T12:56:59.894091+00:00",
+          "straight_line_km": 0.35415120557876784,
+          "hours_state": "closed",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "closed"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "19:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "19:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "19:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "19:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "19:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_0ca99bd1cf92d7f90b7861ac",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_756f47bee536f661ae61626c"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی موبایل سامسونگ مدل Galaxy A07 دو سیم کارت ظرفیت 64 گیگابایت و رم 4 گیگابایت",
+          "warranty": "{\"description\":\"گارانتی 18 ماهه معتبر شرکتی همراه با کد رجیستری\",\"period_months\":null,\"provider\":null}",
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "over_budget",
+          "closed_at_visit"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_ebe46094085a5cae7c288c22",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_39aef8be9b19cdf55eefabbd",
+          "shop_name": "آوین مانیلا",
+          "identity_anonymized": true,
+          "address": "خیابان جمهوری اسلامی، بین خیابان حافظ و مرتضی، پاساژ چارسو، طبقه اول c۱",
+          "lat": 35.69486365089485,
+          "lon": 51.41226589679719,
+          "price_toman": "40900000",
+          "recorded_price_toman": "40900000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-10T09:26:17.372488+00:00",
+          "straight_line_km": 0.07514809862656359,
+          "hours_state": "open",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "12:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_ebe46094085a5cae7c288c22",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_39aef8be9b19cdf55eefabbd"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
+          "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "over_budget"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_cf9a36f1e222f8296c389366",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_9510d2b51c718503ef2d2699",
+          "shop_name": "پاکدیس ویینا",
+          "identity_anonymized": true,
+          "address": "خیابان جمهوری، نرسیده به تقاطع حافظ، پاساژ خانه موبایل، طبقه اول، پلاک 115",
+          "lat": 35.69543340553187,
+          "lon": 51.41069899835384,
+          "price_toman": "41290000",
+          "recorded_price_toman": "41290000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-11T13:28:11.861540+00:00",
+          "straight_line_km": 0.08037787474875215,
+          "hours_state": "closed",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "closed"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "19:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "19:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "19:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "17:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "19:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "19:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_cf9a36f1e222f8296c389366",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_9510d2b51c718503ef2d2699"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی موبایل سامسونگ مدل Galaxy A07 دو سیم کارت ظرفیت 64 گیگابایت و رم 4 گیگابایت",
+          "warranty": "{\"description\":\"گارانتی 18ماهه+اصالت کالا+کد رجیستری\",\"period_months\":null,\"provider\":null}",
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "over_budget",
+          "closed_at_visit"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_992c1734afde89315fabd020",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_28fea73ebb580e0f34224fe2",
+          "shop_name": "رامنوش نیانوش",
+          "identity_anonymized": true,
+          "address": "پل حافظ، پاساژ علاءالدین، طبقه۶، واحد ۶۵۲",
+          "lat": 35.69504458063399,
+          "lon": 51.41148100664775,
+          "price_toman": "42400000",
+          "recorded_price_toman": "42400000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-12T09:57:44.405956+00:00",
+          "straight_line_km": 0.004852187948658566,
+          "hours_state": "unknown",
+          "weekly_hours": {},
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_992c1734afde89315fabd020",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_28fea73ebb580e0f34224fe2"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی موبایل سامسونگ مدل Galaxy A07 دو سیم کارت ظرفیت 64 گیگابایت و رم 4 گیگابایت",
+          "warranty": null,
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "over_budget",
+          "hours_unknown"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_934bf7b69f87e7f62b7747cb",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_20d56d048f03a19fec6bf58c",
+          "shop_name": "نویار آذروش",
+          "identity_anonymized": true,
+          "address": "خیابان حافظ، بین سیف و غزالی، بازار موبایل ایران، طبقه دوم، پلاک ۴۰۷",
+          "lat": 35.69077266465646,
+          "lon": 51.41099989414216,
+          "price_toman": "43000000",
+          "recorded_price_toman": "43000000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-10T09:06:19.520087+00:00",
+          "straight_line_km": 0.48183130752224285,
+          "hours_state": "closed",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "16:00:00",
+                  "start_time": "11:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "11:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "11:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "11:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "11:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "11:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "11:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_934bf7b69f87e7f62b7747cb",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_20d56d048f03a19fec6bf58c"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
+          "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "over_budget",
+          "closed_at_visit"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_5536d1eb9e77c86bd2bd4ceb",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_07f966055b8de6360f198f70",
+          "shop_name": "نیان آریلا",
+          "identity_anonymized": true,
+          "address": "خیابان جمهوری، خیابان حافظ، بازارموبایل ایران، طبقه همکف، بازار موبایل ایران، طبقه همکف،.پلاک ۲۱۰",
+          "lat": 35.690790092092946,
+          "lon": 51.410948932170875,
+          "price_toman": "43300000",
+          "recorded_price_toman": "43300000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-10T07:25:31.542285+00:00",
+          "straight_line_km": 0.4803399410887479,
+          "hours_state": "open",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "16:00:00",
+                  "start_time": "10:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "20:30:00",
+                  "start_time": "10:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "20:30:00",
+                  "start_time": "10:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "20:30:00",
+                  "start_time": "10:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "20:30:00",
+                  "start_time": "10:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "20:30:00",
+                  "start_time": "10:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "20:30:00",
+                  "start_time": "10:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_5536d1eb9e77c86bd2bd4ceb",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_07f966055b8de6360f198f70"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
+          "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"گروه هماهنگ\"}",
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "over_budget"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_b7548355ae00497caf8b72db",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_188822653e77065f82c98014",
+          "shop_name": "نیکوش مهرین",
+          "identity_anonymized": true,
+          "address": "میدان فردوسی، مرکز تجارت جهانی فردوسی، طبقه ششم، واحد 21",
+          "lat": 35.7013958780187,
+          "lon": 51.41927995854388,
+          "price_toman": "43470000",
+          "recorded_price_toman": "43470000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-10T13:27:05.208755+00:00",
+          "straight_line_km": 0.993937953700069,
+          "hours_state": "closed",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "closed"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "19:30:00",
+                  "start_time": "12:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "19:30:00",
+                  "start_time": "12:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "19:30:00",
+                  "start_time": "12:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "19:30:00",
+                  "start_time": "12:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "19:30:00",
+                  "start_time": "12:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "19:30:00",
+                  "start_time": "12:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_b7548355ae00497caf8b72db",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_188822653e77065f82c98014"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
+          "warranty": null,
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "over_budget",
+          "closed_at_visit"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_1d7108749d80422d7658dbfd",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_27e1705d85f29ea3939919c3",
+          "shop_name": "نیکیرا نیکدیس",
+          "identity_anonymized": true,
+          "address": "خیابان فرحزادی، خیابان شهید منفرد نیاکی، مجتمع اپال، واحد ۷۱۰",
+          "lat": 35.77693422581608,
+          "lon": 51.351916193962104,
+          "price_toman": "44000000",
+          "recorded_price_toman": "44000000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-12T21:42:14.892508+00:00",
+          "straight_line_km": 10.57024175289268,
+          "hours_state": "open",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "closed"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "22:15:00",
+                  "start_time": "11:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "closed"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "22:15:00",
+                  "start_time": "11:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "22:15:00",
+                  "start_time": "11:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "22:15:00",
+                  "start_time": "11:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "22:15:00",
+                  "start_time": "11:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_1d7108749d80422d7658dbfd",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_27e1705d85f29ea3939919c3"
+          ],
+          "contact_links": [],
+          "seller_title": "موبایل سامسونگ Galaxy A07 64 با رم 4 رجیستر با گارانتی",
+          "warranty": "{\"description\":\"ضمانت اصالت کالا\",\"period_months\":null,\"provider\":null}",
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "over_budget",
+          "outside_radius"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_a4e6336185506f02e1b06de3",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_b6c2ac1ce44ee8f6be5cc7c2",
+          "shop_name": "سروانوش روسا",
+          "identity_anonymized": true,
+          "address": "خیابان حافظ، بعداز چهارراه جمهوری، نبش خیابان اقتدار، بازار موبایل ایران، طبقه زیرهمکف، پلاک ۱۳۶",
+          "lat": 35.690833660667444,
+          "lon": 51.41069412231446,
+          "price_toman": "44000000",
+          "recorded_price_toman": "44000000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-12T06:05:16.402716+00:00",
+          "straight_line_km": 0.4783933066469314,
+          "hours_state": "open",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "16:00:00",
+                  "start_time": "10:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "20:30:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "20:30:00",
+                  "start_time": "10:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_a4e6336185506f02e1b06de3",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_b6c2ac1ce44ee8f6be5cc7c2"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
+          "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "over_budget"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_f34d5bc5ab70769cca50e24d",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_136f2685c845d29c870594bc",
+          "shop_name": "فران مانآرا",
+          "identity_anonymized": true,
+          "address": "جمهوری اسلامی، نرسیده به حافظ پاساژ بزرگمهر، همکف، پلاک ۱۹",
+          "lat": 35.6948828,
+          "lon": 51.4112469,
+          "price_toman": "44200000",
+          "recorded_price_toman": "44200000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-05T08:09:25.996664+00:00",
+          "straight_line_km": 0.031124719730883887,
+          "hours_state": "open",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "18:59:00",
+                  "start_time": "11:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "20:59:00",
+                  "start_time": "11:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "20:59:00",
+                  "start_time": "11:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "20:59:00",
+                  "start_time": "11:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "20:59:00",
+                  "start_time": "11:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "20:59:00",
+                  "start_time": "11:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "20:59:00",
+                  "start_time": "11:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_f34d5bc5ab70769cca50e24d",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_136f2685c845d29c870594bc"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
+          "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "over_budget"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_201c4669f97443da52027ab0",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_f3804c06a114592c95710713",
+          "shop_name": "رویار نیکنوش",
+          "identity_anonymized": true,
+          "address": "خیابان جمهوری اسلامی، پاساژ چارسو، طبقه منفی ۱، پلاک ۴۶، واحد ۴۶",
+          "lat": 35.69485929425863,
+          "lon": 51.412292718887336,
+          "price_toman": "44449000",
+          "recorded_price_toman": "44449000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-06T08:01:13.559563+00:00",
+          "straight_line_km": 0.07759439968579078,
+          "hours_state": "open",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "20:30:00",
+                  "start_time": "10:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_201c4669f97443da52027ab0",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_f3804c06a114592c95710713"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
+          "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "over_budget"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_9b874be1f54c578e12b1a298",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_0201f9487d68b9ba04ec2e1d",
+          "shop_name": "آروان دیسین",
+          "identity_anonymized": true,
+          "address": "میدان فردوسی، مجتمع تجارت جهانی فردوسی، طبقه ششم، واحد 25",
+          "lat": 35.70091857886549,
+          "lon": 51.419319631203216,
+          "price_toman": "45498000",
+          "recorded_price_toman": "45498000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-12T21:20:47.090775+00:00",
+          "straight_line_km": 0.959865647690347,
+          "hours_state": "unknown",
+          "weekly_hours": {},
+          "payment_state": "not_required",
+          "payment_evidence": [
+            {
+              "category_names": [
+                "موبایل و کالای دیجیتال",
+                "لپ‌تاپ، کامپیوتر، اداری"
+              ],
+              "channel": "unknown",
+              "max_price_toman": 0,
+              "min_price_toman": 0,
+              "provider_name": "تارا"
+            },
+            {
+              "category_names": [],
+              "channel": "unknown",
+              "max_price_toman": null,
+              "min_price_toman": null,
+              "provider_name": "ازکی‌وام"
+            }
+          ],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_9b874be1f54c578e12b1a298",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_0201f9487d68b9ba04ec2e1d"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی موبایل سامسونگ مدل Galaxy A07 دو سیم کارت ظرفیت 4/64 گیگابایت",
+          "warranty": "{\"description\":\"18 ماهه شرکتی به همراه کد رجیستری\",\"period_months\":null,\"provider\":null}",
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "over_budget",
+          "hours_unknown"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_2e7f411508ac99f69a38597b",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_d2b3735ad661de93aab6b5fc",
+          "shop_name": "نیکورا فرنوش",
+          "identity_anonymized": true,
+          "address": "خیابان حافظ، بین هاتف و جمهوری اسلامی، پاساژ علاءالدین ۱، طبقه همکف، پلاک ۸۰، واحد ۸۰",
+          "lat": 35.69454561582391,
+          "lon": 51.411638259887695,
+          "price_toman": "46800000",
+          "recorded_price_toman": "46800000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-05T19:00:47.645030+00:00",
+          "straight_line_km": 0.061982910165320274,
+          "hours_state": "open",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "20:00:00",
+                  "start_time": "09:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "09:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "09:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "09:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "09:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "09:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "09:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_2e7f411508ac99f69a38597b",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_d2b3735ad661de93aab6b5fc"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
+          "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "over_budget"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_90aed988673444182916d62f",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_0b2d387c5a2ecd7d8d3e5065",
+          "shop_name": "مهرورا آرینا",
+          "identity_anonymized": true,
+          "address": "خیابان جمهوری، تقاطع حافظ، پاساژ علاءالدین، درب ورودی حافظ، طبقه همکف، پلاک ۶۲",
+          "lat": 35.694502049277084,
+          "lon": 51.411431729793556,
+          "price_toman": "47000000",
+          "recorded_price_toman": "47000000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-05T08:18:25.230068+00:00",
+          "straight_line_km": 0.06533085348188823,
+          "hours_state": "open",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "09:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "09:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "09:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "09:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "09:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "09:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "09:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_90aed988673444182916d62f",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_0b2d387c5a2ecd7d8d3e5065"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
+          "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "over_budget"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_76ec25945d526d4b3069a5d9",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_54246cd3fb4d032d588bb8b8",
+          "shop_name": "آذروش رامیس",
+          "identity_anonymized": true,
+          "address": "خیابان حافظ، پاساژ علاالدین ۱، طبقه همکف، پلاک ۴۹",
+          "lat": 35.69458046904425,
+          "lon": 51.4111876487732,
+          "price_toman": "47500000",
+          "recorded_price_toman": "47500000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-06T14:47:59.007785+00:00",
+          "straight_line_km": 0.06236618285682723,
+          "hours_state": "unknown",
+          "weekly_hours": {},
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_76ec25945d526d4b3069a5d9",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_54246cd3fb4d032d588bb8b8"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
+          "warranty": null,
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "over_budget",
+          "hours_unknown"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_00a54c56f20c265b10af6866",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_be8cf3f84cbf37588609b392",
+          "shop_name": "روانوش نیسا",
+          "identity_anonymized": true,
+          "address": "خیابان جمهوری اسلامی، تقاطع حافظ، پاساژ علاءالدین، طبقه ششم، پلاک ۶۶۶",
+          "lat": 35.69486681945411,
+          "lon": 51.411397935041435,
+          "price_toman": "49500000",
+          "recorded_price_toman": "49500000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-03T09:59:35.500840+00:00",
+          "straight_line_km": 0.025736484049604845,
+          "hours_state": "open",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "closed"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "20:30:00",
+                  "start_time": "09:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "20:30:00",
+                  "start_time": "09:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "20:30:00",
+                  "start_time": "09:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "20:30:00",
+                  "start_time": "09:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "20:30:00",
+                  "start_time": "09:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "20:30:00",
+                  "start_time": "09:30:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_00a54c56f20c265b10af6866",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_be8cf3f84cbf37588609b392"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
+          "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "over_budget"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_3787724ccb9ad7d94dc1458c",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_90e966131e710439ff74e4bb",
+          "shop_name": "نیانوش نویس",
+          "identity_anonymized": true,
+          "address": "خیابان جمهوری اسلامی، خیابان حافظ، نبش کوچه کلانتری، پاساژ خانه موبایل، طبقه ۱، واحد ۱۱۴، پلاک ۵۸۷",
+          "lat": 35.695382089041054,
+          "lon": 51.41078923104364,
+          "price_toman": "49500000",
+          "recorded_price_toman": "49500000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-05T16:56:50.788835+00:00",
+          "straight_line_km": 0.07050259608113339,
+          "hours_state": "closed",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "closed"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "18:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "18:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "18:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "18:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "18:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "18:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_3787724ccb9ad7d94dc1458c",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_90e966131e710439ff74e4bb"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
+          "warranty": null,
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "over_budget",
+          "closed_at_visit"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_74d58bcfc33f6399e00d529a",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_70b00a5e88033ba47a49c288",
+          "shop_name": "ماهیرا دیسیار",
+          "identity_anonymized": true,
+          "address": "خیابان جمهوری اسلامی، پاساژ چارسو، طبقه ۱، پلاک ۱",
+          "lat": 35.69488581343904,
+          "lon": 51.412266700805006,
+          "price_toman": "51900000",
+          "recorded_price_toman": "51900000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-08T20:36:58.564759+00:00",
+          "straight_line_km": 0.0744347517870445,
+          "hours_state": "open",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "closed"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "21:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_74d58bcfc33f6399e00d529a",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_70b00a5e88033ba47a49c288"
+          ],
+          "contact_links": [],
+          "seller_title": "Galaxy A07 64/4 نات اکتیو گارانتی 18 ماه شرکتی",
+          "warranty": "{\"description\":\"گارانتی 18 ماه شرکتی\",\"period_months\":null,\"provider\":null}",
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "over_budget"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_242caf85704c7a483eef533d",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_e7596a1831d47cd60f88abcb",
+          "shop_name": "فروان نیکین",
+          "identity_anonymized": true,
+          "address": "خیابان جمهوری اسلامی، نرسیده به خیابان حافظ، نبش کوچه رم، پاساژ پردیس، طبقه اول، واحد ۱۳",
+          "lat": 35.69537051666778,
+          "lon": 51.409572958946235,
+          "price_toman": "53400000",
+          "recorded_price_toman": "53400000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-10T15:30:27.552520+00:00",
+          "straight_line_km": 0.17514408983086382,
+          "hours_state": "closed",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "closed"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "18:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "18:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "18:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "closed"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "18:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "18:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_242caf85704c7a483eef533d",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_e7596a1831d47cd60f88abcb"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی موبایل سامسونگ گلکسی A07 دو سیم کارت ظرفیت 64 گیگابایت و رم 4 گیگابایت",
+          "warranty": "{\"description\":\"گارانتی 18 ماهه -شرکتی\",\"period_months\":null,\"provider\":null}",
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "over_budget",
+          "closed_at_visit"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_49f5e44b2076a4485603e6a0",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_e7596a1831d47cd60f88abcb",
+          "shop_name": "فروان نیکین",
+          "identity_anonymized": true,
+          "address": "خیابان جمهوری اسلامی، نرسیده به خیابان حافظ، نبش کوچه رم، پاساژ پردیس، طبقه اول، واحد ۱۳",
+          "lat": 35.69537051666778,
+          "lon": 51.409572958946235,
+          "price_toman": "55100000",
+          "recorded_price_toman": "55100000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-10T15:30:28.773836+00:00",
+          "straight_line_km": 0.17514408983086382,
+          "hours_state": "closed",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "closed"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "18:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "18:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "18:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "closed"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "18:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "18:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_49f5e44b2076a4485603e6a0",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_e7596a1831d47cd60f88abcb"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی موبایل سامسونگ مدل Galaxy A07 دو سیم کارت ظرفیت 64 گیگابایت و رم 4 گیگابایت - به‌همراه شارژر",
+          "warranty": "{\"description\":\"گارانتی 18 ماهه -شرکتی\",\"period_months\":null,\"provider\":null}",
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "over_budget",
+          "closed_at_visit"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_de5807664c20e1dac85ff972",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_72b030142f21a216aee7daac",
+          "shop_name": "آذرورا رامین",
+          "identity_anonymized": true,
+          "address": "خیابان جمهوری، جنب پاساژ آلومینیوم، پلاک 788",
+          "lat": 35.695325653322094,
+          "lon": 51.408220820688804,
+          "price_toman": "55500000",
+          "recorded_price_toman": "55500000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-04T13:40:27.164829+00:00",
+          "straight_line_km": 0.29559464130833035,
+          "hours_state": "open",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "closed"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "20:30:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "13:00:00",
+                  "start_time": "09:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "20:30:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "20:30:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "20:30:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "20:30:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_de5807664c20e1dac85ff972",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_72b030142f21a216aee7daac"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی موبایل سامسونگ مدل Galaxy A07 دو سیم کارت ظرفیت 64 و رم 4",
+          "warranty": null,
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "over_budget"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_10232df5a2127267e461582a",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_3646403544371c1f8f53196c",
+          "shop_name": "نیسا آریرا",
+          "identity_anonymized": true,
+          "address": "خیابان جمهوری، خیابان حافظ، مجتمع علاالدین ۳، طبقه منفی ۱، انتهای راهرو، پلاک ۲۳",
+          "lat": 35.69355524559776,
+          "lon": 51.4113357619088,
+          "price_toman": "55795000",
+          "recorded_price_toman": "55795000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-10T11:14:19.889150+00:00",
+          "straight_line_km": 0.1709629488058959,
+          "hours_state": "closed",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "closed"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "17:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "17:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "17:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "17:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "17:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "17:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [
+            {
+              "category_names": [],
+              "channel": "unknown",
+              "max_price_toman": null,
+              "min_price_toman": null,
+              "provider_name": "ترب‌پی"
+            }
+          ],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_10232df5a2127267e461582a",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_3646403544371c1f8f53196c"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی موبایل سامسونگ مدل Galaxy A07 دو سیم کارت ظرفیت 64 گیگابایت و رم 4 گیگابایت چین",
+          "warranty": null,
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "over_budget",
+          "closed_at_visit"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_bd9464c2743b9595870b72a6",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_3646403544371c1f8f53196c",
+          "shop_name": "نیسا آریرا",
+          "identity_anonymized": true,
+          "address": "خیابان جمهوری، خیابان حافظ، مجتمع علاالدین ۳، طبقه منفی ۱، انتهای راهرو، پلاک ۲۳",
+          "lat": 35.69355524559776,
+          "lon": 51.4113357619088,
+          "price_toman": "56995000",
+          "recorded_price_toman": "56995000",
+          "price_quality": "normal",
+          "price_changed_at": "2026-10-10T11:11:44.116928+00:00",
+          "straight_line_km": 0.1709629488058959,
+          "hours_state": "closed",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "closed"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "17:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "17:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "17:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "17:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "17:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "17:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [
+            {
+              "category_names": [],
+              "channel": "unknown",
+              "max_price_toman": null,
+              "min_price_toman": null,
+              "provider_name": "ترب‌پی"
+            }
+          ],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_bd9464c2743b9595870b72a6",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_3646403544371c1f8f53196c"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی موبایل سامسونگ مدل Galaxy A07 دو سیم کارت ظرفیت 64 گیگابایت و رم 4 گیگابایت-به همراه شارژر 25 وات سامسونگ",
+          "warranty": null,
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "ineligible",
+        "reason_codes": [
+          "over_budget",
+          "closed_at_visit"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      },
+      {
+        "offer": {
+          "offer_id": "offer_caf5511debfffc5ebc7f8557",
+          "product_id": "product_adfdc73bc839d15cd7754318",
+          "shop_id": "shop_f787c27a1c7793888bcb2866",
+          "shop_name": "آذریس ماهیس",
+          "identity_anonymized": true,
+          "address": "خیابان جمهوری، بعد از پل حافظ، مجتمع تجاری چارسو، طبقه ۱، پلاک c۲۶، واحد ۲۶",
+          "lat": 35.694807014605175,
+          "lon": 51.412072777748115,
+          "price_toman": null,
+          "recorded_price_toman": null,
+          "price_quality": "missing",
+          "price_changed_at": "2026-07-09T11:01:35.405190+00:00",
+          "straight_line_km": 0.06191424375523362,
+          "hours_state": "open",
+          "weekly_hours": {
+            "fri": {
+              "shifts": [
+                {
+                  "end_time": "22:00:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "mon": {
+              "shifts": [
+                {
+                  "end_time": "21:30:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sat": {
+              "shifts": [
+                {
+                  "end_time": "21:30:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "sun": {
+              "shifts": [
+                {
+                  "end_time": "21:30:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "thu": {
+              "shifts": [
+                {
+                  "end_time": "21:30:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "tue": {
+              "shifts": [
+                {
+                  "end_time": "21:30:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            },
+            "wed": {
+              "shifts": [
+                {
+                  "end_time": "21:30:00",
+                  "start_time": "10:00:00"
+                },
+                {
+                  "end_time": "00:00:00",
+                  "start_time": "00:00:00"
+                }
+              ],
+              "status": "declared"
+            }
+          },
+          "payment_state": "not_required",
+          "payment_evidence": [],
+          "stock_state": "unknown",
+          "evidence_ids": [
+            "offer_caf5511debfffc5ebc7f8557",
+            "product_adfdc73bc839d15cd7754318",
+            "shop_f787c27a1c7793888bcb2866"
+          ],
+          "contact_links": [],
+          "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
+          "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
+          "observation_provenance": null,
+          "observation_id": null
+        },
+        "eligibility": "needs_verification",
+        "reason_codes": [
+          "price_missing"
+        ],
+        "unresolved_checks": [
+          "current_price",
+          "current_stock"
+        ],
+        "tradeoffs": []
+      }
+    ],
+    "shortlist_coverage": {
+      "distinct_shops": 28,
+      "eligible_shops": 2,
+      "shortlisted_shops": 2,
+      "excluded_offers": 28
+    }
+  },
+  "queries": [
+    {
+      "query": "A07",
+      "category": "گوشی موبایل",
+      "budget": null,
+      "count": 4,
+      "ids": [
+        "product_3d46be8f5ae7503003c2ab8b",
+        "product_3d1290a3534f581c9e3d12cc",
+        "product_8eaba34d56960fb44ed580dd",
+        "product_adfdc73bc839d15cd7754318"
+      ],
+      "warm_ms": [
+        1.960122026503086,
+        1.912549021653831,
+        1.770670001860708
+      ]
+    },
+    {
+      "query": "سامسونگ",
+      "category": "گوشی موبایل",
+      "budget": null,
+      "count": 20,
+      "ids": [
+        "product_dd0a0096eee40a83fab770a9",
+        "product_6419a44e5f0917e7075d7c92",
+        "product_51c21b736a2a06b71e13c295",
+        "product_fde40bc8efdbb0c97eb6f05b",
+        "product_514764eb6bc0b58971ce45bc",
+        "product_49f57010864c864d2438b80f",
+        "product_a684a5b52a959c08547e009c",
+        "product_f07ef205504b7ab37b60b509",
+        "product_f96b9acaa7cbd3377b246d4f",
+        "product_05c23ecb17a75d3b3311b490",
+        "product_7b2f81b1c505834301755fe7",
+        "product_f039b9f736db8be034e637d0",
+        "product_58f037c45da3bf1f5cfdf3ec",
+        "product_fea567b8609e0d6a4f59c8b4",
+        "product_c97a831f5c7bb6a4814c1b60",
+        "product_1047c30db8234343ffdd9ef0",
+        "product_3a4d622bd36806239740d549",
+        "product_8a2ab0cfee5a7f10ae909625",
+        "product_af24a7f71f80655b178fa9c1",
+        "product_b231501bb5ff4f61f1a11afe"
+      ],
+      "warm_ms": [
+        27.81438600504771,
+        29.64091597823426,
+        30.022877966985106
+      ]
+    },
+    {
+      "query": "128",
+      "category": "گوشی موبایل",
+      "budget": null,
+      "count": 20,
+      "ids": [
+        "product_ace20a335b3a4247294c07af",
+        "product_372ce2a1c18ae5ef35ef937e",
+        "product_ee62fa71e0d358ef89650544",
+        "product_7b2f81b1c505834301755fe7",
+        "product_3c29609ee1732ce323e82f99",
+        "product_f039b9f736db8be034e637d0",
+        "product_1fd255561ccc5f75009b16c1",
+        "product_4b6eeb373aaa65785a83cc0e",
+        "product_693fd02fd41daa6f5d142e72",
+        "product_8c2cf65192cb6b34a1519621",
+        "product_e2a3ac8259710cf5959f7c3e",
+        "product_0265bc82a939fea30d0c00e5",
+        "product_66d3e7041378124b89931e0c",
+        "product_76ffd22372195ed68d79da34",
+        "product_adc1bf7629c1667ede65c974",
+        "product_8886cf02040e0740c821f613",
+        "product_51c21b736a2a06b71e13c295",
+        "product_6f76f36bd958e33ac21d8a7d",
+        "product_aadf615987a00768872dfd27",
+        "product_b1f5f0ad55f01719cda21955"
+      ],
+      "warm_ms": [
+        16.447932983282954,
+        17.36857701325789,
+        18.67780101019889
+      ]
+    },
+    {
+      "query": "۱۲۸",
+      "category": "گوشی موبایل",
+      "budget": null,
+      "count": 20,
+      "ids": [
+        "product_ace20a335b3a4247294c07af",
+        "product_372ce2a1c18ae5ef35ef937e",
+        "product_ee62fa71e0d358ef89650544",
+        "product_7b2f81b1c505834301755fe7",
+        "product_3c29609ee1732ce323e82f99",
+        "product_f039b9f736db8be034e637d0",
+        "product_1fd255561ccc5f75009b16c1",
+        "product_4b6eeb373aaa65785a83cc0e",
+        "product_693fd02fd41daa6f5d142e72",
+        "product_8c2cf65192cb6b34a1519621",
+        "product_e2a3ac8259710cf5959f7c3e",
+        "product_0265bc82a939fea30d0c00e5",
+        "product_66d3e7041378124b89931e0c",
+        "product_76ffd22372195ed68d79da34",
+        "product_adc1bf7629c1667ede65c974",
+        "product_8886cf02040e0740c821f613",
+        "product_51c21b736a2a06b71e13c295",
+        "product_6f76f36bd958e33ac21d8a7d",
+        "product_aadf615987a00768872dfd27",
+        "product_b1f5f0ad55f01719cda21955"
+      ],
+      "warm_ms": [
+        17.80314597999677,
+        17.668982036411762,
+        19.246146955993026
+      ]
+    },
+    {
+      "query": "گوشي",
+      "category": "گوشی موبایل",
+      "budget": null,
+      "count": 20,
+      "ids": [
+        "product_65e2e57c557e21df79dc4455",
+        "product_199985a1b8b8cc70af9c5a8c",
+        "product_747e2cc675a6d728dd3fc9f2",
+        "product_b58ad2c617b3c4f367d118cb",
+        "product_d1bbc04ae93bcfb7b93993f6",
+        "product_dd0a0096eee40a83fab770a9",
+        "product_0d4fa1a1f29382d32d76ba16",
+        "product_1a0d579ecad98a180cfc30a2",
+        "product_60c044f925c510b7b26bcdc0",
+        "product_862b3a845117cb824d7dff5a",
+        "product_e4c7643c9d38c105b2323e8e",
+        "product_ee62fa71e0d358ef89650544",
+        "product_2be9266d3d0ee8b50b76ec99",
+        "product_3c29609ee1732ce323e82f99",
+        "product_5b8ff485867072a25b73f63e",
+        "product_7f26e960956f22a10550cb11",
+        "product_d045642c735cc169e32e1205",
+        "product_dc1b0d9ff5f9488248fc7e67",
+        "product_f5b918193d01a9ca4dc689c5",
+        "product_011c5dbe02b890b206dee52e"
+      ],
+      "warm_ms": [
+        56.049490987788886,
+        57.04610695829615,
+        57.56681499769911
+      ]
+    },
+    {
+      "query": "گوشی",
+      "category": "گوشی موبایل",
+      "budget": null,
+      "count": 20,
+      "ids": [
+        "product_65e2e57c557e21df79dc4455",
+        "product_199985a1b8b8cc70af9c5a8c",
+        "product_747e2cc675a6d728dd3fc9f2",
+        "product_b58ad2c617b3c4f367d118cb",
+        "product_d1bbc04ae93bcfb7b93993f6",
+        "product_dd0a0096eee40a83fab770a9",
+        "product_0d4fa1a1f29382d32d76ba16",
+        "product_1a0d579ecad98a180cfc30a2",
+        "product_60c044f925c510b7b26bcdc0",
+        "product_862b3a845117cb824d7dff5a",
+        "product_e4c7643c9d38c105b2323e8e",
+        "product_ee62fa71e0d358ef89650544",
+        "product_2be9266d3d0ee8b50b76ec99",
+        "product_3c29609ee1732ce323e82f99",
+        "product_5b8ff485867072a25b73f63e",
+        "product_7f26e960956f22a10550cb11",
+        "product_d045642c735cc169e32e1205",
+        "product_dc1b0d9ff5f9488248fc7e67",
+        "product_f5b918193d01a9ca4dc689c5",
+        "product_011c5dbe02b890b206dee52e"
+      ],
+      "warm_ms": [
+        58.70851397048682,
+        55.97897304687649,
+        63.86562896659598
+      ]
+    },
+    {
+      "query": "آیفون",
+      "category": "گوشی موبایل",
+      "budget": null,
+      "count": 20,
+      "ids": [
+        "product_b6f939a22a3879d9daa43014",
+        "product_98765298de78746ecb48eda5",
+        "product_229874869305e78206e1837e",
+        "product_fa2e12dcfe261fe07ffc3b2f",
+        "product_361c36073605eb70c909760a",
+        "product_008639dc8d42aab5196be2c3",
+        "product_122f9497dfd30d1e90a2b54b",
+        "product_24c733b14126db7feabcdf1a",
+        "product_6541c9d38fabfb821dae3398",
+        "product_86e1476db0a0af0987f2acde",
+        "product_ca11eb917422480f13f4dd3d",
+        "product_6ac23e6ab59b7a79a915a1f3",
+        "product_56827966243816535037fbfc",
+        "product_f081f0506aee22ed261bbc00",
+        "product_7063ca059fb8cfdd98bbcb6a",
+        "product_d349106efe79fd6da12c88ab",
+        "product_39d2d00ff95232a6877685e1",
+        "product_6956bcdecc1044f7718a69fe",
+        "product_bcf02be37eac336bb975dbc9",
+        "product_82e4bcff29a738a0aa7d7786"
+      ],
+      "warm_ms": [
+        22.879700001794845,
+        25.2431120024994,
+        20.070163998752832
+      ]
+    },
+    {
+      "query": "شیائومی",
+      "category": "گوشی موبایل",
+      "budget": null,
+      "count": 20,
+      "ids": [
+        "product_db1f3542c730eaf1d31b67f5",
+        "product_01b9c3e2cd7dde1cc2b13ffe",
+        "product_d38f268b273893191620691b",
+        "product_9aebe776d9f6b52c3f142d02",
+        "product_b2d73c6ac597e9cbb1f0578d",
+        "product_c73bb1efec27eda7d290d177",
+        "product_1f07934e9a1a775ee249c46d",
+        "product_b4a3920037c7b3def1917f0b",
+        "product_0dc658a2ce54337875e16600",
+        "product_56d3e2690e69b089bbc28a63",
+        "product_bd4ef691d9686e0bda14a2b3",
+        "product_d21701f6f8e97bf5239a3347",
+        "product_d0d6fade8643f1914fd8e79c",
+        "product_747e2cc675a6d728dd3fc9f2",
+        "product_32e0f2a8165f188597b56469",
+        "product_356a28d677492f4055d3886c",
+        "product_3f8e8051ef314264e608fec6",
+        "product_a8b57f2d0c44195b1f7e92fc",
+        "product_16d7396b8f01af24b78ca76e",
+        "product_b76f4e29267107122bbf1399"
+      ],
+      "warm_ms": [
+        25.2671170164831,
+        27.810875966679305,
+        24.409820034634322
+      ]
+    },
+    {
+      "query": "Nokia",
+      "category": "گوشی موبایل",
+      "budget": null,
+      "count": 20,
+      "ids": [
+        "product_05481b429ab77d89d5538cd0",
+        "product_6f76f36bd958e33ac21d8a7d",
+        "product_038c517472e5487985e4b3f7",
+        "product_c2446d0f7e63f71e329d8e29",
+        "product_9745d3b9bb99bb0e9cd6ab8d",
+        "product_6b13bf9762d346143397fb3e",
+        "product_625e0b7f0baafc2054d57fd3",
+        "product_31192de7d41497083d83cfaa",
+        "product_0b14c310eeec60eee488e9bb",
+        "product_dab360163f3c057c02ec8401",
+        "product_1d081537dbd4b4f563666339",
+        "product_747bf92c3a6aac00bb4d0e54",
+        "product_0a0a7f478d942d3c8956fcf6",
+        "product_412f296c50498824c504407c",
+        "product_25f66fb2732cbadd95f3c170",
+        "product_78ffe6dd10b65b4a4c626980",
+        "product_24d034bb1d641ecdca75668b",
+        "product_faaa5292be886de8b11e6616",
+        "product_fc852fa4784289d784340d99",
+        "product_72f0613ccde3a577ed52c169"
+      ],
+      "warm_ms": [
+        4.542708047665656,
+        5.859588971361518,
+        4.283164045773447
+      ]
+    },
+    {
+      "query": "A16",
+      "category": "گوشی موبایل",
+      "budget": null,
+      "count": 10,
+      "ids": [
+        "product_f039b9f736db8be034e637d0",
+        "product_af4805413d4dc3e79a0e7e78",
+        "product_396742ff3046773e7ae78d6e",
+        "product_553efa82b89ea7c1ac7203bd",
+        "product_eccf0c188abd567d2f1ca943",
+        "product_24a594d93c8a8284dac3a2bf",
+        "product_287b980aba12fedafc1654bc",
+        "product_f891a057da2120d72b90b560",
+        "product_c62bebb417c0c7b86be2197c",
+        "product_61518a3929ea90f97b164b56"
+      ],
+      "warm_ms": [
+        2.0876210182905197,
+        1.9515639869496226,
+        1.9162489916197956
+      ]
+    },
+    {
+      "query": "لپ تاپ",
+      "category": "لپ تاپ و نوت بوک",
+      "budget": null,
+      "count": 20,
+      "ids": [
+        "product_9bf59a3cf5d8d647146d1da2",
+        "product_6f2067028c7e8c6303815622",
+        "product_4f486e5fe7d5dcf0bf469971",
+        "product_9fcd4b82a81dd0ee15c0d89a",
+        "product_64c75fdfcd9d9887babcf642",
+        "product_262ae0ce03f9c9a6d9c77fc6",
+        "product_6b6664d3ecce559cca75711d",
+        "product_2976802b6fb24eaa4f7e68b7",
+        "product_0e51f2a7ad477ceb3303af68",
+        "product_7647b9de16a9c6c8b5830dcb",
+        "product_6688112b1a49121a1cb91b48",
+        "product_667ab5e2afb7acd3d19e48c2",
+        "product_0d7cb73d0db4905d60cf6760",
+        "product_252480c192a312572b339860",
+        "product_4ee9b10ce8e625495579c4eb",
+        "product_96638699f22bf08e2d55f8d1",
+        "product_226fab8a1bf19ae7332b9428",
+        "product_457a1ad4f04876a5e7c4387a",
+        "product_8cd2107e9b335c8ca6acab5b",
+        "product_b75e79b1f1a4e4139f4b2b70"
+      ],
+      "warm_ms": [
+        23.883713991381228,
+        19.395227020140737,
+        21.725453960243613
+      ]
+    },
+    {
+      "query": "Lenovo",
+      "category": "لپ تاپ و نوت بوک",
+      "budget": null,
+      "count": 20,
+      "ids": [
+        "product_56cead647b43c0ad4086662d",
+        "product_db5ee746accd2e74c8e53c1e",
+        "product_ff4206600682a6546e944ec6",
+        "product_65f0565cd0ed728fd90926c0",
+        "product_9b06a24c8d537704678d8bc6",
+        "product_0e31f03899693d4185a63cec",
+        "product_013684f76f862418de273541",
+        "product_46445a224b7fcd0351903eb1",
+        "product_48f080a918a9eef9c663bdb7",
+        "product_3552c6c228dfc99ca62493e0",
+        "product_20bdf186b27e9a01582af13f",
+        "product_9d209e360846fdc7eb190ea8",
+        "product_9d2664764b1bab01a0dfe80e",
+        "product_9e8b389d5f3160d9bc109efc",
+        "product_f3752bb6c42f2e8c59946c27",
+        "product_ee820e801a10df4aa4fe730b",
+        "product_237e2f6b201c363833203e8d",
+        "product_84e8027e1e3ec726b7fe8a81",
+        "product_b93d3bce5503ada26e176431",
+        "product_7b7c1ab66e4ab7b52700e821"
+      ],
+      "warm_ms": [
+        5.935736000537872,
+        8.056851977016777,
+        7.032044988591224
+      ]
+    },
+    {
+      "query": "Asus",
+      "category": "لپ تاپ و نوت بوک",
+      "budget": null,
+      "count": 20,
+      "ids": [
+        "product_6c5ded085ea3a748b23e8761",
+        "product_734dd2ed9c169e72d3fc7a24",
+        "product_7e1225571c10b457dada664b",
+        "product_75c2e51370025d42beef1d0c",
+        "product_d059187492c9efbf3344bbeb",
+        "product_d330a7250f1c293632473477",
+        "product_7aa23d2638aebd892eda296d",
+        "product_1a8aa89dace560164da5c62e",
+        "product_120dd100eb27b3d69de817ea",
+        "product_376bfdffb2d90aba74d4bbcd",
+        "product_e1d65982b38ac513d9fdfb7c",
+        "product_35301706ef6f99fad92fbb21",
+        "product_98650256b8930acd3e9c4d56",
+        "product_c7ee8ec8aca22a457ca4eb88",
+        "product_0948fe226cf68fab80e8d2b0",
+        "product_9b7c2704d241d5cddb529e5d",
+        "product_38fd67c843cc98a92c0091f0",
+        "product_4da658198b5aa96913ee3dfc",
+        "product_8334f194e952c909593d4454",
+        "product_03419394849d26138c9613e6"
+      ],
+      "warm_ms": [
+        6.682296982035041,
+        8.557234017644078,
+        8.074825047515333
+      ]
+    },
+    {
+      "query": "دوربین",
+      "category": "لنز دوربین",
+      "budget": null,
+      "count": 20,
+      "ids": [
+        "product_fb9a452e6967697c2d8c8e47",
+        "product_688b4a734e2d674af097983c",
+        "product_0c91c0d5c9aff04c74db3025",
+        "product_506b3ce4639960f98f11656b",
+        "product_b3c39bdc97c93934654de6e2",
+        "product_559995285a706670dcbb8b75",
+        "product_fb442f03db020977e2aa9d13",
+        "product_34ee2a62bc067c0e6f910a45",
+        "product_20339b59292e1d3e6ff175fe",
+        "product_24a9e189bf63f039c6655c04",
+        "product_3a6430b195b7b97db4046d72",
+        "product_3ed7052ba6c4d11413a55fef",
+        "product_87b7b4497eb803d44c0254ef",
+        "product_9f7fd39423f0e4f0f38cc4b4",
+        "product_b5c187b3ca9e46b3c8dfb206",
+        "product_bcb60f2ea04e4e44c5d782c9",
+        "product_c79c44343e7a01bbdc898648",
+        "product_cd8c1956a86fb8bc86bd9c92",
+        "product_d52e6303c8aa06e495aca9a3",
+        "product_d630c0b8f0aa29f5d03438ff"
+      ],
+      "warm_ms": [
+        48.944127978757024,
+        50.3309250343591,
+        47.97655495349318
+      ]
+    },
+    {
+      "query": "قاب A07",
+      "category": "قاب گوشی",
+      "budget": null,
+      "count": 0,
+      "ids": [],
+      "warm_ms": [
+        0.7245189626701176,
+        0.5649100057780743,
+        0.5719169857911766
+      ]
+    },
+    {
+      "query": "\" OR *",
+      "category": null,
+      "budget": null,
+      "count": 20,
+      "ids": [
+        "product_06465d4c35a9bd960bfc01c6",
+        "product_44f538124f601bda6fe040b4",
+        "product_353a3616b30dfa17f0a0d550",
+        "product_1c3e9d75b6e5cd3848fdb663",
+        "product_40e9a97fc27c4dfca6ef7781",
+        "product_8442c7488a4ec122006f4bf1",
+        "product_c1cecef987c982513992d632",
+        "product_d96393e02a5c7f3d6444befc",
+        "product_c8781c6490a4fe3e5cec6bfc",
+        "product_339e16cfa1c0a40035b36c8b",
+        "product_6b8f217d8923ac54c8daa794",
+        "product_377c9467de3e803fa95634d4",
+        "product_48fbdb3137d392e760852462",
+        "product_5dbd0c53117d2eae28120c53",
+        "product_b8e292e2a80ff9ffbd1599b7",
+        "product_626e3646717cd13557bccac8",
+        "product_a0261718c447d8ff093d83ee",
+        "product_9a08b59919376376fd7e6c3b",
+        "product_9f8117cc0dac787f8e21ad19",
+        "product_92de86e227bc5c042960cf25"
+      ],
+      "warm_ms": [
+        10.03895205212757,
+        11.558538011740893,
+        11.833225027658045
+      ]
+    },
+    {
+      "query": "zzxqvnonexistent",
+      "category": null,
+      "budget": null,
+      "count": 0,
+      "ids": [],
+      "warm_ms": [
+        0.3010390209965408,
+        0.2564599853940308,
+        0.23301696637645364
+      ]
+    },
+    {
+      "query": "",
+      "category": null,
+      "budget": null,
+      "count": 0,
+      "ids": [],
+      "warm_ms": [
+        0.0019599683582782745,
+        0.0014430261217057705,
+        0.0013739918358623981
+      ]
+    },
+    {
+      "query": "A07",
+      "category": "لنز دوربین",
+      "budget": null,
+      "count": 0,
+      "ids": [],
+      "warm_ms": [
+        0.5518569960258901,
+        0.492771971039474,
+        0.45839702943339944
+      ]
+    },
+    {
+      "query": "A07",
+      "category": "گوشی موبایل",
+      "budget": "1",
+      "count": 0,
+      "ids": [],
+      "warm_ms": [
+        0.6277840002439916,
+        0.5917950184084475,
+        0.5827449494972825
+      ]
+    }
+  ],
+  "limitations": "Local warm-cache data tests; historical prices, declared hours, unknown stock. No purchase, seller communication or model intelligence measured."
+}
