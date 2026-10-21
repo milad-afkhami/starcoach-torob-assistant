@@ -169,3 +169,27 @@ def test_session_creation_rate_limit(tmp_path):
         assert c.post("/api/sessions").status_code == 200
     c.cookies.clear()
     assert c.post("/api/sessions").status_code == 429
+
+
+def test_turn_start_poll_cancel_and_foreign_owner(tmp_path):
+    app = application(tmp_path)
+    a = login(app)
+    b = login(app)
+    app.state.jobs.heartbeat("w", 100)
+    response = a.post("/api/turns", json={"message": "گوشی A07"})
+    assert response.status_code == 202
+    turn = response.json()
+    assert turn["state"] == "running"
+    assert b.get(f"/api/turns/{turn['id']}").status_code == 404
+    assert a.get(f"/api/turns/{turn['id']}").json()["state"] == "running"
+    assert a.post(f"/api/turns/{turn['id']}/cancel").json()["state"] == "canceled"
+    assert app.state.jobs.claim("w", 100) is None
+
+
+def test_public_offers_query_validation(tmp_path):
+    c = TestClient(application(tmp_path))
+    response = c.get(
+        "/api/products/p1/offers", params={"lat": 35.7, "lon": 51.4, "visit_at": "2026-10-22T20:15:00+03:30"}
+    )
+    assert response.status_code == 200 and len(response.json()["offers"]) == 3
+    assert c.get("/api/products/p1/offers", params={"lat": 100}).status_code == 422

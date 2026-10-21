@@ -215,7 +215,9 @@ def ingest_archive(zip_path: Path, destination: Path, *, expected_hashes=None) -
                             ),
                         )
                         spec_text = " ".join(
-                            str(v.get("value", "")) for v in (row["specs"] or []) if isinstance(v, dict)
+                            " ".join(str(v.get(k, "")) for k in ("section", "key", "value"))
+                            for v in (row["specs"] or [])
+                            if isinstance(v, dict)
                         )
                         text = " ".join(
                             str(row.get(k) or "")

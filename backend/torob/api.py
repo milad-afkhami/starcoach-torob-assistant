@@ -4,14 +4,15 @@ import sqlite3
 import time
 from collections import defaultdict, deque
 from pathlib import Path
-from typing import Literal
+from typing import Annotated, Literal
 from urllib.parse import urlsplit
 
-from fastapi import Depends, FastAPI, HTTPException, Request, Response
+from fastapi import Depends, FastAPI, HTTPException, Query, Request, Response
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field
 
 from .catalogue import Catalogue
+from .agent import AgentService
 from .model_jobs import JobQueue
 from .session import Store, StoreError
 from .types import SearchConstraints
@@ -58,6 +59,15 @@ class ObservationPreview(Revision):
     effective_visit_date: str | None = None
 
 
+class TurnInput(Input):
+    message: str = Field(min_length=1, max_length=4000)
+    kind: Literal["needs", "reply"] = "needs"
+    mission_id: str | None = Field(default=None, max_length=100)
+    base_revision: int | None = Field(default=None, ge=1)
+    followup_id: str | None = Field(default=None, max_length=100)
+    constraints: SearchConstraints | None = None
+
+
 def create_app(
     *,
     catalogue_path=None,
@@ -92,6 +102,8 @@ def create_app(
     app.router.route_class = LimitedRoute
     app.state.store, app.state.jobs, app.state.catalogue = store, jobs, catalogue
     app.state.clock = clock
+    agent = AgentService(store, jobs, catalogue, clock)
+    app.state.agent = agent
     rates = defaultdict(deque)
 
     @app.middleware("http")
@@ -183,6 +195,26 @@ def create_app(
     def new_mission(body: NewMission, session=Depends(owner), source=Depends(ready)):
         mission = store.create_mission(session, body.product_id, body.constraints, body.mode, clock())
         return {"mission": public_mission(mission), "plan": store.plan(session, mission.id)}
+
+    @app.get("/api/products/{product_id}/offers")
+    def offers(product_id: str, constraints: Annotated[SearchConstraints, Query()], source=Depends(ready)):
+        try:
+            return {"offers": source.find_offers(product_id, constraints)}
+        except KeyError as exc:
+            raise HTTPException(404, "product_not_found") from exc
+
+    @app.post("/api/turns", status_code=202)
+    def start_turn(body: TurnInput, session=Depends(owner), source=Depends(ready)):
+        args = body.model_dump(exclude={"message", "constraints"})
+        return agent.start_turn(session, body.message, constraints=body.constraints, **args)
+
+    @app.get("/api/turns/{turn_id}")
+    def get_turn(turn_id: str, session=Depends(owner), source=Depends(ready)):
+        return agent.get_turn(session, turn_id)
+
+    @app.post("/api/turns/{turn_id}/cancel")
+    def cancel_turn(turn_id: str, session=Depends(owner)):
+        return agent.cancel_turn(session, turn_id)
 
     @app.get("/api/missions/{mission_id}")
     def mission(mission_id: str, session=Depends(owner), source=Depends(ready)):

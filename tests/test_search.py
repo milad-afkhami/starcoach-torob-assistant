@@ -98,3 +98,20 @@ def test_budget_filter_precedes_retrieval_limit(tmp_path):
     assert [p.product_id for p in c.search_products(constraints(query="A07", max_price_toman="100"))] == [
         "zz-affordable"
     ]
+
+
+@pytest.mark.parametrize("query", ["A07 128GB", "A07 128 GB", "A07 ۱۲۸گیگابایت"])
+def test_storage_unit_wording_matches_persian_catalogue(tmp_path, query):
+    c = catalogue(tmp_path)
+    assert [p.product_id for p in c.search_products(constraints(query=query, category="گوشی موبایل"))] == [
+        "p1"
+    ]
+
+
+def test_ram_alias_searches_spec_keys_without_inventing_spec(tmp_path):
+    rows = records()
+    rows["products.csv"][0]["specs"].append({"section": "حافظه", "key": "رم", "value": "4 گیگابایت"})
+    c = catalogue(tmp_path, rows)
+    assert [
+        p.product_id for p in c.search_products(constraints(query="A07 RAM 4GB", category="گوشی موبایل"))
+    ] == ["p1"]

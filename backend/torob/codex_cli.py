@@ -44,10 +44,23 @@ class ModelGate:
                 raise ModelError("busy") from exc
             permit = Reservation(self)
             try:
+                fault = self.root / "runtime-fault.json"
+                if fault.exists() or fault.is_symlink():
+                    raise ModelError("runtime_fault")
                 yield permit
             finally:
                 permit.active = False
                 fcntl.flock(handle, fcntl.LOCK_UN)
+
+    def latch_fault(self, container_name):
+        try:
+            fd = os.open(self.root / "runtime-fault.json", os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+        except FileExistsError:
+            return
+        with os.fdopen(fd, "w") as handle:
+            json.dump(
+                {"container": container_name, "at": time.time(), "reason": "cleanup_unverified"}, handle
+            )
 
     def _charge(self, now, permit):
         if permit.gate is not self or not permit.active or permit.used:
@@ -96,6 +109,7 @@ class ProcessSpec:
     prompt: str
     output: Path
     timeout_seconds: float
+    verify_cleanup_args: list[str] | None = None
 
 
 def run_isolated(spec: ProcessSpec, cancel: threading.Event) -> int:
@@ -139,6 +153,20 @@ def run_isolated(spec: ProcessSpec, cancel: threading.Event) -> int:
             except subprocess.TimeoutExpired:
                 os.killpg(process.pid, signal.SIGKILL)
                 process.wait(timeout=2)
+        if spec.verify_cleanup_args:
+            try:
+                check = subprocess.run(
+                    spec.verify_cleanup_args,
+                    env=spec.env,
+                    capture_output=True,
+                    text=True,
+                    timeout=5,
+                    check=False,
+                )
+                if check.returncode != 0 or check.stdout.strip():
+                    raise ModelError("cleanup_failed")
+            except (OSError, subprocess.TimeoutExpired) as exc:
+                raise ModelError("cleanup_failed") from exc
 
 
 def validate_schema(schema: dict):
@@ -288,8 +316,22 @@ class CodexCliClient:
                 prompt,
                 output,
                 max(0, min(60, request.deadline_utc - time.time())),
+                verify_cleanup_args=[
+                    "docker",
+                    "ps",
+                    "-a",
+                    "--filter",
+                    f"name={name}",
+                    "--format",
+                    "{{.Names}}",
+                ],
             )
-            code = self.runner(spec, cancel)
+            try:
+                code = self.runner(spec, cancel)
+            except ModelError as exc:
+                if exc.code == "cleanup_failed":
+                    self.gate.latch_fault(name)
+                raise
             if cancel.is_set():
                 raise ModelError("canceled")
             if request.deadline_utc <= time.time():

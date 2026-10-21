@@ -26,8 +26,8 @@
     "shops.csv": "1a292d6180e2a28cd0bbec57b1bb575a440e5afcc3ec3f5af5b1e13172aebaa1"
   },
   "archive_sha256": "37a25fbd4cdb30aec265d6367e7ebafd8673364ffc90e74411a5f13cd7d94013",
-  "duration_seconds": 42.296,
+  "duration_seconds": 54.236,
   "rejected_rows": 0,
-  "database_bytes": 655405056,
-  "peak_rss_kib": 29192
+  "database_bytes": 732278784,
+  "peak_rss_kib": 29620
 }

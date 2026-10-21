@@ -14,7 +14,17 @@ from .model_types import ModelError, ModelRequest
 
 
 class PullWorker:
-    def __init__(self, base_url, token, model, *, allow_loopback_http=False, transport=None, poll_seconds=2):
+    def __init__(
+        self,
+        base_url,
+        token,
+        model,
+        *,
+        allow_loopback_http=False,
+        transport=None,
+        poll_seconds=2,
+        clock=time.monotonic,
+    ):
         url = urlsplit(base_url)
         try:
             loopback = ipaddress.ip_address(url.hostname or "").is_loopback
@@ -42,6 +52,7 @@ class PullWorker:
         )
         self.model, self.poll_seconds = model, poll_seconds
         self.worker_id = "local-" + uuid.uuid4().hex
+        self.clock, self.last_heartbeat = clock, None
 
     def close(self):
         self.http.close()
@@ -58,8 +69,13 @@ class PullWorker:
                     raise ModelError("oversized_input")
             return json.loads(raw)
 
+    def heartbeat(self):
+        if self.last_heartbeat is None or self.clock() - self.last_heartbeat >= 15:
+            self.request("POST", "/heartbeat", {"worker_id": self.worker_id})
+            self.last_heartbeat = self.clock()
+
     def once(self, stop=None):
-        self.request("POST", "/heartbeat", {"worker_id": self.worker_id})
+        self.heartbeat()
         # Reservation is acquired before claiming work, but charges only on CLI start.
         with self.model.gate.reserve() as permit:
             job = self.request("POST", "/claim", {"worker_id": self.worker_id})["job"]
@@ -77,7 +93,6 @@ class PullWorker:
                 payload=job["payload"],
                 deadline_utc=min(job["expires"], time.time() + 60),
             )
-            last_heartbeat = time.monotonic()
             try:
                 with ThreadPoolExecutor(max_workers=1) as pool:
                     future = pool.submit(self.model.generate, request, job["schema"], cancel, permit=permit)
@@ -92,9 +107,7 @@ class PullWorker:
                                 status = self.request("GET", f"/jobs/{job_id}?worker_id={self.worker_id}")
                                 if status["state"] != "leased" or request.deadline_utc <= time.time():
                                     cancel.set()
-                                if time.monotonic() - last_heartbeat >= 15:
-                                    self.request("POST", "/heartbeat", {"worker_id": self.worker_id})
-                                    last_heartbeat = time.monotonic()
+                                self.heartbeat()
                     finally:
                         if not future.done():
                             cancel.set()
@@ -124,10 +137,14 @@ class PullWorker:
             while not stop.is_set():
                 try:
                     outcome = self.once(stop)
+                    if outcome in ("cleanup_failed", "runtime_fault"):
+                        break
                     backoff = 1
                     if outcome == "idle":
                         stop.wait(1)
-                except ModelError:
+                except ModelError as exc:
+                    if exc.code in ("cleanup_failed", "runtime_fault"):
+                        break
                     stop.wait(2)
                 except (httpx.HTTPError, ValueError, KeyError):
                     stop.wait(backoff)

@@ -54,3 +54,18 @@ Implement Torob fully, then Liara; move to Liara if Torob has a confirmed extern
 - Implemented signed private sessions, persistent mission revisions, follow-up drafts, preview/confirm observations, mode isolation, explicit same-scope supersession, date-scoped closure, duplicate-shop quote suppression and deterministic plan deltas/history. Catalogue stays read-only.
 - Regression: quoted price changes now recompute recorded payment amount/category eligibility; retaining the old supported flag could admit an ineligible quote. Payment conflicts bind the provider required when reported and stop applying if the user explicitly removes that requirement.
 - Eight API boundary/persistence/recovery scenarios pass on top of domain tests. Actual HTTP/AI primary-flow QA and rendered UI remain owed; do not mark this phase done yet. Next: grounded asynchronous needs/explanation/reply turns using the real model queue, then written API QA.
+
+## Actual-model QA findings and fixes
+
+- Initial real API/model QA16/20 passed. All13 model calls returned schema-valid outputs; failures were our retrieval/context behavior, not provider access. No OmniRoute switch.
+- N1: model emitted64GB/4GB while source uses Persian unit wording. Query-time literal unit variants now match both without changing source values. A later RAM wording miss added RAM/رم aliases and spec-key/section indexing; catalogue rebuilt atomically and source hashes unchanged.
+- R1/R2: clarify branch discarded correctly extracted budget proposals, and the model lacked the selected product context. Proposals now survive clarification; owned-mission changes are explicitly proposals, never applied claims. Owned-mission budget turns retrieve the locked product by ID instead of asking the model to re-identify it. General discovery remains a separate turn without mission_id.
+- C2: prompt asked for exact model names before trying a requested brand-level comparison. It now retrieves two source-backed examples first and forbids brand-wide quality claims. Selective real QA confirmed improvement; final reruns pending for changed N1/R1/R2 paths.
+- Additional failure test: unverified Docker cleanup previously allowed another model start. Cleanup now verifies absence and persists a runtime fault latch across restart; it never silently assumes container removal.
+- Live QA evidence retains all failed attempts as well as successful reruns. Do not mark the mission phase complete until the20-row ledger is green.
+
+## T3/T4 acceptance
+
+- Final independent mission API QA20/20 passed, including all10 actual Persian model cases.32 cited facts independently match the rebuilt source catalogue. Final N1/R1/R2 all preserve the exact product; proposed39M and41M budgets leave the40M mission unchanged and return applied:false. Real proposal preview counts0 and3 eligible shops respectively.
+- Evidence includes failed initial attempts and retests,26 actual model starts across the QA series, no quota reset, and zero leftover QA servers/workers/containers. Real UI and hosted HTTPS gates remain separate. No provider switch: Codex failures were not observed; our retrieval/context defects were fixed.
+- T5 starts with docs/ui-design.md. Ruling: frontend types will mirror the tested response contracts directly; these hand-written small interfaces plus TypeScript checks/real rendered-flow tests avoid generating a separate client framework. Any response drift must fail UI/API tests.

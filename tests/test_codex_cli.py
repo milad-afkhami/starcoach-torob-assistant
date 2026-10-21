@@ -363,3 +363,38 @@ def test_missing_process_binary_still_runs_cleanup(tmp_path):
     with pytest.raises(ModelError, match="runtime_unavailable"):
         run_isolated(spec, threading.Event())
     assert marker.exists()
+
+
+def test_unverified_container_cleanup_is_an_error(tmp_path):
+    import sys
+    from torob.codex_cli import ProcessSpec, run_isolated
+    from torob.model_types import ModelError
+
+    spec = ProcessSpec(
+        [sys.executable, "-c", "pass"],
+        [sys.executable, "-c", "pass"],
+        {},
+        "",
+        tmp_path / "result",
+        1,
+        verify_cleanup_args=[sys.executable, "-c", 'print("container-still-present")'],
+    )
+    with pytest.raises(ModelError, match="cleanup_failed"):
+        run_isolated(spec, threading.Event())
+
+
+def test_cleanup_uncertainty_latches_off_future_model_starts(tmp_path):
+    from torob.model_types import ModelError
+
+    calls = []
+
+    def uncertain(spec, cancel):
+        calls.append(1)
+        raise ModelError("cleanup_failed")
+
+    c = client(tmp_path, uncertain)
+    with pytest.raises(ModelError, match="cleanup_failed"):
+        c.generate(request(), SCHEMA)
+    with pytest.raises(ModelError, match="runtime_fault"):
+        client(tmp_path, uncertain).generate(request(), SCHEMA)
+    assert calls == [1]

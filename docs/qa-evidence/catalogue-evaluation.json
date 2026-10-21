@@ -1,8 +1,8 @@
 {
   "scenario_count": 20,
   "warm_sample_count": 60,
-  "warm_search_p95_ms": 57.04610695829615,
-  "fixture_plan_ms": 2.22659797873348,
+  "warm_search_p95_ms": 69.50861198129132,
+  "fixture_plan_ms": 8.098913007415831,
   "fixture_separation_m": 63.42143912544386,
   "fixture": {
     "revision": 1,
@@ -127,7 +127,10 @@
         "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
         "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
         "observation_provenance": null,
-        "observation_id": null
+        "observation_id": null,
+        "observation_reasons": [],
+        "observations": [],
+        "recorded_price_quality": "normal"
       },
       "eligibility": "candidate",
       "reason_codes": [],
@@ -258,7 +261,10 @@
         "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
         "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"انتخاب سرویس حامی\"}",
         "observation_provenance": null,
-        "observation_id": null
+        "observation_id": null,
+        "observation_reasons": [],
+        "observations": [],
+        "recorded_price_quality": "normal"
       },
       "eligibility": "candidate",
       "reason_codes": [],
@@ -390,7 +396,10 @@
           "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
           "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "candidate",
         "reason_codes": [],
@@ -499,7 +508,10 @@
           "seller_title": "گوشی موبایل سامسونگ مدل گلکسی A07 4G ظرفیت 64 گیگابایت رم 4 گیگابایت | ریجسترشده",
           "warranty": null,
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -632,7 +644,10 @@
           "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
           "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -673,7 +688,10 @@
           "seller_title": "گوشی سامسونگ A07 4G | حافظه 64 رم 4 گیگابایت",
           "warranty": "{\"description\":\"گارانتی 18 ماه شرکتی + تضمین رجیستری\",\"period_months\":null,\"provider\":null}",
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "needs_verification",
         "reason_codes": [
@@ -778,7 +796,10 @@
           "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
           "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"گروه هماهنگ\"}",
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -911,7 +932,10 @@
           "seller_title": "گوشی موبایل سامسونگ مدل Galaxy A07 دو سیم کارت ظرفیت 64 گیگابایت و رم 4 گیگابایت",
           "warranty": "{\"description\":\"گارانتی 18 ماهه معتبر شرکتی همراه با کد رجیستری\",\"period_months\":null,\"provider\":null}",
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -1045,7 +1069,10 @@
           "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
           "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -1178,7 +1205,10 @@
           "seller_title": "گوشی موبایل سامسونگ مدل Galaxy A07 دو سیم کارت ظرفیت 64 گیگابایت و رم 4 گیگابایت",
           "warranty": "{\"description\":\"گارانتی 18ماهه+اصالت کالا+کد رجیستری\",\"period_months\":null,\"provider\":null}",
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -1220,7 +1250,10 @@
           "seller_title": "گوشی موبایل سامسونگ مدل Galaxy A07 دو سیم کارت ظرفیت 64 گیگابایت و رم 4 گیگابایت",
           "warranty": null,
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -1354,7 +1387,10 @@
           "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
           "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -1488,7 +1524,10 @@
           "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
           "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"گروه هماهنگ\"}",
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -1621,7 +1660,10 @@
           "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
           "warranty": null,
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -1755,7 +1797,10 @@
           "seller_title": "موبایل سامسونگ Galaxy A07 64 با رم 4 رجیستر با گارانتی",
           "warranty": "{\"description\":\"ضمانت اصالت کالا\",\"period_months\":null,\"provider\":null}",
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -1889,7 +1934,10 @@
           "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
           "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -1994,7 +2042,10 @@
           "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
           "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -2127,7 +2178,10 @@
           "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
           "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -2186,7 +2240,10 @@
           "seller_title": "گوشی موبایل سامسونگ مدل Galaxy A07 دو سیم کارت ظرفیت 4/64 گیگابایت",
           "warranty": "{\"description\":\"18 ماهه شرکتی به همراه کد رجیستری\",\"period_months\":null,\"provider\":null}",
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -2320,7 +2377,10 @@
           "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
           "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -2453,7 +2513,10 @@
           "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
           "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -2494,7 +2557,10 @@
           "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
           "warranty": null,
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -2628,7 +2694,10 @@
           "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
           "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -2761,7 +2830,10 @@
           "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
           "warranty": null,
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -2895,7 +2967,10 @@
           "seller_title": "Galaxy A07 64/4 نات اکتیو گارانتی 18 ماه شرکتی",
           "warranty": "{\"description\":\"گارانتی 18 ماه شرکتی\",\"period_months\":null,\"provider\":null}",
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -3028,7 +3103,10 @@
           "seller_title": "گوشی موبایل سامسونگ گلکسی A07 دو سیم کارت ظرفیت 64 گیگابایت و رم 4 گیگابایت",
           "warranty": "{\"description\":\"گارانتی 18 ماهه -شرکتی\",\"period_months\":null,\"provider\":null}",
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -3162,7 +3240,10 @@
           "seller_title": "گوشی موبایل سامسونگ مدل Galaxy A07 دو سیم کارت ظرفیت 64 گیگابایت و رم 4 گیگابایت - به‌همراه شارژر",
           "warranty": "{\"description\":\"گارانتی 18 ماهه -شرکتی\",\"period_months\":null,\"provider\":null}",
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -3296,7 +3377,10 @@
           "seller_title": "گوشی موبایل سامسونگ مدل Galaxy A07 دو سیم کارت ظرفیت 64 و رم 4",
           "warranty": null,
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -3437,7 +3521,10 @@
           "seller_title": "گوشی موبایل سامسونگ مدل Galaxy A07 دو سیم کارت ظرفیت 64 گیگابایت و رم 4 گیگابایت چین",
           "warranty": null,
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -3579,7 +3666,10 @@
           "seller_title": "گوشی موبایل سامسونگ مدل Galaxy A07 دو سیم کارت ظرفیت 64 گیگابایت و رم 4 گیگابایت-به همراه شارژر 25 وات سامسونگ",
           "warranty": null,
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "normal"
         },
         "eligibility": "ineligible",
         "reason_codes": [
@@ -3713,7 +3803,10 @@
           "seller_title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
           "warranty": "{\"description\":null,\"period_months\":18,\"provider\":\"شرکتی\"}",
           "observation_provenance": null,
-          "observation_id": null
+          "observation_id": null,
+          "observation_reasons": [],
+          "observations": [],
+          "recorded_price_quality": "missing"
         },
         "eligibility": "needs_verification",
         "reason_codes": [
@@ -3746,9 +3839,9 @@
         "product_adfdc73bc839d15cd7754318"
       ],
       "warm_ms": [
-        1.960122026503086,
-        1.912549021653831,
-        1.770670001860708
+        2.254304999951273,
+        2.285274036694318,
+        2.3323370260186493
       ]
     },
     {
@@ -3758,30 +3851,30 @@
       "count": 20,
       "ids": [
         "product_dd0a0096eee40a83fab770a9",
-        "product_6419a44e5f0917e7075d7c92",
-        "product_51c21b736a2a06b71e13c295",
         "product_fde40bc8efdbb0c97eb6f05b",
+        "product_6419a44e5f0917e7075d7c92",
         "product_514764eb6bc0b58971ce45bc",
+        "product_51c21b736a2a06b71e13c295",
         "product_49f57010864c864d2438b80f",
         "product_a684a5b52a959c08547e009c",
         "product_f07ef205504b7ab37b60b509",
-        "product_f96b9acaa7cbd3377b246d4f",
-        "product_05c23ecb17a75d3b3311b490",
-        "product_7b2f81b1c505834301755fe7",
-        "product_f039b9f736db8be034e637d0",
         "product_58f037c45da3bf1f5cfdf3ec",
+        "product_f039b9f736db8be034e637d0",
+        "product_f96b9acaa7cbd3377b246d4f",
+        "product_7b2f81b1c505834301755fe7",
         "product_fea567b8609e0d6a4f59c8b4",
         "product_c97a831f5c7bb6a4814c1b60",
         "product_1047c30db8234343ffdd9ef0",
         "product_3a4d622bd36806239740d549",
         "product_8a2ab0cfee5a7f10ae909625",
         "product_af24a7f71f80655b178fa9c1",
+        "product_05c23ecb17a75d3b3311b490",
         "product_b231501bb5ff4f61f1a11afe"
       ],
       "warm_ms": [
-        27.81438600504771,
-        29.64091597823426,
-        30.022877966985106
+        33.16961700329557,
+        35.817805968690664,
+        36.566938972100616
       ]
     },
     {
@@ -3790,31 +3883,31 @@
       "budget": null,
       "count": 20,
       "ids": [
-        "product_ace20a335b3a4247294c07af",
-        "product_372ce2a1c18ae5ef35ef937e",
+        "product_3a4d622bd36806239740d549",
         "product_ee62fa71e0d358ef89650544",
-        "product_7b2f81b1c505834301755fe7",
-        "product_3c29609ee1732ce323e82f99",
-        "product_f039b9f736db8be034e637d0",
         "product_1fd255561ccc5f75009b16c1",
+        "product_e2a3ac8259710cf5959f7c3e",
+        "product_372ce2a1c18ae5ef35ef937e",
+        "product_3c29609ee1732ce323e82f99",
+        "product_8886cf02040e0740c821f613",
+        "product_ace20a335b3a4247294c07af",
         "product_4b6eeb373aaa65785a83cc0e",
         "product_693fd02fd41daa6f5d142e72",
         "product_8c2cf65192cb6b34a1519621",
-        "product_e2a3ac8259710cf5959f7c3e",
-        "product_0265bc82a939fea30d0c00e5",
         "product_66d3e7041378124b89931e0c",
         "product_76ffd22372195ed68d79da34",
-        "product_adc1bf7629c1667ede65c974",
-        "product_8886cf02040e0740c821f613",
+        "product_98765298de78746ecb48eda5",
         "product_51c21b736a2a06b71e13c295",
-        "product_6f76f36bd958e33ac21d8a7d",
         "product_aadf615987a00768872dfd27",
-        "product_b1f5f0ad55f01719cda21955"
+        "product_b1f5f0ad55f01719cda21955",
+        "product_6f76f36bd958e33ac21d8a7d",
+        "product_f039b9f736db8be034e637d0",
+        "product_7b2f81b1c505834301755fe7"
       ],
       "warm_ms": [
-        16.447932983282954,
-        17.36857701325789,
-        18.67780101019889
+        22.163124987855554,
+        22.810393013060093,
+        22.849065018817782
       ]
     },
     {
@@ -3823,31 +3916,31 @@
       "budget": null,
       "count": 20,
       "ids": [
-        "product_ace20a335b3a4247294c07af",
-        "product_372ce2a1c18ae5ef35ef937e",
+        "product_3a4d622bd36806239740d549",
         "product_ee62fa71e0d358ef89650544",
-        "product_7b2f81b1c505834301755fe7",
-        "product_3c29609ee1732ce323e82f99",
-        "product_f039b9f736db8be034e637d0",
         "product_1fd255561ccc5f75009b16c1",
+        "product_e2a3ac8259710cf5959f7c3e",
+        "product_372ce2a1c18ae5ef35ef937e",
+        "product_3c29609ee1732ce323e82f99",
+        "product_8886cf02040e0740c821f613",
+        "product_ace20a335b3a4247294c07af",
         "product_4b6eeb373aaa65785a83cc0e",
         "product_693fd02fd41daa6f5d142e72",
         "product_8c2cf65192cb6b34a1519621",
-        "product_e2a3ac8259710cf5959f7c3e",
-        "product_0265bc82a939fea30d0c00e5",
         "product_66d3e7041378124b89931e0c",
         "product_76ffd22372195ed68d79da34",
-        "product_adc1bf7629c1667ede65c974",
-        "product_8886cf02040e0740c821f613",
+        "product_98765298de78746ecb48eda5",
         "product_51c21b736a2a06b71e13c295",
-        "product_6f76f36bd958e33ac21d8a7d",
         "product_aadf615987a00768872dfd27",
-        "product_b1f5f0ad55f01719cda21955"
+        "product_b1f5f0ad55f01719cda21955",
+        "product_6f76f36bd958e33ac21d8a7d",
+        "product_f039b9f736db8be034e637d0",
+        "product_7b2f81b1c505834301755fe7"
       ],
       "warm_ms": [
-        17.80314597999677,
-        17.668982036411762,
-        19.246146955993026
+        21.807266981340945,
+        23.025250004138798,
+        23.21237901924178
       ]
     },
     {
@@ -3860,27 +3953,27 @@
         "product_199985a1b8b8cc70af9c5a8c",
         "product_747e2cc675a6d728dd3fc9f2",
         "product_b58ad2c617b3c4f367d118cb",
-        "product_d1bbc04ae93bcfb7b93993f6",
         "product_dd0a0096eee40a83fab770a9",
         "product_0d4fa1a1f29382d32d76ba16",
-        "product_1a0d579ecad98a180cfc30a2",
         "product_60c044f925c510b7b26bcdc0",
         "product_862b3a845117cb824d7dff5a",
         "product_e4c7643c9d38c105b2323e8e",
         "product_ee62fa71e0d358ef89650544",
-        "product_2be9266d3d0ee8b50b76ec99",
-        "product_3c29609ee1732ce323e82f99",
         "product_5b8ff485867072a25b73f63e",
-        "product_7f26e960956f22a10550cb11",
-        "product_d045642c735cc169e32e1205",
-        "product_dc1b0d9ff5f9488248fc7e67",
-        "product_f5b918193d01a9ca4dc689c5",
-        "product_011c5dbe02b890b206dee52e"
+        "product_0a56e84262c9c893629cb965",
+        "product_0f28af544e5b99e38fdd7819",
+        "product_1d5593ebf6a7e8d5824d576f",
+        "product_1fd255561ccc5f75009b16c1",
+        "product_57587a3b7cb95d354bd6d331",
+        "product_5bb6bac208f508f9f027b648",
+        "product_d1bbc04ae93bcfb7b93993f6",
+        "product_e2a3ac8259710cf5959f7c3e",
+        "product_1a0d579ecad98a180cfc30a2"
       ],
       "warm_ms": [
-        56.049490987788886,
-        57.04610695829615,
-        57.56681499769911
+        69.50861198129132,
+        70.75405400246382,
+        67.8177239606157
       ]
     },
     {
@@ -3893,27 +3986,27 @@
         "product_199985a1b8b8cc70af9c5a8c",
         "product_747e2cc675a6d728dd3fc9f2",
         "product_b58ad2c617b3c4f367d118cb",
-        "product_d1bbc04ae93bcfb7b93993f6",
         "product_dd0a0096eee40a83fab770a9",
         "product_0d4fa1a1f29382d32d76ba16",
-        "product_1a0d579ecad98a180cfc30a2",
         "product_60c044f925c510b7b26bcdc0",
         "product_862b3a845117cb824d7dff5a",
         "product_e4c7643c9d38c105b2323e8e",
         "product_ee62fa71e0d358ef89650544",
-        "product_2be9266d3d0ee8b50b76ec99",
-        "product_3c29609ee1732ce323e82f99",
         "product_5b8ff485867072a25b73f63e",
-        "product_7f26e960956f22a10550cb11",
-        "product_d045642c735cc169e32e1205",
-        "product_dc1b0d9ff5f9488248fc7e67",
-        "product_f5b918193d01a9ca4dc689c5",
-        "product_011c5dbe02b890b206dee52e"
+        "product_0a56e84262c9c893629cb965",
+        "product_0f28af544e5b99e38fdd7819",
+        "product_1d5593ebf6a7e8d5824d576f",
+        "product_1fd255561ccc5f75009b16c1",
+        "product_57587a3b7cb95d354bd6d331",
+        "product_5bb6bac208f508f9f027b648",
+        "product_d1bbc04ae93bcfb7b93993f6",
+        "product_e2a3ac8259710cf5959f7c3e",
+        "product_1a0d579ecad98a180cfc30a2"
       ],
       "warm_ms": [
-        58.70851397048682,
-        55.97897304687649,
-        63.86562896659598
+        66.59359502373263,
+        70.2813999960199,
+        77.1926129818894
       ]
     },
     {
@@ -3922,31 +4015,31 @@
       "budget": null,
       "count": 20,
       "ids": [
-        "product_b6f939a22a3879d9daa43014",
         "product_98765298de78746ecb48eda5",
+        "product_b6f939a22a3879d9daa43014",
         "product_229874869305e78206e1837e",
-        "product_fa2e12dcfe261fe07ffc3b2f",
         "product_361c36073605eb70c909760a",
-        "product_008639dc8d42aab5196be2c3",
         "product_122f9497dfd30d1e90a2b54b",
+        "product_fa2e12dcfe261fe07ffc3b2f",
+        "product_008639dc8d42aab5196be2c3",
         "product_24c733b14126db7feabcdf1a",
-        "product_6541c9d38fabfb821dae3398",
         "product_86e1476db0a0af0987f2acde",
         "product_ca11eb917422480f13f4dd3d",
+        "product_6541c9d38fabfb821dae3398",
         "product_6ac23e6ab59b7a79a915a1f3",
         "product_56827966243816535037fbfc",
         "product_f081f0506aee22ed261bbc00",
-        "product_7063ca059fb8cfdd98bbcb6a",
-        "product_d349106efe79fd6da12c88ab",
         "product_39d2d00ff95232a6877685e1",
+        "product_7063ca059fb8cfdd98bbcb6a",
         "product_6956bcdecc1044f7718a69fe",
         "product_bcf02be37eac336bb975dbc9",
-        "product_82e4bcff29a738a0aa7d7786"
+        "product_82e4bcff29a738a0aa7d7786",
+        "product_2a654913770510192445d026"
       ],
       "warm_ms": [
-        22.879700001794845,
-        25.2431120024994,
-        20.070163998752832
+        31.2711899750866,
+        25.61281598173082,
+        26.496405014768243
       ]
     },
     {
@@ -3964,22 +4057,22 @@
         "product_1f07934e9a1a775ee249c46d",
         "product_b4a3920037c7b3def1917f0b",
         "product_0dc658a2ce54337875e16600",
-        "product_56d3e2690e69b089bbc28a63",
-        "product_bd4ef691d9686e0bda14a2b3",
         "product_d21701f6f8e97bf5239a3347",
         "product_d0d6fade8643f1914fd8e79c",
+        "product_bd4ef691d9686e0bda14a2b3",
         "product_747e2cc675a6d728dd3fc9f2",
+        "product_56d3e2690e69b089bbc28a63",
         "product_32e0f2a8165f188597b56469",
         "product_356a28d677492f4055d3886c",
         "product_3f8e8051ef314264e608fec6",
-        "product_a8b57f2d0c44195b1f7e92fc",
         "product_16d7396b8f01af24b78ca76e",
-        "product_b76f4e29267107122bbf1399"
+        "product_a8b57f2d0c44195b1f7e92fc",
+        "product_0fe579f411e29452892496e2"
       ],
       "warm_ms": [
-        25.2671170164831,
-        27.810875966679305,
-        24.409820034634322
+        30.17057297984138,
+        30.428148980718106,
+        31.071598001290113
       ]
     },
     {
@@ -3989,30 +4082,30 @@
       "count": 20,
       "ids": [
         "product_05481b429ab77d89d5538cd0",
-        "product_6f76f36bd958e33ac21d8a7d",
         "product_038c517472e5487985e4b3f7",
-        "product_c2446d0f7e63f71e329d8e29",
-        "product_9745d3b9bb99bb0e9cd6ab8d",
-        "product_6b13bf9762d346143397fb3e",
+        "product_6f76f36bd958e33ac21d8a7d",
         "product_625e0b7f0baafc2054d57fd3",
         "product_31192de7d41497083d83cfaa",
         "product_0b14c310eeec60eee488e9bb",
-        "product_dab360163f3c057c02ec8401",
+        "product_c2446d0f7e63f71e329d8e29",
+        "product_9745d3b9bb99bb0e9cd6ab8d",
+        "product_6b13bf9762d346143397fb3e",
         "product_1d081537dbd4b4f563666339",
-        "product_747bf92c3a6aac00bb4d0e54",
+        "product_dab360163f3c057c02ec8401",
         "product_0a0a7f478d942d3c8956fcf6",
-        "product_412f296c50498824c504407c",
-        "product_25f66fb2732cbadd95f3c170",
-        "product_78ffe6dd10b65b4a4c626980",
+        "product_72f0613ccde3a577ed52c169",
         "product_24d034bb1d641ecdca75668b",
         "product_faaa5292be886de8b11e6616",
+        "product_53c483b202c4cb7b3a6ce14a",
+        "product_f867864273e7485c277beda0",
         "product_fc852fa4784289d784340d99",
-        "product_72f0613ccde3a577ed52c169"
+        "product_01d716345ad3ffb373202f12",
+        "product_232ead009b7117aa1f640c4d"
       ],
       "warm_ms": [
-        4.542708047665656,
-        5.859588971361518,
-        4.283164045773447
+        5.087382975034416,
+        5.3524080431088805,
+        5.23399404482916
       ]
     },
     {
@@ -4024,18 +4117,18 @@
         "product_f039b9f736db8be034e637d0",
         "product_af4805413d4dc3e79a0e7e78",
         "product_396742ff3046773e7ae78d6e",
+        "product_24a594d93c8a8284dac3a2bf",
         "product_553efa82b89ea7c1ac7203bd",
         "product_eccf0c188abd567d2f1ca943",
-        "product_24a594d93c8a8284dac3a2bf",
-        "product_287b980aba12fedafc1654bc",
-        "product_f891a057da2120d72b90b560",
         "product_c62bebb417c0c7b86be2197c",
-        "product_61518a3929ea90f97b164b56"
+        "product_61518a3929ea90f97b164b56",
+        "product_287b980aba12fedafc1654bc",
+        "product_f891a057da2120d72b90b560"
       ],
       "warm_ms": [
-        2.0876210182905197,
-        1.9515639869496226,
-        1.9162489916197956
+        2.8879489982500672,
+        2.897489001043141,
+        2.9065909911878407
       ]
     },
     {
@@ -4048,27 +4141,27 @@
         "product_6f2067028c7e8c6303815622",
         "product_4f486e5fe7d5dcf0bf469971",
         "product_9fcd4b82a81dd0ee15c0d89a",
-        "product_64c75fdfcd9d9887babcf642",
-        "product_262ae0ce03f9c9a6d9c77fc6",
-        "product_6b6664d3ecce559cca75711d",
-        "product_2976802b6fb24eaa4f7e68b7",
         "product_0e51f2a7ad477ceb3303af68",
-        "product_7647b9de16a9c6c8b5830dcb",
-        "product_6688112b1a49121a1cb91b48",
         "product_667ab5e2afb7acd3d19e48c2",
+        "product_262ae0ce03f9c9a6d9c77fc6",
+        "product_226fab8a1bf19ae7332b9428",
         "product_0d7cb73d0db4905d60cf6760",
         "product_252480c192a312572b339860",
         "product_4ee9b10ce8e625495579c4eb",
         "product_96638699f22bf08e2d55f8d1",
-        "product_226fab8a1bf19ae7332b9428",
-        "product_457a1ad4f04876a5e7c4387a",
-        "product_8cd2107e9b335c8ca6acab5b",
-        "product_b75e79b1f1a4e4139f4b2b70"
+        "product_2976802b6fb24eaa4f7e68b7",
+        "product_1ca3a6ce1a11ee161af7cf22",
+        "product_7647b9de16a9c6c8b5830dcb",
+        "product_ba20a2836e0902a8a85726c3",
+        "product_6688112b1a49121a1cb91b48",
+        "product_3503baabce466c54b9fbd71f",
+        "product_b75e79b1f1a4e4139f4b2b70",
+        "product_590a72c8f3bc142774268535"
       ],
       "warm_ms": [
-        23.883713991381228,
-        19.395227020140737,
-        21.725453960243613
+        24.792703974526376,
+        26.034936017822474,
+        24.21687700552866
       ]
     },
     {
@@ -4081,27 +4174,27 @@
         "product_db5ee746accd2e74c8e53c1e",
         "product_ff4206600682a6546e944ec6",
         "product_65f0565cd0ed728fd90926c0",
-        "product_9b06a24c8d537704678d8bc6",
         "product_0e31f03899693d4185a63cec",
-        "product_013684f76f862418de273541",
-        "product_46445a224b7fcd0351903eb1",
-        "product_48f080a918a9eef9c663bdb7",
-        "product_3552c6c228dfc99ca62493e0",
+        "product_9b06a24c8d537704678d8bc6",
         "product_20bdf186b27e9a01582af13f",
         "product_9d209e360846fdc7eb190ea8",
-        "product_9d2664764b1bab01a0dfe80e",
+        "product_013684f76f862418de273541",
         "product_9e8b389d5f3160d9bc109efc",
         "product_f3752bb6c42f2e8c59946c27",
+        "product_46445a224b7fcd0351903eb1",
         "product_ee820e801a10df4aa4fe730b",
         "product_237e2f6b201c363833203e8d",
         "product_84e8027e1e3ec726b7fe8a81",
         "product_b93d3bce5503ada26e176431",
-        "product_7b7c1ab66e4ab7b52700e821"
+        "product_9d2664764b1bab01a0dfe80e",
+        "product_3552c6c228dfc99ca62493e0",
+        "product_48f080a918a9eef9c663bdb7",
+        "product_96df34fefecf02bb4553bd44"
       ],
       "warm_ms": [
-        5.935736000537872,
-        8.056851977016777,
-        7.032044988591224
+        14.284074015449733,
+        14.301767980214208,
+        8.93683498725295
       ]
     },
     {
@@ -4110,12 +4203,13 @@
       "budget": null,
       "count": 20,
       "ids": [
+        "product_0948fe226cf68fab80e8d2b0",
         "product_6c5ded085ea3a748b23e8761",
         "product_734dd2ed9c169e72d3fc7a24",
         "product_7e1225571c10b457dada664b",
         "product_75c2e51370025d42beef1d0c",
-        "product_d059187492c9efbf3344bbeb",
         "product_d330a7250f1c293632473477",
+        "product_d059187492c9efbf3344bbeb",
         "product_7aa23d2638aebd892eda296d",
         "product_1a8aa89dace560164da5c62e",
         "product_120dd100eb27b3d69de817ea",
@@ -4124,17 +4218,16 @@
         "product_35301706ef6f99fad92fbb21",
         "product_98650256b8930acd3e9c4d56",
         "product_c7ee8ec8aca22a457ca4eb88",
-        "product_0948fe226cf68fab80e8d2b0",
+        "product_0518b66ed7fceffc90dd9d13",
         "product_9b7c2704d241d5cddb529e5d",
-        "product_38fd67c843cc98a92c0091f0",
-        "product_4da658198b5aa96913ee3dfc",
         "product_8334f194e952c909593d4454",
+        "product_38fd67c843cc98a92c0091f0",
         "product_03419394849d26138c9613e6"
       ],
       "warm_ms": [
-        6.682296982035041,
-        8.557234017644078,
-        8.074825047515333
+        8.291703998111188,
+        8.263015013653785,
+        8.50661302683875
       ]
     },
     {
@@ -4146,10 +4239,10 @@
         "product_fb9a452e6967697c2d8c8e47",
         "product_688b4a734e2d674af097983c",
         "product_0c91c0d5c9aff04c74db3025",
-        "product_506b3ce4639960f98f11656b",
         "product_b3c39bdc97c93934654de6e2",
-        "product_559995285a706670dcbb8b75",
         "product_fb442f03db020977e2aa9d13",
+        "product_506b3ce4639960f98f11656b",
+        "product_559995285a706670dcbb8b75",
         "product_34ee2a62bc067c0e6f910a45",
         "product_20339b59292e1d3e6ff175fe",
         "product_24a9e189bf63f039c6655c04",
@@ -4165,9 +4258,9 @@
         "product_d630c0b8f0aa29f5d03438ff"
       ],
       "warm_ms": [
-        48.944127978757024,
-        50.3309250343591,
-        47.97655495349318
+        63.223547011148185,
+        64.00442100130022,
+        62.69925698870793
       ]
     },
     {
@@ -4177,9 +4270,9 @@
       "count": 0,
       "ids": [],
       "warm_ms": [
-        0.7245189626701176,
-        0.5649100057780743,
-        0.5719169857911766
+        0.7951949955895543,
+        0.703664030879736,
+        0.6776900263503194
       ]
     },
     {
@@ -4188,31 +4281,31 @@
       "budget": null,
       "count": 20,
       "ids": [
-        "product_06465d4c35a9bd960bfc01c6",
-        "product_44f538124f601bda6fe040b4",
-        "product_353a3616b30dfa17f0a0d550",
-        "product_1c3e9d75b6e5cd3848fdb663",
         "product_40e9a97fc27c4dfca6ef7781",
         "product_8442c7488a4ec122006f4bf1",
         "product_c1cecef987c982513992d632",
-        "product_d96393e02a5c7f3d6444befc",
-        "product_c8781c6490a4fe3e5cec6bfc",
-        "product_339e16cfa1c0a40035b36c8b",
-        "product_6b8f217d8923ac54c8daa794",
         "product_377c9467de3e803fa95634d4",
         "product_48fbdb3137d392e760852462",
         "product_5dbd0c53117d2eae28120c53",
         "product_b8e292e2a80ff9ffbd1599b7",
+        "product_1c3e9d75b6e5cd3848fdb663",
         "product_626e3646717cd13557bccac8",
         "product_a0261718c447d8ff093d83ee",
+        "product_44f538124f601bda6fe040b4",
+        "product_06465d4c35a9bd960bfc01c6",
+        "product_c8781c6490a4fe3e5cec6bfc",
+        "product_353a3616b30dfa17f0a0d550",
+        "product_d96393e02a5c7f3d6444befc",
+        "product_5373c27e5bd34e40d4d426ad",
+        "product_7603b899ae96053aad102286",
         "product_9a08b59919376376fd7e6c3b",
-        "product_9f8117cc0dac787f8e21ad19",
-        "product_92de86e227bc5c042960cf25"
+        "product_339e16cfa1c0a40035b36c8b",
+        "product_b1fc4e5bbbbe461ded6c16ef"
       ],
       "warm_ms": [
-        10.03895205212757,
-        11.558538011740893,
-        11.833225027658045
+        13.237820006906986,
+        12.819988012779504,
+        13.764923030976206
       ]
     },
     {
@@ -4222,9 +4315,9 @@
       "count": 0,
       "ids": [],
       "warm_ms": [
-        0.3010390209965408,
-        0.2564599853940308,
-        0.23301696637645364
+        0.4118260112591088,
+        0.3321379772387445,
+        0.3106410149484873
       ]
     },
     {
@@ -4234,9 +4327,9 @@
       "count": 0,
       "ids": [],
       "warm_ms": [
-        0.0019599683582782745,
-        0.0014430261217057705,
-        0.0013739918358623981
+        0.0053219846449792385,
+        0.0038080033846199512,
+        0.00350497430190444
       ]
     },
     {
@@ -4246,9 +4339,9 @@
       "count": 0,
       "ids": [],
       "warm_ms": [
-        0.5518569960258901,
-        0.492771971039474,
-        0.45839702943339944
+        0.8024410344660282,
+        0.7128269644454122,
+        0.7456160383298993
       ]
     },
     {
@@ -4258,9 +4351,9 @@
       "count": 0,
       "ids": [],
       "warm_ms": [
-        0.6277840002439916,
-        0.5917950184084475,
-        0.5827449494972825
+        0.9622690267860889,
+        0.9771449840627611,
+        0.9689790313132107
       ]
     }
   ],

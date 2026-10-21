@@ -174,3 +174,32 @@ def test_owner_stop_cancels_running_model(tmp_path):
         poll_seconds=0.05,
     )
     assert w.once(stop) == "canceled"
+
+
+def test_idle_heartbeats_are_bounded_to_fifteen_seconds(tmp_path):
+    from torob.model_worker import PullWorker
+
+    clock = [0.0]
+    heartbeats = []
+
+    def handler(req):
+        if req.url.path.endswith("/heartbeat"):
+            heartbeats.append(clock[0])
+            return httpx.Response(200, json={})
+        return httpx.Response(200, json={"job": None})
+
+    w = PullWorker(
+        "https://model.example",
+        "x" * 32,
+        client(tmp_path, fake()),
+        transport=httpx.MockTransport(handler),
+        clock=lambda: clock[0],
+    )
+    w.once()
+    clock[0] = 1
+    w.once()
+    clock[0] = 14.9
+    w.once()
+    clock[0] = 15
+    w.once()
+    assert heartbeats == [0.0, 15]

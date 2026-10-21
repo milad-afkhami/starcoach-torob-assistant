@@ -105,10 +105,20 @@ class Catalogue:
     def search_products(self, constraints: SearchConstraints, limit=20):
         if not 1 <= limit <= 20:
             raise ValueError("Search limit must be1–20")
-        tokens = re.findall(r"\w+", normalize_text(constraints.query))[:20]
+        normalized_query = normalize_text(constraints.query)
+        normalized_query = re.sub(r"(?<!\w)(\d+)\s*(?:gb|گیگابایت|گیگ)(?!\w)", r"\1", normalized_query)
+        tokens = re.findall(r"\w+", normalized_query)[:20]
         if not tokens:
             return []
-        query = " AND ".join('"' + token.replace('"', '""') + '"' for token in tokens)
+        terms = []
+        for token in tokens:
+            variants = (
+                [token, token + "gb", token + "گیگابایت", token + "گیگ"] if token.isdecimal() else [token]
+            )
+            if token in ("ram", "رم"):
+                variants = ["ram", "رم"]
+            terms.append("(" + " OR ".join('"' + v.replace('"', '""') + '"' for v in variants) + ")")
+        query = " AND ".join(terms)
         sql = """SELECT p.*,bm25(product_search) AS rank,
           (SELECT MIN(price) FROM offers o WHERE o.product_id=p.product_id AND price_quality='normal') AS minimum,
           (SELECT offer_id FROM offers o WHERE o.product_id=p.product_id AND price_quality='normal' ORDER BY price,offer_id LIMIT 1) AS min_offer_id
