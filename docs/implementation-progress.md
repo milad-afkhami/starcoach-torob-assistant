@@ -34,3 +34,10 @@ Implement Torob fully, then Liara; move to Liara if Torob has a confirmed extern
 - Independent real QA12/12 passed; evidence inspected by parent. Includes actual Uvicorn TCP, persisted SQLite, three isolated Codex starts (two complete, one canceled),46-second disconnect,16-second expiry, lease/auth/payload boundaries, contention and reconnect. Server/containers cleaned; no hosted HTTPS/product UI claim. Full current tests:63 passed, one documented upstream deprecation warning.
 - Local runtime phase complete; T3 domain schemas/turn APIs and T6 actual-hosted acceptance remain unimplemented.
 - Catalogue phase started: source ZIP inspected for actual headers/JSON shapes; CSV uncompressed sizes products196,150,238 bytes, offers79,945,479, shops9,202,900. T1 will stream and atomically replace the generated catalogue; full raw data remains Git-ignored.
+
+## T1 — complete real catalogue import
+
+-91 total tests pass (28 importer/normalization cases plus runtime). The first full-data run failed on two empty product titles, proving the stricter inferred requirement wrong. A red regression now preserves empty/missing titles without fabrication or dropping products; interfaces must label them unknown.
+- Real import succeeded:6476 shops,225903 products,331506 offers; all three payload hashes match, foreign keys and SQLite quick_check pass.42.296s,655,405,056-byte database, peak RSS29,192KiB. Source null counts match previous research.909 prices flagged by precision/zero/comparative quality rules; this is a data-quality flag, not proof of incorrect source prices. Raw values remain preserved. Evidence: docs/qa-evidence/catalogue-import.json.
+- Ruling: one median price per distinct shop (itself the median of that shop's normal offers) prevents duplicate offers from dominating the cross-seller anomaly comparison. Exact Fraction arithmetic avoids float rounding. Alternative: count every offer, which overweights duplicate shops.
+- No UI surface; QA N/A for importer logic. Actual full import/read/integrity is the integration evidence. T2 search/hours/eligibility/planning next.

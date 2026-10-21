@@ -1,0 +1,33 @@
+{
+  "counts": {
+    "shops": 6476,
+    "products": 225903,
+    "offers": 331506
+  },
+  "missing": {
+    "shops": {
+      "instagram": 6454,
+      "supports_fast_delivery": 4875,
+      "website_url": 6386
+    },
+    "products": {
+      "model": 221847,
+      "brand_name": 168269
+    },
+    "offers": {
+      "warranty": 272563,
+      "price_toman": 15083,
+      "last_price_changed_at": 769
+    }
+  },
+  "payload_hashes": {
+    "products.csv": "e4a9749529d1e032c1dc2c4e275a8793a1edd702a194cb8de9abafc0649cc9c9",
+    "offers.csv": "664d256ed04b37cfb268d89eb605afda4a3b76179324b39d2dbaef21439f09b9",
+    "shops.csv": "1a292d6180e2a28cd0bbec57b1bb575a440e5afcc3ec3f5af5b1e13172aebaa1"
+  },
+  "archive_sha256": "37a25fbd4cdb30aec265d6367e7ebafd8673364ffc90e74411a5f13cd7d94013",
+  "duration_seconds": 42.296,
+  "rejected_rows": 0,
+  "database_bytes": 655405056,
+  "peak_rss_kib": 29192
+}

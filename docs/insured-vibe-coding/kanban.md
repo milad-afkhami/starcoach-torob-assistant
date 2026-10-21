@@ -1,6 +1,6 @@
 # Build kanban — Torob
 
-_Last updated:2026-10-22. Next action: T1 importer tests against actual CSV headers, then full catalogue import._
+_Last updated:2026-10-22. Next action: T2 search/hours/eligibility/planner tests and implementation; T1 full import verified._
 
 ## Doing
 - Catalogue T1/T2 — atomic streamed import, exact money/provenance, Persian FTS search, declared-hours/payment/geo eligibility and distinct-shop planner. No UI yet; real import/search acceptance still owed.
