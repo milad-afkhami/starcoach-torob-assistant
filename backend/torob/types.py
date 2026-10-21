@@ -58,6 +58,9 @@ class OfferHit(Record):
     warranty: str | None
     observation_provenance: str | None = None
     observation_id: str | None = None
+    observation_reasons: list[str] = Field(default_factory=list)
+    observations: list[dict] = Field(default_factory=list)
+    recorded_price_quality: Literal["normal", "missing", "flagged"] | None = None
 
 
 class Mission(Record):
@@ -85,3 +88,12 @@ class PurchasePlan(Record):
     choices: list[PlanOption]
     excluded: list[PlanOption]
     shortlist_coverage: dict[str, int]
+
+
+class PlanDelta(Record):
+    before_revision: int
+    after_revision: int
+    changed_fields: list[str]
+    price_delta_toman: str | None
+    retained_constraints: list[str]
+    reason_codes: list[str]

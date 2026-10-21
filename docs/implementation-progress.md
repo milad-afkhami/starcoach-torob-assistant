@@ -48,3 +48,9 @@ Implement Torob fully, then Liara; move to Liara if Torob has a confirmed extern
 - Real20-query benchmark and60 warm samples recorded in docs/qa-evidence/catalogue-evaluation.json; fixture independently matches the known primary/fallback and63.42m straight-line separation. These are source/fixture results, not stock or real purchase proof.
 - Ruling: empty payment categories do not prove the selected product is covered; when payment is a hard requirement, such source evidence stays needs_verification. This conservative interpretation does not affect the main fixture, which has no payment requirement.
 - T1/T2 local catalogue phase complete. T3/T4 starts next. Model integration, user-facing APIs/UI and deployment remain unimplemented.
+
+## T3/T4 in progress — session/recovery APIs
+
+- Implemented signed private sessions, persistent mission revisions, follow-up drafts, preview/confirm observations, mode isolation, explicit same-scope supersession, date-scoped closure, duplicate-shop quote suppression and deterministic plan deltas/history. Catalogue stays read-only.
+- Regression: quoted price changes now recompute recorded payment amount/category eligibility; retaining the old supported flag could admit an ineligible quote. Payment conflicts bind the provider required when reported and stop applying if the user explicitly removes that requirement.
+- Eight API boundary/persistence/recovery scenarios pass on top of domain tests. Actual HTTP/AI primary-flow QA and rendered UI remain owed; do not mark this phase done yet. Next: grounded asynchronous needs/explanation/reply turns using the real model queue, then written API QA.

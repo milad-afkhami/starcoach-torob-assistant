@@ -204,7 +204,8 @@ class Catalogue:
 
     def plan_mission(self, mission, observations=None):
         from .planner import build_plan
+        from .followup import apply_observations
 
-        if observations:
-            raise NotImplementedError("Observation overlays arrive in T4")
-        return build_plan(mission, self.find_offers(mission.selected_product_id, mission.constraints))
+        offers = self.find_offers(mission.selected_product_id, mission.constraints)
+        category = self.get_product(mission.selected_product_id).category
+        return build_plan(mission, apply_observations(mission, offers, observations or [], category))

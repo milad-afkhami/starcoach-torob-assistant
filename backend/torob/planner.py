@@ -4,6 +4,8 @@ from .types import PlanOption, PurchasePlan
 
 def classify_offer(offer, constraints):
     conflict, missing = [], []
+    for reason in offer.observation_reasons:
+        (missing if reason in ("no_response", "quote_required") else conflict).append(reason)
     if offer.price_quality != "normal":
         missing.append("price_" + offer.price_quality)
     elif constraints.max_price_toman is not None and int(offer.price_toman) > int(
