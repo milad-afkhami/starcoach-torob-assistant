@@ -1,9 +1,9 @@
 # Build kanban — Torob
 
-_Last updated:2026-10-22. Next action: write/run model-runtime boundary tests, then implement M1._
+_Last updated:2026-10-22. Next action: implement/test M2 queue and authenticated worker routes; record real worker cancellation before closing runtime phase._
 
 ## Doing
-- Model runtime M1–M3 — isolated CLI adapter, bounded transport, local real-call proof. No UI surface yet; QA N/A until API worker flow exists.
+- Model runtime M1–M3 — M1 client tests26 passed and actual model call passed; M2 transport in progress. No UI surface yet; QA N/A until API worker flow exists.
 
 ## Todo
 - Catalogue T1/T2 — full-data import, search, time/price/payment eligibility and distinct-shop planner.

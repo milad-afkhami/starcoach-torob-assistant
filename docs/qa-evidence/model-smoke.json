@@ -1,0 +1,14 @@
+{
+  "request_id": "readiness-probe",
+  "provider": "codex_cli",
+  "model": "gpt-6.1-sol",
+  "cli_version": "codex-cli 0.163.0",
+  "elapsed_ms": 9046,
+  "value": {
+    "action": "HOLD",
+    "evidence_ids": [
+      "fixture-1"
+    ],
+    "reason_fa": "قیمت فعلی و حساب تأییدشده در دسترس نیست؛ اقدام متوقف می‌ماند."
+  }
+}
