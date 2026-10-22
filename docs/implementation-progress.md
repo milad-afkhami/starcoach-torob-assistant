@@ -98,3 +98,7 @@ Implement Torob fully, then Liara; move to Liara if Torob has a confirmed extern
 - Native dialog keyboard ruling: browser-chrome traversal is allowed; underlying app controls stay inert, Tab returns into the dialog, Escape/focus return and full mobile keyboard flow were verified.
 - Upstream font license is retained verbatim, including its original trailing whitespace; no authored whitespace error is being waived.
 - Local implementation is ready for review/use. The overall contest entry is not complete: hosted acceptance, public source/video and submission remain pending. Liara work proceeds under the user’s instruction to continue the second product at a blocker.
+
+## Shared launch cancellation correction
+
+Independent Liara cleanup QA found a CREATED model container that appeared after an early absence check during cancellation. The shared copied adapter now acknowledges Docker creation before the cancellable start/attach phase; uncertain creation latches cleanup failure. Both new regressions passed in this repository, and the full backend suite is186passed. No domain shopping/transport behavior changed. The reproducible official runtime image and current VAT-inclusive provisioning quote are in docs/model-runtime.md and docs/deployment.md. The local worker was restarted after confirming no active model container; the global usage ledger was preserved. Hosted acceptance still remains pending.

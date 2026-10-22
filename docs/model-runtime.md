@@ -35,3 +35,7 @@ If container disappearance cannot be confirmed, the runtime writes an owner-only
 ## Raw model-data retention
 
 After24hours, queue input/result copies are cleared and application turn request/context/result rows are deleted. Cleanup runs at startup and during ordinary queue activity, worker heartbeats and capability checks; an idle stopped service purges on its next startup. Timing/state/model provenance in queue metadata remain for accounting. Confirmed seller observations are a separate append-only mission history and are not silently erased by model-turn cleanup; their user-reported/simulation provenance remains explicit.
+
+## Launch acknowledgement correction
+
+Independent Liara runtime QA found a shared launch-cancellation race: a Docker container could finish creation after an early cleanup/absence check. Both copies now await bounded create acknowledgement before cancellable start/attach. Unknown creation faults closed and keeps the shared budget intact; cleanup remains explicit. The final reproducible image is `public.ecr.aws/docker/library/python:3.12-slim-bookworm@sha256:6a0e06f5ba0b373d051aabd3fffb9b873f27f9a2a3a14bcbe37dee6f0e3bbc70`, with the entrypoint overridden by the mounted executable. A genuine corrected-adapter schema call passed on this already verified official base; local runtime retest is recorded separately from hosted acceptance.

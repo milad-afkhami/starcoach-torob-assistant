@@ -398,3 +398,74 @@ def test_cleanup_uncertainty_latches_off_future_model_starts(tmp_path):
     with pytest.raises(ModelError, match="runtime_fault"):
         client(tmp_path, uncertain).generate(request(), SCHEMA)
     assert calls == [1]
+
+
+def test_cancel_waits_for_container_creation_before_cleanup(tmp_path, monkeypatch):
+    import subprocess
+    from torob.codex_cli import ProcessSpec, run_isolated
+    from torob.model_types import ModelError
+
+    cancel = threading.Event()
+    created = [False]
+    cleanup_after_create = []
+
+    class Process:
+        pid = 999999
+        returncode = 0
+
+        def poll(self):
+            return 0
+
+    def popen(*args, **kw):
+        cancel.set()
+        return Process()
+
+    def run(args, **kw):
+        if args[1] == "create":
+            created[0] = True
+            cancel.set()
+        if args[1] == "rm":
+            cleanup_after_create.append(created[0])
+        return subprocess.CompletedProcess(args, 0, stdout="", stderr="")
+
+    monkeypatch.setattr(subprocess, "Popen", popen)
+    monkeypatch.setattr(subprocess, "run", run)
+    spec = ProcessSpec(
+        ["docker", "run", "--rm", "--name", "owned", "-i", "image", "exec"],
+        ["docker", "rm", "-f", "owned"],
+        {},
+        "prompt",
+        tmp_path / "output",
+        1,
+        verify_cleanup_args=["docker", "ps"],
+    )
+    with pytest.raises(ModelError, match="canceled"):
+        run_isolated(spec, cancel)
+    assert created[0] and cleanup_after_create == [True]
+
+
+def test_uncertain_creation_latches_cleanup_failure_even_if_absence_snapshot_is_empty(tmp_path, monkeypatch):
+    import subprocess
+    from torob.codex_cli import ProcessSpec, run_isolated
+    from torob.model_types import ModelError
+
+    def run(args, **kw):
+        if args[1] == "create":
+            raise subprocess.TimeoutExpired(args, 1)
+        return subprocess.CompletedProcess(args, 0, stdout="", stderr="")
+
+    monkeypatch.setattr(subprocess, "run", run)
+    monkeypatch.setattr(
+        subprocess, "Popen", lambda *a, **kw: (_ for _ in ()).throw(OSError("unexpected old launch"))
+    )
+    spec = ProcessSpec(
+        ["docker", "run", "--rm", "--name", "owned", "-i", "image", "exec"],
+        ["docker", "rm", "-f", "owned"],
+        {},
+        "prompt",
+        tmp_path / "output",
+        1,
+        verify_cleanup_args=["docker", "ps"],
+    )
+    with pytest.raises(ModelError, match="cleanup_failed"):
+        run_isolated(spec, threading.Event())

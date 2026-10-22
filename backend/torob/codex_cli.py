@@ -115,9 +115,38 @@ class ProcessSpec:
 def run_isolated(spec: ProcessSpec, cancel: threading.Event) -> int:
     process = None
     began = time.monotonic()
+    creation_unresolved = False
     try:
+        launch_args = spec.args
+        if spec.args[:2] == ["docker", "run"]:
+            # Wait for the daemon's create acknowledgement before cancellation/cleanup.
+            # Killing `docker run` during create can otherwise leave a late orphan.
+            if cancel.is_set():
+                raise ModelError("canceled")
+            remaining = spec.timeout_seconds - (time.monotonic() - began)
+            if remaining <= 0:
+                raise ModelError("timeout")
+            creation_unresolved = True
+            try:
+                prepared = subprocess.run(
+                    ["docker", "create", *spec.args[2:]],
+                    env=spec.env,
+                    capture_output=True,
+                    text=True,
+                    timeout=min(10, remaining),
+                    check=False,
+                )
+            except (OSError, subprocess.TimeoutExpired) as exc:
+                raise ModelError("cleanup_failed") from exc
+            if prepared.returncode != 0:
+                raise ModelError("cleanup_failed")
+            creation_unresolved = False
+            if cancel.is_set():
+                raise ModelError("canceled")
+            name = spec.args[spec.args.index("--name") + 1]
+            launch_args = ["docker", "start", "--attach", "--interactive", name]
         process = subprocess.Popen(
-            spec.args,
+            launch_args,
             env=spec.env,
             stdin=subprocess.PIPE,
             stdout=subprocess.DEVNULL,
@@ -153,6 +182,9 @@ def run_isolated(spec: ProcessSpec, cancel: threading.Event) -> int:
             except subprocess.TimeoutExpired:
                 os.killpg(process.pid, signal.SIGKILL)
                 process.wait(timeout=2)
+        if creation_unresolved:
+            # An empty absence snapshot cannot prove an unanswered create will not finish later.
+            raise ModelError("cleanup_failed")
         if spec.verify_cleanup_args:
             try:
                 check = subprocess.run(
