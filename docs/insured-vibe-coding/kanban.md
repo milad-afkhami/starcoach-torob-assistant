@@ -1,16 +1,18 @@
 # Build kanban — Torob
 
-_Last updated:2026-10-22. Next action: independent23-row rendered UI QA; fix failures, then container/deployment and delivery. Local app http://127.0.0.1:8651; actual model worker connected._
+_Last updated:22October2026. Next action: approved Liara deployment and hosted HTTPS acceptance; local implementation/review fixes are verified. App http://127.0.0.1:8651 and local model worker are running for review. Liara product implementation has begun separately._
 
 ## Doing
-- Interface T5 — Persian search/needs, comparison, persistent primary/fallback mission, confirmed reply recovery and external handoffs; rendered UI QA owed.
+- T6 hosted delivery — concrete app/plan/cost/artifact in docs/deployment.md. No app/key/disk/remote/video/submission created; approval and actual hosted verification remain open.
 
 ## Todo
-- Deployment T6 — persistent cloud app and actual HTTPS model-worker roundtrip; includes outage/reconnect QA.
-- Delivery — measured results, clean setup, five-minute demo, whole-branch independent review and submission artifacts.
+- After provisioning: actual hosted model roundtrip/disconnect/reconnect and deployed mobile/privacy checks.
+- Record narrated five-minute demo, publish approved source/video links, verify signed out and submit once; submission.md owns confirmations.
 
 ## Done
-- Mission T3/T4 —169 total tests; real API QA20✅/20 including10 actual Persian model scenarios,32 facts checked. Initial failures fixed and retained in evidence. Rendered UI still owed in T5.
-- Catalogue T1/T2 — full validated import;123 total tests; real20-query/60-sample evaluation and exact demo primary/fallback checked. No UI surface; QA N/A, real import/search evidence in docs/qa-evidence/catalogue-*.json.
-- Local model runtime M1/M2/M3-local — tests:63 passed, one upstream TestClient deprecation warning · QA: test-plans/model-runtime.md12✅/12 with docs/qa-evidence/model-runtime.json. Actual Codex responses9.496s/9.964s; running-container cancellation and cleanup verified. Hosted HTTPS acceptance remains a separate T6 gate.
-- Repository isolation — independent repository, branch build/torob; no existing code affected. Initial baseline empty.
+- T5 local interface — independent rendered UI QA23/23, including genuine Persian model needs/reply/proposals, mobile/keyboard, two sessions, external handoffs and stopped-worker recovery. Evidence: test-plans/shopping-ui.md and docs/qa-evidence/shopping-ui.json. Final code review fixes have targeted browser/domain regressions and184Python tests.
+- T6 local artifact — actual512MiB/0.5CPU container boot/search/recovery/restart persistence and private-path checks pass; private source bundle allowlist verified. Final image/artifact hashes in docs/qa-evidence/{container,deployment-artifact}.json. Eight-case recovery evaluation in results/recovery.json. Hosted acceptance is not included.
+- T3/T4 mission/AI — real API QA20/20, ten actual Persian cases and32 source facts checked.
+- T1/T2 catalogue — full hash-validated import, real20-query/60-sample evaluation and exact demo primary/fallback.
+- M1/M2/M3-local — independent real runtime QA12/12 including cancellation/expiry/reconnect; hosted gate remains above.
+- Repository — separate build/torob branch; no existing work affected.

@@ -1,0 +1,806 @@
+{
+  "started_utc": "2026-10-22T00:36:01.690Z",
+  "origin": "http://127.0.0.1:8651",
+  "rows": {
+    "U1": {
+      "status": "pass",
+      "elapsed_ms": 181,
+      "details": {
+        "typing": "A07 / Persian40million",
+        "rtl": true,
+        "http_only_session": true,
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U1-initial.png"
+      }
+    },
+    "U2": {
+      "status": "pass",
+      "elapsed_ms": 402,
+      "details": {
+        "source_titles": [
+          "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت"
+        ],
+        "category_no_match": true,
+        "nonsense_no_match": true,
+        "controls_editable": true,
+        "unbounded_card_count": 4,
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U2-search.png"
+      }
+    },
+    "U3": {
+      "status": "pass",
+      "elapsed_ms": 414,
+      "details": {
+        "compared_titles": [
+          "گوشی سامسونگ (ویتنام) A07 4G | حافظه 128 رم 6 گیگابایت",
+          "گوشی سامسونگ (چین) A07 4G | حافظه 128 رم 6 گیگابایت"
+        ],
+        "selected_id": "product_3d46be8f5ae7503003c2ab8b",
+        "mission_id": "786238aa40584ec29cc2c39b7f3be0cd",
+        "mode": "assisted",
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U3-compare.png"
+      }
+    },
+    "U4": {
+      "status": "pass",
+      "elapsed_ms": 338,
+      "details": {
+        "mission": {
+          "id": "d5dcbb4d3aab466f8dfeea45cf1fcf91",
+          "revision": 1,
+          "mode": "simulation",
+          "selected_product_id": "product_adfdc73bc839d15cd7754318",
+          "constraints": {
+            "query": "A07",
+            "category": "گوشی موبایل",
+            "max_price_toman": "40000000",
+            "lat": 35.69508821734553,
+            "lon": 51.41148102579503,
+            "radius_km": 1,
+            "payment_provider": null,
+            "visit_at": "2026-10-22T20:15:00+03:30",
+            "require_declared_open": true
+          },
+          "selected_primary_shop_id": null
+        },
+        "primary": "offer_b08b779f43846d8e8c6aef1d",
+        "fallback": "offer_dd4dc3e07a9bc3b94af79800",
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U4-demo.png"
+      }
+    },
+    "U5": {
+      "status": "pass",
+      "elapsed_ms": 451,
+      "details": {
+        "copy_matches_inquiry": true,
+        "denial_injected": true,
+        "feedback_inside_dialog": true,
+        "synthetic_phone_actions": 0,
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U5-fixed-feedback.png"
+      }
+    },
+    "U6": {
+      "status": "pass",
+      "elapsed_ms": 826,
+      "details": {
+        "before_revision": 1,
+        "after_revision": 2,
+        "primary": "offer_dd4dc3e07a9bc3b94af79800",
+        "locked_constraints_unchanged": true,
+        "preview_screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U6-unconfirmed.png",
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U6-recovered.png"
+      }
+    },
+    "U7": {
+      "status": "pass",
+      "elapsed_ms": 395,
+      "details": {
+        "low_budget": "39400000",
+        "low_has_primary": false,
+        "high_budget": "39500000",
+        "high_primary": "offer_dd4dc3e07a9bc3b94af79800",
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U7-budget.png"
+      }
+    },
+    "U10": {
+      "status": "pass",
+      "elapsed_ms": 441,
+      "details": {
+        "persisted_revision": 4,
+        "reset_revision": 5,
+        "retained_budget": "39500000",
+        "reset_primary": "offer_b08b779f43846d8e8c6aef1d",
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U10-reset.png"
+      }
+    },
+    "U8": {
+      "status": "pass",
+      "elapsed_ms": 1659,
+      "details": {
+        "exhausted_primary": null,
+        "exhausted_fallback": null,
+        "visible_recheck_buttons": 2,
+        "rechecked_primary": "offer_b08b779f43846d8e8c6aef1d",
+        "stock_state": "unknown",
+        "provenance": "simulation",
+        "exhausted_screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U8-exhausted-recheck.png",
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U8-rechecked.png"
+      }
+    },
+    "U9": {
+      "status": "pass",
+      "elapsed_ms": 458,
+      "details": {
+        "invalid_budget_rejected": true,
+        "invalid_coordinates_rejected": true,
+        "incomplete_time_rejected": true,
+        "mission_revision_unchanged": 3,
+        "fields_restored": true,
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U9-validation.png"
+      }
+    },
+    "U11": {
+      "status": "pass",
+      "elapsed_ms": 1226,
+      "details": {
+        "session_a_mission": "74a372804f06405faf7d1cf1a8f7fefd",
+        "session_b_mission": "052778e4dde64c8bb2aeb3c2e1f88e1f",
+        "foreign_read_http": 404,
+        "reset_a_did_not_change_b": true,
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U11-session-b.png"
+      }
+    },
+    "U22": {
+      "status": "pass",
+      "elapsed_ms": 802,
+      "details": {
+        "assisted_id": "f331a064eb2345c59897b2609d1a6578",
+        "assisted_changed_revision": 2,
+        "new_simulation_id": "87ca8e1e1bb94a769dd8f43bdede63fa",
+        "report_provenance": "user_reported",
+        "assisted_preserved_after_simulation_reset": true,
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U22-mode-separation.png"
+      }
+    },
+    "U23": {
+      "status": "pass",
+      "elapsed_ms": 684,
+      "details": {
+        "injected": "one search and one preview request aborted before server",
+        "search_error": "ارتباط برقرار نشد؛ دوباره تلاش کنید.",
+        "dialog_error": "ارتباط برقرار نشد؛ دوباره تلاش کنید.",
+        "retry_preview_visible": true,
+        "mission_unchanged": true,
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U23-dialog-error.png"
+      }
+    },
+    "U16": {
+      "status": "pass",
+      "elapsed_ms": 406,
+      "details": {
+        "injected_source_image_failures": [
+          "https://image.torob.com/base/images/0p/ne/0pne36enOZPmyWkM.jpg"
+        ],
+        "fallback_svg_visible": true,
+        "title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
+        "controls_usable": true,
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U16-image-fallback.png"
+      }
+    },
+    "U17": {
+      "status": "pass",
+      "elapsed_ms": 546,
+      "details": {
+        "permission": "real browser denied via CDP",
+        "unsolicited_geolocation_calls": 0,
+        "calls_after_user_click": 1,
+        "preset_and_manual_fields_work": true,
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U17-mobile-location.png"
+      }
+    },
+    "U12": {
+      "status": "pass",
+      "elapsed_ms": 23809,
+      "details": {
+        "turn_id": "1b1bd8e1971a48789effb37bf4dc1e02",
+        "trace": [
+          {
+            "tool": "interpret",
+            "provenance": {
+              "provider": "codex_cli",
+              "model": "gpt-6.1-sol",
+              "cli_version": "codex-cli 0.163.0",
+              "elapsed_ms": 10599
+            },
+            "status": "validated"
+          },
+          {
+            "tool": "search_products",
+            "query": "سامسونگ A07 64GB 4GB",
+            "product_ids": [
+              "product_adfdc73bc839d15cd7754318"
+            ]
+          },
+          {
+            "tool": "explain",
+            "provenance": {
+              "provider": "codex_cli",
+              "model": "gpt-6.1-sol",
+              "cli_version": "codex-cli 0.163.0",
+              "elapsed_ms": 10376
+            },
+            "status": "validated"
+          }
+        ],
+        "rendered_recommendation": "چرا این گزینه؟\n\nبرند، مدل، حافظه و رم ثبت‌شده با درخواست شما مطابقت دارند و قیمت ثبت‌شده در محدوده بودجه شماست؛ قیمت فعلی و موجودی تأیید نشده‌اند.\n\nعنوان داده: گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت\n\nکمترین قیمت ثبت‌شده، نه تأییدشده: ۳۸٬۸۷۷٬۷۰۰ تومان",
+        "mission_unchanged": true,
+        "discovery_apply_only_changes_form": true,
+        "progress_screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U12-progress.png",
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U12-grounded-answer.png"
+      }
+    },
+    "U21": {
+      "status": "pass",
+      "elapsed_ms": 46423,
+      "details": {
+        "first_turn": "960a7945c8b84164aaead2ec2c12c733",
+        "first_trace": [
+          {
+            "tool": "interpret",
+            "provenance": {
+              "provider": "codex_cli",
+              "model": "gpt-6.1-sol",
+              "cli_version": "codex-cli 0.163.0",
+              "elapsed_ms": 9459
+            },
+            "status": "validated"
+          },
+          {
+            "tool": "get_selected_product",
+            "product_id": "product_adfdc73bc839d15cd7754318"
+          },
+          {
+            "tool": "explain",
+            "provenance": {
+              "provider": "codex_cli",
+              "model": "gpt-6.1-sol",
+              "cli_version": "codex-cli 0.163.0",
+              "elapsed_ms": 9225
+            },
+            "status": "validated"
+          }
+        ],
+        "first_proposal_applied_explicitly": true,
+        "first_budget": "39000000",
+        "second_turn": "7d6ce326249d4f61a56b3ce3ca7c9945",
+        "second_trace": [
+          {
+            "tool": "interpret",
+            "provenance": {
+              "provider": "codex_cli",
+              "model": "gpt-6.1-sol",
+              "cli_version": "codex-cli 0.163.0",
+              "elapsed_ms": 9323
+            },
+            "status": "validated"
+          },
+          {
+            "tool": "get_selected_product",
+            "product_id": "product_adfdc73bc839d15cd7754318"
+          },
+          {
+            "tool": "explain",
+            "provenance": {
+              "provider": "codex_cli",
+              "model": "gpt-6.1-sol",
+              "cli_version": "codex-cli 0.163.0",
+              "elapsed_ms": 9366
+            },
+            "status": "validated"
+          }
+        ],
+        "stale_rejected": true,
+        "preserved_newer_budget": "39500000",
+        "stale_error": "برنامه تغییر کرده است؛ پاسخ را برای نسخه تازه دوباره بررسی کنید.",
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U21-proposal-before-apply.png",
+        "stale_screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U21-stale-proposal.png"
+      }
+    },
+    "U13": {
+      "status": "pass",
+      "elapsed_ms": 20325,
+      "details": {
+        "turn_id": "6052c079f26b4ba186e49f4f331e96e0",
+        "trace": [
+          {
+            "tool": "reply",
+            "provenance": {
+              "provider": "codex_cli",
+              "model": "gpt-6.1-sol",
+              "cli_version": "codex-cli 0.163.0",
+              "elapsed_ms": 17992
+            },
+            "status": "validated"
+          }
+        ],
+        "raw_text": "سلام، این مدل با همین حافظه و رم موجود نیست و فعلاً امکان فروش نداریم.",
+        "preview_provenance": "user_reported",
+        "unchanged_before_confirm": true,
+        "explicit_confirmation_revision": 2,
+        "progress_screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U13-dialog-progress.png",
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U13-unconfirmed-reply.png"
+      }
+    },
+    "U14": {
+      "status": "pass",
+      "elapsed_ms": 791,
+      "details": {
+        "injection": "delayed delivery of real initial POST and genuine completed polling response",
+        "initial_turn_id": "1aa2519bca01406a8307d3afd028de4d",
+        "initial_cancel_state": "canceled",
+        "held_completed_turn_id": "63bf3ba025484e4e87fb3a9237b0a7cf",
+        "held_trace": [
+          {
+            "tool": "interpret",
+            "provenance": {
+              "provider": "codex_cli",
+              "model": "gpt-6.1-sol",
+              "cli_version": "codex-cli 0.163.0",
+              "elapsed_ms": 8660
+            },
+            "status": "validated"
+          },
+          {
+            "tool": "search_products",
+            "query": "سامسونگ A07 64GB 4GB",
+            "product_ids": [
+              "product_adfdc73bc839d15cd7754318"
+            ]
+          },
+          {
+            "tool": "explain",
+            "provenance": {
+              "provider": "codex_cli",
+              "model": "gpt-6.1-sol",
+              "cli_version": "codex-cli 0.163.0",
+              "elapsed_ms": 9720
+            },
+            "status": "validated"
+          }
+        ],
+        "new_search_titles": [
+          "نوت‌بوک لنوو T450S سایز ۱۴ اینچ Core i5 رم ۸ گیگابایت",
+          "Lenovo ThinkPad T470 | ram 8GB |  256GB SSD  | i5 | INTEL  لپ تاپ لنوو استوک",
+          "لپتاپ لنو مدل LENOVO THINKPAD L490"
+        ],
+        "late_response_discarded": true,
+        "mission_revision_unchanged": 2,
+        "harness_note": "Initial assertion sampled an already-visible old card before new search response; resumed same held response after new result settled, without repeating inference.",
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U14-late-result-discarded.png"
+      }
+    },
+    "U19": {
+      "status": "pass",
+      "elapsed_ms": 636,
+      "details": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "focus_sequence": [
+          {
+            "tag": "BODY",
+            "text": "پلن بیهمراه خرید حضوریتهرانبا داده‌های تربقبل از رفتن،گزینه دوم را داشته باش.کالا را انتخاب کن، گزین",
+            "inside": false,
+            "hasFocus": false
+          },
+          {
+            "tag": "DIALOG",
+            "text": "دو کالا، با همان اطلاعات ثبت‌شدهگوشی سامسونگ (ویتنام) A07 4G | حافظه 128 رم 6 گیگابایت۵۴٬۳۵۰٬۰۰۰ توم",
+            "inside": true,
+            "hasFocus": true
+          },
+          {
+            "tag": "BUTTON",
+            "text": "",
+            "inside": true,
+            "hasFocus": true
+          },
+          {
+            "tag": "BUTTON",
+            "text": "انتخاب این کالا",
+            "inside": true,
+            "hasFocus": true
+          },
+          {
+            "tag": "BUTTON",
+            "text": "انتخاب این کالا",
+            "inside": true,
+            "hasFocus": true
+          },
+          {
+            "tag": "BODY",
+            "text": "پلن بیهمراه خرید حضوریتهرانبا داده‌های تربقبل از رفتن،گزینه دوم را داشته باش.کالا را انتخاب کن، گزین",
+            "inside": false,
+            "hasFocus": false
+          },
+          {
+            "tag": "DIALOG",
+            "text": "دو کالا، با همان اطلاعات ثبت‌شدهگوشی سامسونگ (ویتنام) A07 4G | حافظه 128 رم 6 گیگابایت۵۴٬۳۵۰٬۰۰۰ توم",
+            "inside": true,
+            "hasFocus": true
+          },
+          {
+            "tag": "BUTTON",
+            "text": "",
+            "inside": true,
+            "hasFocus": true
+          },
+          {
+            "tag": "BUTTON",
+            "text": "انتخاب این کالا",
+            "inside": true,
+            "hasFocus": true
+          },
+          {
+            "tag": "BUTTON",
+            "text": "انتخاب این کالا",
+            "inside": true,
+            "hasFocus": true
+          }
+        ],
+        "focus_contained_while_document_active": true,
+        "native_browser_chrome_traversal": "Native Tab may leave document; next Tab returns to modal and no underlying app control receives focus.",
+        "focus_return": true,
+        "visible_focus": true,
+        "keyboard_selected_product": "product_3d46be8f5ae7503003c2ab8b",
+        "keyboard_search_compare_select_preview_confirm": true,
+        "dimensions": {
+          "width": 390,
+          "document": 390
+        },
+        "harness_note": "Awaited closed dialog and enabled/focused Demo after preceding async selection; earlier automated attempt raced native focus restoration.",
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U19-mobile-recovery.png"
+      }
+    },
+    "U20": {
+      "status": "pass",
+      "elapsed_ms": 704,
+      "details": {
+        "source_product": "product_7591e821b7d2384aa2c9411a",
+        "source_offer": "offer_669d012ae75087cbe5707ed2",
+        "exact_price": "443078940455798912",
+        "rendered_price": "۴۴۳٬۰۷۸٬۹۴۰٬۴۵۵٬۷۹۸٬۹۱۲",
+        "flag": "flagged",
+        "not_eligible_primary": true,
+        "horizontal_overflow": false,
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U20-large-source-price.png",
+        "detail_screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U20-large-price-detail.png"
+      }
+    },
+    "U15": {
+      "status": "pass",
+      "elapsed_ms": 1018,
+      "details": {
+        "worker_stop": {
+          "pid": 3021524,
+          "at_utc": "2026-10-22T00:49:32.169637Z",
+          "signal": "SIGTERM",
+          "source": "parent stopped own QA worker"
+        },
+        "elapsed_since_stop_seconds": 354.56,
+        "capabilities": {
+          "catalogue_ready": true,
+          "model_available": false,
+          "model_provider": "codex_cli",
+          "seller_contact": "assisted_or_simulated"
+        },
+        "ai_button_disabled": true,
+        "real_search_http": 200,
+        "offline_recovery_primary": "39500000",
+        "worker_pid_exists": false,
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U15-worker-offline.png"
+      }
+    },
+    "U18": {
+      "status": "pass",
+      "elapsed_ms": 11596,
+      "details": {
+        "automatic_handoff_resources_before_click": [],
+        "opened": [
+          {
+            "label": "بررسی همین کالا در ترب",
+            "url": "https://torob.com/search/?query=%DA%AF%D9%88%D8%B4%DB%8C+%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF+%28%DA%86%DB%8C%D9%86%29+A07+4G+%7C+%D8%AD%D8%A7%D9%81%D8%B8%D9%87+64+%D8%B1%D9%85+4+%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA",
+            "target": "_blank",
+            "rel": "noopener noreferrer",
+            "loaded": true,
+            "final_origin_path": "https://torob.com/search/"
+          },
+          {
+            "label": "نشان",
+            "url": "https://nshn.ir/?lat=35.69497808523676&lng=51.41133868706675",
+            "target": "_blank",
+            "rel": "noopener noreferrer",
+            "loaded": true,
+            "final_origin_path": "https://neshan.org/maps/share/35.69497808523676,51.41133868706675"
+          },
+          {
+            "label": "بلد",
+            "url": "https://balad.ir/",
+            "target": "_blank",
+            "rel": "noopener noreferrer",
+            "loaded": true,
+            "final_origin_path": "https://balad.ir/"
+          },
+          {
+            "label": "اسنپ",
+            "url": "https://app.snapp.taxi/",
+            "target": "_blank",
+            "rel": "noopener noreferrer",
+            "loaded": true,
+            "final_origin_path": "https://app.snapp.taxi/"
+          },
+          {
+            "label": "تپسی",
+            "url": "https://app.tapsi.cab/",
+            "target": "_blank",
+            "rel": "noopener noreferrer",
+            "loaded": true,
+            "final_origin_path": "https://app.tapsi.cab/"
+          }
+        ],
+        "destination_before": "خیابان جمهوری اسلامی، نرسیده به خیابان حافظ، پاساژ بزرگمهر، طبقه همکف، پلاک ۱۸، واحد ۱۸\n35.69497808523676, 51.41133868706675",
+        "destination_after": "خیابان جمهوری اسلامی، تقاطع خیابان حافظ، پاساژ چهارسو، طبقه اول، پلاک c۵۲\n35.695050986028015, 51.41203522682191",
+        "updated_neshan": "https://nshn.ir/?lat=35.695050986028015&lng=51.41203522682191",
+        "all_navigation_methods": [
+          "GET"
+        ],
+        "no_booking_claim": true,
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U18-updated-handoffs.png",
+        "payment_handoff": {
+          "torobpay_requested_url": "https://torobpay.com/account",
+          "actual_popup_opened": true,
+          "provider_loaded": true,
+          "final_origin_path": "https://torobpay.com/account",
+          "torobpay_link_with_snapp_requirement": 1
+        }
+      }
+    }
+  },
+  "notes": [],
+  "network": [
+    {
+      "kind": "failed",
+      "method": "POST",
+      "url": "http://127.0.0.1:8651/api/search",
+      "error": "net::ERR_FAILED",
+      "page": 0
+    },
+    {
+      "kind": "failed",
+      "method": "POST",
+      "url": "http://127.0.0.1:8651/api/missions/74a372804f06405faf7d1cf1a8f7fefd/observations/preview",
+      "error": "net::ERR_FAILED",
+      "page": 0
+    },
+    {
+      "kind": "failed",
+      "method": "GET",
+      "url": "https://image.torob.com/base/images/0p/ne/0pne36enOZPmyWkM.jpg",
+      "error": "net::ERR_FAILED",
+      "page": 0
+    },
+    {
+      "kind": "http-error",
+      "method": "PATCH",
+      "url": "http://127.0.0.1:8651/api/missions/993d8ef6cdc940eb8ede843c950997b1",
+      "status": 409,
+      "page": 0
+    }
+  ],
+  "console": [
+    {
+      "type": "console",
+      "text": "Failed to load resource: net::ERR_FAILED",
+      "page": 0
+    },
+    {
+      "type": "console",
+      "text": "Failed to load resource: net::ERR_FAILED",
+      "page": 0
+    },
+    {
+      "type": "console",
+      "text": "Failed to load resource: net::ERR_FAILED",
+      "page": 0
+    },
+    {
+      "type": "console",
+      "text": "Failed to load resource: the server responded with a status of 409 (Conflict)",
+      "page": 0
+    }
+  ],
+  "prior_attempts": {
+    "U2": [
+      {
+        "status": "fail",
+        "elapsed_ms": 30086,
+        "error": "locator.selectOption: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('دسته‌بندی', { exact: true })\u001b[22m\n",
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U2-failure.png"
+      }
+    ],
+    "U5": [
+      {
+        "status": "fail",
+        "elapsed_ms": 412,
+        "details": {
+          "copy_matches_inquiry": true,
+          "synthetic_phone_actions": 0,
+          "clipboard_denial": "injected browser clipboard NotAllowedError",
+          "fallback_text_visible": true,
+          "fallback_inside_dialog": false,
+          "inquiry_selectable": "text",
+          "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U5-reply.png"
+        },
+        "error": "Clipboard-denied fallback is outside modal dialog, above viewport and inert; no accessible dialog-local feedback."
+      }
+    ],
+    "U8": [
+      {
+        "status": "fail",
+        "elapsed_ms": 1171,
+        "details": {
+          "revision": 3,
+          "primary": null,
+          "fallback": null,
+          "reported_rechecks": [
+            {
+              "id": "offer_b08b779f43846d8e8c6aef1d",
+              "eligibility": "needs_verification",
+              "stock": "unknown"
+            },
+            {
+              "id": "offer_dd4dc3e07a9bc3b94af79800",
+              "eligibility": "needs_verification",
+              "stock": "unknown"
+            }
+          ],
+          "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U8-exhausted.png",
+          "recheck_button_count": 0
+        },
+        "error": "After both no-response confirmations, recheck rows are visible but contain no action to reopen follow-up; no primary/fallback action remains."
+      }
+    ],
+    "U14": [
+      {
+        "status": "fail",
+        "elapsed_ms": 21346,
+        "error": "\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatch\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected pattern: \u001b[32m/Lenovo|لنوو/\u001b[39m\nReceived string:  \u001b[31m\"گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت\"\u001b[39m",
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U14-failure.png"
+      }
+    ],
+    "U19": [
+      {
+        "status": "fail",
+        "elapsed_ms": 332,
+        "error": "\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U19-failure.png"
+      },
+      {
+        "status": "fail",
+        "elapsed_ms": 0,
+        "details": {
+          "focus_sequence": [
+            {
+              "tag": "BODY",
+              "text": "پلن بیهمراه خرید حضوریتهرانبا داده‌های تربقبل از رفتن،گزینه دوم را داشته باش.کالا را انتخاب کن، گزین",
+              "inside": false,
+              "hasFocus": false
+            },
+            {
+              "tag": "DIALOG",
+              "text": "دو کالا، با همان اطلاعات ثبت‌شدهگوشی سامسونگ (ویتنام) A07 4G | حافظه 128 رم 6 گیگابایت۵۴٬۳۵۰٬۰۰۰ توم",
+              "inside": true,
+              "hasFocus": true
+            },
+            {
+              "tag": "BUTTON",
+              "text": "",
+              "inside": true,
+              "hasFocus": true
+            },
+            {
+              "tag": "BUTTON",
+              "text": "انتخاب این کالا",
+              "inside": true,
+              "hasFocus": true
+            },
+            {
+              "tag": "BUTTON",
+              "text": "انتخاب این کالا",
+              "inside": true,
+              "hasFocus": true
+            },
+            {
+              "tag": "BODY",
+              "text": "پلن بیهمراه خرید حضوریتهرانبا داده‌های تربقبل از رفتن،گزینه دوم را داشته باش.کالا را انتخاب کن، گزین",
+              "inside": false,
+              "hasFocus": false
+            },
+            {
+              "tag": "DIALOG",
+              "text": "دو کالا، با همان اطلاعات ثبت‌شدهگوشی سامسونگ (ویتنام) A07 4G | حافظه 128 رم 6 گیگابایت۵۴٬۳۵۰٬۰۰۰ توم",
+              "inside": true,
+              "hasFocus": true
+            },
+            {
+              "tag": "BUTTON",
+              "text": "",
+              "inside": true,
+              "hasFocus": true
+            },
+            {
+              "tag": "BUTTON",
+              "text": "انتخاب این کالا",
+              "inside": true,
+              "hasFocus": true
+            },
+            {
+              "tag": "BUTTON",
+              "text": "انتخاب این کالا",
+              "inside": true,
+              "hasFocus": true
+            }
+          ],
+          "focus_contained_while_document_active": true,
+          "native_browser_chrome_traversal": "Tab may leave document for browser chrome; no underlying app control gets focus, next Tab returns to dialog."
+        },
+        "error": "Core keyboard flow still pending: prior harness pressed Demo before preceding async selection completed."
+      }
+    ],
+    "U20": [
+      {
+        "status": "fail",
+        "elapsed_ms": 30039,
+        "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'جست‌وجو', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"submit\" class=\"button primary-button\">جست‌وجو</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <p class=\"spec-row\">…</p> from <dialog open=\"\" class=\"comparison-modal\" aria-label=\"مقایسه دو کالا\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <span>۱۸۴ گرم</span> from <dialog open=\"\" class=\"comparison-modal\" aria-label=\"مقایسه دو کالا\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <p class=\"spec-row\">…</p> from <dialog open=\"\" class=\"comparison-modal\" aria-label=\"مقایسه دو کالا\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m  2 × retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is ",
+        "screenshot": "/home/milad/Desktop/projects/starcoach-torob-assistant/docs/qa-evidence/ui-U20-failure.png"
+      }
+    ]
+  },
+  "model_starts_before": 30,
+  "worker_stop": {
+    "pid": 3021524,
+    "at_utc": "2026-10-22T00:49:32.169637Z",
+    "signal": "SIGTERM",
+    "source": "parent stopped own QA worker"
+  },
+  "model_starts_after": 39,
+  "model_starts_used": 9,
+  "final_review": {
+    "rows_passed": 23,
+    "rows_total": 23,
+    "actual_model_starts": 9,
+    "provider": "codex_cli",
+    "quota_reset": false,
+    "uncaught_app_page_errors": 0,
+    "console_errors": [
+      "Failed to load resource: net::ERR_FAILED",
+      "Failed to load resource: net::ERR_FAILED",
+      "Failed to load resource: net::ERR_FAILED",
+      "Failed to load resource: the server responded with a status of 409 (Conflict)"
+    ],
+    "console_note": "Observed resource errors correspond to intentionally aborted search/preview/image requests and the expected stale-proposal409; no uncaught application errors.",
+    "native_focus_ruling": "Native Chromium Tab traversal into browser chrome is allowed; underlying page controls never receive focus, Tab returns into dialog, Escape restores opener.",
+    "scope": "Production-built local React UI over real full catalogue and real APIs. Controlled clipboard/network/image/geolocation failures explicitly labelled. External handoffs exercised read-only; booking, credit approval and device app launch not claimed.",
+    "historical_failures_retained": true,
+    "worker_left_stopped": true
+  },
+  "finished_utc": "2026-10-22T01:00:48.492Z",
+  "cleanup": {
+    "contexts_closed": true,
+    "browser_closed": true,
+    "harness_process_stopped": true,
+    "model_containers_remaining": 0,
+    "server_left_running_for_parent": true,
+    "worker_left_stopped_for_parent": true
+  }
+}

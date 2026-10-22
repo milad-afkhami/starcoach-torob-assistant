@@ -50,6 +50,14 @@ def build_plan(mission, offers):
     )
     shortlist = {o.offer.shop_id: o for o in cheapest[:30] + nearest[:30]}
     excluded = [o for o in options if o.eligibility != "candidate"]
+    # Preserve the newest reported/recheckable seller before bounding the response.
+    # Price order alone can hide it behind dozens of cheaper ineligible offers.
+    excluded.sort(
+        key=lambda option: max(
+            (obs.get("applied_revision") or 0 for obs in option.offer.observations), default=0
+        ),
+        reverse=True,
+    )
     coverage = {
         "distinct_shops": len({o.shop_id for o in offers}),
         "eligible_shops": len(distinct),

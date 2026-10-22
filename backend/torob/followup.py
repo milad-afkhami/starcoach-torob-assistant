@@ -93,6 +93,7 @@ def apply_observations(mission, offers, observations, category=None):
                         "kind",
                         "provenance",
                         "confirmed_at",
+                        "applied_revision",
                         "price_toman",
                         "raw_text",
                         "effective_visit_date",

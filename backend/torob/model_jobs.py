@@ -57,6 +57,10 @@ class JobQueue:
         )
         # Keep counts/state, not old raw user inputs/results.
         db.execute("UPDATE model_jobs SET payload='{}',result=NULL WHERE created<?", (now - 86400,))
+        # The application keeps a second raw-model copy for conversation advancement.
+        # Domain-confirmed observations are separate append-only records, not these turns.
+        if db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='turns'").fetchone():
+            db.execute("DELETE FROM turns WHERE created<?", (now - 86400,))
 
     def expire(self, now):
         with self.connect() as db:
@@ -66,6 +70,7 @@ class JobQueue:
 
     def heartbeat(self, worker, now):
         with self.connect() as db:
+            self._expire(db, now)
             db.execute(
                 "INSERT INTO model_workers VALUES(?,?) ON CONFLICT(id) DO UPDATE SET seen=excluded.seen",
                 (worker, now),
@@ -73,6 +78,7 @@ class JobQueue:
 
     def available(self, now):
         with self.connect() as db:
+            self._expire(db, now)
             seen = db.execute("SELECT MAX(seen) FROM model_workers").fetchone()[0]
             return seen is not None and now - seen < 45
 

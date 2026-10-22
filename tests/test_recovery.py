@@ -206,3 +206,30 @@ def test_new_quote_rechecks_recorded_payment_amount_limits(tmp_path):
     plan, _ = confirmed(s, owner, m, kind="price_change", price_toman="160")
     assert plan.primary is None
     assert next(o for o in plan.excluded if o.offer.offer_id == "o1").offer.payment_state == "unsupported"
+
+
+@pytest.mark.parametrize("has_alternative", [False, True])
+def test_recent_unanswered_seller_survives_many_cheaper_exclusions(tmp_path, has_alternative):
+    from torob.session import Store
+
+    rows = records()
+    shop = rows["shops.csv"][0]
+    offer = rows["offers.csv"][0]
+    rows["shops.csv"] = [{**shop, "shop_id": f"far{i}", "lat": 36.0} for i in range(60)] + [
+        {**shop, "shop_id": "reachable"}
+    ]
+    rows["offers.csv"] = [
+        {**offer, "offer_id": f"far{i}", "shop_id": f"far{i}", "price_toman": 100} for i in range(60)
+    ] + [{**offer, "offer_id": "reachable", "shop_id": "reachable", "price_toman": 200}]
+    if has_alternative:
+        rows["shops.csv"].append({**shop, "shop_id": "backup"})
+        rows["offers.csv"].append({**offer, "offer_id": "backup", "shop_id": "backup", "price_toman": 300})
+    c = catalogue(tmp_path, rows)
+    s = Store(tmp_path / "state.sqlite", "test-session-secret-at-least-32-chars", c)
+    _, owner = s.create_session(100)
+    m = new_mission(s, owner, max_price_toman="300")
+    plan, _ = confirmed(s, owner, m, offer="reachable", kind="no_response")
+    assert len(plan.excluded) <= 60
+    assert plan.excluded[0].offer.offer_id == "reachable"
+    assert "no_response" in plan.excluded[0].reason_codes
+    assert (plan.primary is not None) == has_alternative

@@ -109,7 +109,10 @@ class AgentService:
                     (json.dumps(value, ensure_ascii=False), row["id"]),
                 )
 
+        self.jobs.expire(self.clock())
+
     def _load(self, owner, turn_id):
+        self.jobs.expire(self.clock())
         with self.store.connect() as db:
             row = db.execute("SELECT data FROM turns WHERE id=? AND owner=?", (turn_id, owner)).fetchone()
         if row is None:
@@ -182,6 +185,7 @@ class AgentService:
             raise StoreError("reply_context_required")
         with self.lock:
             now = self.clock()
+            self.jobs.expire(now)
             with self.store.connect() as db:
                 previous = db.execute(
                     "SELECT id,data FROM turns WHERE owner=? AND state IN ('running','advancing')", (owner,)

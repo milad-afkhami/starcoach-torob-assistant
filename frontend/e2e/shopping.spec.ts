@@ -101,3 +101,25 @@ test('unanswered sellers can be rechecked after all options are exhausted', asyn
   await expect(page.getByTestId('primary-card')).toContainText('موجود اعلام شده')
   await expect(page.getByTestId('primary-card')).toContainText('شبیه‌سازی')
 })
+
+for(const lateFailure of [false,true])test(`late saved-mission restore cannot replace a new choice (${lateFailure?'failure':'success'})`,async({page})=>{
+  await page.goto('/')
+  await page.getByRole('button',{name:'دیدن سناریوی نمونه'}).click()
+  await expect(page.getByTestId('simulation-banner')).toBeVisible()
+  const old=await page.evaluate(()=>localStorage.getItem('plan-b:last-mission'))
+  let release!:()=>void;const held=new Promise<void>(resolve=>{release=resolve})
+  await page.route(`**/api/missions/${old}`,async route=>{
+    const real=await route.fetch();await held
+    if(lateFailure)await route.fulfill({status:404,json:{detail:'not_found'}})
+    else await route.fulfill({response:real})
+  })
+  await page.reload()
+  await page.getByRole('button',{name:'دیدن سناریوی نمونه'}).click()
+  await expect(page.getByTestId('simulation-banner')).toBeVisible()
+  const fresh=await page.evaluate(()=>localStorage.getItem('plan-b:last-mission'))
+  expect(fresh).not.toBe(old)
+  const delivered=page.waitForResponse(r=>new URL(r.url()).pathname===`/api/missions/${old}`)
+  release();await delivered
+  await page.waitForTimeout(100)
+  expect(await page.evaluate(()=>localStorage.getItem('plan-b:last-mission'))).toBe(fresh)
+})

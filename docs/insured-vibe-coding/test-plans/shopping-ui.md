@@ -1,0 +1,41 @@
+# QA plan — Persian shopping interface
+
+App under test: actual production-built React UI served by the real FastAPI app at the local URL recorded in kanban, full catalogue and persistent state. Browser interactions must drive the rendered controls; API calls may set up or independently verify state, not replace the interaction. Start every row unrun. Independent QA reviews missing promises before execution.
+
+| # | Scenario | Steps | Expected result | Status |
+|---|---|---|---|---|
+| U1 | Initial view/session | Open fresh browser, wait for readiness, type in search and budget fields |Readable Persian RTL; fields accept actual typing; no login/config burden or unexpected console error | ✅ shopping-ui.json rows.U1 |
+| U2 | Manual search | Search exactA07; change category and retry; use nonsense query |Actual source cards; no-result state with editable controls; no invented products | ✅ shopping-ui.json rows.U2 |
+| U3 | Compare/select | Select two comparison cards, inspect provided specs/unknowns, choose one product |Exact source variants remain distinguishable; selection creates persistent purchase mission | ✅ shopping-ui.json rows.U3 |
+| U4 | Fixed demo | Click labelled sample scenario |Simulation banner, explicit fixed visit, expected39.2M/39.5M pair and historical-price/unknown-stock labels | ✅ shopping-ui.json rows.U4 |
+| U5 | Follow-up draft | Open primary's reply panel, inspect/copy inquiry; exercise clipboard-denied fallback |No outbound message/phone action; missing real contact route explicit; copy succeeds or displayed text stays selectable | ✅ shopping-ui.json rows.U5 |
+| U6 | Preview then confirm | Choose unavailable in simulator, preview, then confirm |Before confirm unchanged; afterward fallback promoted and300000-toman delta, locked conditions retained | ✅ shopping-ui.json rows.U6 |
+| U7 | Explicit budget edit | After recovery set39.4M and apply, then39.5M and apply |Honest no-match then eligible source option; no automatic budget relaxation | ✅ shopping-ui.json rows.U7 |
+| U8 | No response/exhaustion | Mark both candidates no-response in a fresh demo |No unanswered seller promoted; needs-verification/recheck state | ✅ shopping-ui.json rows.U8 |
+| U9 | Validation | Enter invalid budget/coordinates/time and try actions |Useful field/error feedback, no invalid mutation; fields remain editable | ✅ shopping-ui.json rows.U9 |
+| U10 | Persistence/reset | Reload after confirmed observation; reset owning simulation |State/provenance persist; reset restores source plan and clears only that simulation | ✅ shopping-ui.json rows.U10 |
+| U11 | Independent sessions | Drive different selections/observations in two browser contexts |No cross-session overwrite or disclosure; one reset leaves the other unchanged | ✅ shopping-ui.json rows.U11 |
+| U12 | Actual AI need | With real worker connected submit Persian need and inspect recommendations/facts |Immediate progress, genuine grounded answer, no automatic mission/constraint mutation | ✅ shopping-ui.json rows.U12 |
+| U13 | Actual reply parsing | Paste a real test sentence into reply textarea and request AI interpretation |Visible original text and unconfirmed preview; user confirmation required | ✅ shopping-ui.json rows.U13 |
+| U14 | Cancel/stale work | Cancel active AI including delayed initial POST; change search/mission while a prior poll response is held |Controls recover; late reply cannot overwrite newer state or apply old preview | ✅ shopping-ui.json rows.U14 |
+| U15 | Worker outage | Stop actual local worker, allow heartbeat to expire, use search/recovery |Honest AI-unavailable state; deterministic shopping remains usable | ✅ shopping-ui.json rows.U15 |
+| U16 | Source image failure | Observe or induce controlled browser image-request failure |Fallback illustration/layout, readable title and usable controls; no app crash | ✅ shopping-ui.json rows.U16 |
+| U17 | Location denial | Deny geolocation and use preset/manual coordinates |Clear fallback; no silent location assumption or unsolicited permission request | ✅ shopping-ui.json rows.U17 |
+| U18 | Transport/Torob handoffs | Inspect before click; open/copy each provider; recover and inspect again |No automatic handoff traffic; correct updated destination; no booking/stock/credit approval claim | ✅ shopping-ui.json rows.U18 |
+| U19 | Mobile/keyboard | Drive core flow at390×844 and with keyboard; test dialog initial focus, Tab containment, Escape/close and focus return |No horizontal overflow; visible focus, reachable dialog errors/progress/cancel, focus containment/return and sensible reading order | ✅ shopping-ui.json rows.U19 |
+| U20 | Exact large money | Render a flagged large-price source offer or controlled frontend fixture and inspect full text |Exact digits/flag preserved; not cheapest eligible; no Number rounding or layout break | ✅ shopping-ui.json rows.U20 |
+| U21 | Explicit AI proposal | Request an owned-mission budget proposal, inspect amount/eligible-shop count, apply explicitly; invalidate another proposal by changing mission |Proposal alone leaves mission unchanged; explicit apply changes only intended conditions; stale proposal cannot apply | ✅ shopping-ui.json rows.U21 |
+| U22 | Assisted/simulation separation | Switch from recovered simulation to assisted mode, then create a new simulation and reset it |Distinct missions and visible provenance; assisted state stays intact; reset exists only in simulation | ✅ shopping-ui.json rows.U22 |
+| U23 | Recoverable transport error | Inject one failed search/mutation request through browser transport, observe error, retry through rendered controls |Visible useful error; loading controls recover; valid retry works without unintended duplicate mutation | ✅ shopping-ui.json rows.U23 |
+
+Independent review before browser execution: U21–U23 cover proposal confirmation, mode isolation, and transport-error recovery that the original list omitted. U5, U14 and U19 now explicitly cover denied clipboard access, initial-request/late-poll races, and keyboard dialog lifecycle. No row is accepted from code inspection alone.
+
+Close rows only with assertion-specific browser/network/console/state evidence. Controlled failures must be labelled as injected, not claimed real provider outages. Mobile app launch behavior is outside the ordinary HTTPS/copy handoff contract and must remain explicitly unverified. Code screenshots or backend tests alone cannot close these rows.
+
+Final rendered QA: **23/23 pass** against the production-built UI at `http://127.0.0.1:8651`, full catalogue and actual local Codex worker. Evidence: `docs/qa-evidence/shopping-ui.json` plus assertion-specific `ui-U*.png` screenshots. Nine actual model starts were used; the shared ledger went from30 to39 and was never reset. Uncaught application page errors: zero; captured resource errors are the deliberately injected search/preview/image failures and expected stale-proposal409.
+
+Real findings fixed and retested: clipboard feedback was inaccessible behind the native reply dialog; feedback now renders within it. Exhausted no-response sellers had no follow-up action; visible recheck controls now reopen the inquiry and allow a confirmed new observation while retaining unknown stock/provenance. Earlier failed attempts remain in the evidence. Harness-only waits/selectors were corrected without relaxing product acceptance.
+
+Keyboard ruling: native Chromium Tab navigation can leave the document for browser chrome; this is accepted browser behavior, not background-page focus leakage. Tests verify no underlying application control gains focus, Tab returns into the dialog, Escape returns focus to the opener, visible focus remains, and the mobile keyboard selection/preview/confirmation flow succeeds without horizontal overflow.
+
+Actual read-only handoffs opened Torob, Neshan, Balad, Snapp, Tapsi and TorobPay; Neshan resolved to the expected coordinate share path. Destination/copy text updated after primary recovery. No automatic pre-click handoff requests, booking, payment/credit approval or mobile-device app launch is claimed. Three isolated browser contexts and the QA browser were closed. The worker was intentionally left stopped after U15 for the parent to restore after the final build; server8651 was left running. Rendered local QA does not close hosted HTTPS acceptance.

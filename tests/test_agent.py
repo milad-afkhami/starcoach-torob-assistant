@@ -244,3 +244,44 @@ def test_owned_budget_proposal_uses_locked_product_id_not_reidentification(tmp_p
     assert claim
     assert [p["product_id"] for p in claim["payload"]["candidates"]] == ["p1"]
     assert s.get_mission(owner, m.id).constraints.max_price_toman == "400"
+
+
+def test_retention_clears_turn_copies_but_preserves_recent_turn_and_domain_history(tmp_path):
+    a, s, q, owner, clock = env(tmp_path)
+    old = a.start_turn(owner, "PRIVATE_MODEL_REQUEST_TO_PURGE")
+    finish(q, clock, intent("clarify"))
+    a.get_turn(owner, old["id"])
+    m = new_mission(s, owner, mode="simulation")
+    f = s.create_followup(owner, m.id, "o1", clock[0])
+    o = s.preview_observation(
+        owner, m.id, f["id"], 1, "unavailable", raw_text="DOMAIN_REPORT_TO_KEEP", now=clock[0]
+    )
+    s.confirm_observation(owner, m.id, o["id"], 1, clock[0])
+    clock[0] = 86501
+    q.expire(clock[0])
+    with s.connect() as db:
+        assert db.execute("SELECT COUNT(*) FROM turns WHERE id=?", (old["id"],)).fetchone()[0] == 0
+        assert db.execute("SELECT payload FROM model_jobs").fetchone()[0] == "{}"
+    assert s.observations(owner, m.id)[0]["raw_text"] == "DOMAIN_REPORT_TO_KEEP"
+    _, fresh_owner = s.create_session(clock[0])
+    q.heartbeat("w", clock[0])
+    recent = a.start_turn(fresh_owner, "RECENT_REQUEST_TO_KEEP")
+    q.expire(clock[0] + 1)
+    assert a.get_turn(fresh_owner, recent["id"])["state"] == "running"
+
+
+@pytest.mark.parametrize("trigger", ["startup", "heartbeat", "capability"])
+def test_retention_runs_without_a_new_shopping_turn(tmp_path, trigger):
+    from torob.agent import AgentService
+
+    a, s, q, owner, clock = env(tmp_path)
+    old = a.start_turn(owner, "OLD_PRIVATE_MESSAGE")
+    clock[0] = 86501
+    if trigger == "startup":
+        AgentService(s, q, a.catalogue, lambda: clock[0])
+    elif trigger == "heartbeat":
+        q.heartbeat("w", clock[0])
+    else:
+        q.available(clock[0])
+    with s.connect() as db:
+        assert db.execute("SELECT COUNT(*) FROM turns WHERE id=?", (old["id"],)).fetchone()[0] == 0

@@ -31,3 +31,7 @@ Stop with Ctrl+C or SIGTERM. The worker propagates cancellation and removes the 
 A local server roundtrip does not establish hosted connectivity. T6 must repeat genuine Persian interaction, disconnect/reconnect and deterministic recovery on the actual public HTTPS deployment. Personal auth must not be uploaded to cloud hosting to bypass that gate.
 
 If container disappearance cannot be confirmed, the runtime writes an owner-only runtime-fault.json beside its shared lock and stops accepting new model calls. The worker stops heartbeating, so hosted AI availability expires normally. Inspect the named task container and Docker state, verify absence, then preserve/clear that fault record deliberately before restarting. Never clear the usage ledger or remove unrelated containers as a recovery shortcut.
+
+## Raw model-data retention
+
+After24hours, queue input/result copies are cleared and application turn request/context/result rows are deleted. Cleanup runs at startup and during ordinary queue activity, worker heartbeats and capability checks; an idle stopped service purges on its next startup. Timing/state/model provenance in queue metadata remain for accounting. Confirmed seller observations are a separate append-only mission history and are not silently erased by model-turn cleanup; their user-reported/simulation provenance remains explicit.
