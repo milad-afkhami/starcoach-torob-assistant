@@ -46,11 +46,12 @@ export default function App(){
   const [followup,setFollowup]=useState<(Followup&{missionId:string;baseRevision:number})|null>(null),[replyText,setReplyText]=useState('')
   const [outcome,setOutcome]=useState('unavailable'),[quote,setQuote]=useState(''),[closureDate,setClosureDate]=useState(()=>localInput(new Date()).slice(0,10)),[preview,setPreview]=useState<Observation|null>(null)
   const [aiPending,setAiPending]=useState(false)
+  const interactionEpoch=useRef(0)
   const aiEpoch=useRef(0),replyTrigger=useRef<HTMLElement|null>(null)
   const activeTurn=useRef<string|null>(null),missionRef=useRef<Mission|null>(null)
   missionRef.current=mission
 
-  function updateDraft<K extends keyof Draft>(key:K,value:Draft[K]){setDraft(d=>({...d,[key]:value}))}
+  function updateDraft<K extends keyof Draft>(key:K,value:Draft[K]){interactionEpoch.current++;setDraft(d=>({...d,[key]:value}))}
   function accept(response:MissionResponse,selected?:Product){
     setMission(response.mission);setPlan(response.plan)
     if(selected||response.product)setProduct(selected||response.product!)
@@ -64,13 +65,14 @@ export default function App(){
   useEffect(()=>{
     let alive=true
     async function init(){
+      const epoch=interactionEpoch.current
       try{
         await api.post('/api/sessions')
         const cap=await api.get<{catalogue_ready:boolean;model_available:boolean}>('/api/capabilities')
         if(!alive)return
         setReady(cap.catalogue_ready);setModelAvailable(cap.model_available)
         let saved:string|null=null;try{saved=localStorage.getItem('plan-b:last-mission')}catch{/* optional browser storage */}
-        if(saved){try{const r=await api.get<MissionResponse>(`/api/missions/${saved}`);if(alive){accept(r);setDraft(draftOf(r.mission.constraints))}}catch{try{localStorage.removeItem('plan-b:last-mission')}catch{/* optional */}}}
+        if(saved){try{const r=await api.get<MissionResponse>(`/api/missions/${saved}`);if(alive&&interactionEpoch.current===epoch){accept(r);setDraft(draftOf(r.mission.constraints))}}catch{try{if(interactionEpoch.current===epoch&&localStorage.getItem('plan-b:last-mission')===saved)localStorage.removeItem('plan-b:last-mission')}catch{/* optional */}}}
       }catch(e){if(alive)setError(shortError(e))}
     }
     void init()
@@ -91,10 +93,12 @@ export default function App(){
     try{const c=readDraft(draft);const r=await api.post<{products:Product[]}>('/api/search',c);setProducts(r.products);setRecommendations([]);setSearched(true);setAiMessage('');setProposal(null)}catch(e){setError(shortError(e))}finally{setBusy(false)}
   }
   async function selectProduct(p:Product,c?:Constraints,mode:'assisted'|'simulation'='assisted'){
+    interactionEpoch.current++
     setError('');setBusy(true);await cancelAI(true)
     try{const r=await api.post<MissionResponse>('/api/missions',{product_id:p.product_id,constraints:c||readDraft(draft),mode});accept(r,p);setDelta(null);setFollowup(null);setPreview(null);setTransportOpen(false);setToast('کالا انتخاب شد؛ حالا شرایط مراجعه و گزینه دوم را بررسی کنید.');revealMission()}catch(e){setError(shortError(e))}finally{setBusy(false)}
   }
   async function loadDemo(){
+    interactionEpoch.current++
     setError('');setBusy(true)
     try{const p=await api.get<Product>(`/api/products/${FIXTURE}`);setDraft(draftOf(DEMO));setProducts([p]);setSearched(true);setRecommendations([]);await selectProduct(p,DEMO,'simulation')}catch(e){setError(shortError(e));setBusy(false)}
   }
