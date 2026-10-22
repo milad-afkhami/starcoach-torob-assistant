@@ -1,21 +1,21 @@
 {
   "stats_before_restart": {
-    "BlockIO": "105MB / 1.41MB",
-    "CPUPerc": "0.16%",
-    "Container": "torob-container-qa-4e0a65e1",
-    "ID": "febb16634002",
-    "MemPerc": "10.61%",
-    "MemUsage": "54.32MiB / 512MiB",
-    "Name": "torob-container-qa-4e0a65e1",
-    "NetIO": "13.3kB / 193kB",
+    "BlockIO": "60.7MB / 1.41MB",
+    "CPUPerc": "0.12%",
+    "Container": "torob-container-qa-0587e299",
+    "ID": "b15e2c886b24",
+    "MemPerc": "10.46%",
+    "MemUsage": "53.56MiB / 512MiB",
+    "Name": "torob-container-qa-0587e299",
+    "NetIO": "12.7kB / 193kB",
     "PIDs": "2"
   },
-  "process_memory": "VmHWM:\t   59048 kB\nVmRSS:\t   59048 kB",
+  "process_memory": "VmHWM:\t   58916 kB\nVmRSS:\t   58916 kB",
   "catalogue_sha256": "3ae4f27bf376c90e06b61eb4e70aeded07fc5da2bb6d59c09b44bba1f1f09b01",
   "persistence": true,
   "private_paths_404": true,
   "worker_offline_search_and_recovery": true,
-  "image": "sha256:da85fb14c04d7b81ed0b744c0400fb0865aebeecb578426160f71a443deafcca",
-  "image_bytes": 1095380500,
+  "image": "sha256:63076acaa1a6472749134d261b77ce747aef86a746b2d522e73357e2ad3bf7ba",
+  "image_bytes": 1095385516,
   "catalogue_bytes": 732278784
 }

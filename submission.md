@@ -14,7 +14,7 @@
 Repository URL: pending publication.
 Video URL: pending recording/upload.
 Deployment URL: pending approved provisioning.
-Final commit: pending final review.
+Reviewed implementation commit: f7253c5 (includes the later regression-backed model launch correction). Final public-release commit: pending publication.
 Submission confirmation: none.
 
 Implementation readiness and open gates live in [kanban](docs/insured-vibe-coding/kanban.md); this file owns submission evidence only.

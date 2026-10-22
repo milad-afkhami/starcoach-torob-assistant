@@ -1,7 +1,7 @@
 {
   "artifact": "/home/milad/Desktop/projects/starcoach-torob-assistant/data/deployment.tar.gz",
-  "bytes": 144390595,
-  "sha256": "540728d9887b6679f5d1f6ddf2bedbe56cfa124492a4cb323a77b3a5f0de36d7",
+  "bytes": 144390640,
+  "sha256": "cde37ec5de96490b2395963fae4204fe5ca9fb70d370dcd1c13110b0da19468b",
   "members": [
     "Dockerfile",
     "backend/torob/__init__.py",
