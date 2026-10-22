@@ -110,3 +110,7 @@ The user explicitly authorized creating and pushing both repositories in the log
 DECISION: use a standard main branch in the new repository and preserve the local build branch. Why: these are new owner-authorized repositories with no existing collaborators, workflows or deployment triggers. Alternative: a feature-only remote would leave the requested source repository less accessible. Recoverable: retain the original build branch; ordinary future commits update main without rewriting history.
 
 DECISION: use HTTPS with the existing GitHub CLI credential helper per push. Why: the initial SSH attempt failed host-key verification; HTTPS succeeded without weakening SSH verification or changing global authentication settings.
+
+## Familiarization walkthrough verified — 22 October
+
+The existing app8651 and outbound model worker remain running; actual capabilities reported catalogue_ready/model_available true with codex_cli. A fresh isolated rendered session loaded the fixed source-row simulation, inspected the inquiry, manually previewed/confirmed unavailable, observed the300,000toman fallback promotion and verified the updated destination chooser. Reset the session’s simulation afterward and closed the controlled browser. No external navigation/contact, provider change or code change occurred. This is a rehearsal flow check, not a newly rerun aggregate test suite or hosted acceptance.
