@@ -9,9 +9,11 @@ from urllib.parse import urlsplit
 
 from fastapi import Depends, FastAPI, HTTPException, Query, Request, Response
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 
 from .catalogue import Catalogue
+from .external_actions import build_external_actions
 from .agent import AgentService
 from .model_jobs import JobQueue
 from .session import Store, StoreError
@@ -75,6 +77,7 @@ def create_app(
     session_secret=None,
     worker_token=None,
     public_origin=None,
+    frontend_dist=None,
     clock=time.time,
 ):
     catalogue_path = Path(catalogue_path or os.environ.get("CATALOGUE_DB_PATH", "data/catalogue.sqlite"))
@@ -111,7 +114,14 @@ def create_app(
         path, now = request.url.path, clock()
         if path.startswith("/api/"):
             ip = request.client.host if request.client else "unknown"
-            key = (ip, "session" if path == "/api/sessions" else "api")
+            new_session = path == "/api/sessions"
+            if new_session:
+                try:
+                    store.resolve_session(request.cookies.get("torob_session"), now)
+                    new_session = False
+                except StoreError:
+                    pass
+            key = (ip, "session" if new_session else "api")
             bucket = rates[key]
             while bucket and bucket[0] <= now - 60:
                 bucket.popleft()
@@ -239,6 +249,15 @@ def create_app(
     def history(mission_id: str, session=Depends(owner)):
         return {"events": store.history(session, mission_id)}
 
+    @app.get("/api/missions/{mission_id}/actions")
+    def actions(mission_id: str, session=Depends(owner), source=Depends(ready)):
+        mission, plan = store.snapshot(session, mission_id)
+        product = source.get_product(mission.selected_product_id)
+        return {
+            "revision": mission.revision,
+            "actions": build_external_actions(product, plan.primary, mission),
+        }
+
     @app.post("/api/missions/{mission_id}/followups")
     def followup(mission_id: str, body: NewFollowup, session=Depends(owner), source=Depends(ready)):
         return store.create_followup(session, mission_id, body.offer_id, clock())
@@ -269,4 +288,7 @@ def create_app(
         return {"mission": public_mission(result), "plan": store.plan(session, mission_id)}
 
     app.include_router(worker_router(jobs, worker_token, clock))
+    dist = Path(frontend_dist) if frontend_dist else Path(__file__).resolve().parents[2] / "frontend" / "dist"
+    if dist.is_dir():
+        app.mount("/", StaticFiles(directory=dist, html=True), name="frontend")
     return app

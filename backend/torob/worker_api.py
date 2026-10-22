@@ -61,7 +61,7 @@ def worker_router(queue: JobQueue, token: str, clock: Callable = time.time):
 
     def authenticate(request: Request):
         value = request.headers.get("authorization", "")
-        if not hmac.compare_digest(value, f"Bearer {token}"):
+        if not hmac.compare_digest(value.encode(), f"Bearer {token}".encode()):
             raise HTTPException(401, "worker_unauthorized")
 
     router = APIRouter(

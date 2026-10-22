@@ -1,0 +1,21 @@
+services:
+  app:
+    build: .
+    image: starcoach-torob:local
+    ports:
+      - "127.0.0.1:8652:8000"
+    environment:
+      PUBLIC_ORIGIN: ${PUBLIC_ORIGIN:-http://127.0.0.1:8652}
+      SESSION_SECRET: ${SESSION_SECRET:?Set SESSION_SECRET in your private .env}
+      MODEL_WORKER_TOKEN: ${MODEL_WORKER_TOKEN:?Set MODEL_WORKER_TOKEN in your private .env}
+    volumes:
+      - state:/data
+    restart: unless-stopped
+    mem_limit: 512m
+    cpus: 0.5
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+volumes:
+  state:

@@ -61,7 +61,7 @@ class Store:
         if not isinstance(cookie, str) or len(cookie) > 200 or "." not in cookie:
             raise StoreError("unauthenticated", 401)
         session_id, signature = cookie.split(".", 1)
-        if not hmac.compare_digest(signature, self._signature(session_id)):
+        if not hmac.compare_digest(signature.encode(), self._signature(session_id).encode()):
             raise StoreError("unauthenticated", 401)
         with self.connect() as db:
             row = db.execute("SELECT expires FROM sessions WHERE id=?", (session_id,)).fetchone()
@@ -156,10 +156,14 @@ class Store:
             return self._observations(db, mission_id)
 
     def plan(self, owner, mission_id):
+        return self.snapshot(owner, mission_id)[1]
+
+    def snapshot(self, owner, mission_id):
         with self.connect() as db:
+            db.execute("BEGIN")
             mission = self._mission(db, owner, mission_id)
             observations = self._observations(db, mission_id)
-        return self.catalogue.plan_mission(mission, observations)
+        return mission, self.catalogue.plan_mission(mission, observations)
 
     def _offer(self, mission, offer_id):
         offers = self.catalogue.find_offers(mission.selected_product_id, mission.constraints)

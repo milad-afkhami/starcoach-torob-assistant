@@ -1,0 +1,236 @@
+{
+  "scope": "Eight synthetic adversarial cases; not random sampling or live seller outcomes.",
+  "baselines": "Price-first ignores eligibility. Static-eligible selects once using initial facts; neither baseline processes later replies. Both receive identical initial catalogue and constraints.",
+  "oracle": "Expected o2 for seven cases, no match when all three shops are unanswered; specified independently of planner output.",
+  "cases": [
+    {
+      "case": "unavailable",
+      "expected": "o2",
+      "static_price": {
+        "selected_offer": "o1",
+        "correct": false
+      },
+      "static_eligible": {
+        "selected_offer": "o1",
+        "correct": false
+      },
+      "plan_b": {
+        "selected_offer": "o2",
+        "correct": true
+      },
+      "unchanged_constraints": true,
+      "all_stock_unknown": true,
+      "latency_ms": {
+        "median": 0.10448601096868515,
+        "p95": 0.141422962769866
+      },
+      "protocol": {
+        "preview_and_confirm_actions_per_event": 2,
+        "repeated_requirement_entry": 0,
+        "measured_human_actions": false
+      }
+    },
+    {
+      "case": "no_response",
+      "expected": "o2",
+      "static_price": {
+        "selected_offer": "o1",
+        "correct": false
+      },
+      "static_eligible": {
+        "selected_offer": "o1",
+        "correct": false
+      },
+      "plan_b": {
+        "selected_offer": "o2",
+        "correct": true
+      },
+      "unchanged_constraints": true,
+      "all_stock_unknown": true,
+      "latency_ms": {
+        "median": 0.10931448196060956,
+        "p95": 0.2714620204642415
+      },
+      "protocol": {
+        "preview_and_confirm_actions_per_event": 2,
+        "repeated_requirement_entry": 0,
+        "measured_human_actions": false
+      }
+    },
+    {
+      "case": "price_increase",
+      "expected": "o2",
+      "static_price": {
+        "selected_offer": "o1",
+        "correct": false
+      },
+      "static_eligible": {
+        "selected_offer": "o1",
+        "correct": false
+      },
+      "plan_b": {
+        "selected_offer": "o2",
+        "correct": true
+      },
+      "unchanged_constraints": true,
+      "all_stock_unknown": true,
+      "latency_ms": {
+        "median": 0.12349750613793731,
+        "p95": 0.13698101975023746
+      },
+      "protocol": {
+        "preview_and_confirm_actions_per_event": 2,
+        "repeated_requirement_entry": 0,
+        "measured_human_actions": false
+      }
+    },
+    {
+      "case": "wrong_variant",
+      "expected": "o2",
+      "static_price": {
+        "selected_offer": "o1",
+        "correct": false
+      },
+      "static_eligible": {
+        "selected_offer": "o1",
+        "correct": false
+      },
+      "plan_b": {
+        "selected_offer": "o2",
+        "correct": true
+      },
+      "unchanged_constraints": true,
+      "all_stock_unknown": true,
+      "latency_ms": {
+        "median": 0.10243049473501742,
+        "p95": 0.11340703349560499
+      },
+      "protocol": {
+        "preview_and_confirm_actions_per_event": 2,
+        "repeated_requirement_entry": 0,
+        "measured_human_actions": false
+      }
+    },
+    {
+      "case": "payment_conflict",
+      "expected": "o2",
+      "static_price": {
+        "selected_offer": "o1",
+        "correct": false
+      },
+      "static_eligible": {
+        "selected_offer": "o1",
+        "correct": false
+      },
+      "plan_b": {
+        "selected_offer": "o2",
+        "correct": true
+      },
+      "unchanged_constraints": true,
+      "all_stock_unknown": true,
+      "latency_ms": {
+        "median": 0.09765551658347249,
+        "p95": 0.10476401075720787
+      },
+      "protocol": {
+        "preview_and_confirm_actions_per_event": 2,
+        "repeated_requirement_entry": 0,
+        "measured_human_actions": false
+      }
+    },
+    {
+      "case": "closed_at_visit",
+      "expected": "o2",
+      "static_price": {
+        "selected_offer": "o1",
+        "correct": false
+      },
+      "static_eligible": {
+        "selected_offer": "o2",
+        "correct": true
+      },
+      "plan_b": {
+        "selected_offer": "o2",
+        "correct": true
+      },
+      "unchanged_constraints": true,
+      "all_stock_unknown": true,
+      "latency_ms": {
+        "median": 0.09675347246229649,
+        "p95": 0.10467303218320012
+      },
+      "protocol": {
+        "preview_and_confirm_actions_per_event": 2,
+        "repeated_requirement_entry": 0,
+        "measured_human_actions": false
+      }
+    },
+    {
+      "case": "unknown_hours",
+      "expected": "o2",
+      "static_price": {
+        "selected_offer": "o1",
+        "correct": false
+      },
+      "static_eligible": {
+        "selected_offer": "o2",
+        "correct": true
+      },
+      "plan_b": {
+        "selected_offer": "o2",
+        "correct": true
+      },
+      "unchanged_constraints": true,
+      "all_stock_unknown": true,
+      "latency_ms": {
+        "median": 0.10108249261975288,
+        "p95": 0.10918598854914308
+      },
+      "protocol": {
+        "preview_and_confirm_actions_per_event": 2,
+        "repeated_requirement_entry": 0,
+        "measured_human_actions": false
+      }
+    },
+    {
+      "case": "exhausted",
+      "expected": null,
+      "static_price": {
+        "selected_offer": "o1",
+        "correct": false
+      },
+      "static_eligible": {
+        "selected_offer": "o1",
+        "correct": false
+      },
+      "plan_b": {
+        "selected_offer": null,
+        "correct": true
+      },
+      "unchanged_constraints": true,
+      "all_stock_unknown": true,
+      "latency_ms": {
+        "median": 0.012090516975149512,
+        "p95": 0.015026016626507044
+      },
+      "protocol": {
+        "preview_and_confirm_actions_per_event": 2,
+        "repeated_requirement_entry": 0,
+        "measured_human_actions": false
+      }
+    }
+  ],
+  "real_catalogue_fixture": {
+    "catalogue": "data/catalogue.sqlite",
+    "source_product_id": "product_adfdc73bc839d15cd7754318",
+    "primary": "offer_b08b779f43846d8e8c6aef1d",
+    "fallback": "offer_dd4dc3e07a9bc3b94af79800",
+    "price_delta_toman": "300000",
+    "straight_line_separation_metres": 63.42143912544386,
+    "confirmation_and_replan_ms": 20.071717037353665,
+    "provenance": "simulation",
+    "fixed_arrival": "2026-10-22T20:15:00+03:30",
+    "live_stock_verified": false
+  },
+  "verified_at_utc": "2026-10-22T00:38:52.949043+00:00"
+}

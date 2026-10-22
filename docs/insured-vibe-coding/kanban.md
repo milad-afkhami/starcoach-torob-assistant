@@ -1,6 +1,6 @@
 # Build kanban — Torob
 
-_Last updated:2026-10-22. Next action: T5 frontend scaffold, written UI test cases, red Playwright flows, then Persian interface._
+_Last updated:2026-10-22. Next action: independent23-row rendered UI QA; fix failures, then container/deployment and delivery. Local app http://127.0.0.1:8651; actual model worker connected._
 
 ## Doing
 - Interface T5 — Persian search/needs, comparison, persistent primary/fallback mission, confirmed reply recovery and external handoffs; rendered UI QA owed.

@@ -193,3 +193,33 @@ def test_public_offers_query_validation(tmp_path):
     )
     assert response.status_code == 200 and len(response.json()["offers"]) == 3
     assert c.get("/api/products/p1/offers", params={"lat": 100}).status_code == 422
+
+
+def test_frontend_assets_do_not_expose_catalogue(tmp_path):
+    from torob.api import create_app
+
+    dist = tmp_path / "ui"
+    dist.mkdir()
+    (dist / "index.html").write_text("<!doctype html><title>Plan B</title>")
+    application(tmp_path)
+    app = create_app(
+        catalogue_path=tmp_path / "catalogue.sqlite",
+        state_db_path=tmp_path / "state.sqlite",
+        session_secret=SECRET,
+        worker_token=TOKEN,
+        public_origin=ORIGIN,
+        frontend_dist=dist,
+    )
+    c = TestClient(app)
+    assert c.get("/").status_code == 200 and "Plan B" in c.get("/").text
+    assert c.get("/data/catalogue.sqlite").status_code == 404
+    assert c.get("/readyz").status_code == 200
+
+
+def test_session_reuse_does_not_consume_creation_quota(tmp_path):
+    app = application(tmp_path)
+    c = login(app)
+    cookie = c.cookies.get('torob_session')
+    for _ in range(12):
+        assert c.post('/api/sessions').status_code == 200
+        assert c.cookies.get('torob_session') == cookie

@@ -16,3 +16,4 @@ data/
 *.log
 playwright-report/
 test-results/
+.runtime/

@@ -76,3 +76,12 @@ def test_reset_is_simulation_only_and_other_session_untouched(tmp_path):
         s.reset(a, n.id, 1, 101)
     assert s.reset(b, n.id, 1, 102).revision == 2
     assert s.get_mission(a, m.id).revision == 1
+
+
+def test_non_ascii_cookie_is_rejected_not_server_error(tmp_path):
+    from torob.session import StoreError
+
+    s, c = setup(tmp_path)
+    with pytest.raises(StoreError) as error:
+        s.resolve_session("id.امضا", 100)
+    assert error.value.status == 401

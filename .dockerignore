@@ -1,0 +1,11 @@
+**
+!Dockerfile
+!requirements.lock
+!backend/
+!backend/torob/
+!backend/torob/*.py
+!frontend/
+!frontend/dist/
+!frontend/dist/**
+!data/
+!data/catalogue.sqlite

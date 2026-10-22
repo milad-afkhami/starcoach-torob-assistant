@@ -101,3 +101,13 @@ def test_worker_provenance_is_typed_and_stored(tmp_path):
     response = c.post(f"/internal/model-worker/jobs/{j['id']}/complete", json=body, headers=auth())
     assert response.status_code == 200
     assert q.get(j["id"], "s1", 101)["provenance"] == provenance
+
+
+def test_non_ascii_authorization_rejected_not_server_error(tmp_path):
+    c, q, clock = setup(tmp_path)
+    response = c.post(
+        "/internal/model-worker/heartbeat",
+        json={"worker_id": "w"},
+        headers={b"authorization": b"Bearer \xff"},
+    )
+    assert response.status_code == 401

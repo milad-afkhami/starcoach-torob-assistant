@@ -1,6 +1,6 @@
 # Model runtime
 
-The hosted app queues bounded, sanitized model requests. The local worker pulls them over HTTPS and returns validated JSON. Personal Codex authentication stays local. The model container has no Liara credentials, worker bearer or application database. Search and deterministic recovery must remain usable when the worker is absent (implemented in later product phases).
+The hosted app queues bounded, sanitized model requests. The local worker pulls them over HTTPS and returns validated JSON. Personal Codex authentication stays local. The model container has no Liara credentials, worker bearer or application database. Search and deterministic recovery remain usable when the worker is absent; actual local acceptance is recorded separately from hosted checks.
 
 ## Local setup
 
