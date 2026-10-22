@@ -8,13 +8,15 @@
 
 | Layer | Recorded outcome | Evidence | What it does not establish |
 |---|---|---|---|
-| Backend regressions | 186 passing tests at the reviewed code checkpoint | [Progress and checkpoints](implementation-progress.md) | A fresh test run on every later documentation commit |
+| Backend regressions | 191 passing tests at the reviewed code checkpoint | [Progress and checkpoints](implementation-progress.md) | A fresh test run on every later documentation commit |
 | Independent rendered UI | 23/23 scenarios | [UI ledger](insured-vibe-coding/test-plans/shopping-ui.md), [raw results](qa-evidence/shopping-ui.json) | Hosted mobile acceptance |
 | Mission API | 20/20 actual API scenarios | [Cases](insured-vibe-coding/test-plans/mission-api.md), [results](qa-evidence/mission-api.json) | A genuine seller conversation |
 | Model runtime | 12/12 independent real runtime QA scenarios | [Runtime ledger](insured-vibe-coding/test-plans/model-runtime.md), [results](qa-evidence/model-runtime.json) | Uninterrupted cloud inference |
 | Catalogue queries | 20 query scenarios, 60 warm samples; recorded warm-search p95 about 69.5 ms | [Catalogue evaluation](qa-evidence/catalogue-evaluation.json) | A production latency guarantee or network-inclusive response time |
 | Recovery | 8/8 synthetic adversarial cases; source-row scenario shows +300,000 toman | [Recovery results](../results/recovery.json) | Random-sample accuracy, live stock or user-study action savings |
 | Container | Constrained local container, private-path checks and restart persistence | [Container evidence](qa-evidence/container.json), [artifact manifest](qa-evidence/deployment-artifact.json) | Actual Liara hosting |
+
+The latest user-directed interface revision adds13current rendered browser regressions and a blind source/output review; see [review feedback](review-feedback.md). The original23-case independent UI matrix remains separately recorded.
 
 These are historical recorded checks. Follow [verification commands](getting-started.md#verification-commands) to run appropriate checks against another revision/environment. Genuine model evaluations consume the persistent shared budget.
 

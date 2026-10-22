@@ -1,0 +1,30 @@
+{
+  "checked_at_utc": "2026-10-22T19:31:45.944718+00:00",
+  "scope": "Independent simulated hackathon rubric review, not official scoring or a forecast. Reviewers saw isolated source snapshots, original briefs and actual output; implementation docs/plans/previous implementation reviews were excluded.",
+  "scores_in_order": [
+    214,
+    227,
+    230,
+    235
+  ],
+  "cloud_acceptance": "Not established; fixture/local limitations retained as deductions.",
+  "remaining_constraints": "No official score, prize claim, published video or final contest submission.",
+  "final_targeted_proof": {
+    "score": 235,
+    "category_scores": {
+      "product": 59,
+      "ux": 61,
+      "intelligence": 40,
+      "deployment": 22,
+      "technical": 35,
+      "dataset": 18
+    },
+    "wall_ms": 18398,
+    "model_ms": 17407,
+    "model_calls": 1,
+    "eligible_shops": 8,
+    "exact_proposal_applied_match": true,
+    "snapshot_agent_sha256": "af2e87676ea14bc7b87288f59aed6725c8f4d78d3fcc7141d02f583cf6b287f5"
+  },
+  "post_review_refinement": "Independent final UI check passed: nonreported reason groups collapsed, reported unavailable/no-response groups expanded and recheckable; no mutation or model call; score235 retained."
+}

@@ -19,9 +19,11 @@ A guide to **using, running and reviewing Plan B**. Product behavior, recorded e
 |---|---|
 | [Getting started](getting-started.md) | Dependencies, catalogue import, private configuration and startup |
 | [User guide](user-guide.md) | Screen controls, normal flow, recovery and resetting a sample |
+| [RTL design foundation](design-system.md) | Inspected Figma kit, adopted tokens/components, digit shaping and branding qualifications |
 | [Architecture](architecture.md) | Components, trust boundaries, storage and decision flow |
 | [Configuration and API reference](reference.md) | Environment variables, route map and troubleshooting |
 | [Model runtime](model-runtime.md) | Worker protocol, isolation, quotas, cancellation and retention |
+| [Blind review feedback](review-feedback.md) | Independent simulated judge deductions, fixes and remaining limits |
 | [Evaluation](evaluation.md) | Interpreting recorded results and finding their raw evidence |
 | [Seller-contact limitations](contact-limitations.md) | Synthetic contacts, observations and provenance |
 | [Deployment](deployment.md) | Private packaging, persistence and proposed hosting resources |

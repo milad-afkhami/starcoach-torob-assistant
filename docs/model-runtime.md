@@ -39,3 +39,7 @@ After24hours, queue input/result copies are cleared and application turn request
 ## Launch acknowledgement correction
 
 Independent Liara runtime QA found a shared launch-cancellation race: a Docker container could finish creation after an early cleanup/absence check. Both copies now await bounded create acknowledgement before cancellable start/attach. Unknown creation faults closed and keeps the shared budget intact; cleanup remains explicit. The final reproducible image is `public.ecr.aws/docker/library/python:3.12-slim-bookworm@sha256:6a0e06f5ba0b373d051aabd3fffb9b873f27f9a2a3a14bcbe37dee6f0e3bbc70`, with the entrypoint overridden by the mounted executable. A genuine corrected-adapter schema call passed on this already verified official base; local runtime retest is recorded separately from hosted acceptance.
+
+## Selected-product condition updates
+
+A needs request on an existing selected-product mission now ends after one validated interpretation call. Radius, explicit Tehran visit, payment and opening-hour changes remain proposals, and deterministic code returns the actual eligible-shop count in toman-based source data. Discovery/comparison may still use two calls. This avoids re-recommending an already selected product and prevents model prose contradicting computed eligibility. The independent final rehearsal measured18.4seconds for this one-call path; it is a measured local run, not a latency guarantee.

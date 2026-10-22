@@ -40,3 +40,9 @@ A generic full-screen chatbot would hide the purchase constraints and make recov
 ## Verification owed
 
 T5 requires a written Playwright QA plan covering typing, form edits, source search/selection, comparison, preview/confirmation, no-response/no-match, explicit constraint changes, two sessions, reload/reset, AI failure/cancel, navigation handoffs,390×844 layout, keyboard focus and console/network failures. Independent QA must drive the rendered controls; API tests do not close those rows.
+
+## User-directed revision — agent-led shopping
+
+The user rejected burying the agent beneath a filter form. The next revision leads with a prominent Persian composer, a visible user turn and a schema-backed response made of text, product cards and explicit condition proposals. Exact search/filters remain a secondary, discoverable control path; this is a bounded purchase assistant, not arbitrary model-generated HTML. Keep one responsive implementation, prioritizing mobile and using desktop space for the mission beside the conversation. Plan B was the builder-selected concept name, not an organizer requirement.
+
+Use a consistent token-based control system: single composite focus ring, keyboard-accessible popover selection, custom-styled semantic checkboxes, local Vazirmatn with verified ss01 Persian glyphs, readable labels and technical LTR isolation. Preserve parsing, BigInt and localized grouping; glyph substitution does not replace numeric validation. The linked community RTL Tailwind kit is a reference, not verified as an official Torob design system. Inspect its three pages and record the exact adoption/limits before claiming conformity.

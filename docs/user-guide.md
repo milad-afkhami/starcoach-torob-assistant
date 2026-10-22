@@ -18,16 +18,18 @@ On desktop, discovery is on the right and the purchase notebook on the left. On 
 
 ## Choose a product
 
-1. Enter a model or name in **جست‌وجوی کالا** and press **جست‌وجو**.
+1. Start with the leading assistant composer. For direct search, expand **جست‌وجوی مستقیم و فیلترها**, enter a model/name in **جست‌وجوی کالا**, then press **جست‌وجو**.
 2. For help choosing, describe the need in the assistant box and press **کمک برای انتخاب**. Inspect **چرا این گزینه؟** for recorded evidence.
 3. Tick **مقایسه** on two cards and open **مقایسه دو کالا**. Missing specifications are unknown, not proof of absence.
 4. Use **انتخاب این کالا** to choose the exact variant. Another variant is not silently substituted later.
+
+For a selected product, **شرایط همین کالا** can propose a budget, radius, visit time or payment change; the full proposed values are shown before confirmation. Relative dates resolve against an explicit Tehran clock. A selected-product condition update uses one model interpretation call and a deterministic eligibility summary rather than recommending the same product again.
 
 An AI proposal is explicitly labelled **پیشنهاد؛ هنوز اعمال نشده**. **استفاده از پیشنهاد** requires your action; changing an existing mission's conditions is explicit as well.
 
 ## Set the conditions
 
-Use budget in **toman**, radius in kilometres and **Tehran** visit time. Expand **محدوده و شرایط پرداخت** for coordinates, the Jomhouri shortcut, location permission and payment requirements. Use **اعمال شرایط روی همین برنامه** after editing an existing mission.
+Expand **جست‌وجوی مستقیم و فیلترها** to edit conditions. Use budget in **toman**, radius in kilometres and **Tehran** visit time. Expand **محدوده و شرایط پرداخت** for coordinates, the Jomhouri shortcut, location permission and payment requirements. Use **اعمال شرایط روی همین برنامه** after editing an existing mission.
 
 | Label or fact | Interpret it as |
 |---|---|

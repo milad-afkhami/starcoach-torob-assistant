@@ -10,6 +10,7 @@ from pathlib import Path
 
 from pydantic import ValidationError
 
+from .hours import TEHRAN
 from .followup import KINDS, active_observations, compare_plans, dimension
 from .types import Mission, SearchConstraints
 
@@ -179,7 +180,8 @@ class Store:
             product = self._product(mission.selected_product_id)
             inquiry = f"آیا «{product.title or 'کالای انتخاب‌شده'}» با همین مشخصات موجود است؟ قیمت نهایی به تومان چقدر است؟"
             if mission.constraints.visit_at:
-                inquiry += f" برای مراجعه در {mission.constraints.visit_at.isoformat()} باز هستید؟"
+                visit = mission.constraints.visit_at.astimezone(TEHRAN)
+                inquiry += f" برای مراجعه در {visit:%Y/%m/%d} (میلادی)، ساعت {visit:%H:%M} به وقت تهران باز هستید؟"
             if mission.constraints.payment_provider:
                 inquiry += f" خرید حضوری این کالا با {mission.constraints.payment_provider} چه شرایطی دارد؟"
             value = {

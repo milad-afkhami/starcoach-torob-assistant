@@ -1,6 +1,6 @@
 # Build kanban — Torob
 
-_Last updated:22October2026. Next action: approved Liara deployment and hosted HTTPS acceptance; local implementation/review fixes are verified. App http://127.0.0.1:8651 and local model worker are running for review. Liara product implementation has begun separately._
+_Last updated:22October2026. Next action: approved Liara deployment and hosted HTTPS acceptance; local implementation/review fixes are verified. App http://127.0.0.1:8651 and local model worker are running for review. Both local products are implemented; latest revised interfaces are running separately._
 
 ## Doing
 - T6 hosted delivery — concrete app/plan/cost/artifact in docs/deployment.md. Public source is published and anonymously verified; no cloud app/key/disk/video/submission created. Cloud approval and actual hosted verification remain open.
@@ -10,6 +10,7 @@ _Last updated:22October2026. Next action: approved Liara deployment and hosted H
 - Record narrated five-minute demo, publish its approved link, verify playback signed out and submit once; submission.md owns confirmations.
 
 ## Done
+- Agent-led Persian workspace — 191 backend tests,3 exact-value tests,13 actual browser regressions; documented keyboard/focus/select/checkbox and source-row recovery. Blind source/output review improved214→235/300 (simulated, not official). One-call condition update18.4seconds with exact confirmation; Figma community-kit adoption qualified in docs/design-system.md. Previous private deployment artifact predates this revision; rebuild before live acceptance.
 - T5 local interface — independent rendered UI QA23/23, including genuine Persian model needs/reply/proposals, mobile/keyboard, two sessions, external handoffs and stopped-worker recovery. Evidence: test-plans/shopping-ui.md and docs/qa-evidence/shopping-ui.json. Final code review fixes have targeted browser/domain regressions and186Python tests, including the later shared launch-cancellation correction.
 - T6 local artifact — actual512MiB/0.5CPU container boot/search/recovery/restart persistence and private-path checks pass; private source bundle allowlist verified. Final rebuilt image/artifact hashes in docs/qa-evidence/{container,deployment-artifact}.json. Eight-case recovery evaluation in results/recovery.json. Hosted acceptance is not included.
 - T3/T4 mission/AI — real API QA20/20, ten actual Persian cases and32 source facts checked.

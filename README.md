@@ -33,6 +33,8 @@ A low price is only useful if the right product, shop, budget and visit time wor
 | Check deployment or submission readiness | [Deployment](docs/deployment.md) and [submission evidence](submission.md) |
 | Find a setting, endpoint or recovery step | [Configuration and API reference](docs/reference.md) |
 
+[RTL design foundation](docs/design-system.md) explains the community-kit adoption and product naming.
+
 [Browse the documentation](docs/README.md) for the complete reading map.
 
 ## The product loop
@@ -84,7 +86,7 @@ Codex authentication stays on the local worker. The model receives bounded evide
 
 ## Evidence and current limits
 
-Recorded checks include **186 backend tests**, **23 independent rendered UI scenarios**, real model/mission API checks, an eight-case recovery evaluation, and a constrained local container run with restart persistence. These are recorded development results, not a CI badge or proof of live shopping success. [Read the evidence and its scope](docs/evaluation.md).
+Recorded checks include **191 backend tests**, **23 original independent rendered UI scenarios**, 13 current browser regressions, real model/mission API checks, an eight-case recovery evaluation, and a constrained local container run with restart persistence. These are recorded development results, not a CI badge or proof of live shopping success. [Read the evidence and its scope](docs/evaluation.md).
 
 <details>
 <summary><strong>What this MVP deliberately does not claim</strong></summary>

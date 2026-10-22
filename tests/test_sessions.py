@@ -85,3 +85,13 @@ def test_non_ascii_cookie_is_rejected_not_server_error(tmp_path):
     with pytest.raises(StoreError) as error:
         s.resolve_session("id.امضا", 100)
     assert error.value.status == 401
+
+
+def test_followup_visit_is_a_readable_tehran_time_not_an_iso_timestamp(tmp_path):
+    s, catalogue_source = setup(tmp_path)
+    _, owner = s.create_session(100)
+    mission = new_mission(s, owner)
+    followup = s.create_followup(owner, mission.id, 'o1', 101)
+    assert '20:15' in followup['inquiry']
+    assert 'به وقت تهران' in followup['inquiry']
+    assert 'T20:15:00' not in followup['inquiry']

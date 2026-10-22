@@ -39,6 +39,7 @@ def intent(action="search"):
         "category": "گوشی موبایل",
         "max_price_toman": "300",
         "clarification_fa": "بودجه شما چقدر است؟" if action == "clarify" else None,
+        "condition_changes": None,
     }
 
 
@@ -109,11 +110,9 @@ def test_existing_mission_is_not_changed_by_model_suggestion(tmp_path):
     m = new_mission(s, owner, max_price_toman="100")
     t = a.start_turn(owner, "بودجه را بیشتر کنیم", mission_id=m.id, base_revision=1)
     finish(q, clock, intent())
-    a.get_turn(owner, t["id"])
-    claim = q.claim("w", clock[0])
-    clock[0] += 1
-    q.complete(claim["id"], claim["lease_id"], claim["completion_token"], recommendation(claim), clock[0])
-    assert a.get_turn(owner, t["id"])["state"] == "completed"
+    done = a.get_turn(owner, t["id"])
+    assert done["state"] == "completed"
+    assert q.claim("w", clock[0]) is None
     assert s.get_mission(owner, m.id).constraints.max_price_toman == "100"
     assert s.get_mission(owner, m.id).revision == 1
 
@@ -239,10 +238,10 @@ def test_owned_budget_proposal_uses_locked_product_id_not_reidentification(tmp_p
     value = intent()
     value.update(query="unfindable RAM wording", max_price_toman="410")
     finish(q, clock, value)
-    a.get_turn(owner, t["id"])
-    claim = q.claim("w", clock[0])
-    assert claim
-    assert [p["product_id"] for p in claim["payload"]["candidates"]] == ["p1"]
+    done = a.get_turn(owner, t["id"])
+    assert done["state"] == "completed"
+    assert [p["product_id"] for p in done["result"]["products"]] == ["p1"]
+    assert q.claim("w", clock[0]) is None
     assert s.get_mission(owner, m.id).constraints.max_price_toman == "400"
 
 
@@ -285,3 +284,59 @@ def test_retention_runs_without_a_new_shopping_turn(tmp_path, trigger):
         q.available(clock[0])
     with s.connect() as db:
         assert db.execute("SELECT COUNT(*) FROM turns WHERE id=?", (old["id"],)).fetchone()[0] == 0
+
+
+def test_requested_radius_visit_and_payment_are_previewed_without_mutating_mission(tmp_path):
+    a, store, queue, owner, clock = env(tmp_path)
+    mission = new_mission(store, owner)
+    before = store.get_mission(owner, mission.id).constraints.model_dump(mode='json')
+    turn = a.start_turn(owner, 'شعاع پنج کیلومتر فردا ساعت یازده با ترب پی', mission_id=mission.id, base_revision=mission.revision)
+    value = intent('clarify')
+    value['condition_changes'] = {'radius_km': 5, 'visit_at': '2026-10-23T11:00:00+03:30', 'payment_provider': 'ترب‌پی', 'require_declared_open': True}
+    finish(queue, clock, value)
+    done = a.get_turn(owner, turn['id'])
+    assert done['state'] == 'completed'
+    assert done['result']['proposed_constraints']['radius_km'] == 5
+    assert done['result']['proposed_constraints']['visit_at'] == '2026-10-23T11:00:00+03:30'
+    assert done['result']['proposed_constraints']['payment_provider'] == 'ترب‌پی'
+    assert store.get_mission(owner, mission.id).constraints.model_dump(mode='json') == before
+
+
+def test_invalid_requested_visit_without_timezone_fails_closed(tmp_path):
+    a, store, queue, owner, clock = env(tmp_path)
+    turn = a.start_turn(owner, 'فردا ساعت یازده')
+    value = intent('clarify')
+    value['condition_changes'] = {'radius_km': None, 'visit_at': '2026-10-23T11:00:00', 'payment_provider': None, 'require_declared_open': None}
+    finish(queue, clock, value)
+    assert a.get_turn(owner, turn['id'])['state'] == 'failed'
+
+
+def test_no_product_under_budget_explains_the_price_blocker_without_raising_budget(tmp_path):
+    a, store, queue, owner, clock = env(tmp_path)
+    turn = a.start_turn(owner, 'A07 تا پنجاه تومان')
+    value = intent()
+    value['max_price_toman'] = '50'
+    finish(queue, clock, value)
+    done = a.get_turn(owner, turn['id'])
+    assert done['state'] == 'completed'
+    assert done['result']['products'] == []
+    assert 'بودجه' in done['result']['clarification_fa']
+    assert '100' in done['result']['clarification_fa']
+    assert done['result']['proposed_constraints']['max_price_toman'] == '50'
+
+
+def test_existing_product_condition_update_finishes_after_interpretation_without_recommending_it_again(tmp_path):
+    a, store, queue, owner, clock = env(tmp_path)
+    mission = new_mission(store, owner, max_price_toman='400')
+    turn = a.start_turn(owner, 'بودجه را به چهارصد و ده تغییر بده', mission_id=mission.id, base_revision=1)
+    value = intent()
+    value['max_price_toman'] = '410'
+    finish(queue, clock, value)
+    done = a.get_turn(owner, turn['id'])
+    assert done['state'] == 'completed'
+    assert done['result']['products'][0]['product_id'] == 'p1'
+    assert done['result']['recommendations'] == []
+    assert 'فروشگاه' in done['result']['clarification_fa']
+    assert 'موجودی' in done['result']['clarification_fa']
+    assert queue.claim('w', clock[0]) is None
+    assert store.get_mission(owner, mission.id).constraints.max_price_toman == '400'

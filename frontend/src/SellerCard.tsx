@@ -35,6 +35,7 @@ export function SellerCard({option,role,onFollowup,compact=false,disabled=false}
         {!o.contact_links.length&&<p>مسیر تماس واقعی برای این فروشگاه در داده ثبت نشده است. شماره‌های داده آزمایشی قابل استفاده نیستند.</p>}
       </details>
     </>}
+      {onFollowup&&!o.contact_links.length&&<p className="source-note contact-gap">مسیر تماس واقعی در داده نیست؛ فقط متن استعلام و گزارش شما بررسی می‌شود.</p>}
       {onFollowup&&<button className={`button ${role==='primary'?'primary-button':'soft-button'}`} disabled={disabled} onClick={()=>onFollowup(o.offer_id)}><MessageSquareText size={17}/>بررسی پاسخ فروشنده</button>}
   </article>
 }
