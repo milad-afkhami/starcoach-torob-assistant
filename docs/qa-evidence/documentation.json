@@ -1,0 +1,55 @@
+{
+  "checked_at_utc": "2026-10-22T14:05:15.859557+00:00",
+  "scope": "Documentation-only change. Application suites were not rerun; no implementation change.",
+  "checks": {
+    "top_level_document_links_and_anchors": "pass",
+    "fence_balance": "pass",
+    "non_placeholder_shell_block_syntax": "pass",
+    "running_openapi_route_reference_coverage": {
+      "status": "pass",
+      "route_count": 24
+    },
+    "readme_preview": {
+      "status": "pass",
+      "image_loaded": true,
+      "horizontal_overflow_at_1280px": false
+    },
+    "mermaid_render": {
+      "status": "pass",
+      "renderer": "mermaid 12.2.0",
+      "diagrams": [
+        {
+          "repository": "starcoach-torob-assistant",
+          "file": "README.md",
+          "diagram": 1,
+          "svgBytes": 19266
+        },
+        {
+          "repository": "starcoach-torob-assistant",
+          "file": "docs/architecture.md",
+          "diagram": 2,
+          "svgBytes": 20068
+        },
+        {
+          "repository": "starcoach-torob-assistant",
+          "file": "docs/architecture.md",
+          "diagram": 3,
+          "svgBytes": 17921
+        },
+        {
+          "repository": "starcoach-torob-assistant",
+          "file": "docs/evaluation.md",
+          "diagram": 4,
+          "svgBytes": 16204
+        },
+        {
+          "repository": "starcoach-torob-assistant",
+          "file": "docs/user-guide.md",
+          "diagram": 5,
+          "svgBytes": 28110
+        }
+      ]
+    }
+  },
+  "qualification": "Local Markdown/HTML browser preview, not a claim of exact GitHub rendering. No new live provider, hosting or product-performance result."
+}

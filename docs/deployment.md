@@ -1,5 +1,7 @@
 # Deployment preparation
 
+[← Documentation](README.md) · [User guide](user-guide.md) · [Getting started](getting-started.md)
+
 Local container acceptance is recorded in [container.json](qa-evidence/container.json). It verifies the real complete-catalogue image, recovery with the worker offline, private-path404 responses, unchanged catalogue hash and session/observation persistence across restart. This is not a hosted acceptance result.
 
 ## Build and run

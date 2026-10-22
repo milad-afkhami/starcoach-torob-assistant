@@ -1,5 +1,25 @@
 # Architecture and evidence boundaries
 
+[← Documentation](README.md) · [API/configuration](reference.md) · [Evidence](evaluation.md)
+
+## Component map
+
+```mermaid
+flowchart TB
+    Browser[Persian React workspace] --> API[FastAPI application]
+    API --> Catalogue[(Read-only catalogue)]
+    API --> State[(Private mission and job SQLite)]
+    API --> Planner[Deterministic eligibility and recovery]
+    Worker[Local outbound worker] -->|Authenticated polling and results| API
+    Worker --> Model[Isolated Codex container]
+    Auth[Local model authentication] -.-> Model
+    Model -->|Validated JSON only| Worker
+```
+
+The diagram shows the application components; the proposed hosted app and local worker have separate acceptance gates. The application has no model authentication, and the model has no application database or worker bearer.
+
+## Application and catalogue
+
 The browser renders a Persian RTL purchase workspace. FastAPI serves its compiled assets, public catalogue queries and private mission APIs. A read-only SQLite FTS catalogue contains the complete supplied CSV payloads. A separate persistent SQLite database owns signed-cookie sessions, mission revisions, follow-ups, append-only observations and model jobs. Run exactly one application replica; SQLite and the in-process request limiter are not a multi-replica design.
 
 ## Decision flow
@@ -13,6 +33,20 @@ A follow-up is an inquiry draft, never an outbound message. Manual outcomes and 
 The application queues bounded JSON requests. A local outbound worker polls the application, runs Codex CLI in an isolated container, and submits typed results using a private bearer token. See [model runtime](model-runtime.md) for limits and isolation. The hosted application never stores Codex authentication. The model cannot execute catalogue SQL, contact sellers, mutate missions or see executor credentials. Retrieved IDs and each cited fact are checked before presentation. Numeric product facts are rendered from catalogue values, not accepted as model-written facts. Proposals require an explicit user action.
 
 Model calls are genuinely useful for Persian need interpretation, retrieved-product explanation and reply interpretation. Search, eligibility, exact money, geometry and recovery work without the model. Cancellation invalidates the browser request generation as well as the server job; a delayed initial response cannot overwrite newer work. The worker is a local availability dependency, not unattended hosted inference. OmniRoute is only a conditionally authorized alternative; this build has not switched providers.
+
+## Logical state relationships
+
+```mermaid
+erDiagram
+    SESSION ||--o{ MISSION : owns
+    MISSION ||--o{ FOLLOWUP : prepares
+    MISSION ||--o{ OBSERVATION : records
+    MISSION ||--o{ PLAN_DELTA : explains
+    PRODUCT ||--o{ OFFER : has
+    SHOP ||--o{ OFFER : supplies
+```
+
+This is a logical relationship map, not a migration or complete SQL schema. Catalogue facts are immutable inputs; session observations and plan deltas live in separate private state. A duplicate offer at one shop is not an independent backup shop.
 
 ## Storage and deployment
 

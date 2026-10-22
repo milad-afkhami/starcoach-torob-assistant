@@ -1,5 +1,7 @@
 # Five-minute demo recording plan
 
+[← Documentation](README.md) · [User guide](user-guide.md) · [Getting started](getting-started.md)
+
 Record the actual application; keep simulation, source dates and unknown-stock labels visible. No uploaded video or final public URL exists yet. A local recording must not be described as a cloud deployment. Final narration should explain decisions; silent clicks alone do not satisfy the contest presentation requirement well.
 
 | Time | Action and explanation |

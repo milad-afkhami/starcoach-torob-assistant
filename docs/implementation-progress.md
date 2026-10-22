@@ -114,3 +114,9 @@ DECISION: use HTTPS with the existing GitHub CLI credential helper per push. Why
 ## Familiarization walkthrough verified — 22 October
 
 The existing app8651 and outbound model worker remain running; actual capabilities reported catalogue_ready/model_available true with codex_cli. A fresh isolated rendered session loaded the fixed source-row simulation, inspected the inquiry, manually previewed/confirmed unavailable, observed the300,000toman fallback promotion and verified the updated destination chooser. Reset the session’s simulation afterward and closed the controlled browser. No external navigation/contact, provider change or code change occurred. This is a rehearsal flow check, not a newly rerun aggregate test suite or hosted acceptance.
+
+## Public documentation experience
+
+Expanded the public README into a product/judge entry point with a verified local screenshot, capability/status tables and a Mermaid journey. Added a documentation map, reproducible getting-started guide, screen-by-screen user guide and configuration/API/troubleshooting reference. Architecture diagrams separate model authority, deterministic code and provider/hosted acceptance. Recorded results link to their evidence; local fixture behavior is not promoted to live integration. Documentation verification is separate from unchanged application tests.
+
+Documentation checks passed: local links/anchors and fenced blocks, non-placeholder shell syntax, all running OpenAPI routes covered by the reference, and 5 Mermaid diagrams parsed/rendered in a browser. The README preview loaded its actual screenshot without horizontal overflow at1280px. docs/qa-evidence/documentation.json records this local renderer proof; it does not claim exact GitHub visual parity or newly rerun application suites.
