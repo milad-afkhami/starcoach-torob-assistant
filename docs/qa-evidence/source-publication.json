@@ -1,0 +1,33 @@
+{
+  "checked_at_utc": "2026-10-22T12:39:46.797992+00:00",
+  "repository_url": "https://github.com/milad-afkhami/starcoach-torob-assistant",
+  "authentication": "Anonymous urllib requests; no cookies or Authorization header",
+  "source_commit_checked": "2abec6ae916e5c1257f942f56a78ffa2820bb8e1",
+  "git_remote_main": "2abec6ae916e5c1257f942f56a78ffa2820bb8e1",
+  "checks": {
+    "page": {
+      "url": "https://github.com/milad-afkhami/starcoach-torob-assistant",
+      "status": 200,
+      "bytes": 291171
+    },
+    "metadata": {
+      "url": "https://api.github.com/repos/milad-afkhami/starcoach-torob-assistant",
+      "status": 200,
+      "bytes": 6097,
+      "private": false,
+      "default_branch": "main"
+    },
+    "readme": {
+      "url": "https://raw.githubusercontent.com/milad-afkhami/starcoach-torob-assistant/main/README.md",
+      "status": 200,
+      "bytes": 4602
+    },
+    "commit": {
+      "url": "https://api.github.com/repos/milad-afkhami/starcoach-torob-assistant/commits/main",
+      "status": 200,
+      "bytes": 2746,
+      "sha": "2abec6ae916e5c1257f942f56a78ffa2820bb8e1"
+    }
+  },
+  "scope": "Source publication only; hosted/provider acceptance, narrated video and contest submission remain pending."
+}

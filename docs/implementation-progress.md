@@ -102,3 +102,11 @@ Implement Torob fully, then Liara; move to Liara if Torob has a confirmed extern
 ## Shared launch cancellation correction
 
 Independent Liara cleanup QA found a CREATED model container that appeared after an early absence check during cancellation. The shared copied adapter now acknowledges Docker creation before the cancellable start/attach phase; uncertain creation latches cleanup failure. Both new regressions passed in this repository, and the full backend suite is186passed. No domain shopping/transport behavior changed. The reproducible official runtime image and current VAT-inclusive provisioning quote are in docs/model-runtime.md and docs/deployment.md. The local worker was restarted after confirming no active model container; the global usage ledger was preserved. Hosted acceptance still remains pending.
+
+## Public source publication — 22 October
+
+The user explicitly authorized creating and pushing both repositories in the logged-in GitHub account. Published this independent source repository under milad-afkhami on main; submission.md owns its URL and source identity. Anonymous page/README/API checks and remote commit equality are recorded in docs/qa-evidence/source-publication.json. Full catalogue, private archives, environment/authentication and runtime databases remain excluded. No code changed for publication; existing test results are unchanged, not newly rerun. Cloud acceptance, narrated video and submission remain open.
+
+DECISION: use a standard main branch in the new repository and preserve the local build branch. Why: these are new owner-authorized repositories with no existing collaborators, workflows or deployment triggers. Alternative: a feature-only remote would leave the requested source repository less accessible. Recoverable: retain the original build branch; ordinary future commits update main without rewriting history.
+
+DECISION: use HTTPS with the existing GitHub CLI credential helper per push. Why: the initial SSH attempt failed host-key verification; HTTPS succeeded without weakening SSH verification or changing global authentication settings.
