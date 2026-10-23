@@ -1,0 +1,9 @@
+{
+  "returncode": 0,
+  "elapsed_seconds": 246.658,
+  "context": "/home/milad/Desktop/projects/starcoach-torob-assistant/data/pinned-remote-build-ybs92n1n",
+  "log": "/tmp/starcoach-ui-revision-20261023/pinned-remote-build.log",
+  "image": "starcoach-torob:pinned-remote-r2",
+  "image_id": "sha256:9a574fa5753834a9b9b3c2fb8117161669872edd25c75e0e1a4977b493bcb05a",
+  "log_sha256": "3669a8d7a41045ef1e289ed7dde6562ba0fe1662e6958c17f98fc59b173ae002"
+}

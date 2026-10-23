@@ -1,0 +1,13 @@
+{
+  "initial_tdd": {
+    "failed": 7,
+    "reason": "downloader module absent",
+    "raw_log": "/tmp/starcoach-ui-revision-20261023/remote-download-red.txt"
+  },
+  "fixture_correction": "Fixture patched importer hash dictionary but not the downloader imported binding; fixed the fixture binding before real build.",
+  "standalone_cli_correction": "Remote recipe import initially lacked backend module path; trusted repository backend path bootstrap added before actual artifact/build.",
+  "format_gate": "Ruff rejected compact generated Python statements; formatted before actual artifact/build.",
+  "actual_network_or_build_failures": 0,
+  "provider_uploads": 0,
+  "prior_unknown_intents": "Untouched; this is a distinct315KBsource/build design, not a retry."
+}

@@ -392,3 +392,26 @@ def test_cli_report_alias_is_rejected_before_any_package_or_cache_write(tmp_path
     assert source.read_bytes() == before
     assert not out.exists()
     assert (root / 'data/catalogue.sqlite.xz').read_bytes() == b'OLD_XZ'
+
+
+def test_remote_mode_is_small_explicit_and_has_no_catalogue_or_secrets(tmp_path, monkeypatch):
+    import urllib.request
+    root = csv_repo(tmp_path)
+    (root / 'Dockerfile.remote-source').write_text('PINNED BUILD')
+    (root / 'scripts/download_catalogue.py').write_text('pinned downloader')
+    (root / 'scripts/package_deployment.py').write_text('safe writer')
+    monkeypatch.setattr(urllib.request.OpenerDirector, 'open', lambda *_args, **_kwargs: pytest.fail('Packaging must not perform network requests'))
+    out = tmp_path / 'remote.tar.gz'
+    report = module().package(root, out, remote_source=True)
+    with tarfile.open(out) as archive:
+        names = archive.getnames()
+        assert archive.extractfile('Dockerfile').read() == b'PINNED BUILD'
+        assert not any(name.endswith(('.zip', '.sqlite', '.xz')) for name in names)
+        assert '.env' not in names and 'data/state.sqlite' not in names
+        assert 'scripts/download_catalogue.py' in names
+        assert 'scripts/package_deployment.py' in names
+    assert report['catalogue']['archive_sha256'] == 'b0afb47b2b70f65c6d8ec07b7423dcc49efc71cd7a27e95606fb81da008c210d'
+    assert report['catalogue']['source_url'].startswith('https://startech.s3.ir-central1.arvanstorage.ir/')
+    assert report['private_catalogue_included'] is False and report['complete_catalogue_build'] is True
+    with pytest.raises(ValueError, match='one explicit'):
+        module().package(root, out, remote_source=True, source_zip=tmp_path / 'other.zip')

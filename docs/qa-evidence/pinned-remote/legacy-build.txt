@@ -1,0 +1,126 @@
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            BuildKit is currently disabled; enable it by removing the DOCKER_BUILDKIT=0
+            environment-variable.
+
+Sending build context to Docker daemon  826.9kB
+
+Step 1/22 : FROM public.ecr.aws/docker/library/python:3.12-slim-bookworm@sha256:6a0e06f5ba0b373d051aabd3fffb9b873f27f9a2a3a14bcbe37dee6f0e3bbc70 AS catalogue-build
+ ---> 6a0e06f5ba0b
+Step 2/22 : WORKDIR /catalogue
+ ---> Using cache
+ ---> 77acb5deea71
+Step 3/22 : ENV PYTHONPATH=/catalogue/backend
+ ---> Using cache
+ ---> 7f6ffb74ffdd
+Step 4/22 : COPY backend/torob/__init__.py backend/torob/ingest.py backend/torob/normalize.py backend/torob/
+ ---> Using cache
+ ---> 0d32cfdae7d6
+Step 5/22 : COPY scripts/build_catalogue.py scripts/download_catalogue.py scripts/package_deployment.py scripts/
+ ---> 6629abee55df
+Step 6/22 : RUN python scripts/download_catalogue.py --output catalogue-source.zip --manifest catalogue-source.json
+ ---> Running in a7afbef393f7
+{
+  "compression": "zip",
+  "source_url": "https://startech.s3.ir-central1.arvanstorage.ir/starcoach-dataset-v16-cap300-csv.zip?versionId=",
+  "archive_sha256": "b0afb47b2b70f65c6d8ec07b7423dcc49efc71cd7a27e95606fb81da008c210d",
+  "compressed_bytes": 60176276,
+  "payload_hashes": {
+    "shops.csv": "1a292d6180e2a28cd0bbec57b1bb575a440e5afcc3ec3f5af5b1e13172aebaa1",
+    "products.csv": "e4a9749529d1e032c1dc2c4e275a8793a1edd702a194cb8de9abafc0649cc9c9",
+    "offers.csv": "664d256ed04b37cfb268d89eb605afda4a3b76179324b39d2dbaef21439f09b9"
+  },
+  "expected_counts": {
+    "shops": 6476,
+    "products": 225903,
+    "offers": 331506
+  }
+}
+ ---> Removed intermediate container a7afbef393f7
+ ---> 810b435e48a8
+Step 7/22 : RUN python scripts/build_catalogue.py --archive catalogue-source.zip --source-manifest catalogue-source.json --output catalogue.sqlite --manifest import-report.json
+ ---> Running in cb4886042299
+{
+  "counts": {
+    "shops": 6476,
+    "products": 225903,
+    "offers": 331506
+  },
+  "missing": {
+    "shops": {
+      "instagram": 6454,
+      "supports_fast_delivery": 4875,
+      "website_url": 6386
+    },
+    "products": {
+      "model": 221847,
+      "brand_name": 168269
+    },
+    "offers": {
+      "warranty": 272563,
+      "price_toman": 15083,
+      "last_price_changed_at": 769
+    }
+  },
+  "payload_hashes": {
+    "offers.csv": "664d256ed04b37cfb268d89eb605afda4a3b76179324b39d2dbaef21439f09b9",
+    "products.csv": "e4a9749529d1e032c1dc2c4e275a8793a1edd702a194cb8de9abafc0649cc9c9",
+    "shops.csv": "1a292d6180e2a28cd0bbec57b1bb575a440e5afcc3ec3f5af5b1e13172aebaa1"
+  },
+  "archive_sha256": "b0afb47b2b70f65c6d8ec07b7423dcc49efc71cd7a27e95606fb81da008c210d",
+  "duration_seconds": 64.878,
+  "rejected_rows": 0,
+  "database_bytes": 732311552,
+  "peak_rss_kib": 30464
+}
+ ---> Removed intermediate container cb4886042299
+ ---> 921dc6ce1277
+Step 8/22 : FROM public.ecr.aws/docker/library/python:3.12-slim-bookworm@sha256:6a0e06f5ba0b373d051aabd3fffb9b873f27f9a2a3a14bcbe37dee6f0e3bbc70 AS runtime
+ ---> 6a0e06f5ba0b
+Step 9/22 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PYTHONPATH=/app/backend     CATALOGUE_DB_PATH=/app/data/catalogue.sqlite STATE_DB_PATH=/data/state.sqlite
+ ---> Using cache
+ ---> 92d901bcadf7
+Step 10/22 : WORKDIR /app
+ ---> Using cache
+ ---> 8f8f42b28cdd
+Step 11/22 : COPY requirements.lock ./
+ ---> Using cache
+ ---> 67d3b4b9327a
+Step 12/22 : RUN pip install --no-cache-dir --require-hashes -r requirements.lock     && groupadd --gid 10001 app && useradd --uid 10001 --gid app --no-create-home app     && mkdir /data && chown app:app /data
+ ---> Using cache
+ ---> a6be99172b19
+Step 13/22 : COPY backend/torob/ backend/torob/
+ ---> Using cache
+ ---> bd579c79b2ed
+Step 14/22 : COPY frontend/dist/ frontend/dist/
+ ---> Using cache
+ ---> 80b30e1b4ffd
+Step 15/22 : COPY --from=catalogue-build /catalogue/catalogue.sqlite data/catalogue.sqlite
+ ---> 2a6b78a764c7
+Step 16/22 : COPY scripts/container_entrypoint.py scripts/container_entrypoint.py
+ ---> c4127a3f22b4
+Step 17/22 : RUN chmod 755 /app/data && chmod 444 /app/data/catalogue.sqlite /app/scripts/container_entrypoint.py
+ ---> Running in 0702b71e945c
+ ---> Removed intermediate container 0702b71e945c
+ ---> fe5f4718d3fc
+Step 18/22 : USER 0:0
+ ---> Running in 2419f98bf5c3
+ ---> Removed intermediate container 2419f98bf5c3
+ ---> e183254646c8
+Step 19/22 : ENTRYPOINT ["python", "/app/scripts/container_entrypoint.py"]
+ ---> Running in b0e255098066
+ ---> Removed intermediate container b0e255098066
+ ---> e922c87603f4
+Step 20/22 : EXPOSE 8000
+ ---> Running in b74932b9b981
+ ---> Removed intermediate container b74932b9b981
+ ---> 9c5ef91a0439
+Step 21/22 : HEALTHCHECK --interval=30s --timeout=5s --start-period=15s CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/readyz',timeout=3)"
+ ---> Running in acb7490f64ad
+ ---> Removed intermediate container acb7490f64ad
+ ---> 83832f86914b
+Step 22/22 : CMD ["uvicorn", "torob.api:create_app", "--factory", "--host", "0.0.0.0", "--port", "8000", "--workers", "1", "--no-access-log"]
+ ---> Running in d24eb2e6edba
+ ---> Removed intermediate container d24eb2e6edba
+ ---> 9a574fa57538
+Successfully built 9a574fa57538
+Successfully tagged starcoach-torob:pinned-remote-r2

@@ -1,0 +1,54 @@
+{
+  "phase": "pinned organizer HTTPS build-stage source",
+  "date": "2026-10-23",
+  "branch": "packaging/pinned-organizer-source",
+  "baseline_commit": "2f7eff3331d4721af3730bd549c9a1382b9e7cf2",
+  "artifact": "/home/milad/Desktop/projects/starcoach-torob-assistant/data/deployment-pinned-remote-r2.tar.gz",
+  "private_manifest": "/home/milad/Desktop/projects/starcoach-torob-assistant/data/deployment-pinned-remote-r2.json",
+  "bytes": 315502,
+  "sha256": "6d89b0e3c8a329773c80a5b6cccb09c37f1060da9bfff1778d293e4f18c3a441",
+  "source_url": "https://startech.s3.ir-central1.arvanstorage.ir/starcoach-dataset-v16-cap300-csv.zip?versionId=",
+  "source_archive_sha256": "b0afb47b2b70f65c6d8ec07b7423dcc49efc71cd7a27e95606fb81da008c210d",
+  "source_archive_bytes": 60176276,
+  "source_bundle_contains_dataset": false,
+  "build": "build.json",
+  "semantic": "semantic-equivalence.json",
+  "runtime": [
+    "container-named.json",
+    "container-root-bind.json"
+  ],
+  "checks": {
+    "backend_passed": 305,
+    "targeted_passed": 53,
+    "ruff": "pass",
+    "whitespace": "pass",
+    "backend_warning": "existing Starlette/httpx deprecation"
+  },
+  "actual_build_elapsed_seconds": 246.658,
+  "local_gates": "all pass",
+  "source_sha256": {
+    "Dockerfile.remote-source": "3cdb063e001cb6b01ba368f223a6be957ce9b9d55334e3ffdccf3ebbf25ffc27",
+    "scripts/download_catalogue.py": "68457333c033c05908b093974d30205f3416d5886fa9a8bf52a1840268f19801",
+    "scripts/package_deployment.py": "b539f73ef20f64ec7dedbfed6f7906e02558809e51b736389190572b3bf56134",
+    "scripts/compare_catalogues.py": "abbe0e588003501b70e4a881419b1ebf31855c811e95101b2ac2f3cce8c287d4",
+    "tests/test_download_catalogue.py": "7244a36badd4643d09f93a11f18d3418abdd9535a6d8d57985c458de5e33bec6",
+    "tests/test_deployment_package.py": "bdc14ef2784e4094f375d27b8f32f968be4d78230bafe20b1a69d5e495df69e4",
+    "tests/test_catalogue_equivalence.py": "ff2291d9f884f006788a1ce73ab5ff070828c8660866f62bd5406e03702217fb"
+  },
+  "unchanged": [
+    "application/domain/frontend code",
+    "original ZIP/XZ packaging options",
+    "prior unknown source intents/artifacts",
+    "root-owned deployment-artifact.json"
+  ],
+  "not_performed": [
+    "provider API upload/release",
+    "real model call/quota reset",
+    "live app restart",
+    "public registry publication"
+  ],
+  "remaining": [
+    "provider builder reachability of organizer CDN and actual hosted acceptance remain root delivery gates"
+  ],
+  "negative_results": "negative-results.json"
+}

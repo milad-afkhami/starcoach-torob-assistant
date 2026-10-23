@@ -63,3 +63,26 @@ def test_equivalence_rejects_each_material_difference_without_writing_inputs(tmp
     with pytest.raises(ValueError, match='differs'):
         comparison_module().compare(before, after)
     assert [hashlib.sha256(p.read_bytes()).hexdigest() for p in (before, after)] == fingerprints
+
+
+def test_organizer_transport_provenance_requires_the_exact_pinned_pair_and_payloads(tmp_path):
+    from torob.ingest import KNOWN_HASHES
+    before, after = pair(tmp_path)
+    m = comparison_module()
+    with pytest.raises(ValueError, match='pinned pair'):
+        m.compare(before, after, organizer_archive=True)
+    hashes = ['37a25fbd4cdb30aec265d6367e7ebafd8673364ffc90e74411a5f13cd7d94013', 'b0afb47b2b70f65c6d8ec07b7423dcc49efc71cd7a27e95606fb81da008c210d']
+    for path, archive_hash in zip((before, after), hashes):
+        with sqlite3.connect(path) as db:
+            value = json.loads(db.execute("SELECT value FROM metadata WHERE key='manifest'").fetchone()[0])
+            value.update(archive_sha256=archive_hash, payload_hashes=KNOWN_HASHES)
+            db.execute("UPDATE metadata SET value=? WHERE key='manifest'", (json.dumps(value),))
+    report = m.compare(before, after, organizer_archive=True)
+    assert report['equivalent'] is True
+    assert report['checked_transport_provenance']['candidate_archive_sha256'] == hashes[1]
+    with sqlite3.connect(after) as db:
+        value = json.loads(db.execute("SELECT value FROM metadata WHERE key='manifest'").fetchone()[0])
+        value['payload_hashes'] = {'bad': 'not accepted'}
+        db.execute("UPDATE metadata SET value=? WHERE key='manifest'", (json.dumps(value),))
+    with pytest.raises(ValueError, match='payload hashes'):
+        m.compare(before, after, organizer_archive=True)

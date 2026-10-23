@@ -99,7 +99,10 @@ class FrozenInput:
         with handle as current:
             if chain != self.parents or identity(os.fstat(current.fileno())) != self.identity:
                 raise ValueError("Deployment input identity changed during packaging")
-        if identity(os.fstat(self.handle.fileno())) != self.identity or digest_handle(self.handle) != self.checksum:
+        if (
+            identity(os.fstat(self.handle.fileno())) != self.identity
+            or digest_handle(self.handle) != self.checksum
+        ):
             raise ValueError("Deployment input bytes changed during packaging")
 
     def __exit__(self, *_):
@@ -140,7 +143,9 @@ def atomic_output(destination, inputs, reserved=()):
     try:
         parent, parents = directory(destination.parent, create=True)
         temporary = "." + destination.name + "." + secrets.token_hex(16) + ".tmp"
-        descriptor = os.open(temporary, os.O_CREAT | os.O_EXCL | os.O_RDWR | os.O_NOFOLLOW, 0o600, dir_fd=parent)
+        descriptor = os.open(
+            temporary, os.O_CREAT | os.O_EXCL | os.O_RDWR | os.O_NOFOLLOW, 0o600, dir_fd=parent
+        )
         created = True
         with os.fdopen(descriptor, "w+b") as output:
             yield output
@@ -180,8 +185,11 @@ def prepare_catalogue(root, source, inputs):
             cache.verify()
             metadata.verify()
             expected = {
-                "compression": "xz", "xz_preset": 6, "uncompressed_sha256": source.checksum,
-                "uncompressed_bytes": source.info.st_size, "compressed_sha256": cache.checksum,
+                "compression": "xz",
+                "xz_preset": 6,
+                "uncompressed_sha256": source.checksum,
+                "uncompressed_bytes": source.info.st_size,
+                "compressed_sha256": cache.checksum,
                 "compressed_bytes": cache.info.st_size,
             }
             if saved == expected:
@@ -193,9 +201,12 @@ def prepare_catalogue(root, source, inputs):
                 zipped.write(chunk)
         compressed_hash, compressed_bytes = digest_handle(output), os.fstat(output.fileno()).st_size
     value = {
-        "compression": "xz", "xz_preset": 6,
-        "uncompressed_bytes": source.info.st_size, "uncompressed_sha256": source.checksum,
-        "compressed_sha256": compressed_hash, "compressed_bytes": compressed_bytes,
+        "compression": "xz",
+        "xz_preset": 6,
+        "uncompressed_bytes": source.info.st_size,
+        "uncompressed_sha256": source.checksum,
+        "compressed_sha256": compressed_hash,
+        "compressed_bytes": compressed_bytes,
     }
     with atomic_output(manifest, inputs, [compressed]) as output:
         output.write(json.dumps(value, indent=2).encode() + b"\n")
@@ -221,16 +232,30 @@ def inspect_source_zip(source):
         raise ValueError("Invalid source ZIP") from error
     source.verify()
     return {
-        "compression": "zip", "archive_sha256": source.checksum,
-        "compressed_bytes": source.info.st_size, "payload_hashes": hashes,
+        "compression": "zip",
+        "archive_sha256": source.checksum,
+        "compressed_bytes": source.info.st_size,
+        "payload_hashes": hashes,
         "expected_counts": {"shops": 6476, "products": 225903, "offers": 331506},
     }
 
 
-def runtime_paths(root, source_zip):
-    required = ["Dockerfile.csv-source" if source_zip is not None else "Dockerfile", "requirements.lock",
-                "scripts/container_entrypoint.py", "frontend/dist/index.html",
-                "scripts/build_catalogue.py" if source_zip is not None else "scripts/unpack_catalogue.py"]
+def runtime_paths(root, source_zip, remote_source=False):
+    required = [
+        "Dockerfile.remote-source"
+        if remote_source
+        else "Dockerfile.csv-source"
+        if source_zip is not None
+        else "Dockerfile",
+        "requirements.lock",
+        "scripts/container_entrypoint.py",
+        "frontend/dist/index.html",
+        "scripts/build_catalogue.py"
+        if source_zip is not None or remote_source
+        else "scripts/unpack_catalogue.py",
+    ]
+    if remote_source:
+        required.extend(["scripts/download_catalogue.py", "scripts/package_deployment.py"])
     files = [root / name for name in required]
     backend = list((root / "backend/torob").glob("*.py"))
     if not backend:
@@ -243,22 +268,61 @@ def runtime_paths(root, source_zip):
     return sorted(set(files))
 
 
-def package(root: Path, destination: Path, *, max_source_bytes=MAX_SOURCE_BYTES, source_zip: Path | None = None):
+def package(
+    root: Path,
+    destination: Path,
+    *,
+    max_source_bytes=MAX_SOURCE_BYTES,
+    source_zip: Path | None = None,
+    remote_source=False,
+):
     root, destination = absolute(root), absolute(destination)
-    files = runtime_paths(root, source_zip)
-    reserved = [root / "data/catalogue.sqlite.xz", root / "data/catalogue-build.json"] if source_zip is None else []
+    if remote_source and source_zip is not None:
+        raise ValueError("Choose one explicit catalogue source mode")
+    files = runtime_paths(root, source_zip, remote_source)
+    reserved = (
+        [root / "data/catalogue.sqlite.xz", root / "data/catalogue-build.json"]
+        if source_zip is None and not remote_source
+        else []
+    )
     with ExitStack() as stack:
         frozen = [stack.enter_context(FrozenInput(path)) for path in files]
-        catalogue_source = stack.enter_context(FrozenInput(source_zip if source_zip is not None else root / "data/catalogue.sqlite"))
-        frozen.append(catalogue_source)
+        runtime_inputs = list(frozen)
+        if not remote_source:
+            catalogue_source = stack.enter_context(
+                FrozenInput(source_zip if source_zip is not None else root / "data/catalogue.sqlite")
+            )
+            frozen.append(catalogue_source)
         # Existing XZ cache files are inputs to the cache decision too. Reject output
         # aliases before a corrupt cache can cause any regeneration writes.
         with ExitStack() as cache_stack:
-            cache_inputs = [cache_stack.enter_context(FrozenInput(path)) for path in reserved if path.exists() or path.is_symlink()]
+            cache_inputs = [
+                cache_stack.enter_context(FrozenInput(path))
+                for path in reserved
+                if path.exists() or path.is_symlink()
+            ]
             guard_destination(destination, frozen + cache_inputs, reserved)
-        entries = [(source, "Dockerfile" if source.path == root / "Dockerfile.csv-source" else str(source.path.relative_to(root))) for source in frozen[:-1]]
+        entries = [
+            (
+                source,
+                "Dockerfile"
+                if source.path in (root / "Dockerfile.csv-source", root / "Dockerfile.remote-source")
+                else str(source.path.relative_to(root)),
+            )
+            for source in runtime_inputs
+        ]
         extra = None
-        if source_zip is not None:
+        if remote_source:
+            scripts = str(Path(__file__).resolve().parent)
+            if scripts not in sys.path:
+                sys.path.insert(0, scripts)
+            backend = str(Path(__file__).resolve().parents[1] / "backend")
+            if backend not in sys.path:
+                sys.path.insert(0, backend)
+            from download_catalogue import source_manifest
+
+            catalogue = {**source_manifest(), "build_source": "pinned_https"}
+        elif source_zip is not None:
             catalogue = inspect_source_zip(catalogue_source)
             extra = json.dumps(catalogue, indent=2).encode() + b"\n"
             entries.append((catalogue_source, "data/catalogue-source.zip"))
@@ -290,10 +354,17 @@ def package(root: Path, destination: Path, *, max_source_bytes=MAX_SOURCE_BYTES,
             if artifact_bytes > max_source_bytes:
                 raise ValueError(f"Private source exceeds upload limit of{max_source_bytes}bytes")
     return {
-        "artifact": str(destination), "bytes": artifact_bytes, "sha256": artifact_hash,
-        "members": sorted([name for _, name in entries] + (["data/catalogue-source.json"] if extra is not None else [])),
-        "private_catalogue_included": True, "credentials_included": False,
-        "max_source_bytes": max_source_bytes, "catalogue": catalogue,
+        "artifact": str(destination),
+        "bytes": artifact_bytes,
+        "sha256": artifact_hash,
+        "members": sorted(
+            [name for _, name in entries] + (["data/catalogue-source.json"] if extra is not None else [])
+        ),
+        "private_catalogue_included": not remote_source,
+        "complete_catalogue_build": True,
+        "credentials_included": False,
+        "max_source_bytes": max_source_bytes,
+        "catalogue": catalogue,
     }
 
 
@@ -301,19 +372,41 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, default=Path("data/deployment-xz.tar.gz"))
     parser.add_argument("--root", type=Path, default=Path("."))
-    parser.add_argument("--source-zip", type=Path, help="Original full private CSV ZIP; alternate build-stage import mode")
+    modes = parser.add_mutually_exclusive_group()
+    modes.add_argument(
+        "--remote-source",
+        action="store_true",
+        help="Pinned organizer HTTPS download in Docker build stage only",
+    )
+    modes.add_argument(
+        "--source-zip", type=Path, help="Original full private CSV ZIP; alternate build-stage import mode"
+    )
     parser.add_argument("--report", type=Path, default=Path("docs/qa-evidence/deployment-artifact.json"))
     args = parser.parse_args()
     root = absolute(args.root)
-    paths = runtime_paths(root, args.source_zip) + [absolute(args.source_zip) if args.source_zip is not None else root / "data/catalogue.sqlite"]
-    cache_paths = [root / "data/catalogue.sqlite.xz", root / "data/catalogue-build.json"] if args.source_zip is None else []
+    paths = runtime_paths(root, args.source_zip, args.remote_source) + (
+        []
+        if args.remote_source
+        else [absolute(args.source_zip) if args.source_zip is not None else root / "data/catalogue.sqlite"]
+    )
+    cache_paths = (
+        [root / "data/catalogue.sqlite.xz", root / "data/catalogue-build.json"]
+        if args.source_zip is None and not args.remote_source
+        else []
+    )
     # Validate the report destination too, before cache generation or artifact writes.
     with ExitStack() as stack:
-        originals = [stack.enter_context(FrozenInput(path)) for path in paths + cache_paths if path.exists() or path.is_symlink()]
+        originals = [
+            stack.enter_context(FrozenInput(path))
+            for path in paths + cache_paths
+            if path.exists() or path.is_symlink()
+        ]
         guard_destination(args.report, originals, [args.output, *cache_paths])
-    report = package(args.root, args.output, source_zip=args.source_zip)
+    report = package(args.root, args.output, source_zip=args.source_zip, remote_source=args.remote_source)
     with ExitStack() as stack:
-        inputs = [stack.enter_context(FrozenInput(path)) for path in [*paths, *cache_paths, absolute(args.output)]]
+        inputs = [
+            stack.enter_context(FrozenInput(path)) for path in [*paths, *cache_paths, absolute(args.output)]
+        ]
         with atomic_output(args.report, inputs) as output:
             output.write(json.dumps(report, indent=2).encode() + b"\n")
     print(json.dumps({key: value for key, value in report.items() if key != "members"}, indent=2))
