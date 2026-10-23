@@ -15,9 +15,9 @@ RUN pip install --no-cache-dir --require-hashes -r requirements.lock \
     && mkdir /data && chown app:app /data
 COPY backend/torob/ backend/torob/
 COPY frontend/dist/ frontend/dist/
-COPY --from=catalogue-build --chmod=444 /catalogue/catalogue.sqlite data/catalogue.sqlite
-RUN chmod 755 /app/data
-COPY --chmod=444 scripts/container_entrypoint.py scripts/container_entrypoint.py
+COPY --from=catalogue-build /catalogue/catalogue.sqlite data/catalogue.sqlite
+COPY scripts/container_entrypoint.py scripts/container_entrypoint.py
+RUN chmod 755 /app/data && chmod 444 /app/data/catalogue.sqlite /app/scripts/container_entrypoint.py
 USER 0:0
 ENTRYPOINT ["python", "/app/scripts/container_entrypoint.py"]
 EXPOSE 8000

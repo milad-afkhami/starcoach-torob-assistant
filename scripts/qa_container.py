@@ -94,6 +94,18 @@ def main(state_storage="named", report_path=Path("docs/qa-evidence/container.jso
                 assert identity["Uid"] == ["10001"] * 4 and identity["Gid"] == ["10001"] * 4
                 assert identity["NoNewPrivs"] == ["1"] and int(identity["CapEff"][0], 16) == 0
                 report["app_identity"] = identity
+                permissions = docker(
+                    "exec",
+                    name,
+                    "stat",
+                    "-c",
+                    "%u:%g %a",
+                    "/app/data/catalogue.sqlite",
+                    "/app/scripts/container_entrypoint.py",
+                ).splitlines()
+                assert permissions == ["0:0 444", "0:0 444"]
+                report["immutable_runtime_file_permissions"] = permissions
+
                 if state_storage == "root-bind":
                     assert state.stat().st_uid == 10001
                     report["root_bind_owner_after"] = state.stat().st_uid
