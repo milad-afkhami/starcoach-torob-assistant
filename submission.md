@@ -4,17 +4,17 @@
 
 - [x] Reviewed implementation and initial published source commits recorded below; final submission version must be frozen before submitting.
 - [x] Public GitHub repository URL verified anonymously; only source, small fixtures, docs and results, no complete catalogue or private planning data. Evidence: [publication check](docs/qa-evidence/source-publication.json).
-- [x] Actual scoped deployment is live on HTTPS; genuine model/manual/reconnect/mobile/privacy journeys are recorded. Reviewed conversational release456fadc is deployed; source-version/mission continuity and competing-edit checks pass. Its genuine continuation/video proof remains separately tracked.
-- [ ] Approximately five-minute narrated demo recorded from the actual final app, with simulation/data limitations visible.
-- [ ] Public video URL verified signed out.
-- [ ] Final acceptance evidence has no unrun/blocked claims marked complete.
+- [x] Actual scoped deployment is live on HTTPS; genuine model/manual/reconnect/mobile/privacy journeys are recorded. Reviewed conversational release456fadc is deployed; source-version/mission continuity and competing-edit checks pass. Genuine continuation, typed preview/explicit recovery, controlled completed-result GET loss and the public narrated video are recorded.
+- [x]304.812-second narrated actual HTTPS app demo, genuine Codex and explicit simulated contact/historical data; same-mission two-part recording join disclosed.
+- [x] Public video played and sought in a fresh anonymous browser;1440px/390px layout and no page errors. Exact file hash recorded below.
+- [x] Final scoped evidence distinguishes actual hosted checks, controlled browser faults, fixed3/4breadth outcomes and inconclusive standalone restart. No pending check is relabelled as passed.
 - [ ] Starcoach team/entry identity confirmed before submitting.
 - [ ] Submit once through Torob's challenge form before23October2026 23:50Tehran; record confirmation and exact final URLs. No post-deadline edits.
 
 Repository URL: https://github.com/milad-afkhami/starcoach-torob-assistant (public, main).
-Video URL: pending recording/upload.
+Video URL: https://milad-afkhami.github.io/starcoach-torob-assistant/ . DirectMP4: https://milad-afkhami.github.io/starcoach-torob-assistant/demo.mp4 . SHA256:`e5c4c3aa34ec475806418aa0360bb4085ddc9aced66441752766bb0bc322fc06`;304.812seconds. [Playback evidence](docs/qa-evidence/demo-public-playback.json).
 Deployment URL: https://torob-plan-b-2026.liara.run . [Recorded scope and limits](docs/deployment.md).
-Reviewed implementation commit:456fadc8ee8bd57078137032f99056b017b10de7 (reviewed context projection/binding plus actual hosting evidence). Initial published source commit: 2abec6ae916e5c1257f942f56a78ffa2820bb8e1. Publication documentation follows on main; freeze the final submission commit after hosted acceptance.
+Reviewed implementation commit:44f56c78aa8c80bd66e57f63a2e360f37edb8064 (reviewed context projection/binding and same-turn read resilience), deployed release6adae318bffb36d784d979c4. Documentation/evidence follow on main; no application source changed during video editing. Initial published source commit: 2abec6ae916e5c1257f942f56a78ffa2820bb8e1. Publication documentation follows on main; freeze the final submission commit after hosted acceptance.
 Submission confirmation: none.
 
 Implementation readiness and open gates live in [kanban](docs/insured-vibe-coding/kanban.md); this file owns submission evidence only.

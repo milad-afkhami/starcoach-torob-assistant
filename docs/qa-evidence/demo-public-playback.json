@@ -1,0 +1,32 @@
+{
+  "url": "https://milad-afkhami.github.io/starcoach-torob-assistant/",
+  "scope": "Fresh anonymous browser; actual video decode/seek/playback and responsive public demo page",
+  "at": "2026-10-23T05:08:57.048Z",
+  "page_errors": [],
+  "initial": {
+    "duration": 304.812,
+    "width": 1440,
+    "height": 1080,
+    "readyState": 4,
+    "source": "https://milad-afkhami.github.io/starcoach-torob-assistant/demo.mp4"
+  },
+  "play": {
+    "currentTime": 2.804237,
+    "paused": false,
+    "error": null
+  },
+  "seek": {
+    "currentTime": 181.854044,
+    "paused": false,
+    "error": null
+  },
+  "desktop": {
+    "viewport": 1440,
+    "scrollWidth": 1440
+  },
+  "mobile": {
+    "viewport": 390,
+    "scrollWidth": 390
+  },
+  "status": "pass"
+}

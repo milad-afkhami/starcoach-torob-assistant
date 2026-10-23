@@ -1,0 +1,53 @@
+{
+  "reviewed_utc": "2026-10-23T04:45:31.791501+00:00",
+  "criteria_unchanged_after_predeclaration": true,
+  "runner_unchanged_after_predeclaration": true,
+  "raw_results_sha256": "5d32cfdbe5771bae4459064a3b3b0382073c6c80e3e5af037238beb93c43b0f6",
+  "evaluation_scope": "Four fixed genuine model cases through normal public owned HTTPS API; not a population accuracy estimate, UI study or real seller verification",
+  "cases": [
+    {
+      "id": "B1",
+      "pass": false,
+      "reason": "The requested open-ended daily-use Samsung advice did not complete. Interpretation extracted the exact100M budget and retrieved source Samsung phones, but explanation timed out; result remained failed/degraded with no recommendation or clarification. Useful source retrieval does not waive the completion gate.",
+      "failure_class": "explanation_stage_timeout",
+      "no_second_attempt": true,
+      "elapsed_ms": 74677,
+      "limits": "One observed timeout does not establish universal failure of Samsung recommendations; it is nevertheless a genuine reliability deduction."
+    },
+    {
+      "id": "B2",
+      "pass": true,
+      "reason": "Returned both Samsung and Xiaomi catalogue phone examples under100M and two own-source recommendations. All six cited fact values and evidence lists match independent public product reads. Language explicitly qualifies historical toman prices/current stock and attributes Xiaomi daily-use suitability to the supplied catalogue description; no universal brand-superiority claim.",
+      "usefulness_limit": "Examples and source caveats are provided; no measured daily-use performance study or live-price/stock confirmation is established.",
+      "elapsed_ms": 31684
+    },
+    {
+      "id": "B3",
+      "pass": true,
+      "reason": "Explicitly asks for location/coordinates near Vanak, leaves Republic coordinates/label unchanged and proposes23October18:00Tehran. Returns no seller feasibility masquerading as Vanak. This satisfies the predeclared honest-clarification route.",
+      "elapsed_ms": 20716
+    },
+    {
+      "id": "B4",
+      "pass": true,
+      "reason": "Parsed the simulated64-unavailable/128-available reply as variant_mismatch, explicitly about the locked64GB choice. The typed observation is simulation-scoped, unconfirmed and unapplied; the complete mission before/after objects are identical. No automatic switch to128GB or current-stock claim.",
+      "elapsed_ms": 13917
+    }
+  ],
+  "aggregate": {
+    "fixed_cases_attempted": 4,
+    "passed": 3,
+    "failed": 1,
+    "failed_cases_retained": true,
+    "coaching_or_inference_retries": 0,
+    "same_turn_read_retries": 0,
+    "completed_successful_trace_stages_lower_bound": 5,
+    "actual_model_starts": "Root independently measures after minus49 before-ledger entries; successful trace count omits the failed explanation."
+  },
+  "remaining_limitations": [
+    "The breadth set is small and deliberately scoped; do not call3/4 an estimated real-world success rate.",
+    "No rendered DOM/screenshot assertions in this batch; root genuine hosted demo owns UI evidence.",
+    "No seller/organizer communication, cloud operation, credentials, source or production-document edits were performed.",
+    "All four original attempts are terminal; no further inference is scheduled."
+  ]
+}

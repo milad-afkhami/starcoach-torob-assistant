@@ -1,0 +1,8 @@
+{
+  "prepared_utc": "2026-10-23T04:41:22.112281+00:00",
+  "no_evaluation_requests_or_inference_yet": true,
+  "files_sha256": {
+    "criteria.md": "93d5ea823cb989db184e04fdaccc6a644f34f846067ccf3e2621f53f75cb3aa0",
+    "run.py": "b458bc65a2831efedba82fb0e57e34138ef033ca4cb7b79626e0df13e5c17170"
+  }
+}

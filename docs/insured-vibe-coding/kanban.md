@@ -3,13 +3,14 @@
 _Last updated:23October2026. Next action: root targeted review and delivery of the frozen product source. Current deterministic no-model context-review target http://127.0.0.1:8672; root owns main/cloud rollout and genuine model verification._
 
 ## Doing
-- T6 hosted delivery — root owns provider operations and the current evidence in docs/deployment.md/submission.md. Local product verification here does not certify hosted acceptance.
+- Final delivery record/source synchronization — actual hosted version/model/manual/reconnect/privacy/concurrency and reviewed public video are complete. The standalone restart remains inconclusive; submission.md owns final links and uncompleted entry/team/receipt.
 
 ## Todo
-- After provisioning: actual hosted model roundtrip/disconnect/reconnect and deployed mobile/privacy checks.
-- Record narrated five-minute demo, publish its approved link, verify playback signed out and submit once; submission.md owns confirmations.
+- Confirm shared-entry identity/team exception; no organizer message or contest submission has been sent.
+- Submit the two complete entries once after the unresolved team/identity gate; submission.md owns confirmation.
 
 ## Done
+- Final hosted/media checkpoint — actual new-version mission continuity, genuine ordinal comparison/reply recovery, four-client/revision conflict, controlled completed-result read-loss recovery and anonymous public narrated video pass. Fixed broader evaluation retains3passes/1real explanation timeout with exactly6audited starts. Source code44f56c7 is deployed at release6adae318bffb36d784d979c4; latest final links are owned by submission.md.
 - Owned-turn polling resilience: real deployed network-loss symptom reproduced by aborting the reply GET; same-turn recovery keeps the typed preview without a second POST. Shared three-read-retry bound, original monotonic120s deadline, GET abort, cancellation/epoch guard and explicit error exclusions.22frontend/37browser/TS/Vite/Ruff/whitespace pass; unchanged256backend evidence reused. Source/dist frozen; root owns hosted acceptance. Evidence: qa-evidence/polling-recovery.json.
 - Bounded discovery continuation: optional owned/recent/completed parent, first-six exact display-order source references, pure exact-ID comparison action, memory/ordinal clarification and safe reset/replacement.256backend/6frontend plus33distinct browser cases verified (canonical32pass and one test-observer correction; final5affected cases pass), Ruff/TS/build/whitespace pass. Central terminal snapshot projection across clarification/degradation and ordered comparison, numeric/same-model fail-closed bindings and manual-diagnostic/sample cancellation are covered; browser uses explicit deterministic fixture worker, no genuine model call. Current source/dist frozen; root owns actual model/hosted acceptance and repackaging. Evidence: qa-evidence/discovery-context.json.
 - Legacy-builder compatibility repair: actualDOCKER_BUILDKIT=0 reproduces COPY--chmod failure, then completes20steps using ordinaryCOPY+RUNchmod.12affected checks and fresh512MiB/.5CPU named/root-bind acceptance pass; app/catalogue/frozenUI unchanged. New private source data/deployment-xz-legacy.tar.gz hash and proofs: qa-evidence/packaging-legacy-compatibility.json. Root owns provider re-upload/release.

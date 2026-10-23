@@ -24,6 +24,9 @@ The latest conversational batch has independent projection/binding/stale-result 
 | Genuine model | [Needs/reply](qa-evidence/hosted-model.json), [reconnect](qa-evidence/hosted-reconnect.json) | Actual isolated local Codex through public HTTPS; simulated seller reply is labelled |
 | Offline/mobile/privacy | [Hosted run](qa-evidence/hosted-offline.json) | Deterministic recovery,390px, secure cookies, ownership and origin boundary |
 | Concurrency | [Four-client check](qa-evidence/hosted-concurrency.json) | Four real parallel searches; exactly one of two stale-revision edits succeeds, other409; not a load benchmark |
+| Same-turn read recovery | [Actual controlled loss](qa-evidence/hosted-read-recovery.json) | One actual completed response deliberately dropped; same preview recovered, one turnPOST, zero confirms; not a network-success benchmark |
+| Fixed broader model cases | [Criteria](qa-evidence/hosted-breadth/criteria.md), [raw results](qa-evidence/hosted-breadth/results.json), [exact start audit](qa-evidence/hosted-breadth/root-ledger-audit.json) |3/4fixed one-attempt cases; Samsung everyday explanation timed out after74.7s. Comparison/location/variant cases passed; six actual model starts, no coaching/reset |
+| Public narrated output | [Demo](https://milad-afkhami.github.io/starcoach-torob-assistant/), [playback](qa-evidence/demo-public-playback.json), [manifest](qa-evidence/demo-manifest.json) | Actual two-part same-mission footage, synthetic voice/joins disclosed; not a contest receipt |
 | Standalone restart | [Original request and uncertainty](qa-evidence/hosted-restart-result.json) | HTTP200 acceptance/continuity; actual restart occurrence remains inconclusive |
 
 These are historical recorded checks. Follow [verification commands](getting-started.md#verification-commands) to run appropriate checks against another revision/environment. Genuine model evaluations consume the persistent shared budget.
@@ -59,6 +62,7 @@ The recorded real-catalogue fixture uses the exact product ID and offer IDs reta
 
 - [x] Actual public HTTPS deployment and hosted-worker roundtrip.
 - [x] Hosted disconnect/reconnect, privacy and mobile acceptance.
-- [ ] Narrated public video and one-time final contest submission.
+- [x] Reviewed narrated public video and anonymous playback.
+- [ ] Final entry/team identity and one-time contest submission.
 
 The [submission record](../submission.md) owns final links/confirmations. Recorded actual hosted evidence closes only its stated gates; video/submission remain independent.

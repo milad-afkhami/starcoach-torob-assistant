@@ -1,0 +1,112 @@
+{
+  "status": "Narrated actual-hosted demonstration; not a contest-submission receipt",
+  "video": {
+    "file": "torob-demo.mp4",
+    "bytes": 9255655,
+    "sha256": "e5c4c3aa34ec475806418aa0360bb4085ddc9aced66441752766bb0bc322fc06",
+    "duration_seconds": 304.812
+  },
+  "source": {
+    "raw_file": "combined-actual-recording.mp4",
+    "raw_sha256": "c0ce1ce73ba478ba0d9d2ec47003dc4e555abb48192dac8c869f6d9e0ece6876",
+    "source_commit": "44f56c78aa8c80bd66e57f63a2e360f37edb8064",
+    "provider_release": "6adae318bffb36d784d979c4",
+    "journey_sha256": "8387be61bddd620cc0129388994d3619eae3f5a39f0ec038a522e5ff1a01bfb8"
+  },
+  "recording_assembly": {
+    "reason": "Recording selector failure after successful genuine workflow stages1–4; continuation reopens the exact same persisted owned mission. No model replay in continuation.",
+    "same_mission_id": "3445e93d58ba4f338f1a0d575f4247e2",
+    "segments": [
+      {
+        "raw_file": "page@0d550d33cf3e84b4d166e41b85a25065.webm",
+        "sha256": "ba907029baaea0ba39a2248cbd022ec590b82b78da8b413b97d70b3f017efa73",
+        "start_seconds": 0,
+        "end_seconds": 215.0
+      },
+      {
+        "raw_file": "page@2201ff85ab664fd3ad2a454d85ae8ff3.webm",
+        "sha256": "77c5555522a9d5f5dda2420442c37d66154ff6a4711869dac2a5d26ba65b3482",
+        "start_seconds": 0.0,
+        "end_seconds": 89.812
+      }
+    ],
+    "original_recording_status": "fail",
+    "original_driver_failure": "Error: locator.click: Error: strict mode violation: locator('details').filter({ has: locator('summary').filter({ hasText: 'جست‌وجوی مستقیم و فیلترها' }) }).first().locator('summary') resolved to 2 elements:\n    1) <summary>…</summary> aka getByText('جست‌وجوی مستقیم و فیلترها')\n    2) <summary>…</summary> aka getByText('محدوده و شرایط پرداخت')\n\nCall log:\n\u001b[2m  - waiting for locator('details').filter({ has: locator('summary').filter({ hasText: 'جست‌وجوی مستقیم و فیلترها' }) }).first().locator('summary')\u001b[22m\n",
+    "continuation_status": "pass",
+    "continuation_model_posts": 0,
+    "unplanned_real_network_failures": [
+      {
+        "path": "/api/turns/aed1340bf0d2460fb1153fc54f0046bc",
+        "method": "GET",
+        "error": "net::ERR_NETWORK_CHANGED"
+      },
+      {
+        "path": "/api/turns/4952fe216b0142fca0905b524219c601",
+        "method": "GET",
+        "error": "net::ERR_NETWORK_CHANGED"
+      }
+    ]
+  },
+  "edits": {
+    "initial_navigation_trim_seconds": 0.027999999999963165,
+    "playback_speed": 1,
+    "app_pixels": "unchanged actual viewport; only separate top/bottom editorial bars",
+    "narration": "Synthetic fa-IR-FaridNeural; not the participant voice",
+    "seller_contact": "Explicit simulation; no real seller contacted"
+  },
+  "sections": [
+    {
+      "number": 1,
+      "start_seconds": 0.0,
+      "end_seconds": 45.002,
+      "title": "چرا پیش از حرکت گزینهٔ دوم لازم است؟",
+      "narration": "فرض کنید برای خرید حضوری یک گوشی از خانه بیرون می‌روید. ارزان‌ترین قیمت را پیدا کرده‌اید، اما ممکن است فروشگاه بسته باشد، همان مدل را نداشته باشد یا قیمتش عوض شده باشد. مسئله فقط پیدا کردن یک کالا نیست؛ باید یک برنامهٔ قابل اصلاح برای خرید داشته باشیم. این دستیار با داده‌های مسابقهٔ ترب کار می‌کند. نام برنامه «پلن بی، پیش از حرکت» انتخاب خودمان است. اطلاعات قیمت تاریخی است و ثبت یک پیشنهاد، موجودی فعلی را اثبات نمی‌کند. در این نمایش، پاسخ فروشنده شبیه‌سازی شده و هیچ تماس یا پیام واقعی فرستاده نمی‌شود.",
+      "audio_sha256": "058763e32c44971846386cad50536423902b18b2fc37f6352ced9dfb43d0404f"
+    },
+    {
+      "number": 2,
+      "start_seconds": 45.002,
+      "end_seconds": 110.001,
+      "title": "انتخاب با مدل واقعی و مقایسهٔ ادامهٔ گفت‌وگو",
+      "narration": "از همین بالای صفحه می‌توانیم نیازمان را به فارسی بگوییم. دستیار از میان کالاهای واقعی بازیابی‌شده پیشنهاد می‌دهد و مشخصات را به منبعشان وصل می‌کند. انتخاب نهایی با خریدار است. مقایسه فقط دو اسم و دو قیمت نیست؛ تفاوت حافظه، مشخصات مهم و امکان خرید با شرایط یکسان را کنار هم می‌بینیم. اگر مشخصه‌ای در داده وجود نداشته باشد، آن را نامعلوم نشان می‌دهیم. قیمت کل داده را هم با قیمت فروشگاه‌های سازگار در محدوده اشتباه نمی‌گیریم.",
+      "audio_sha256": "029bbc4958bc25eb27279de7c2c3c577ea328a7777bfcfcb6519299e0aa3d564"
+    },
+    {
+      "number": 3,
+      "start_seconds": 110.001,
+      "end_seconds": 155.002,
+      "title": "برنامهٔ خرید با دادهٔ تاریخی و زمان مشخص",
+      "narration": "برای نمایش تکرارپذیر، سناریوی نمونه را باز می‌کنیم. زمان مراجعه ثابت و روی صفحه مشخص است؛ این یک قرار واقعی خرید نیست. بودجه چهل میلیون تومان و شعاع یک کیلومتر است. ارزان‌ترین پیشنهاد ثبت‌شده با ساعت مراجعه سازگار نیست. گزینهٔ اصلی سی و نه میلیون و دویست هزار تومان و گزینهٔ جایگزین سی و نه میلیون و پانصد هزار تومان است. این دو فروشگاه حدود شصت و سه متر فاصلهٔ مستقیم دارند. این عدد، زمان پیاده‌روی یا تضمین باز بودن و موجودی نیست.",
+      "audio_sha256": "3f4d6e84de85cd75360c43af077d38b248de7774ec092ed513f822fe091612b3"
+    },
+    {
+      "number": 4,
+      "start_seconds": 155.002,
+      "end_seconds": 215.0,
+      "title": "برداشت از پاسخ؛ سپس تأیید و بازچینی",
+      "narration": "حالا پاسخ شبیه‌سازی‌شدهٔ فروشنده را وارد می‌کنیم: این کالا موجود نیست. مدل، معنای پاسخ را پیشنهاد می‌کند، اما هنوز هیچ چیزی در برنامه تغییر نکرده است. ابتدا پیش‌نمایش را می‌خوانیم و بعد خودمان تأیید می‌کنیم. گزینهٔ جایگزین به گزینهٔ اصلی تبدیل می‌شود و اختلاف سیصد هزار تومانی را روشن می‌بینیم. مدل کالا، زمان، بودجه و محدوده بدون اجازه عوض نمی‌شوند. پاسخ ثبت‌شده فقط متعلق به همین نشست خرید است و وارد فهرست مرجع فروشگاه‌ها نمی‌شود.",
+      "audio_sha256": "baee55f13ccb6058562c6819e5d9adbc6d532cbcdba73d2257649c03166be62a"
+    },
+    {
+      "number": 5,
+      "start_seconds": 215.0,
+      "end_seconds": 260.002,
+      "title": "ادامهٔ همان برنامه پس از باز کردن صفحه؛ بودجه و مقصد",
+      "narration": "اگر بودجه را به سی و نه میلیون و چهارصد هزار تومان محدود کنیم، دستیار نتیجهٔ ناموجود را پنهان نمی‌کند. حداقل تغییر یک شرط را پیشنهاد می‌دهد: صد هزار تومان افزایش بودجه. تا وقتی این تغییر را صریح نپذیریم، بودجه همان مقدار قبلی می‌ماند. مقصد مسیریابی هم با گزینهٔ جدید هماهنگ می‌شود. نشان، بلد، اسنپ و تپسی مسیرهای تحویل به برنامهٔ مربوط هستند؛ اینجا سفر رزرو نمی‌شود و کرایه یا موجودی ساختگی نمایش داده نمی‌شود.",
+      "audio_sha256": "19ac23d93af4a8959248ddafe13472cb8f3100d0305c59c6605830e54485366e"
+    },
+    {
+      "number": 6,
+      "start_seconds": 260.002,
+      "end_seconds": 304.812,
+      "title": "مرز اختیار مدل و نتیجهٔ قابل دفاع",
+      "narration": "بخش قطعی محاسبات از مدل جداست. پول دقیق، ساعت، فاصله، مالکیت نشست و اصلاح برنامه را کد برنامه بررسی می‌کند. در قطع ارتباط مدل، جست‌وجو و اصلاح قطعی همچنان قابل استفاده‌اند. مدل واقعی در یک کارگر محلی جداگانه اجرا می‌شود و اعتبار ورودش به سرور ابری فرستاده نشده است. مخزن عمومی شامل معماری، راه‌اندازی، تست‌ها و نتایج با دامنهٔ مشخص است. هدف این محصول، وعدهٔ خرید تضمینی نیست؛ کمک به تصمیم بهتر و حفظ یک برنامهٔ جایگزین شفاف، پیش از حرکت است.",
+      "audio_sha256": "edeff2a8077afb052b0bf93f4f78a7e34c2e1ce94591498e769f4dd9b30af272"
+    }
+  ],
+  "validation": {
+    "full_decode": "pass",
+    "genuine_model_turns": 3,
+    "browser_errors": []
+  }
+}

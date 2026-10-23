@@ -1,0 +1,10 @@
+{
+  "scope": "Full anonymous HTTPS video download; exact reviewed final asset hash/length",
+  "at": "2026-10-23T05:19:35.720958+00:00",
+  "url": "https://milad-afkhami.github.io/starcoach-torob-assistant/demo.mp4",
+  "http_status": 200,
+  "bytes": 9255655,
+  "sha256": "e5c4c3aa34ec475806418aa0360bb4085ddc9aced66441752766bb0bc322fc06",
+  "expected_sha256": "e5c4c3aa34ec475806418aa0360bb4085ddc9aced66441752766bb0bc322fc06",
+  "status": "pass"
+}
