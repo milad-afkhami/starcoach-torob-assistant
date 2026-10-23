@@ -1,0 +1,27 @@
+{
+  "reported_failure": {
+    "evidence": "/tmp/starcoach-ui-revision-20261023/r2a-integration-independent/manual-ui-results.json",
+    "observed": "All six visible tiles returned200 and streets rendered after timeout; old failure message persisted."
+  },
+  "expected_browser_red": {
+    "failed": 1,
+    "raw_log": "/tmp/starcoach-ui-revision-20261023/map-recovery-red.txt",
+    "traces": "/tmp/starcoach-ui-revision-20261023/map-recovery-red"
+  },
+  "first_implementation_inventory": {
+    "failed": 3,
+    "passed": 1,
+    "skipped": 3,
+    "cause": "Canceled old-zoom tiles emit Leaflet tileabort separately from tileunload and remained pending. Existing map tests were initially skipped because fixture flag was absent.",
+    "raw_log": "/tmp/starcoach-ui-revision-20261023/map-recovery-affected.txt",
+    "retained_traces": "/tmp/starcoach-ui-revision-20261023/map-recovery-first-attempt"
+  },
+  "repair": "Inspecting installed Leaflet1.9.4 TileLayer._abortLoading established tileabort cleanup; added the matching event handler and reran all seven cases with the fixture flag.",
+  "final": {
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0
+  },
+  "test_boundary": "Valid deterministic SVG tile responses exercise actual Chromium image decoding and real Leaflet lifecycle events; they do not establish live OSM availability or geography.",
+  "independent_variance": "First mixed replacement assertion timed out10seconds without capturing current-view completion; retained in independent evidence. The one bounded same-case diagnostic decoded all4currentzoom18tiles and cleared the warning with unchanged source. No viewport-cache patch was made."
+}

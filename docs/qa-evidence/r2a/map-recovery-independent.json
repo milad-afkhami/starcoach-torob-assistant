@@ -1,0 +1,339 @@
+{
+  "late_and_partial": {
+    "scope": "Actual browser/Leaflet events with explicitly controlled valid synthetic tile bitmaps; not live OSM availability/geography proof",
+    "identity": {
+      "url": "http://127.0.0.1:8712",
+      "html_sha256": "1861c35fb14253be5a77d821d55e6ccdc7cc13a1113da1bf753b5fb4c25da8b6",
+      "asset": "/assets/index-CAoFB3f5.js",
+      "asset_status": 200,
+      "asset_sha256": "a5a44683de96ca00b4bbb3e40da780422117d0a0595c716e0f414b697515cd86",
+      "shop_map_sha256": "ae6d59537ce9a2205c674daa10a0c0e6a9bb5b054abecb631e229ab1b0bc302c",
+      "test_sha256": "f1560ca271dfc4d2de3681252f48d26354f0edf7278943ae399b0e258f84f4a8"
+    },
+    "results": [
+      {
+        "kind": "late_complete",
+        "before": "\u0628\u0627\u0631\u06af\u0630\u0627\u0631\u06cc \u0646\u0642\u0634\u0647 \u0632\u0645\u06cc\u0646\u0647 \u0637\u0648\u0644 \u06a9\u0634\u06cc\u062f\u0647 \u0627\u0633\u062a\u061b \u0647\u0646\u0648\u0632 \u06a9\u0627\u0645\u0644 \u0646\u0634\u062f\u0647. \u0646\u0634\u0627\u0646\u06af\u0631\u0647\u0627 \u0627\u0632 \u0645\u062e\u062a\u0635\u0627\u062a \u062f\u0627\u062f\u0647\u200c\u0627\u0646\u062f\u061b \u0646\u0634\u0627\u0646\u06cc \u0648 \u0627\u0646\u062a\u062e\u0627\u0628 \u0641\u0631\u0648\u0634\u06af\u0627\u0647 \u062f\u0631 \u0641\u0647\u0631\u0633\u062a \u0632\u06cc\u0631 \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0627\u0633\u062a.",
+        "after": [],
+        "decoded": 6,
+        "requestCount": 8,
+        "markerCount": 2,
+        "listCount": 2,
+        "errors": [],
+        "mutations": [
+          "/api/sessions",
+          "/api/missions"
+        ]
+      },
+      {
+        "kind": "partial_inflight",
+        "before": "\u0628\u0627\u0631\u06af\u0630\u0627\u0631\u06cc \u0646\u0642\u0634\u0647 \u0632\u0645\u06cc\u0646\u0647 \u0637\u0648\u0644 \u06a9\u0634\u06cc\u062f\u0647 \u0627\u0633\u062a\u061b \u0647\u0646\u0648\u0632 \u06a9\u0627\u0645\u0644 \u0646\u0634\u062f\u0647. \u0646\u0634\u0627\u0646\u06af\u0631\u0647\u0627 \u0627\u0632 \u0645\u062e\u062a\u0635\u0627\u062a \u062f\u0627\u062f\u0647\u200c\u0627\u0646\u062f\u061b \u0646\u0634\u0627\u0646\u06cc \u0648 \u0627\u0646\u062a\u062e\u0627\u0628 \u0641\u0631\u0648\u0634\u06af\u0627\u0647 \u062f\u0631 \u0641\u0647\u0631\u0633\u062a \u0632\u06cc\u0631 \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0627\u0633\u062a.",
+        "after": [],
+        "decoded": 6,
+        "requestCount": 8,
+        "markerCount": 2,
+        "listCount": 2,
+        "errors": [],
+        "mutations": [
+          "/api/sessions",
+          "/api/missions"
+        ]
+      },
+      {
+        "kind": "mixed_error",
+        "before": "\u0628\u062e\u0634\u06cc \u0627\u0632 \u0646\u0642\u0634\u0647 \u0632\u0645\u06cc\u0646\u0647 \u0628\u0627\u0631\u06af\u0630\u0627\u0631\u06cc \u0646\u0634\u062f\u061b \u0646\u0642\u0634\u0647 \u0645\u0645\u06a9\u0646 \u0627\u0633\u062a \u0646\u0627\u0642\u0635 \u0628\u0627\u0634\u062f. \u0646\u0634\u0627\u0646\u06af\u0631\u0647\u0627 \u0627\u0632 \u0645\u062e\u062a\u0635\u0627\u062a \u062f\u0627\u062f\u0647\u200c\u0627\u0646\u062f\u061b \u0646\u0634\u0627\u0646\u06cc \u0648 \u0627\u0646\u062a\u062e\u0627\u0628 \u0641\u0631\u0648\u0634\u06af\u0627\u0647 \u062f\u0631 \u0641\u0647\u0631\u0633\u062a \u0632\u06cc\u0631 \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0627\u0633\u062a.",
+        "after": [],
+        "decoded": 4,
+        "tileInventory": [
+          {
+            "src": "https://tile.openstreetmap.org/18/168508/103213.png",
+            "complete": true,
+            "width": 256,
+            "classes": "leaflet-tile leaflet-tile-loaded",
+            "visibility": "visible",
+            "opacity": "1"
+          },
+          {
+            "src": "https://tile.openstreetmap.org/18/168509/103213.png",
+            "complete": true,
+            "width": 256,
+            "classes": "leaflet-tile leaflet-tile-loaded",
+            "visibility": "visible",
+            "opacity": "1"
+          },
+          {
+            "src": "https://tile.openstreetmap.org/18/168508/103214.png",
+            "complete": true,
+            "width": 256,
+            "classes": "leaflet-tile leaflet-tile-loaded",
+            "visibility": "visible",
+            "opacity": "1"
+          },
+          {
+            "src": "https://tile.openstreetmap.org/18/168509/103214.png",
+            "complete": true,
+            "width": 256,
+            "classes": "leaflet-tile leaflet-tile-loaded",
+            "visibility": "visible",
+            "opacity": "1"
+          }
+        ],
+        "requestCount": 12,
+        "markerCount": 2,
+        "listCount": 2,
+        "errors": [],
+        "mutations": [
+          "/api/sessions",
+          "/api/missions"
+        ]
+      },
+      {
+        "kind": "all_error",
+        "before": "\u0646\u0642\u0634\u0647 \u0632\u0645\u06cc\u0646\u0647 \u06a9\u0627\u0645\u0644 \u0628\u0627\u0631\u06af\u0630\u0627\u0631\u06cc \u0646\u0634\u062f\u0647 \u0627\u0633\u062a. \u0646\u0634\u0627\u0646\u06af\u0631\u0647\u0627 \u0627\u0632 \u0645\u062e\u062a\u0635\u0627\u062a \u062f\u0627\u062f\u0647\u200c\u0627\u0646\u062f\u061b \u0646\u0634\u0627\u0646\u06cc \u0648 \u0627\u0646\u062a\u062e\u0627\u0628 \u0641\u0631\u0648\u0634\u06af\u0627\u0647 \u062f\u0631 \u0641\u0647\u0631\u0633\u062a \u0632\u06cc\u0631 \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0627\u0633\u062a.",
+        "after": [
+          "\u0646\u0642\u0634\u0647 \u0632\u0645\u06cc\u0646\u0647 \u06a9\u0627\u0645\u0644 \u0628\u0627\u0631\u06af\u0630\u0627\u0631\u06cc \u0646\u0634\u062f\u0647 \u0627\u0633\u062a. \u0646\u0634\u0627\u0646\u06af\u0631\u0647\u0627 \u0627\u0632 \u0645\u062e\u062a\u0635\u0627\u062a \u062f\u0627\u062f\u0647\u200c\u0627\u0646\u062f\u061b \u0646\u0634\u0627\u0646\u06cc \u0648 \u0627\u0646\u062a\u062e\u0627\u0628 \u0641\u0631\u0648\u0634\u06af\u0627\u0647 \u062f\u0631 \u0641\u0647\u0631\u0633\u062a \u0632\u06cc\u0631 \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0627\u0633\u062a."
+        ],
+        "decoded": 0,
+        "tileInventory": [
+          {
+            "src": "https://tile.openstreetmap.org/17/84254/51606.png",
+            "complete": true,
+            "width": 0,
+            "classes": "leaflet-tile",
+            "visibility": "hidden",
+            "opacity": "0.71"
+          },
+          {
+            "src": "https://tile.openstreetmap.org/17/84254/51607.png",
+            "complete": true,
+            "width": 0,
+            "classes": "leaflet-tile",
+            "visibility": "hidden",
+            "opacity": "0.705"
+          },
+          {
+            "src": "https://tile.openstreetmap.org/17/84253/51606.png",
+            "complete": true,
+            "width": 0,
+            "classes": "leaflet-tile",
+            "visibility": "hidden",
+            "opacity": "0.705"
+          },
+          {
+            "src": "https://tile.openstreetmap.org/17/84255/51606.png",
+            "complete": true,
+            "width": 0,
+            "classes": "leaflet-tile",
+            "visibility": "hidden",
+            "opacity": "0.705"
+          },
+          {
+            "src": "https://tile.openstreetmap.org/17/84253/51607.png",
+            "complete": true,
+            "width": 0,
+            "classes": "leaflet-tile",
+            "visibility": "hidden",
+            "opacity": "0.705"
+          },
+          {
+            "src": "https://tile.openstreetmap.org/17/84255/51607.png",
+            "complete": true,
+            "width": 0,
+            "classes": "leaflet-tile",
+            "visibility": "hidden",
+            "opacity": "0.705"
+          }
+        ],
+        "requestCount": 8,
+        "markerCount": 2,
+        "listCount": 2,
+        "errors": [],
+        "mutations": [
+          "/api/sessions",
+          "/api/missions"
+        ]
+      }
+    ],
+    "assessment": "Original stale-warning regression closes in late-success checks; truthful partial/error states observed. No concrete remaining source defect established. Initial unclassified replacement timing timeout retained.",
+    "source_head_at_review": "ae28508b2c600d279bd95710d65922203211dd86",
+    "verification_variance": {
+      "case": "mixed_error replacement view",
+      "first_attempt": "10-second warning-clear assertion timeout; complete-current-view precondition and tile inventory were not captured, so source versus harness was not established",
+      "bounded_diagnostic": "same case passed with4current-zoom decoded tiles, no warning and no page errors",
+      "first_attempt_evidence": "map-status-first-attempt.json",
+      "diagnostic_evidence": "map-status-diagnostic.json",
+      "further_repeats": 0
+    }
+  },
+  "mixed_and_terminal_error_diagnostic": {
+    "scope": "Actual browser/Leaflet events with explicitly controlled valid synthetic tile bitmaps; not live OSM availability/geography proof",
+    "identity": {
+      "url": "http://127.0.0.1:8712",
+      "html_sha256": "1861c35fb14253be5a77d821d55e6ccdc7cc13a1113da1bf753b5fb4c25da8b6",
+      "asset": "/assets/index-CAoFB3f5.js",
+      "asset_status": 200,
+      "asset_sha256": "a5a44683de96ca00b4bbb3e40da780422117d0a0595c716e0f414b697515cd86",
+      "shop_map_sha256": "ae6d59537ce9a2205c674daa10a0c0e6a9bb5b054abecb631e229ab1b0bc302c",
+      "test_sha256": "f1560ca271dfc4d2de3681252f48d26354f0edf7278943ae399b0e258f84f4a8"
+    },
+    "results": [
+      {
+        "kind": "mixed_error",
+        "before": "\u0628\u062e\u0634\u06cc \u0627\u0632 \u0646\u0642\u0634\u0647 \u0632\u0645\u06cc\u0646\u0647 \u0628\u0627\u0631\u06af\u0630\u0627\u0631\u06cc \u0646\u0634\u062f\u061b \u0646\u0642\u0634\u0647 \u0645\u0645\u06a9\u0646 \u0627\u0633\u062a \u0646\u0627\u0642\u0635 \u0628\u0627\u0634\u062f. \u0646\u0634\u0627\u0646\u06af\u0631\u0647\u0627 \u0627\u0632 \u0645\u062e\u062a\u0635\u0627\u062a \u062f\u0627\u062f\u0647\u200c\u0627\u0646\u062f\u061b \u0646\u0634\u0627\u0646\u06cc \u0648 \u0627\u0646\u062a\u062e\u0627\u0628 \u0641\u0631\u0648\u0634\u06af\u0627\u0647 \u062f\u0631 \u0641\u0647\u0631\u0633\u062a \u0632\u06cc\u0631 \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0627\u0633\u062a.",
+        "after": [],
+        "decoded": 4,
+        "tileInventory": [
+          {
+            "src": "https://tile.openstreetmap.org/18/168508/103213.png",
+            "complete": true,
+            "width": 256,
+            "classes": "leaflet-tile leaflet-tile-loaded",
+            "visibility": "visible",
+            "opacity": "1"
+          },
+          {
+            "src": "https://tile.openstreetmap.org/18/168509/103213.png",
+            "complete": true,
+            "width": 256,
+            "classes": "leaflet-tile leaflet-tile-loaded",
+            "visibility": "visible",
+            "opacity": "1"
+          },
+          {
+            "src": "https://tile.openstreetmap.org/18/168508/103214.png",
+            "complete": true,
+            "width": 256,
+            "classes": "leaflet-tile leaflet-tile-loaded",
+            "visibility": "visible",
+            "opacity": "1"
+          },
+          {
+            "src": "https://tile.openstreetmap.org/18/168509/103214.png",
+            "complete": true,
+            "width": 256,
+            "classes": "leaflet-tile leaflet-tile-loaded",
+            "visibility": "visible",
+            "opacity": "1"
+          }
+        ],
+        "requestCount": 12,
+        "markerCount": 2,
+        "listCount": 2,
+        "errors": [],
+        "mutations": [
+          "/api/sessions",
+          "/api/missions"
+        ]
+      },
+      {
+        "kind": "all_error",
+        "before": "\u0646\u0642\u0634\u0647 \u0632\u0645\u06cc\u0646\u0647 \u06a9\u0627\u0645\u0644 \u0628\u0627\u0631\u06af\u0630\u0627\u0631\u06cc \u0646\u0634\u062f\u0647 \u0627\u0633\u062a. \u0646\u0634\u0627\u0646\u06af\u0631\u0647\u0627 \u0627\u0632 \u0645\u062e\u062a\u0635\u0627\u062a \u062f\u0627\u062f\u0647\u200c\u0627\u0646\u062f\u061b \u0646\u0634\u0627\u0646\u06cc \u0648 \u0627\u0646\u062a\u062e\u0627\u0628 \u0641\u0631\u0648\u0634\u06af\u0627\u0647 \u062f\u0631 \u0641\u0647\u0631\u0633\u062a \u0632\u06cc\u0631 \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0627\u0633\u062a.",
+        "after": [
+          "\u0646\u0642\u0634\u0647 \u0632\u0645\u06cc\u0646\u0647 \u06a9\u0627\u0645\u0644 \u0628\u0627\u0631\u06af\u0630\u0627\u0631\u06cc \u0646\u0634\u062f\u0647 \u0627\u0633\u062a. \u0646\u0634\u0627\u0646\u06af\u0631\u0647\u0627 \u0627\u0632 \u0645\u062e\u062a\u0635\u0627\u062a \u062f\u0627\u062f\u0647\u200c\u0627\u0646\u062f\u061b \u0646\u0634\u0627\u0646\u06cc \u0648 \u0627\u0646\u062a\u062e\u0627\u0628 \u0641\u0631\u0648\u0634\u06af\u0627\u0647 \u062f\u0631 \u0641\u0647\u0631\u0633\u062a \u0632\u06cc\u0631 \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0627\u0633\u062a."
+        ],
+        "decoded": 0,
+        "tileInventory": [
+          {
+            "src": "https://tile.openstreetmap.org/17/84254/51606.png",
+            "complete": true,
+            "width": 0,
+            "classes": "leaflet-tile",
+            "visibility": "hidden",
+            "opacity": "0.71"
+          },
+          {
+            "src": "https://tile.openstreetmap.org/17/84254/51607.png",
+            "complete": true,
+            "width": 0,
+            "classes": "leaflet-tile",
+            "visibility": "hidden",
+            "opacity": "0.705"
+          },
+          {
+            "src": "https://tile.openstreetmap.org/17/84253/51606.png",
+            "complete": true,
+            "width": 0,
+            "classes": "leaflet-tile",
+            "visibility": "hidden",
+            "opacity": "0.705"
+          },
+          {
+            "src": "https://tile.openstreetmap.org/17/84255/51606.png",
+            "complete": true,
+            "width": 0,
+            "classes": "leaflet-tile",
+            "visibility": "hidden",
+            "opacity": "0.705"
+          },
+          {
+            "src": "https://tile.openstreetmap.org/17/84253/51607.png",
+            "complete": true,
+            "width": 0,
+            "classes": "leaflet-tile",
+            "visibility": "hidden",
+            "opacity": "0.705"
+          },
+          {
+            "src": "https://tile.openstreetmap.org/17/84255/51607.png",
+            "complete": true,
+            "width": 0,
+            "classes": "leaflet-tile",
+            "visibility": "hidden",
+            "opacity": "0.705"
+          }
+        ],
+        "requestCount": 8,
+        "markerCount": 2,
+        "listCount": 2,
+        "errors": [],
+        "mutations": [
+          "/api/sessions",
+          "/api/missions"
+        ]
+      }
+    ]
+  },
+  "first_attempt_retained": {
+    "scope": "Actual browser/Leaflet events with explicitly controlled valid synthetic tile bitmaps; not live OSM availability/geography proof",
+    "identity": {
+      "url": "http://127.0.0.1:8712",
+      "html_sha256": "1861c35fb14253be5a77d821d55e6ccdc7cc13a1113da1bf753b5fb4c25da8b6",
+      "asset": "/assets/index-CAoFB3f5.js",
+      "asset_status": 200,
+      "asset_sha256": "a5a44683de96ca00b4bbb3e40da780422117d0a0595c716e0f414b697515cd86",
+      "shop_map_sha256": "ae6d59537ce9a2205c674daa10a0c0e6a9bb5b054abecb631e229ab1b0bc302c",
+      "test_sha256": "f1560ca271dfc4d2de3681252f48d26354f0edf7278943ae399b0e258f84f4a8"
+    },
+    "results": [
+      {
+        "kind": "late_complete",
+        "before": "\u0628\u0627\u0631\u06af\u0630\u0627\u0631\u06cc \u0646\u0642\u0634\u0647 \u0632\u0645\u06cc\u0646\u0647 \u0637\u0648\u0644 \u06a9\u0634\u06cc\u062f\u0647 \u0627\u0633\u062a\u061b \u0647\u0646\u0648\u0632 \u06a9\u0627\u0645\u0644 \u0646\u0634\u062f\u0647. \u0646\u0634\u0627\u0646\u06af\u0631\u0647\u0627 \u0627\u0632 \u0645\u062e\u062a\u0635\u0627\u062a \u062f\u0627\u062f\u0647\u200c\u0627\u0646\u062f\u061b \u0646\u0634\u0627\u0646\u06cc \u0648 \u0627\u0646\u062a\u062e\u0627\u0628 \u0641\u0631\u0648\u0634\u06af\u0627\u0647 \u062f\u0631 \u0641\u0647\u0631\u0633\u062a \u0632\u06cc\u0631 \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0627\u0633\u062a.",
+        "after": [],
+        "decoded": 6,
+        "requestCount": 8,
+        "markerCount": 2,
+        "listCount": 2,
+        "errors": [],
+        "mutations": [
+          "/api/sessions",
+          "/api/missions"
+        ]
+      },
+      {
+        "kind": "partial_inflight",
+        "before": "\u0628\u0627\u0631\u06af\u0630\u0627\u0631\u06cc \u0646\u0642\u0634\u0647 \u0632\u0645\u06cc\u0646\u0647 \u0637\u0648\u0644 \u06a9\u0634\u06cc\u062f\u0647 \u0627\u0633\u062a\u061b \u0647\u0646\u0648\u0632 \u06a9\u0627\u0645\u0644 \u0646\u0634\u062f\u0647. \u0646\u0634\u0627\u0646\u06af\u0631\u0647\u0627 \u0627\u0632 \u0645\u062e\u062a\u0635\u0627\u062a \u062f\u0627\u062f\u0647\u200c\u0627\u0646\u062f\u061b \u0646\u0634\u0627\u0646\u06cc \u0648 \u0627\u0646\u062a\u062e\u0627\u0628 \u0641\u0631\u0648\u0634\u06af\u0627\u0647 \u062f\u0631 \u0641\u0647\u0631\u0633\u062a \u0632\u06cc\u0631 \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0627\u0633\u062a.",
+        "after": [],
+        "decoded": 6,
+        "requestCount": 8,
+        "markerCount": 2,
+        "listCount": 2,
+        "errors": [],
+        "mutations": [
+          "/api/sessions",
+          "/api/missions"
+        ]
+      }
+    ]
+  },
+  "final_conclusion": "No concrete remaining defect; current-view decode was established in the bounded diagnostic before success was asserted. Verification variance retained."
+}

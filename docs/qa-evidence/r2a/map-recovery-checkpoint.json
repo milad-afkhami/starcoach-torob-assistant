@@ -1,0 +1,44 @@
+{
+  "scope": "ShopMap tile loading lifecycle only",
+  "baseline_commit": "ae28508b2c600d279bd95710d65922203211dd86",
+  "files": [
+    "frontend/src/ShopMap.tsx",
+    "frontend/e2e/map-recovery.spec.ts"
+  ],
+  "source_sha256": {
+    "frontend/src/ShopMap.tsx": "ae6d59537ce9a2205c674daa10a0c0e6a9bb5b054abecb631e229ab1b0bc302c",
+    "frontend/e2e/map-recovery.spec.ts": "f1560ca271dfc4d2de3681252f48d26354f0edf7278943ae399b0e258f84f4a8"
+  },
+  "behavior": [
+    "Late all-success completion clears the timeout warning.",
+    "One successful tile never clears remaining pending/error state.",
+    "Real tile errors remain visible until failed tiles recover or unload; load event alone is not success.",
+    "Canceled and unloaded tiles are removed; timer/listeners are disabled before unmount cleanup.",
+    "No tiles/no successful decode never becomes ready."
+  ],
+  "checks": {
+    "affected_actual_browser_passed": 7,
+    "frontend_logic_passed": 22,
+    "typescript_vite_scratch_build": "pass",
+    "whitespace": "pass",
+    "backend": "unchanged; prior334backend evidence reused"
+  },
+  "scratch_frontend": "/tmp/starcoach-ui-revision-20261023/map-recovery-green-dist",
+  "scratch_asset_sha256": {
+    "index.html": "1861c35fb14253be5a77d821d55e6ccdc7cc13a1113da1bf753b5fb4c25da8b6",
+    "assets/index-CAoFB3f5.js": "a5a44683de96ca00b4bbb3e40da780422117d0a0595c716e0f414b697515cd86",
+    "assets/index-ChqT6ChB.css": "c8e5893b93be9255a98a30dfe63ee5863c13fd876e47e40a44b2314a543b8209"
+  },
+  "candidate": "http://127.0.0.1:8712",
+  "independent_re_review": "Pass: late completion, partial inflight, mixed-error replacement with all4currenttiles decoded, and all-error0decode. No concrete remaining source defect. First10second mixed assertion lacked completion precondition and is retained as verification variance.",
+  "not_performed": [
+    "canonical dist build/promotion",
+    "live service restart",
+    "real model call",
+    "provider write",
+    "push/merge/deploy"
+  ],
+  "negative_evidence": "map-recovery-negative.json",
+  "test_fixture_adjustment": "The partial-error test now fails exactly one current-zoom tile and decodes the other current tiles; all7cases reran successfully in36.4seconds. Production source did not change during that adjustment.",
+  "independent_evidence": "map-recovery-independent.json"
+}
