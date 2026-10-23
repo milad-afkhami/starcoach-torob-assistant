@@ -31,7 +31,9 @@ The running application's `/openapi.json` supplies exact request/response schema
 |---|---|---|
 | GET | `/healthz`, `/readyz`, `/api/capabilities` | Liveness, catalogue readiness and model capability |
 | POST | `/api/sessions` | Establish a signed browser session |
-| POST | `/api/search` | Retrieve source-backed products |
+| POST | `/api/search` | Retrieve source-backed products and explicit category/budget diagnostics on no match |
+| GET | `/api/locations?q=…` | Up to eight matching actual catalogue addresses/coordinates; no geocoding |
+| POST | `/api/products/compare` | Exactly two source products, same-condition local feasibility and exclusion reasons |
 | GET | `/api/products/{product_id}` | Exact product facts |
 | GET | `/api/products/{product_id}/offers` | Offers under query constraints |
 | POST | `/api/missions` | Create a selected-product mission |
@@ -66,6 +68,8 @@ Lease, completion-token, expiry and mission-revision checks reject late or repla
 
 </details>
 
+`SearchConstraints.origin_label` is an optional, at-most300-character display label; coordinates remain authoritative for geometry. It defaults to null for old missions. `SearchConstraints.contactable_only` defaults to false. When true, discovery and planning require a safe supplied website/Instagram route; synthetic phones never qualify. `PurchasePlan.relaxations` is additive and defaults to an empty list. A suggestion contains `field`, `value`, `delta`, `base_revision`, full proposed `constraints`, eligible distinct-shop count and supporting offer IDs. It does not change state.
+
 ## Money and revisions
 
 Monetary API values are **exact decimal strings**, not floating-point JSON numbers. Browser formatting uses `BigInt`. Unknown prices remain null; anomalous values are flagged rather than silently repaired. Mission writes carry `expected_revision` so an old preview or stale tab cannot overwrite a newer plan.
@@ -79,7 +83,7 @@ Monetary API values are **exact decimal strings**, not floating-point JSON numbe
 | AI status offline | Worker process, exact URL/token, Docker and heartbeat | Start the configured local worker; deterministic flows still work |
 | Origin rejection | Browser URL versus `PUBLIC_ORIGIN` | Use the matching origin and restart with the intended configuration |
 | No eligible shop | Budget/time/radius/payment, unknown facts and exclusion reasons | Explicitly change a constraint or confirm a scoped recheck |
-| Stale preview/proposal rejected | Current mission revision | Refresh/reopen the reply using current conditions |
+| Stale preview/proposal rejected | Current mission revision | Use **تازه‌سازی برنامه** to read new proposals, preserving draft edits; accept deliberately again |
 | Sample reset keeps your changed budget | Simulation reset semantics | Load **دیدن سناریوی نمونه** for original sample constraints |
 | Model cleanup failure | Runtime fault and named task container | Follow [the fault recovery procedure](model-runtime.md); never delete the usage ledger or unrelated containers |
 

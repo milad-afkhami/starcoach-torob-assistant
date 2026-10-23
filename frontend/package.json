@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "tsc --noEmit && vite build",
-    "test": "node --experimental-strip-types --test src/format.test.ts",
+    "test": "node --experimental-strip-types --test src/*.test.ts",
     "test:e2e": "playwright test"
   },
   "dependencies": {

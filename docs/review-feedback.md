@@ -19,3 +19,13 @@ The user requested independent critical judges. Reviewers received original chal
 Independent targeted proof: existing40M/1km/22October17:00 mission stayed unchanged while45M/5km/23October11:00 was proposed. Explicit confirmation applied exactly and found8eligible shops in the examined shortlist. Final one-call run took18.4seconds, compared with51.9seconds for the earlier two-stage path. These are local measurements, not guarantees.
 
 Provisional reviewer scores progressed214→227→230→235 out of300 before the final excluded-list grouping refinement. A further independent zero-model-call check verified grouped exclusions and recheckable reported sellers; the score was deliberately retained without a fabricated regrade. The last review retained deductions for unproven public delivery, limited location selection, missing product specification coverage and lack of computed feasible relaxation suggestions. Those limitations are not silently marked resolved. Actual stock/contact and source authenticity constraints remain.
+
+## Subsequent product pass — awaiting independent regrade
+
+The later purchase-completion pass addresses the retained location, comparison and computed-relaxation findings. It also corrects exact-model accessory ranking, contactable offer/price consistency and a late focus race. [Verified phase evidence](qa-evidence/purchase-completion.json) owns the measurements; the historical235 score above has not been changed by the builder. Real deployment evidence remains a separate delivery gate.
+
+## Targeted repair batch
+
+The subsequent independent source/output pass found factual price-scope, known-closed default, equivalent-spec, comparison-failure and stale-refresh issues. Each was corrected in one coupled implementation pass, with four actual browser regressions first failing on prior output. Original labels/units remain inspectable; no missing capability is inferred. Readable origin labels and Tehran visit hours now remain visible. Pacing canonical HTTP requests additionally exposed a pending-sample edit overwrite, which received its own controlled red regression and fix.
+
+[The current evidence record](qa-evidence/purchase-completion.json) owns final206backend/6frontend/26browser results and source hashes. The builder does not rescore the product; targeted independent re-review and live deployment/model evidence remain separate.

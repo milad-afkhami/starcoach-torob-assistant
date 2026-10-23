@@ -5,3 +5,5 @@ Every telephone number in the supplied dataset is synthetic. The API deliberatel
 The labelled demo uses source catalogue rows but simulated seller responses, a fixed22October2026 20:15Tehran visit, historical recorded prices and unknown stock. It does not describe a booked visit or a real seller conversation. Assisted mode lets a person paste their own reply; it remains `user_reported`, with original text and an unconfirmed preview until the person confirms it. No mode produces a `seller_verified` status.
 
 A reply may change only its recorded scope. Duplicate offers cannot bypass a no-response/unavailable report or silently retain an obsolete quote. Changing product, budget, location, time or payment requirements is a separate explicit choice. Reset is limited to the owning simulation; source data and other missions remain unchanged.
+
+The optional contact-route filter restricts discovery and planning to a safe supplied website/Instagram URL. Price minima and budget gates refer to that same shop offer, never to a cheaper anonymous shop. Following a link remains the buyer’s explicit action, and does not upgrade provenance to seller verification.

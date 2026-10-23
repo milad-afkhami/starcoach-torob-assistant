@@ -223,3 +223,36 @@ def test_session_reuse_does_not_consume_creation_quota(tmp_path):
     for _ in range(12):
         assert c.post('/api/sessions').status_code == 200
         assert c.cookies.get('torob_session') == cookie
+
+
+def test_purchase_discovery_endpoints_and_revision_checked_acceptance(tmp_path):
+    c = login(application(tmp_path))
+    assert c.get('/api/locations?q=%25').status_code == 200
+    assert c.get('/api/locations?q=' + 'a'*101).status_code == 422
+    response = c.post('/api/search', json={'query':'A07','max_price_toman':'99'})
+    assert response.json()['products'] == []
+    assert response.json()['diagnostics'][0]['minimum_toman'] == '100'
+    r = c.post('/api/products/compare', json={'product_ids':['p1','p2'],'constraints':{'lat':35.7,'lon':51.4,'require_declared_open':False}})
+    assert r.status_code == 200 and r.json()['products'][0]['eligible_shops'] == 3
+    assert c.post('/api/products/compare', json={'product_ids':['p1','absent'],'constraints':{}}).status_code == 404
+    assert c.post('/api/products/compare', json={'product_ids':['p1']*3,'constraints':{}}).status_code == 422
+    m = create(c)
+    mid = m['id']
+    no_match = c.patch(f'/api/missions/{mid}', json={'expected_revision':1,'constraints':{'max_price_toman':'99'}}).json()
+    proposal = no_match['plan']['relaxations'][0]
+    assert c.get(f'/api/missions/{mid}').json()['mission']['constraints']['max_price_toman'] == '99'
+    accepted = c.patch(f'/api/missions/{mid}', json={'expected_revision':proposal['base_revision'],'constraints':proposal['constraints']})
+    assert accepted.status_code == 200 and accepted.json()['plan']['primary']['offer']['price_toman'] == '100'
+    assert c.patch(f'/api/missions/{mid}', json={'expected_revision':proposal['base_revision'],'constraints':proposal['constraints']}).status_code == 409
+
+
+def test_origin_label_is_additive_preserved_and_bounded(tmp_path):
+    c=login(application(tmp_path))
+    m=create(c)
+    mid=m['id']
+    response=c.patch(f'/api/missions/{mid}',json={'expected_revision':1,'constraints':{'origin_label':'نقطه ثبت‌شده تجریش','require_declared_open':False}})
+    assert response.status_code==200
+    response=c.patch(f'/api/missions/{mid}',json={'expected_revision':2,'constraints':{'max_price_toman':'200'}})
+    assert response.json()['mission']['constraints']['origin_label']=='نقطه ثبت‌شده تجریش'
+    assert response.json()['mission']['constraints']['require_declared_open'] is False
+    assert c.patch(f'/api/missions/{mid}',json={'expected_revision':3,'constraints':{'origin_label':'a'*301}}).status_code==422

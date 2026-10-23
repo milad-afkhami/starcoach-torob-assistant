@@ -61,6 +61,11 @@ class ObservationPreview(Revision):
     effective_visit_date: str | None = None
 
 
+class CompareInput(Input):
+    product_ids: list[str] = Field(min_length=2, max_length=2)
+    constraints: SearchConstraints
+
+
 class TurnInput(Input):
     message: str = Field(min_length=1, max_length=4000)
     kind: Literal["needs", "reply"] = "needs"
@@ -192,7 +197,19 @@ def create_app(
 
     @app.post("/api/search")
     def search(body: SearchConstraints, source=Depends(ready)):
-        return {"products": source.search_products(body)}
+        products = source.search_products(body)
+        return {"products": products, "diagnostics": [] if products else source.search_diagnostics(body)}
+
+    @app.get("/api/locations")
+    def locations(q: str = Query(min_length=1, max_length=100), source=Depends(ready)):
+        return {"locations": source.search_locations(q), "source": "catalogue_shop_coordinates"}
+
+    @app.post("/api/products/compare")
+    def compare(body: CompareInput, source=Depends(ready)):
+        try:
+            return {"products": source.compare_products(body.product_ids, body.constraints), "constraints": body.constraints}
+        except KeyError as exc:
+            raise HTTPException(404, "product_not_found") from exc
 
     @app.get("/api/products/{product_id}")
     def product(product_id: str, source=Depends(ready)):

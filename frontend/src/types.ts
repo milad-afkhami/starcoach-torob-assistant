@@ -1,7 +1,7 @@
 export interface Constraints {
   query: string; category: string | null; max_price_toman: string | null;
   lat: number; lon: number; radius_km: number; payment_provider: string | null;
-  visit_at: string | null; require_declared_open: boolean;
+  visit_at: string | null; require_declared_open: boolean; contactable_only?: boolean; origin_label?: string | null;
 }
 export interface Product {
   product_id: string; title: string | null; category: string | null; brand: string | null;
@@ -19,7 +19,7 @@ export interface Offer {
   observation_provenance: string | null; observations: {id: string; kind: string; provenance: string; raw_text: string}[];
 }
 export interface Option { offer: Offer; eligibility: string; reason_codes: string[]; unresolved_checks: string[]; tradeoffs: string[] }
-export interface Plan { revision: number; primary: Option | null; fallback: Option | null; choices: Option[]; excluded: Option[]; shortlist_coverage: Record<string,number> }
+export interface Plan { revision: number; primary: Option | null; fallback: Option | null; choices: Option[]; excluded: Option[]; shortlist_coverage: Record<string,number>; relaxations?: ConstraintSuggestion[] }
 export interface Mission { id: string; revision: number; mode: 'assisted' | 'simulation'; selected_product_id: string; constraints: Constraints; selected_primary_shop_id: string | null }
 export interface MissionResponse { mission: Mission; plan: Plan; product?: Product; delta?: Delta }
 export interface Delta { before_revision: number; after_revision: number; changed_fields: string[]; price_delta_toman: string | null; retained_constraints: string[]; reason_codes: string[] }
@@ -32,3 +32,8 @@ export interface Turn { id: string; state: string; stage: string; error_code: st
   proposed_constraints: Constraints; proposal_summary?: {eligible_shops: number; applied: boolean} | null;
   observation: Observation | null; degraded: boolean;
 } | null }
+
+export interface ConstraintSuggestion {field:'max_price_toman'|'radius_km';value:string|number;delta:string;base_revision:number;constraints:Constraints;eligible_shops:number;supporting_offer_ids:string[]}
+export interface LocationPoint {shop_id:string;label:string;lat:number;lon:number;source:'catalogue_shop_coordinate'}
+export interface SearchDiagnostic {kind:'category'|'budget';constraints:Constraints;minimum_toman?:string}
+export interface ProductFeasibility {product:Product;eligible_shops:number;distinct_shops:number;best_offer:Offer|null;exclusion_reasons:Record<string,number>}

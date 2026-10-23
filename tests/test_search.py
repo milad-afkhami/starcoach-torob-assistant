@@ -115,3 +115,14 @@ def test_ram_alias_searches_spec_keys_without_inventing_spec(tmp_path):
     assert [
         p.product_id for p in c.search_products(constraints(query="A07 RAM 4GB", category="گوشی موبایل"))
     ] == ["p1"]
+
+
+def test_exact_compact_model_precedes_accessories_before_retrieval_limit(tmp_path):
+    rows = records()
+    accessory = rows['products.csv'][1]
+    rows['products.csv'] = [{**accessory,'product_id':f'case{i:03}','persian_title':'قاب A07'} for i in range(105)] + [{**records()['products.csv'][0],'product_id':'zz-phone','model':'a 07'}]
+    offer = rows['offers.csv'][0]
+    rows['offers.csv'] = [{**offer,'offer_id':f'o{i}','product_id':p['product_id']} for i,p in enumerate(rows['products.csv'])]
+    hits = catalogue(tmp_path,rows).search_products(constraints(query='A07'))
+    assert hits[0].product_id == 'zz-phone'
+    assert any(p.category=='قاب گوشی' for p in hits), 'Ranking must not silently exclude another category.'

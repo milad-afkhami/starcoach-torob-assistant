@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { test, expect,reserveApiSlot } from './fixtures'
 
 test('real demo recovery preserves mission and price arithmetic', async ({page}) => {
   await page.goto('/')
@@ -112,7 +112,7 @@ for(const lateFailure of [false,true])test(`late saved-mission restore cannot re
   let release!:()=>void;const held=new Promise<void>(resolve=>{release=resolve})
   let arrived!:()=>void;const started=new Promise<void>(resolve=>{arrived=resolve})
   await page.route(`**/api/missions/${old}`,async route=>{
-    const real=await route.fetch();arrived();await held
+    await reserveApiSlot();const real=await route.fetch();arrived();await held
     if(lateFailure)await route.fulfill({status:404,json:{detail:'not_found'}})
     else await route.fulfill({response:real})
   })

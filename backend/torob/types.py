@@ -19,6 +19,8 @@ class SearchConstraints(Record):
     payment_provider: str | None = Field(default=None, max_length=100)
     visit_at: AwareDatetime | None = None
     require_declared_open: bool = True
+    contactable_only: bool = False
+    origin_label: str | None = Field(default=None, max_length=300)
 
 
 class ProductHit(Record):
@@ -81,6 +83,16 @@ class PlanOption(Record):
     tradeoffs: list[str] = Field(default_factory=list)
 
 
+class ConstraintSuggestion(Record):
+    field: Literal["max_price_toman", "radius_km"]
+    value: MoneyToman | float
+    delta: str
+    base_revision: int
+    constraints: SearchConstraints
+    eligible_shops: int
+    supporting_offer_ids: list[str]
+
+
 class PurchasePlan(Record):
     revision: int
     primary: PlanOption | None
@@ -88,6 +100,7 @@ class PurchasePlan(Record):
     choices: list[PlanOption]
     excluded: list[PlanOption]
     shortlist_coverage: dict[str, int]
+    relaxations: list[ConstraintSuggestion] = Field(default_factory=list)
 
 
 class PlanDelta(Record):

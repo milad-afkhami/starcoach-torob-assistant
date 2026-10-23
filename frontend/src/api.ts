@@ -21,12 +21,16 @@ const errors: Record<string,string> = {
 export function errorText(code: string | null | undefined): string {
   return errors[code || ''] || 'درخواست انجام نشد. اطلاعات را بررسی کنید و دوباره تلاش کنید.'
 }
+export class ApiError extends Error {
+  readonly code:string|null; readonly status:number
+  constructor(code:string|null,status:number){super(errorText(code));this.name='ApiError';this.code=code;this.status=status}
+}
 async function request<T>(path: string, method: string, body?: unknown): Promise<T> {
   let response: Response
   try { response = await fetch(path, {method, credentials: 'same-origin', headers: body === undefined ? undefined : {'Content-Type': 'application/json'}, body: body === undefined ? undefined : JSON.stringify(body)}) }
   catch { throw new Error('ارتباط برقرار نشد؛ دوباره تلاش کنید.') }
   const value = await response.json().catch(()=>({}))
-  if (!response.ok) throw new Error(errorText(typeof value.detail === 'string' ? value.detail : null))
+  if (!response.ok) throw new ApiError(typeof value.detail === 'string' ? value.detail : null,response.status)
   return value as T
 }
 export const api = {

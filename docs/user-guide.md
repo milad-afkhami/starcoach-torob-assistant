@@ -20,7 +20,7 @@ On desktop, discovery is on the right and the purchase notebook on the left. On 
 
 1. Start with the leading assistant composer. For direct search, expand **جست‌وجوی مستقیم و فیلترها**, enter a model/name in **جست‌وجوی کالا**, then press **جست‌وجو**.
 2. For help choosing, describe the need in the assistant box and press **کمک برای انتخاب**. Inspect **چرا این گزینه؟** for recorded evidence.
-3. Tick **مقایسه** on two cards and open **مقایسه دو کالا**. Missing specifications are unknown, not proof of absence.
+3. Tick **مقایسه** on two cards and open **مقایسه دو کالا**. The comparison aligns a small set of equivalent RAM/internal-storage labels when their units match, retains original source labels/values, and shows how many distinct sellers meet the current form conditions, with a separate price/distance for the best eligible recorded offer. Key specifications lead; **نمایش همه مشخصات ثبت‌شده** expands the rest. Missing specifications are unknown, not proof of absence. Global recorded minima come from fresh exact-product responses, while the compatible price refers to the current location/time/payment/contact conditions. Private mission observations are not included in this catalogue comparison. A failed feasibility read remains unknown across all derived cells; **تلاش دوباره برای مقایسه** retries the same selected products and conditions without silently changing them.
 4. Use **انتخاب این کالا** to choose the exact variant. Another variant is not silently substituted later.
 
 For a selected product, **شرایط همین کالا** can propose a budget, radius, visit time or payment change; the full proposed values are shown before confirmation. Relative dates resolve against an explicit Tehran clock. A selected-product condition update uses one model interpretation call and a deterministic eligibility summary rather than recommending the same product again.
@@ -29,7 +29,9 @@ An AI proposal is explicitly labelled **پیشنهاد؛ هنوز اعمال ن�
 
 ## Set the conditions
 
-Expand **جست‌وجوی مستقیم و فیلترها** to edit conditions. Use budget in **toman**, radius in kilometres and **Tehran** visit time. Expand **محدوده و شرایط پرداخت** for coordinates, the Jomhouri shortcut, location permission and payment requirements. Use **اعمال شرایط روی همین برنامه** after editing an existing mission.
+Use **انتخاب محدوده** beside the agent request to find an actual address point from the supplied shops. Search a street/address fragment, inspect the full address, and select the nearby reference point. This is a catalogue coordinate, not a guessed neighborhood centre or your verified address. Selection only fills the form; existing missions remain unchanged until you apply conditions. The readable selected address is retained separately from its coordinates, shown beside the composer as the draft origin and in the notebook as the committed mission origin. Manual coordinate edits clear the old label. Location permission and manual coordinates remain available.
+
+Expand **جست‌وجوی مستقیم و فیلترها** to edit conditions. Use budget in **toman**, radius in kilometres and **Tehran** visit time. Expand **محدوده و شرایط پرداخت** for coordinates, the Jomhouri shortcut, location permission and payment requirements. Use **اعمال شرایط روی همین برنامه** after editing an existing mission. Planned visits default to the declared-hours requirement; an explicit unchecked choice is preserved when editing/restoring that mission. This does not assert that declared hours are live verified.
 
 | Label or fact | Interpret it as |
 |---|---|
@@ -38,7 +40,21 @@ Expand **جست‌وجوی مستقیم و فیلترها** to edit conditions. 
 | Compatible declared hours | The supplied schedule covers the visit, not a promise the shop is open |
 | Straight-line distance | Geometry, not walking distance or journey duration |
 | Recorded payment support | Shop data, not a credit decision for the buyer |
-| No eligible option | A real gap under current conditions; choose any relaxation yourself |
+| No eligible option | Inspect a proved one-condition budget/radius proposal, then explicitly accept it or edit conditions yourself |
+
+## Recover without guessing
+
+When no eligible seller remains, **با کمترین تغییرِ یک شرط** can show an exact budget increase or a sufficient rounded straight-line radius. Each suggestion preserves the product and all other conditions. **قبول این تغییر** applies it against the displayed mission revision; an outdated proposal is rejected. Missing price/hours, unavailable sellers and conflicts in several conditions do not become an eligible proposal. Nothing is changed merely because the suggestion appeared.
+
+A location selected while an earlier save/sample load finishes remains a newer **draft**. The notebook keeps the origin that was actually submitted; a late response cannot silently overwrite the newer form location or apply it automatically.
+
+If another tab changes the mission, the old suggestion is safely rejected. **تازه‌سازی برنامه** reads its current constraints and recomputes proposals, preserves unsaved draft edits, and never retries the rejected write. A fresh proposal still needs a new explicit acceptance.
+
+For direct discovery, an empty result can identify a category or budget mismatch and offer a separate search action. It never silently broadens the query. Exact compact model matches such as `a 07`/`A07` rank ahead of accessories; other categories remain retrievable.
+
+Enable **فقط فروشگاه با وب‌سایت یا اینستاگرام ثبت‌شده** under conditions when a supplied contact route matters. Discovery prices, budget checks and seller eligibility use the same contactable offer; an anonymous cheap seller cannot stand in for a different contactable seller. A website route is not proof of response, identity, stock or payment acceptance. The filter can legitimately leave few or no results.
+
+If initial connection is rate-limited, use **تلاش دوباره برای اتصال**. A failed restoration keeps the saved mission reference for retry rather than erasing it. No model usage budget is reset.
 
 ## Practice the complete recovery
 

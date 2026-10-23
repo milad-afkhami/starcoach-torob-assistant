@@ -1,0 +1,160 @@
+{
+  "recorded_at": "2026-10-22T23:58:45.948956+00:00",
+  "scope": "Local isolated app, actual complete hash-validated catalogue, independent state DB; no cloud acceptance or seller communication",
+  "app_url": "http://127.0.0.1:8671",
+  "backend": {
+    "command": "uv run pytest -q",
+    "passed": 205,
+    "warning": "Upstream Starlette TestClient/httpx deprecation; unchanged"
+  },
+  "frontend": {
+    "exact_value_tests": 3,
+    "typescript_vite": "passed",
+    "ruff": "passed",
+    "whitespace": "passed"
+  },
+  "browser": {
+    "command": "APP_URL=http://127.0.0.1:8671 npm --prefix frontend run test:e2e -- --reporter=list",
+    "passed": 21,
+    "new_journeys": 8,
+    "later_affected_recheck": "Location selection additionally proved same mission constraints/revision remain unchanged before Apply; passed"
+  },
+  "red_to_green": [
+    "Five original domain failures: absent typed relaxations/contact constraint; now exact money/one changed field, no missing/report/multiconflict bypass",
+    "Address/diagnostics/comparison endpoints absent; tests now pass including stale proposal denial",
+    "Contact filter must precede retrieval limit and price/budget must refer to same contactable offer",
+    "Exact compact model must outrank >100 accessories before SQL limit",
+    "Malformed supplied URL must be discarded without crashing SQLite safe-link function",
+    "Recommendation decision specs must keep original source indexes",
+    "Startup HTTP429 lacked retry; actual UI retry now recovers",
+    "Delayed mission response stole later checkbox focus; captured initiating trigger fixed controlled red regression",
+    "Comparison hid battery facts after first20 specs; key facts now lead and all facts can expand"
+  ],
+  "manual_visual_inspection": {
+    "mobile": 390,
+    "screenshots": [
+      "/tmp/torob-completion-mobile.png",
+      "/tmp/torob-completion-proposal.png"
+    ],
+    "observed": "RTL, Persian digits, visible original-condition/no-apply statement, exact proposed budget, explicit acceptance, no horizontal page overflow"
+  },
+  "local_warm_query_samples_ms": {
+    "A07": 7.0,
+    "گوشی": 155.5,
+    "گوشی_contactable": 263.3,
+    "سامسونگ_contactable": 84.9,
+    "Lenovo": 14.4
+  },
+  "performance_qualification": "One local warm/cold-mixture pass, not hosted p95 or a throughput benchmark",
+  "model_calls_this_phase": 0,
+  "limitations": [
+    "Stock remains unknown and all supplied phones remain synthetic",
+    "Location results are dataset shop reference points, not geocoding or all-Tehran coverage",
+    "Comparison uses catalogue observations, not private reports in an existing mission",
+    "Minimum relaxations cover budget/radius only and only when no candidate remains",
+    "Real hosted deployment and model roundtrip remain owned by root delivery workstream",
+    "No new blind score is claimed"
+  ],
+  "review_repair": {
+    "recorded_at": "2026-10-23T00:35:38.667526+00:00",
+    "original_review": "Independent source/output-only review; unchanged rubric; no builder score claim",
+    "fixed": [
+      "Global recorded price row reads fresh exact-product response, never contact-filtered search input; compatible offer price remains separate",
+      "Bounded explicit comparison retry preserves product/constraint snapshot; failed/loading/known-zero remain distinct",
+      "Conservative RAM/internal-storage alias alignment with declared-compatible units, intact source labels/values; different or missing units not inferred",
+      "Fresh planned visits default hours-on; owned/restored explicit hours-off is preserved",
+      "409 recovery exposes explicit fresh-plan read, preserves unsaved form edits, never retries write or autoaccepts recomputed suggestion",
+      "Readable dataset-origin labels persist separately from exact coordinates; comparison includes origin and Tehran visit hour",
+      "Paced real HTTP exposed pending sample load overwriting a quick budget edit; manual form now disabled during bounded busy operations; controlled delayed-GET red regression passed"
+    ],
+    "backend": {
+      "passed": 206,
+      "command": "uv run pytest -q",
+      "warning": "Same upstream Starlette TestClient/httpx deprecation"
+    },
+    "frontend_unit": {
+      "passed": 6,
+      "command": "npm --prefix frontend test"
+    },
+    "browser": {
+      "passed": 26,
+      "command": "APP_URL=http://127.0.0.1:8671 npm --prefix frontend run test:e2e -- --reporter=list --output=/tmp/torob-final-review26",
+      "duration": "1.5 minutes",
+      "artifacts": "/tmp/torob-final-review26",
+      "log": "/tmp/torob-final-review26.log",
+      "client_pacing": "One worker and a single synchronous next-slot reservation every400ms shared by browser API routes, page.request controls, and route.fetch; production limiter unchanged"
+    },
+    "other_checks": [
+      "Ruff passed",
+      "TypeScript/Vite build passed",
+      "Whitespace diff check passed"
+    ],
+    "failure_inventory": [
+      "Initial expanded suite23/25: contact-only test assumed old hours opt-out, and actual production180/minute limiter rejected a late request",
+      "Second fast suite also hit throttle; overlapping targeted run clobbered Playwright artifacts, so it was not accepted as a gate",
+      "Changed diagnostic approach to globally paced, serialized API requests; zero429 then isolated two true late sample-load edit races",
+      "Added controlled delayed-GET red regression and locked manual fields while operation is busy; final full26/26 passed"
+    ],
+    "source_sha256": {
+      "backend/torob/types.py": "83118077abc752ba7a0e9349dbfb789ecda305f433c80d3a5891ca6f07d8b234",
+      "backend/torob/api.py": "d9f16670a0cac9ac1e23f7bd90d0910d12693ed6c6b9ab5b699d304df57f5fba",
+      "backend/torob/planner.py": "dfab34c3303daefab15432e467205d9516692efa7708713d9f892d5beffa7bc9",
+      "backend/torob/catalogue.py": "cdc27b7f1842d6be3a16783839bf65b0fdb4e74988930879bb383896b09f5f99",
+      "backend/torob/agent.py": "3f2c00e45964e8eb5290635c9126657111898ef1e815d062eb8927c2c71842f3",
+      "frontend/src/App.tsx": "4948dc87a70a4ef3afacb17e6b4c1a483136bd180cdea7d762e8b02e9e09be05",
+      "frontend/src/api.ts": "73ef22597a59b5dfc1505280c10be51f7441ae2a2ab4994ac4cc17b79856678c",
+      "frontend/src/ProductComparison.tsx": "cbc7f5b080f8995f48b6f93074741702c82bf7eb63f5c890383afa720090b2fb",
+      "frontend/src/comparison.ts": "e5e06ddaaa049d5ff46affd64d380466bc8f2dab1cc0921f7e4be7cbde280fb8",
+      "frontend/src/LocationChooser.tsx": "16073d6831226232e1cfc91632ab6a30f2b42d816d7500b4719f1cba9ee1b2cd",
+      "frontend/src/style.css": "b8bba56aa789047621bd7cfd5117846ddb712bd133168ca392f707185050e708"
+    },
+    "model_calls_this_phase": 0,
+    "no_claims": [
+      "No live model run from this workstream",
+      "No cloud acceptance from this workstream",
+      "No seller communication or independent stock verification",
+      "No score changed by builder"
+    ]
+  },
+  "origin_race_followup": {
+    "recorded_at": "2026-10-23T00:54:43.130221+00:00",
+    "finding": "A held normal condition PATCH returned after a newer Tajrish origin selection, replacing the draft with Republic; same class also reproduced through a held sample-source GET",
+    "fix": "Capture the edit epoch when each operation starts. Accepted responses update the committed mission, but replace its draft only when no newer edit occurred. A newer source-point label/coordinates remain explicitly uncommitted; no automatic second write.",
+    "red_to_green": [
+      "late condition save preserves a newer selected origin as an uncommitted draft",
+      "late sample loading preserves a newer origin separately from its sample mission"
+    ],
+    "browser": {
+      "passed": 28,
+      "command": "APP_URL=http://127.0.0.1:8671 npm --prefix frontend run test:e2e -- --reporter=list --output=/tmp/torob-origin-final28",
+      "log": "/tmp/torob-origin-final28.log",
+      "duration": "1.6 minutes",
+      "targeted_affected": {
+        "passed": 5,
+        "log": "/tmp/torob-origin-final28-affected.log"
+      },
+      "test_route_fallback_cleanup": {
+        "passed": 5,
+        "log": "/tmp/torob-pacer-fallback-final.log",
+        "scope": "Controlled routes now fall through the same global API pacer; no production change"
+      }
+    },
+    "frontend_unit_passed": 6,
+    "typescript_vite": "passed",
+    "whitespace": "passed",
+    "backend_evidence": "Prior206-test pass reused: this follow-up changes only frontend source/tests/docs",
+    "frozen_sha256": {
+      "frontend/src/App.tsx": "c17e0470fcb298b0e736b98a383b4eed8b5dd093fc22f5c3de3e3667c9b9134a",
+      "frontend/dist/index.html": "c975d8ded5465cc9be3faf67b461465df756c254f9b3f28f3a5de45eb0f4ecc0",
+      "frontend/dist/assets/index-RWCOG8w-.js": "28ddb150e8ff0f881e9cc6849d9e451795c3f06b146e8df3b42b891fa7869c44"
+    },
+    "no_rebuild_after_freeze": true,
+    "scope_exclusions": [
+      "No model calls or budget resets",
+      "No deployment/packaging/environment operations",
+      "No backend/process restart",
+      "No source commit/push",
+      "No score modification"
+    ]
+  }
+}

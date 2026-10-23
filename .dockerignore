@@ -8,4 +8,9 @@
 !frontend/dist/
 !frontend/dist/**
 !data/
-!data/catalogue.sqlite
+!data/catalogue.sqlite.xz
+!data/catalogue-build.json
+!scripts/
+!scripts/unpack_catalogue.py
+
+!scripts/container_entrypoint.py

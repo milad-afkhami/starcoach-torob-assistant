@@ -5,4 +5,5 @@ test -f data/catalogue.sqlite || { echo 'Build the catalogue first; see README.m
 uv export --locked --no-dev --no-emit-project -o requirements.lock
 npm --prefix frontend ci
 npm --prefix frontend run build
+uv run python scripts/package_deployment.py
 docker build -t starcoach-torob:local .

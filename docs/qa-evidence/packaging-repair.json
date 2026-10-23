@@ -1,0 +1,100 @@
+{
+  "recorded_at": "2026-10-23T01:12:29.104583+00:00",
+  "trigger": {
+    "provider_status": 413,
+    "provider_message": "Max source size is128MB",
+    "accepted_source_created": false,
+    "rejected_artifact_bytes": 144403457,
+    "rejected_artifact_sha256": "3726102ff2d5a9901db2ee2a9b27d9d921a7cbbf59f6f5c6b7150c33460c8651",
+    "rejected_artifact_preserved": true
+  },
+  "repair": "Full catalogue XZ transport plus bounded build-stage integrity restoration; no row trimming or fixture replacement",
+  "artifact": {
+    "artifact": "/home/milad/Desktop/projects/starcoach-torob-assistant/data/deployment-xz.tar.gz",
+    "bytes": 102880565,
+    "sha256": "00aa5fdab8f65210e5bdad91c4fdf561a19de07e37216892acab825c46e017b2",
+    "members": [
+      "Dockerfile",
+      "backend/torob/__init__.py",
+      "backend/torob/agent.py",
+      "backend/torob/api.py",
+      "backend/torob/catalogue.py",
+      "backend/torob/codex_cli.py",
+      "backend/torob/external_actions.py",
+      "backend/torob/followup.py",
+      "backend/torob/hours.py",
+      "backend/torob/ingest.py",
+      "backend/torob/model_jobs.py",
+      "backend/torob/model_types.py",
+      "backend/torob/model_worker.py",
+      "backend/torob/normalize.py",
+      "backend/torob/planner.py",
+      "backend/torob/session.py",
+      "backend/torob/types.py",
+      "backend/torob/worker_api.py",
+      "data/catalogue-build.json",
+      "data/catalogue.sqlite.xz",
+      "frontend/dist/assets/index-RWCOG8w-.js",
+      "frontend/dist/assets/index-_QK26oEd.css",
+      "frontend/dist/favicon.svg",
+      "frontend/dist/fonts/OFL.txt",
+      "frontend/dist/fonts/Vazirmatn.woff2",
+      "frontend/dist/index.html",
+      "requirements.lock",
+      "scripts/container_entrypoint.py",
+      "scripts/unpack_catalogue.py"
+    ],
+    "private_catalogue_included": true,
+    "credentials_included": false,
+    "max_source_bytes": 128000000,
+    "catalogue": {
+      "compression": "xz",
+      "xz_preset": 6,
+      "uncompressed_bytes": 732278784,
+      "uncompressed_sha256": "3ae4f27bf376c90e06b61eb4e70aeded07fc5da2bb6d59c09b44bba1f1f09b01",
+      "compressed_sha256": "45f51f38e698e0c54926fded9c3119213450f9debb70304fb69dd78af255f5a2",
+      "compressed_bytes": 102594448
+    }
+  },
+  "source_margin_bytes": 25119435,
+  "actual_archive_validation": {
+    "members": 29,
+    "all_archive_member_bytes_match_successfully_tested_image_context": true,
+    "raw_catalogue_sqlite_in_upload": false,
+    "credentials_or_state_in_upload": false
+  },
+  "build": {
+    "log": "/tmp/torob-xz-docker-build.log",
+    "unpack_seconds": 8.597,
+    "unpack_peak_rss_kib": 33092,
+    "decoder_memory_limit_bytes": 67108864,
+    "output_chunk_bytes": 1048576,
+    "image": "sha256:307e5cfe0ee72ec49a816ab890ec29ab9c41e743661e4fa4f6f66fb8a22c12e9"
+  },
+  "tests": {
+    "full_backend_passed": 216,
+    "packaging_integrity_entrypoint_cases": 12,
+    "warning": "Unchanged upstream Starlette TestClient/httpx deprecation",
+    "ruff": "passed",
+    "whitespace": "passed",
+    "product_ui_evidence": "Prior frozen28-browser/6-frontend evidence reused; no product source or dist rebuild in this repair"
+  },
+  "state_bind_failure_before_fix": {
+    "bind_uid": 0,
+    "mode": "0755",
+    "container_memory_bytes": 536870912,
+    "cpus": 0.5,
+    "exit_code": 1,
+    "error": "sqlite3.OperationalError: unable to open database file"
+  },
+  "acceptance": {
+    "named_volume": "container-xz-named.json",
+    "root_owned_bind": "container-xz-root-bind.json",
+    "root_bind_fix": "Only/data directory metadata prepared; no recursive file walk; main process all UID/GID10001, effective capabilities0, no_new_privs1",
+    "full_catalogue_unchanged": true,
+    "frozen_frontend_unchanged": true,
+    "actual_search_recovery_persistence_and_private404": true
+  },
+  "runtime_artifact_frozen": true,
+  "no_cloud_operations_or_public_publication_by_packaging_owner": true
+}

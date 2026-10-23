@@ -23,7 +23,10 @@ def distance_km(lat1, lon1, lat2, lon2):
 def _safe_link(value):
     if not isinstance(value, str):
         return None
-    url = urlsplit(value)
+    try:
+        url = urlsplit(value)
+    except ValueError:
+        return None
     if url.scheme not in ("http", "https") or not url.hostname or url.username or url.password:
         return None
     if url.hostname.lower() in ("localhost", "localhost.localdomain"):
@@ -34,6 +37,10 @@ def _safe_link(value):
     except ValueError:
         pass
     return value
+
+
+def _contact_sql(alias):
+    return f"EXISTS (SELECT 1 FROM shops cshop WHERE cshop.shop_id={alias}.shop_id AND (safe_public_link(json_extract(cshop.data,'$.website_url')) OR safe_public_link(json_extract(cshop.data,'$.instagram'))))"
 
 
 def payment_state(options, provider, category, price):
@@ -83,6 +90,8 @@ class Catalogue:
     def connect(self):
         conn = sqlite3.connect(self.path.as_uri() + "?mode=ro&immutable=1", uri=True)
         conn.row_factory = sqlite3.Row
+        conn.create_function("safe_public_link", 1, lambda value: bool(_safe_link(value)), deterministic=True)
+        conn.create_function("compact_model", 1, lambda value: re.sub(r"\W+", "", normalize_text(value)), deterministic=True)
         try:
             yield conn
         finally:
@@ -102,7 +111,7 @@ class Catalogue:
             evidence_ids=[row["product_id"]] + ([row["min_offer_id"]] if row["min_offer_id"] else []),
         )
 
-    def search_products(self, constraints: SearchConstraints, limit=20):
+    def search_products(self, constraints: SearchConstraints, limit=20, *, price_first=False):
         if not 1 <= limit <= 20:
             raise ValueError("Search limit must be1–20")
         normalized_query = normalize_text(constraints.query)
@@ -119,18 +128,26 @@ class Catalogue:
                 variants = ["ram", "رم"]
             terms.append("(" + " OR ".join('"' + v.replace('"', '""') + '"' for v in variants) + ")")
         query = " AND ".join(terms)
-        sql = """SELECT p.*,bm25(product_search) AS rank,
-          (SELECT MIN(price) FROM offers o WHERE o.product_id=p.product_id AND price_quality='normal') AS minimum,
-          (SELECT offer_id FROM offers o WHERE o.product_id=p.product_id AND price_quality='normal' ORDER BY price,offer_id LIMIT 1) AS min_offer_id
+        offer_contact = " AND " + _contact_sql("o") if constraints.contactable_only else ""
+        sql = f"""SELECT p.*,bm25(product_search) AS rank,
+          (SELECT MIN(price) FROM offers o WHERE o.product_id=p.product_id AND price_quality='normal' {offer_contact}) AS minimum,
+          (SELECT offer_id FROM offers o WHERE o.product_id=p.product_id AND price_quality='normal' {offer_contact} ORDER BY price,offer_id LIMIT 1) AS min_offer_id
           FROM product_search JOIN products p USING(product_id) WHERE product_search MATCH ?"""
         args = [query]
         if constraints.category:
             sql += " AND p.category=?"
             args.append(constraints.category)
         if constraints.max_price_toman is not None:
-            sql += " AND EXISTS (SELECT 1 FROM offers bo WHERE bo.product_id=p.product_id AND bo.price_quality='normal' AND bo.price<=?)"
+            contact_budget = " AND " + _contact_sql("bo") if constraints.contactable_only else ""
+            sql += f" AND EXISTS (SELECT 1 FROM offers bo WHERE bo.product_id=p.product_id AND bo.price_quality='normal' AND bo.price<=? {contact_budget})"
             args.append(constraints.max_price_toman)
-        sql += " ORDER BY rank,p.product_id LIMIT 100"
+        if constraints.contactable_only:
+            sql += " AND EXISTS (SELECT 1 FROM offers co JOIN shops cs USING(shop_id) WHERE co.product_id=p.product_id AND (safe_public_link(json_extract(cs.data,'$.website_url')) OR safe_public_link(json_extract(cs.data,'$.instagram'))))"
+        if price_first:
+            sql += " ORDER BY minimum IS NULL,minimum,rank,p.product_id LIMIT 100"
+        else:
+            sql += " ORDER BY CASE WHEN compact_model(json_extract(p.data, '$.model'))=? THEN 0 ELSE 1 END,rank,p.product_id LIMIT 100"
+            args.append(re.sub(r"\W+", "", normalized_query))
         with self.connect() as db:
             rows = db.execute(sql, args).fetchall()
         hits = [self._product(row) for row in rows]
@@ -142,10 +159,69 @@ class Catalogue:
                 and int(h.min_recorded_price) <= int(constraints.max_price_toman)
             ]
         normalized = normalize_text(constraints.query)
-        hits.sort(
-            key=lambda h: (normalize_text(h.model) != normalized, normalize_text(h.title) != normalized)
-        )
+        if not price_first:
+            hits.sort(
+                key=lambda h: (re.sub(r"\W+", "", normalize_text(h.model)) != re.sub(r"\W+", "", normalized), normalize_text(h.title) != normalized)
+            )
         return hits[:limit]
+
+    def search_locations(self, query, limit=8):
+        """Literal address matching over supplied points, not neighborhood geocoding."""
+        terms = re.findall(r"\w+", normalize_text(query))[:12]
+        if not terms or len("".join(terms)) < 2:
+            return []
+        matches = []
+        with self.connect() as db:
+            rows = db.execute("SELECT shop_id,lat,lon,data FROM shops WHERE lat IS NOT NULL AND lon IS NOT NULL ORDER BY shop_id").fetchall()
+        for row in rows:
+            raw = json.loads(row["data"])
+            address = raw.get("address") or ""
+            if address and all(term in normalize_text(address) for term in terms):
+                matches.append({"shop_id": row["shop_id"], "label": address, "lat": row["lat"], "lon": row["lon"], "source": "catalogue_shop_coordinate"})
+                if len(matches) >= limit:
+                    break
+        return matches
+
+    def search_diagnostics(self, constraints):
+        """Proposed search changes only; never broaden the actual query invisibly."""
+        if not constraints.query.strip() or self.search_products(constraints, limit=1):
+            return []
+        diagnostics = []
+        if constraints.category:
+            proposed = constraints.model_copy(update={"category": None})
+            hits = self.search_products(proposed)
+            if hits:
+                diagnostics.append({"kind": "category", "constraints": proposed.model_dump(mode="json"), "example_product_id": hits[0].product_id})
+        if constraints.max_price_toman is not None:
+            proposed = constraints.model_copy(update={"max_price_toman": None})
+            hits = self.search_products(proposed, limit=1, price_first=True)
+            prices = [int(h.min_recorded_price) for h in hits if h.min_recorded_price is not None]
+            if prices:
+                minimum = str(min(prices))
+                proposed.max_price_toman = minimum
+                diagnostics.append({"kind": "budget", "minimum_toman": minimum, "constraints": proposed.model_dump(mode="json")})
+        return diagnostics
+
+    def compare_products(self, product_ids, constraints):
+        from .types import Mission
+
+        result = []
+        for product_id in product_ids:
+            product = self.get_product(product_id)
+            mission = Mission(id="comparison", session_id="comparison", selected_product_id=product_id, constraints=constraints)
+            plan = self.plan_mission(mission)
+            reasons = {}
+            for option in plan.excluded:
+                for reason in option.reason_codes:
+                    reasons[reason] = reasons.get(reason, 0) + 1
+            result.append({
+                "product": product.model_dump(mode="json"),
+                "eligible_shops": plan.shortlist_coverage["eligible_shops"],
+                "distinct_shops": plan.shortlist_coverage["distinct_shops"],
+                "best_offer": plan.primary.offer.model_dump(mode="json") if plan.primary else None,
+                "exclusion_reasons": reasons,
+            })
+        return result
 
     def get_product(self, product_id):
         with self.connect() as db:

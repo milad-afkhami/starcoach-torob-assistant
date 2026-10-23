@@ -90,7 +90,13 @@ def source_facts(product):
                 "evidence_ids": product["evidence_ids"],
             }
         )
-    for i, spec in enumerate(product["specs"][:8]):
+    priorities = ["حافظهداخلی", "ظرفیتحافظه", "حافظهرم", "ظرفیترم", "ظرفیتباتری", "دوربیناصلی", "ابعادنمایشگر", "سیستمعامل", "پردازنده", "وزن", "رنگ"]
+
+    def priority(item):
+        label = re.sub(r"[\s\u200c\u200d]", "", str(item[1].get("key") or item[1].get("section") or ""))
+        return next((index for index, key in enumerate(priorities) if key in label), 100)
+
+    for i, spec in sorted(enumerate(product["specs"]), key=priority)[:8]:
         if spec.get("value") not in (None, ""):
             facts.append(
                 {
@@ -396,7 +402,7 @@ class AgentService:
         if not products:
             explanation = "در این داده‌ها گزینه‌ای مطابق این جست‌وجو پیدا نشد؛ عبارت یا دسته‌بندی را بررسی کنید."
             if constraints.max_price_toman is not None:
-                relaxed = self.catalogue.search_products(constraints.model_copy(update={"max_price_toman": None}))
+                relaxed = self.catalogue.search_products(constraints.model_copy(update={"max_price_toman": None}), limit=1, price_first=True)
                 prices = [int(p.min_recorded_price) for p in relaxed if p.min_recorded_price is not None]
                 if prices:
                     explanation = f"در بودجه شما گزینه‌ای پیدا نشد؛ کمترین قیمت ثبت‌شده برای این جست‌وجو {min(prices):,} تومان است. بودجه تغییر نکرده؛ اگر خواستید خودتان شرط را ویرایش کنید."

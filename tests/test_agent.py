@@ -340,3 +340,17 @@ def test_existing_product_condition_update_finishes_after_interpretation_without
     assert 'موجودی' in done['result']['clarification_fa']
     assert queue.claim('w', clock[0]) is None
     assert store.get_mission(owner, mission.id).constraints.max_price_toman == '400'
+
+
+def test_recommendation_facts_prioritize_decision_specs_but_keep_original_source_indexes():
+    from torob.agent import source_facts
+    specs = [{'key':f'detail-{i}','value':str(i)} for i in range(15)] + [
+        {'key':'ظرفیت باتری','value':'۵۰۰۰ میلی‌آمپر ساعت'},
+        {'key':'حافظه داخلی','value':'۱۲۸ گیگابایت'},
+        {'key':'حافظه رم','value':'۴ گیگابایت'},
+        {'key':'رزولوشن دوربین اصلی','value':'۵۰ مگاپیکسل'},
+    ]
+    facts=source_facts({'product_id':'p','title':'گوشی','specs':specs,'evidence_ids':['p']})
+    assert {'p:spec:15','p:spec:16','p:spec:17','p:spec:18'} <= {f['id'] for f in facts}
+    assert next(f for f in facts if f['id']=='p:spec:16')['value'] == '۱۲۸ گیگابایت'
+    assert all(f['evidence_ids']==['p'] for f in facts)

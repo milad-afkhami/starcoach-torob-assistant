@@ -3,7 +3,7 @@ import { faDate, formatToman } from './format'
 import type { Option } from './types'
 
 export const reasonLabels: Record<string,string> = {
-  over_budget: 'بالاتر از بودجه', outside_radius: 'بیرون محدوده', closed_at_visit: 'خارج از ساعت اعلام‌شده',
+  contact_route_missing: 'مسیر تماس ثبت‌شده ندارد', over_budget: 'بالاتر از بودجه', outside_radius: 'بیرون محدوده', closed_at_visit: 'خارج از ساعت اعلام‌شده',
   hours_unknown: 'ساعت نامشخص', price_missing: 'قیمت نامشخص', price_flagged: 'قیمت نیازمند بررسی',
   location_unknown: 'موقعیت نامشخص', payment_unknown: 'شرایط پرداخت نامشخص', payment_conflict: 'ناسازگار با شرط پرداخت',
   reported_unavailable: 'ناموجود گزارش شده', no_response: 'بی‌پاسخ؛ نیازمند بررسی', variant_mismatch: 'مدل یا مشخصات متفاوت',

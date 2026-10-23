@@ -1,7 +1,9 @@
 """Exercise the actual private image; never uses a cloud account or real provider token."""
 
+import argparse
 import hashlib
 import json
+import re
 import secrets
 import subprocess
 import tempfile
@@ -14,7 +16,7 @@ def docker(*args):
     return subprocess.check_output(["docker", *args], text=True).strip()
 
 
-def main():
+def main(state_storage="named", report_path=Path("docs/qa-evidence/container.json")):
     name = "torob-container-qa-" + secrets.token_hex(4)
     volume = name + "-state"
     port = 8653
@@ -32,7 +34,29 @@ def main():
             + "\n"
         )
         env.chmod(0o600)
-        docker("volume", "create", volume)
+        if state_storage == "root-bind":
+            state = Path(temp) / "state"
+            state.mkdir()
+            docker(
+                "run",
+                "--rm",
+                "--user",
+                "0:0",
+                "--entrypoint",
+                "python",
+                "-v",
+                str(state) + ":/data",
+                "starcoach-torob:local",
+                "-c",
+                "import os; os.chown('/data',0,0); os.chmod('/data',0o755)",
+            )
+            assert state.stat().st_uid == 0 and state.stat().st_mode & 0o777 == 0o755
+            mount = str(state) + ":/data"
+            report["root_bind_owner_before"] = state.stat().st_uid
+        else:
+            docker("volume", "create", volume)
+            mount = volume + ":/data"
+        report["state_storage"] = state_storage
         try:
             docker(
                 "run",
@@ -48,7 +72,7 @@ def main():
                 "-p",
                 f"127.0.0.1:{port}:8000",
                 "-v",
-                volume + ":/data",
+                mount,
                 "starcoach-torob:local",
             )
             with httpx.Client(base_url=origin, headers={"origin": origin}, timeout=20) as client:
@@ -61,7 +85,48 @@ def main():
                     time.sleep(0.5)
                 else:
                     raise AssertionError("Container not ready")
-                assert client.get("/").status_code == 200
+                status = docker("exec", name, "cat", "/proc/1/status")
+                identity = {
+                    line.split(":", 1)[0]: line.split(":", 1)[1].split()
+                    for line in status.splitlines()
+                    if line.split(":", 1)[0] in ("Uid", "Gid", "NoNewPrivs", "CapEff")
+                }
+                assert identity["Uid"] == ["10001"] * 4 and identity["Gid"] == ["10001"] * 4
+                assert identity["NoNewPrivs"] == ["1"] and int(identity["CapEff"][0], 16) == 0
+                report["app_identity"] = identity
+                if state_storage == "root-bind":
+                    assert state.stat().st_uid == 10001
+                    report["root_bind_owner_after"] = state.stat().st_uid
+                counts = json.loads(
+                    docker(
+                        "exec",
+                        name,
+                        "python",
+                        "-c",
+                        "import json,sqlite3; c=sqlite3.connect('file:/app/data/catalogue.sqlite?mode=ro',uri=True); print(json.dumps({t:c.execute('SELECT COUNT(*) FROM '+t).fetchone()[0] for t in ['shops','products','offers']}))",
+                    )
+                )
+                assert counts == {"shops": 6476, "products": 225903, "offers": 331506}
+                report["catalogue_counts"] = counts
+                root_page = client.get("/")
+                assert root_page.status_code == 200
+                assert (
+                    hashlib.sha256(root_page.content).hexdigest()
+                    == hashlib.file_digest(Path("frontend/dist/index.html").open("rb"), "sha256").hexdigest()
+                )
+                asset_hashes = {}
+                for asset in re.findall(r'(?:src|href)="(/assets/[^" ]+)"', root_page.text):
+                    delivered = client.get(asset)
+                    assert delivered.status_code == 200
+                    actual = hashlib.sha256(delivered.content).hexdigest()
+                    with (Path("frontend/dist") / asset.lstrip("/")).open("rb") as local_asset:
+                        assert actual == hashlib.file_digest(local_asset, "sha256").hexdigest()
+                    asset_hashes[asset] = actual
+                assert asset_hashes
+                report["frozen_frontend_sha256"] = {
+                    "index.html": hashlib.sha256(root_page.content).hexdigest(),
+                    **asset_hashes,
+                }
                 assert client.post("/api/sessions").status_code == 200
                 response = client.post(
                     "/api/missions",
@@ -96,6 +161,9 @@ def main():
                 assert client.get("/api/capabilities").json()["model_available"] is False
                 for path in [
                     "/data/catalogue.sqlite",
+                    "/data/catalogue.sqlite.xz",
+                    "/data/catalogue-build.json",
+                    "/scripts/unpack_catalogue.py",
                     "/.env",
                     "/backend/torob/api.py",
                     "/data/state.sqlite",
@@ -138,13 +206,38 @@ def main():
             raise
         finally:
             subprocess.run(["docker", "rm", "-f", name], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-            subprocess.run(
-                ["docker", "volume", "rm", volume], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
-            )
-    dest = Path("docs/qa-evidence/container.json")
+            if state_storage == "root-bind":
+                subprocess.run(
+                    [
+                        "docker",
+                        "run",
+                        "--rm",
+                        "--user",
+                        "0:0",
+                        "--entrypoint",
+                        "sh",
+                        "-v",
+                        str(Path(temp)) + ":/qa",
+                        "starcoach-torob:local",
+                        "-c",
+                        "rm -rf /qa/state",
+                    ],
+                    check=True,
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL,
+                )
+            else:
+                subprocess.run(
+                    ["docker", "volume", "rm", volume], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
+                )
+    dest = Path(report_path)
     dest.write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps(report, indent=2))
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--state-storage", choices=["named", "root-bind"], default="named")
+    parser.add_argument("--report", type=Path, default=Path("docs/qa-evidence/container.json"))
+    args = parser.parse_args()
+    main(args.state_storage, args.report)

@@ -1,0 +1,47 @@
+{
+  "state_storage": "named",
+  "app_identity": {
+    "Uid": [
+      "10001",
+      "10001",
+      "10001",
+      "10001"
+    ],
+    "Gid": [
+      "10001",
+      "10001",
+      "10001",
+      "10001"
+    ],
+    "CapEff": [
+      "0000000000000000"
+    ],
+    "NoNewPrivs": [
+      "1"
+    ]
+  },
+  "catalogue_counts": {
+    "shops": 6476,
+    "products": 225903,
+    "offers": 331506
+  },
+  "stats_before_restart": {
+    "BlockIO": "32.1MB / 1.41MB",
+    "CPUPerc": "0.15%",
+    "Container": "torob-container-qa-3a0a3787",
+    "ID": "3418841f240a",
+    "MemPerc": "8.69%",
+    "MemUsage": "44.48MiB / 512MiB",
+    "Name": "torob-container-qa-3a0a3787",
+    "NetIO": "14.1kB / 224kB",
+    "PIDs": "2"
+  },
+  "process_memory": "VmHWM:\t   59628 kB\nVmRSS:\t   59628 kB",
+  "catalogue_sha256": "3ae4f27bf376c90e06b61eb4e70aeded07fc5da2bb6d59c09b44bba1f1f09b01",
+  "persistence": true,
+  "private_paths_404": true,
+  "worker_offline_search_and_recovery": true,
+  "image": "sha256:307e5cfe0ee72ec49a816ab890ec29ab9c41e743661e4fa4f6f66fb8a22c12e9",
+  "image_bytes": 1095479556,
+  "catalogue_bytes": 732278784
+}

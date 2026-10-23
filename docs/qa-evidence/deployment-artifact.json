@@ -1,7 +1,7 @@
 {
-  "artifact": "/home/milad/Desktop/projects/starcoach-torob-assistant/data/deployment.tar.gz",
-  "bytes": 144390640,
-  "sha256": "cde37ec5de96490b2395963fae4204fe5ca9fb70d370dcd1c13110b0da19468b",
+  "artifact": "/home/milad/Desktop/projects/starcoach-torob-assistant/data/deployment-xz.tar.gz",
+  "bytes": 102880565,
+  "sha256": "00aa5fdab8f65210e5bdad91c4fdf561a19de07e37216892acab825c46e017b2",
   "members": [
     "Dockerfile",
     "backend/torob/__init__.py",
@@ -21,15 +21,27 @@
     "backend/torob/session.py",
     "backend/torob/types.py",
     "backend/torob/worker_api.py",
-    "data/catalogue.sqlite",
-    "frontend/dist/assets/index-CapxFR7V.js",
-    "frontend/dist/assets/index-DgMvazgd.css",
+    "data/catalogue-build.json",
+    "data/catalogue.sqlite.xz",
+    "frontend/dist/assets/index-RWCOG8w-.js",
+    "frontend/dist/assets/index-_QK26oEd.css",
     "frontend/dist/favicon.svg",
     "frontend/dist/fonts/OFL.txt",
     "frontend/dist/fonts/Vazirmatn.woff2",
     "frontend/dist/index.html",
-    "requirements.lock"
+    "requirements.lock",
+    "scripts/container_entrypoint.py",
+    "scripts/unpack_catalogue.py"
   ],
   "private_catalogue_included": true,
-  "credentials_included": false
+  "credentials_included": false,
+  "max_source_bytes": 128000000,
+  "catalogue": {
+    "compression": "xz",
+    "xz_preset": 6,
+    "uncompressed_bytes": 732278784,
+    "uncompressed_sha256": "3ae4f27bf376c90e06b61eb4e70aeded07fc5da2bb6d59c09b44bba1f1f09b01",
+    "compressed_sha256": "45f51f38e698e0c54926fded9c3119213450f9debb70304fb69dd78af255f5a2",
+    "compressed_bytes": 102594448
+  }
 }

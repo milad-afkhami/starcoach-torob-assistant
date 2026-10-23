@@ -1,5 +1,8 @@
+import math
+from decimal import Decimal
+
 from .catalogue import distance_km
-from .types import PlanOption, PurchasePlan
+from .types import ConstraintSuggestion, PlanOption, PurchasePlan
 
 
 def classify_offer(offer, constraints):
@@ -21,6 +24,8 @@ def classify_offer(offer, constraints):
             conflict.append("closed_at_visit")
         elif offer.hours_state == "unknown":
             missing.append("hours_unknown")
+    if constraints.contactable_only and not offer.contact_links:
+        conflict.append("contact_route_missing")
     if constraints.payment_provider:
         if offer.payment_state == "unknown":
             missing.append("payment_unknown")
@@ -33,6 +38,36 @@ def classify_offer(offer, constraints):
         unresolved_checks=["current_price", "current_stock"]
         + (["buyer_credit_and_payment_terms"] if constraints.payment_provider else []),
     )
+
+
+def suggest_relaxations(mission, options):
+    """Offer the least increase for one constraint only, proved against all other gates.
+
+    No multi-conflict, missing evidence, unavailable shop or payment removal can
+    become an eligible suggestion. Thresholds come from actual effective offers.
+    """
+    suggestions = []
+    for field, reason in (("max_price_toman", "over_budget"), ("radius_km", "outside_radius")):
+        candidates = [o for o in options if set(o.reason_codes) == {reason}]
+        if not candidates:
+            continue
+        if field == "max_price_toman":
+            value = str(min(int(o.offer.price_toman) for o in candidates))
+            delta = str(int(value) - int(mission.constraints.max_price_toman))
+        else:
+            value = math.ceil(min(o.offer.straight_line_km for o in candidates) * 100) / 100
+            if value > 50:
+                continue
+            delta = str(Decimal(str(value)) - Decimal(str(mission.constraints.radius_km)))
+        constraints = mission.constraints.model_copy(update={field: value})
+        eligible = [o for o in options if classify_offer(o.offer, constraints).eligibility == "candidate"]
+        if eligible:
+            suggestions.append(ConstraintSuggestion(
+                field=field, value=value, delta=delta, base_revision=mission.revision,
+                constraints=constraints, eligible_shops=len({o.offer.shop_id for o in eligible}),
+                supporting_offer_ids=sorted({o.offer.offer_id for o in eligible})[:20],
+            ))
+    return suggestions
 
 
 def build_plan(mission, offers):
@@ -72,6 +107,7 @@ def build_plan(mission, offers):
             choices=[],
             excluded=excluded[:60],
             shortlist_coverage=coverage,
+            relaxations=suggest_relaxations(mission, options),
         )
 
     def separation(a, b):
