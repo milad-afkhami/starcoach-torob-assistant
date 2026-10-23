@@ -1,0 +1,58 @@
+{
+  "release": "6adba2477ebf55567ce5ac44",
+  "source": "f0c1f099ec3b3400986122dd2eb77182224168c1",
+  "started": "2026-10-23T18:13:05.110Z",
+  "scope": "Final map-only artifact: actual unmocked public UI/state/assets. Genuine semantic discovery/failure evidence belongs to the preceding identical backend contract.",
+  "errors": [],
+  "posts": [
+    "/api/sessions"
+  ],
+  "tiles": [
+    {
+      "url": "https://tile.openstreetmap.org/17/84255/51607.png",
+      "status": 200
+    },
+    {
+      "url": "https://tile.openstreetmap.org/17/84252/51607.png",
+      "status": 200
+    },
+    {
+      "url": "https://tile.openstreetmap.org/17/84252/51606.png",
+      "status": 200
+    },
+    {
+      "url": "https://tile.openstreetmap.org/17/84254/51606.png",
+      "status": 200
+    },
+    {
+      "url": "https://tile.openstreetmap.org/17/84254/51607.png",
+      "status": 200
+    },
+    {
+      "url": "https://tile.openstreetmap.org/17/84256/51607.png",
+      "status": 200
+    },
+    {
+      "url": "https://tile.openstreetmap.org/17/84255/51606.png",
+      "status": 200
+    },
+    {
+      "url": "https://tile.openstreetmap.org/17/84253/51606.png",
+      "status": 200
+    },
+    {
+      "url": "https://tile.openstreetmap.org/17/84253/51607.png",
+      "status": 200
+    },
+    {
+      "url": "https://tile.openstreetmap.org/17/84256/51606.png",
+      "status": 200
+    }
+  ],
+  "html_sha256": "1861c35fb14253be5a77d821d55e6ccdc7cc13a1113da1bf753b5fb4c25da8b6",
+  "asset": "/assets/index-CAoFB3f5.js",
+  "asset_sha256": "a5a44683de96ca00b4bbb3e40da780422117d0a0595c716e0f414b697515cd86",
+  "prior_recovered_mission_survived": true,
+  "pass": false,
+  "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'دیدن سناریوی نمونه', exact: true })\u001b[22m\n"
+}

@@ -15,9 +15,9 @@ Persian · RTL · Torob dataset · FastAPI · React · Isolated Codex worker
 A low price is only useful if the right product, shop, budget and visit time work together. Plan B helps a buyer choose an exact product, prepare a nearby alternative, and recover when a seller is unavailable or changes terms—without entering the same requirements again.
 
 > [!IMPORTANT]
-> **Live on HTTPS with the full contest catalogue.** Hosted search/recovery, genuine isolated local Codex needs/reply calls, reconnection and privacy checks have been exercised. The reviewed conversational-continuation batch is deployed; its new assets/backend contract, prior mission continuity and competing-edit checks passed. The reviewed narrated demonstration is public, including genuine continuation, confirmation and constraint recovery. Prices are historical, stock is unknown, and the sample seller replies are simulated. No seller is contacted automatically. [Current delivery state](docs/insured-vibe-coding/kanban.md).
+> **The conversation and shop map are live with the full contest catalogue.** A genuine two-turn local regression retains unresolved location and hard requirements; hosted A16 discovery and manual recovery are recorded. One separately declared hosted refinement expired before a validated result. [Read the outcomes and limits](docs/evaluation.md). The public narrated video records the explicitly labelled earlier interface; this screenshot and the live app show the current version.
 
-<img src="docs/images/overview.png" alt="Actual local Plan B interface showing a Persian purchase mission, a primary seller and a nearby fallback" width="1100">
+<img src="docs/images/conversation-overview.png" alt="Actual hosted Persian conversation with a source-coordinate shop map, primary and nearby fallback, and a compact message composer" width="1100">
 
 *Actual local interface. The highlighted sample uses catalogue rows and clearly labelled simulated replies.*
 

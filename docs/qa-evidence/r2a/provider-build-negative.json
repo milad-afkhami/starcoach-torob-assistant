@@ -1,0 +1,12 @@
+{
+  "release_id": "6adb8c48fc09ae5c3c08578b",
+  "state": "TIMEDOUT",
+  "before_release_still_current": "6adb3fbe417e33237eed81ba",
+  "artifact_sha256": "4707977dfd3ee7d3625728f288bbfdd808eaaad6e7fcdcbe10730514dff58d54",
+  "build_stage": "Complete7page/102row log: source download, full catalogue import and dependencies succeeded; last recorded operationStep15COPY full catalogue into runtime image.",
+  "diagnosis_limit": "First log response was only20rows; earlierStep5diagnosis was incomplete and corrected after pagination. Exact cause of providerCOPY-stage timeout remains unknown. Local same artifact builds and passes both storage modes.",
+  "decision": "One bounded new release using already accepted same source identity after confirming prior release terminal and old runtime unchanged. Distinct intent; no upload retry, no plan/resource changes.",
+  "prior_unknown_upload_intents": "preserved untouched",
+  "log_pages": 7,
+  "log_rows": 102
+}

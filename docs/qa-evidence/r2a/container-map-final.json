@@ -1,0 +1,56 @@
+{
+  "state_storage": "named",
+  "app_identity": {
+    "Uid": [
+      "10001",
+      "10001",
+      "10001",
+      "10001"
+    ],
+    "Gid": [
+      "10001",
+      "10001",
+      "10001",
+      "10001"
+    ],
+    "CapEff": [
+      "0000000000000000"
+    ],
+    "NoNewPrivs": [
+      "1"
+    ]
+  },
+  "immutable_runtime_file_permissions": [
+    "0:0 444",
+    "0:0 444"
+  ],
+  "catalogue_counts": {
+    "shops": 6476,
+    "products": 225903,
+    "offers": 331506
+  },
+  "frozen_frontend_sha256": {
+    "index.html": "1861c35fb14253be5a77d821d55e6ccdc7cc13a1113da1bf753b5fb4c25da8b6",
+    "/assets/index-CAoFB3f5.js": "a5a44683de96ca00b4bbb3e40da780422117d0a0595c716e0f414b697515cd86",
+    "/assets/index-ChqT6ChB.css": "c8e5893b93be9255a98a30dfe63ee5863c13fd876e47e40a44b2314a543b8209"
+  },
+  "stats_before_restart": {
+    "BlockIO": "0B / 1.41MB",
+    "CPUPerc": "45.61%",
+    "Container": "torob-container-qa-e116f249",
+    "ID": "472ee7ae95ed",
+    "MemPerc": "11.34%",
+    "MemUsage": "58.07MiB / 512MiB",
+    "Name": "torob-container-qa-e116f249",
+    "NetIO": "17.8kB / 737kB",
+    "PIDs": "4"
+  },
+  "process_memory": "VmHWM:\t   62028 kB\nVmRSS:\t   62028 kB",
+  "catalogue_sha256": "2b80a7ba17dae61945a02dd099ae37f6cdaf223831e75787d567b405a56f5094",
+  "persistence": true,
+  "private_paths_404": true,
+  "worker_offline_search_and_recovery": true,
+  "image": "sha256:bd0b087419c81be3b0af49f292bae2a447b1f7ab525ea61dcef5f8c58ee098fe",
+  "image_bytes": 1981777814,
+  "catalogue_bytes": 732311552
+}

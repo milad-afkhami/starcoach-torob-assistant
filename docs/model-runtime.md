@@ -43,3 +43,9 @@ Independent Liara runtime QA found a shared launch-cancellation race: a Docker c
 ## Selected-product condition updates
 
 A needs request on an existing selected-product mission now ends after one validated interpretation call. Radius, explicit Tehran visit, payment and opening-hour changes remain proposals, and deterministic code returns the actual eligible-shop count in toman-based source data. Discovery/comparison may still use two calls. This avoids re-recommending an already selected product and prevents model prose contradicting computed eligibility. The independent final rehearsal measured18.4seconds for this one-call path; it is a measured local run, not a latency guarantee.
+
+## Semantic continuation version and measured limits
+
+Needs turns use server-owned `torob-needs-v3` with prompt `torob-semantic-v2`; reply interpretation remains `torob-reply-v1` / `torob-v1`. The generic outbound worker consumes the server schema. Semantic parents are owned, recent completed needs turns; a clarification may have no cards. Displayed-card references remain a separate bounded contract. The current [user guide](user-guide.md#refine-a-need-without-losing-unresolved-conditions) explains explicit location/requirement resolution.
+
+The [current genuine evidence](qa-evidence/r2a/integration.json) includes local two-turn retention and hosted exact-model discovery. The separate hosted refinement expired after one model start and established no new budget; no mission changed. Deadlines, cleanup, worker heartbeat and manual fallback remain bounded. Worker availability does not guarantee that an individual model request completes.

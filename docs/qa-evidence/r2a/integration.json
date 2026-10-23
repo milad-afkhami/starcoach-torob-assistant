@@ -1,5 +1,5 @@
 {
-  "source_commit": "5119f12523ed4d1253c85b2bb1cd8003bc6db7e6",
+  "source_commit": "f0c1f099ec3b3400986122dd2eb77182224168c1",
   "canonical_dist_promoted": true,
   "frontend_assets_match_verified_checkpoint": true,
   "model_prompt_version": "torob-semantic-v2",
@@ -16,6 +16,34 @@
   "image_catalogue_binary_sha256": "2b80a7ba17dae61945a02dd099ae37f6cdaf223831e75787d567b405a56f5094",
   "catalogue_scope": "unchanged verified cached full catalogue build layer, exact binary hash matches earlier every-row equivalence; new runtime image freshly exercised",
   "artifact": "deployment-artifact.json",
-  "hosted": "pending",
-  "time_scope": "Current resumed integration; old verified-source checkpoint retained unchanged."
+  "hosted": "Actual final HTML/JS hashes, recovered-state continuity, unmocked10tiles/2markers/no warning,117px composer/static tools/unobscured map/390px no overflow/private404/no errors/0new model calls pass.",
+  "time_scope": "Current resumed integration; old verified-source checkpoint retained unchanged.",
+  "provider_first_release": "6adb8c48fc09ae5c3c08578b",
+  "provider_first_state": "TIMEDOUT",
+  "provider_retry_release": "6adb8e597b39ae0264f0f201",
+  "provider_retry_state": "READY/current",
+  "new_source_id": "c80f8963-ae7a-4774-a54d-dd3c2c9adea4.tar.gz",
+  "status": "Final source deployed; deterministic/UI acceptance passed; one hosted AI continuation case failed and remains a limitation.",
+  "semantic_source_commit": "5119f12523ed4d1253c85b2bb1cd8003bc6db7e6",
+  "map_source_commit": "f0c1f099ec3b3400986122dd2eb77182224168c1",
+  "final_artifact": "deployment-artifact-map.json",
+  "final_release": "6adba2477ebf55567ce5ac44",
+  "final_image": "sha256:bd0b087419c81be3b0af49f292bae2a447b1f7ab525ea61dcef5f8c58ee098fe",
+  "final_hosted": "r2a-final-hosted.json",
+  "final_container": "container-map-final.json",
+  "map_browser_checks": 7,
+  "map_independent": "map-recovery-independent.json",
+  "hosted_genuine_discovery": "hosted-genuine.json",
+  "hosted_genuine_continuation": {
+    "evidence": "hosted-continuation.json",
+    "outcome": "failed expired; no replay;80M refinement not established"
+  },
+  "source_ci": {
+    "run": 40000243423,
+    "commit": "f0c1f099ec3b3400986122dd2eb77182224168c1",
+    "conclusion": "success"
+  },
+  "final_state": "Runtime/source verification complete within stated scope; hosted H2 acceptance failed; external one-time submission/identity decision still pending.",
+  "scoped_review": "Original independent reviewer addendum locked; score/archive owned by private contest record, not a fresh blind rerun.",
+  "independent_integration": "independent-integration-review.md"
 }

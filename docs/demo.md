@@ -2,6 +2,8 @@
 
 [← Documentation](README.md) · [User guide](user-guide.md) · [Getting started](getting-started.md)
 
+**The published recording uses the earlier interface.** The live app now leads with a conversation, inline components and a real shop map. Use the [current user guide](user-guide.md) to rehearse those controls; the original recording remains evidence for its filmed source/release, with the provenance below.
+
 **[Watch the reviewed public demo](https://milad-afkhami.github.io/starcoach-torob-assistant/)**. The304.812-second clip shows actual HTTPS output and genuine Codex calls with synthetic Persian narration. [Full narration text](demo-transcript-fa.md) is available for preparing your own recording. Prices are historical, stock unknown and seller replies explicitly simulated; nobody is contacted.
 
 | Approximate time | Actual workflow |

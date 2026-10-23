@@ -1,7 +1,7 @@
 {
-  "artifact": "/home/milad/Desktop/projects/starcoach-torob-assistant/data/deployment-pinned-remote-r2.tar.gz",
-  "bytes": 315502,
-  "sha256": "6d89b0e3c8a329773c80a5b6cccb09c37f1060da9bfff1778d293e4f18c3a441",
+  "artifact": "/home/milad/Desktop/projects/starcoach-torob-assistant/data/deployment-pinned-remote-r2a-map.tar.gz",
+  "bytes": 323443,
+  "sha256": "26b7aa55dea59249a202e3c24267d9bfd5ea70ab304811d1bc03d259c01c2c8e",
   "members": [
     "Dockerfile",
     "backend/torob/__init__.py",
@@ -18,11 +18,12 @@
     "backend/torob/model_worker.py",
     "backend/torob/normalize.py",
     "backend/torob/planner.py",
+    "backend/torob/semantic.py",
     "backend/torob/session.py",
     "backend/torob/types.py",
     "backend/torob/worker_api.py",
-    "frontend/dist/assets/index-D26G9fRL.css",
-    "frontend/dist/assets/index-GqLlXUXz.js",
+    "frontend/dist/assets/index-CAoFB3f5.js",
+    "frontend/dist/assets/index-ChqT6ChB.css",
     "frontend/dist/favicon.svg",
     "frontend/dist/fonts/OFL.txt",
     "frontend/dist/fonts/Vazirmatn.woff2",
@@ -54,7 +55,10 @@
     },
     "build_source": "pinned_https"
   },
-  "source_commit": "4ddab1a457ba1072ae30a4b8a488eaf4c0cdae60",
-  "runtime_frontend_commit": "1df525d29b269d3fe89767b864e8ebf9e5255316",
-  "scope": "Current deployed artifact. Torob R2a source5119f12 is verified separately and has not been packaged/deployed or exercised with genuine inference."
+  "source_commit": "f0c1f099ec3b3400986122dd2eb77182224168c1",
+  "semantic_source_commit": "5119f12523ed4d1253c85b2bb1cd8003bc6db7e6",
+  "provider_release": "6adba2477ebf55567ce5ac44",
+  "source_id": "c0c04674-da37-489e-b9ee-be6d14aaf664.tar.gz",
+  "image": "sha256:bd0b087419c81be3b0af49f292bae2a447b1f7ab525ea61dcef5f8c58ee098fe",
+  "scope": "Final deployed map-only revision; raw per-version artifact manifests retained separately."
 }

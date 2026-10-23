@@ -1,0 +1,156 @@
+{
+  "url": "http://127.0.0.1:8651",
+  "assets": [
+    "http://127.0.0.1:8651/assets/index-B-3RuyXv.js"
+  ],
+  "missionId": "b57059c115544c98b3b2b7c670f3e6bb",
+  "initial": {
+    "revision": 1,
+    "price": "39200000",
+    "product": "product_adfdc73bc839d15cd7754318",
+    "constraints": {
+      "query": "A07",
+      "category": "گوشی موبایل",
+      "max_price_toman": "40000000",
+      "lat": 35.69508821734553,
+      "lon": 51.41148102579503,
+      "radius_km": 1,
+      "payment_provider": null,
+      "visit_at": "2026-10-22T20:15:00+03:30",
+      "require_declared_open": true,
+      "contactable_only": false,
+      "origin_label": "محدوده جمهوری (نقطه پیش‌فرض)"
+    }
+  },
+  "restoredText": [
+    "برنامه ذخیره‌شده را بازیابی کردم. پیام‌های گفت‌وگوی قبلی با تازه‌کردن صفحه بازیابی نمی‌شوند؛ می‌توانی درباره این برنامه ادامه بدهی."
+  ],
+  "map": {
+    "rect": {
+      "x": 15,
+      "y": 312.1875,
+      "width": 360,
+      "height": 220,
+      "top": 312.1875,
+      "right": 375,
+      "bottom": 532.1875,
+      "left": 15
+    },
+    "centerHitInMap": true,
+    "composer": {
+      "x": 14,
+      "y": 727,
+      "width": 362,
+      "height": 117,
+      "top": 727,
+      "right": 376,
+      "bottom": 844,
+      "left": 14
+    },
+    "filterPosition": "static",
+    "filterInComposer": false,
+    "width": 390,
+    "scrollWidth": 390
+  },
+  "mapSelection": "در حال مشاهده گزینه دوم: ماهیار نیکینا. خیابان جمهوری اسلامی، تقاطع خیابان حافظ، پاساژ چهارسو، طبقه اول، پلاک c۵۲. انتخاب روی نقشه، ترتیب برنامه خرید را تغییر نمی‌دهد.",
+  "tileState": {
+    "loading": 0,
+    "failure": [
+      "نقشه زمینه بارگذاری نشد. نشانگرها از مختصات داده‌اند؛ نشانی و انتخاب فروشگاه در فهرست زیر در دسترس است."
+    ],
+    "loaded": 6
+  },
+  "previewRevision": 1,
+  "confirmed": {
+    "revision": 2,
+    "price": "39500000",
+    "product": "product_adfdc73bc839d15cd7754318"
+  },
+  "persisted": {
+    "revision": 2,
+    "price": "39500000"
+  },
+  "historicalButtons": 0,
+  "foreignStatus": 404,
+  "errors": [],
+  "mutations": [
+    {
+      "method": "POST",
+      "path": "/api/sessions"
+    },
+    {
+      "method": "POST",
+      "path": "/api/missions"
+    },
+    {
+      "method": "POST",
+      "path": "/api/sessions"
+    },
+    {
+      "method": "POST",
+      "path": "/api/missions/b57059c115544c98b3b2b7c670f3e6bb/followups"
+    },
+    {
+      "method": "POST",
+      "path": "/api/missions/b57059c115544c98b3b2b7c670f3e6bb/observations/preview"
+    },
+    {
+      "method": "POST",
+      "path": "/api/missions/b57059c115544c98b3b2b7c670f3e6bb/observations/07cbcad3201f44088891570d6c83aae9/confirm"
+    },
+    {
+      "method": "POST",
+      "path": "/api/sessions"
+    }
+  ],
+  "tiles": [
+    {
+      "status": 200,
+      "url": "https://tile.openstreetmap.org/17/84254/51606.png"
+    },
+    {
+      "status": 200,
+      "url": "https://tile.openstreetmap.org/17/84253/51606.png"
+    },
+    {
+      "status": 200,
+      "url": "https://tile.openstreetmap.org/17/84254/51607.png"
+    },
+    {
+      "status": 200,
+      "url": "https://tile.openstreetmap.org/17/84255/51607.png"
+    },
+    {
+      "status": 200,
+      "url": "https://tile.openstreetmap.org/17/84253/51607.png"
+    },
+    {
+      "status": 200,
+      "url": "https://tile.openstreetmap.org/17/84255/51606.png"
+    },
+    {
+      "status": 200,
+      "url": "https://tile.openstreetmap.org/17/84254/51607.png"
+    },
+    {
+      "status": 200,
+      "url": "https://tile.openstreetmap.org/17/84255/51606.png"
+    },
+    {
+      "status": 200,
+      "url": "https://tile.openstreetmap.org/17/84255/51607.png"
+    },
+    {
+      "status": 200,
+      "url": "https://tile.openstreetmap.org/17/84253/51607.png"
+    },
+    {
+      "status": 200,
+      "url": "https://tile.openstreetmap.org/17/84254/51606.png"
+    },
+    {
+      "status": 200,
+      "url": "https://tile.openstreetmap.org/17/84253/51606.png"
+    }
+  ]
+}

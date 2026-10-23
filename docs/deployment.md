@@ -27,11 +27,13 @@ Actual HTTPS acceptance covers the source-data purchase scenario, manual recover
 
 The provider accepted a single restart request with HTTP200, and the existing session/mission remained readable. Its history response did not independently establish that a container restarted. [The restart record](qa-evidence/hosted-restart-result.json) therefore remains **partial**, rather than promoting HTTP continuity to proof of a restart. The separately recorded [version-transition test](qa-evidence/hosted-version-transition.json) owns the subsequent source-version/state-continuity result; an awaiting or failed record is not a pass.
 
-## Current delivered version and paused source checkpoint
+## Current deployed version
 
-Release `6adb3fbe417e33237eed81ba` serves source `4ddab1a` / conversational frontend `1df525d`. The315502-byte private source uses a build-stage download of the exact organizer archive and verifies its archive hash, three CSV payload hashes and full counts. It downloads or rebuilds nothing on runtime restart. [Actual hosted acceptance](qa-evidence/hosted-conversation-r2.json) covers saved-session continuity, real map tiles, explicit300000-toman recovery and mobile rendering; it made zero new model calls. Original large upload outcomes remain private, unknown and unreferenced.
+Release `6adba2477ebf55567ce5ac44` serves runtime source `f0c1f099ec3b3400986122dd2eb77182224168c1`: semantic continuation from `5119f12`, followed by the scoped map-loading fix. The 323,443-byte private package has SHA-256 `26b7aa55dea59249a202e3c24267d9bfd5ea70ab304811d1bc03d259c01c2c8e`. Its build-stage download validates the exact organizer archive, three payload hashes and full counts; runtime startup downloads or rebuilds nothing. [Current artifact](qa-evidence/deployment-artifact.json) and [integration evidence](qa-evidence/r2a/integration.json) own exact identities.
 
-The user requested a pause after verified source `5119f12` on `usability/r2a-torob`. That newer semantic-continuation/mobile revision has not been packaged, deployed, tested with genuine inference or rescored. [Its checkpoint](qa-evidence/r2a/checkpoint.json) and [resume gates](qa-evidence/r2a/resume-after-user-checkpoint.md) govern continuation. Keep this deployed-artifact manifest separate from the newer source.
+[Final hosted acceptance](qa-evidence/r2a/r2a-final-hosted.json) verifies actual HTML/JS hashes, the previously recovered guest mission, two source markers and ten decoded real basemap tiles without stale warnings, compact mobile controls, private-path denial and no page errors. It makes zero model calls. [Genuine hosted discovery](qa-evidence/r2a/hosted-genuine.json) passed on the identical semantic backend before the map-only patch; a separately declared [hosted refinement](qa-evidence/r2a/hosted-continuation.json) expired before a validated result. Neither result is relabelled as inference on a later full artifact.
+
+The first semantic build timed out while copying the full catalogue after download/import/dependencies. A distinct bounded release using its already accepted source succeeded; the failed release and both older unknown large-upload intents remain retained. The final map package received its own accepted source and release. [Provider failure](qa-evidence/r2a/provider-build-negative.json), [intermediate artifact](qa-evidence/r2a/deployment-artifact.json), and [final map artifact](qa-evidence/r2a/deployment-artifact-map.json) remain separate.
 
 ## Reproducible private source packaging
 
@@ -41,9 +43,9 @@ An initial144MB archive was rejected at upload. A later archive exposed a legacy
 
 `docker compose up -d` remains the local container route. Set a private generated session secret, worker token and exact public origin for that environment; do not reuse cloud credentials. The local Compose URL is `http://127.0.0.1:8652`; the development app uses8651. The worker must target the same chosen application URL.
 
-## Local review runtime at the pause
+## Local review runtime
 
-The current loopback mirror is `http://127.0.0.1:8651`, managed by `starcoach-torob-preview.service` and `starcoach-torob-preview-worker.service`, using the existing private `.env` and local state. Its canonical frontend/runtime remains the earlier accepted conversation revision; the R2a scratch build was deliberately not promoted. The separate `starcoach-torob-model-worker.service` still serves the public hosted app. All model workers and the private Liara operator share the same persistent100-start rolling24-hour gate and single-process lock; no quota was reset or raised. Keep credentials and private state out of source. Isolated deterministic QA servers were stopped; these intended user runtimes were retained.
+The loopback mirror at `http://127.0.0.1:8651` uses `starcoach-torob-preview.service` and `starcoach-torob-preview-worker.service`, private `.env` and the existing local state. Its backend has the revised semantic contract and its canonical assets match the current map build. The separate `starcoach-torob-model-worker.service` serves the public app. All workers and the private Liara operator share the persistent 100-start rolling 24-hour gate and single-process lock; no limit or ledger was reset. Isolated QA fixtures are stopped. Credentials and state remain private.
 
 ## Resource scope and lifecycle
 

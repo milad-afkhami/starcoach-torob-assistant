@@ -1,0 +1,42 @@
+{
+  "scope": "Actual browser/Leaflet events with explicitly controlled valid synthetic tile bitmaps; not live OSM availability/geography proof",
+  "identity": {
+    "url": "http://127.0.0.1:8712",
+    "html_sha256": "1861c35fb14253be5a77d821d55e6ccdc7cc13a1113da1bf753b5fb4c25da8b6",
+    "asset": "/assets/index-CAoFB3f5.js",
+    "asset_status": 200,
+    "asset_sha256": "a5a44683de96ca00b4bbb3e40da780422117d0a0595c716e0f414b697515cd86",
+    "shop_map_sha256": "ae6d59537ce9a2205c674daa10a0c0e6a9bb5b054abecb631e229ab1b0bc302c",
+    "test_sha256": "f1560ca271dfc4d2de3681252f48d26354f0edf7278943ae399b0e258f84f4a8"
+  },
+  "results": [
+    {
+      "kind": "late_complete",
+      "before": "بارگذاری نقشه زمینه طول کشیده است؛ هنوز کامل نشده. نشانگرها از مختصات داده‌اند؛ نشانی و انتخاب فروشگاه در فهرست زیر در دسترس است.",
+      "after": [],
+      "decoded": 6,
+      "requestCount": 8,
+      "markerCount": 2,
+      "listCount": 2,
+      "errors": [],
+      "mutations": [
+        "/api/sessions",
+        "/api/missions"
+      ]
+    },
+    {
+      "kind": "partial_inflight",
+      "before": "بارگذاری نقشه زمینه طول کشیده است؛ هنوز کامل نشده. نشانگرها از مختصات داده‌اند؛ نشانی و انتخاب فروشگاه در فهرست زیر در دسترس است.",
+      "after": [],
+      "decoded": 6,
+      "requestCount": 8,
+      "markerCount": 2,
+      "listCount": 2,
+      "errors": [],
+      "mutations": [
+        "/api/sessions",
+        "/api/missions"
+      ]
+    }
+  ]
+}

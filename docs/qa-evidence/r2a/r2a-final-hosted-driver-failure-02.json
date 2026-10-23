@@ -1,0 +1,59 @@
+{
+  "release": "6adba2477ebf55567ce5ac44",
+  "source": "f0c1f099ec3b3400986122dd2eb77182224168c1",
+  "started": "2026-10-23T18:19:23.428Z",
+  "scope": "Final map-only artifact: actual unmocked public UI/state/assets. Genuine semantic discovery/failure evidence belongs to the preceding identical backend contract.",
+  "errors": [],
+  "posts": [
+    "/api/sessions",
+    "/api/missions"
+  ],
+  "tiles": [
+    {
+      "url": "https://tile.openstreetmap.org/17/84254/51606.png",
+      "status": 200
+    },
+    {
+      "url": "https://tile.openstreetmap.org/17/84255/51607.png",
+      "status": 200
+    },
+    {
+      "url": "https://tile.openstreetmap.org/17/84256/51606.png",
+      "status": 200
+    },
+    {
+      "url": "https://tile.openstreetmap.org/17/84252/51607.png",
+      "status": 200
+    },
+    {
+      "url": "https://tile.openstreetmap.org/17/84254/51607.png",
+      "status": 200
+    },
+    {
+      "url": "https://tile.openstreetmap.org/17/84252/51606.png",
+      "status": 200
+    },
+    {
+      "url": "https://tile.openstreetmap.org/17/84255/51606.png",
+      "status": 200
+    },
+    {
+      "url": "https://tile.openstreetmap.org/17/84253/51606.png",
+      "status": 200
+    },
+    {
+      "url": "https://tile.openstreetmap.org/17/84256/51607.png",
+      "status": 200
+    },
+    {
+      "url": "https://tile.openstreetmap.org/17/84253/51607.png",
+      "status": 200
+    }
+  ],
+  "html_sha256": "1861c35fb14253be5a77d821d55e6ccdc7cc13a1113da1bf753b5fb4c25da8b6",
+  "asset": "/assets/index-CAoFB3f5.js",
+  "asset_sha256": "a5a44683de96ca00b4bbb3e40da780422117d0a0595c716e0f414b697515cd86",
+  "prior_recovered_mission_survived": true,
+  "pass": false,
+  "error": "expect(locator).toContainText(expected) failed\n\nLocator: locator('.seller-card.primary')\nExpected substring: \"۳۹٬۲۰۰٬۰۰۰\"\nError: strict mode violation: locator('.seller-card.primary') resolved to 2 elements:\n    1) <article class=\"seller-card primary compact\" data-testid=\"historical-primary-card\">…</article> aka getByTestId('historical-primary-card')\n    2) <article data-testid=\"primary-card\" class=\"seller-card primary \">…</article> aka getByTestId('primary-card')\n\nCall log:\n  - Expect \"toContainText\" locator('.seller-card.primary') with timeout 5000ms\n  - waiting for locator('.seller-card.primary')\n    6 × locator resolved to <article data-testid=\"primary-card\" class=\"seller-card primary \">…</article>\n      - unexpected value \"گزینه اول۰٫۰۵ کیلومترماهیار نیکینانام ناشناس‌شده در داده آزمایشی۳۹٬۵۰۰٬۰۰۰تومانقیمت ثبت‌شده • ۲۰ مهر ۱۴۰۵موجودی نامشخصسازگار با ساعت اعلام‌شدهخیابان جمهوری اسلامی، تقاطع خیابان حافظ، پاساژ چهارسو، طبقه اول، پلاک c۵۲اطلاعات ثبت‌شده و محدودیت‌هاساعت‌ها اعلامی و قیمت‌ها تاریخی‌اند؛ قبل از مراجعه، قیمت، موجودی و ساعت را بررسی کنید.عنوان فروشنده: گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایتگارانتی: {\"description\":null,\"period_months\":18,\"provider\":\"انتخاب سرویس حامی\"}قیمت اصلی داده: ۳۹٬۵۰۰٬۰۰۰مسیر تماس واقعی برای این فروشگاه در داده ثبت نشده است. شماره‌های داده آزمایشی قابل استفاده نیستند.مسیر تماس واقعی در داده نیست؛ فقط متن استعلام و گزارش شما بررسی می‌شود.بررسی پاسخ فروشنده\"\n"
+}

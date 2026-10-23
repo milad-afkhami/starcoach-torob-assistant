@@ -1,0 +1,58 @@
+{
+  "artifact": "/home/milad/Desktop/projects/starcoach-torob-assistant/data/deployment-pinned-remote-r2a-map.tar.gz",
+  "bytes": 323443,
+  "sha256": "26b7aa55dea59249a202e3c24267d9bfd5ea70ab304811d1bc03d259c01c2c8e",
+  "members": [
+    "Dockerfile",
+    "backend/torob/__init__.py",
+    "backend/torob/agent.py",
+    "backend/torob/api.py",
+    "backend/torob/catalogue.py",
+    "backend/torob/codex_cli.py",
+    "backend/torob/external_actions.py",
+    "backend/torob/followup.py",
+    "backend/torob/hours.py",
+    "backend/torob/ingest.py",
+    "backend/torob/model_jobs.py",
+    "backend/torob/model_types.py",
+    "backend/torob/model_worker.py",
+    "backend/torob/normalize.py",
+    "backend/torob/planner.py",
+    "backend/torob/semantic.py",
+    "backend/torob/session.py",
+    "backend/torob/types.py",
+    "backend/torob/worker_api.py",
+    "frontend/dist/assets/index-CAoFB3f5.js",
+    "frontend/dist/assets/index-ChqT6ChB.css",
+    "frontend/dist/favicon.svg",
+    "frontend/dist/fonts/OFL.txt",
+    "frontend/dist/fonts/Vazirmatn.woff2",
+    "frontend/dist/index.html",
+    "requirements.lock",
+    "scripts/build_catalogue.py",
+    "scripts/container_entrypoint.py",
+    "scripts/download_catalogue.py",
+    "scripts/package_deployment.py"
+  ],
+  "private_catalogue_included": false,
+  "complete_catalogue_build": true,
+  "credentials_included": false,
+  "max_source_bytes": 128000000,
+  "catalogue": {
+    "compression": "zip",
+    "source_url": "https://startech.s3.ir-central1.arvanstorage.ir/starcoach-dataset-v16-cap300-csv.zip?versionId=",
+    "archive_sha256": "b0afb47b2b70f65c6d8ec07b7423dcc49efc71cd7a27e95606fb81da008c210d",
+    "compressed_bytes": 60176276,
+    "payload_hashes": {
+      "shops.csv": "1a292d6180e2a28cd0bbec57b1bb575a440e5afcc3ec3f5af5b1e13172aebaa1",
+      "products.csv": "e4a9749529d1e032c1dc2c4e275a8793a1edd702a194cb8de9abafc0649cc9c9",
+      "offers.csv": "664d256ed04b37cfb268d89eb605afda4a3b76179324b39d2dbaef21439f09b9"
+    },
+    "expected_counts": {
+      "shops": 6476,
+      "products": 225903,
+      "offers": 331506
+    },
+    "build_source": "pinned_https"
+  }
+}
