@@ -27,16 +27,56 @@ export class ApiError extends Error {
   readonly code:string|null; readonly status:number
   constructor(code:string|null,status:number){super(errorText(code));this.name='ApiError';this.code=code;this.status=status}
 }
-async function request<T>(path: string, method: string, body?: unknown): Promise<T> {
+export class TransportError extends Error {
+  constructor(){super('ارتباط برقرار نشد؛ دوباره تلاش کنید.');this.name='TransportError'}
+}
+async function request<T>(path: string, method: string, body?: unknown,signal?:AbortSignal): Promise<T> {
   let response: Response
-  try { response = await fetch(path, {method, credentials: 'same-origin', headers: body === undefined ? undefined : {'Content-Type': 'application/json'}, body: body === undefined ? undefined : JSON.stringify(body)}) }
-  catch { throw new Error('ارتباط برقرار نشد؛ دوباره تلاش کنید.') }
-  const value = await response.json().catch(()=>({}))
+  try { response = await fetch(path, {method, signal, credentials: 'same-origin', headers: body === undefined ? undefined : {'Content-Type': 'application/json'}, body: body === undefined ? undefined : JSON.stringify(body)}) }
+  catch { throw new TransportError() }
+  let value:Record<string,unknown>
+  try{value=await response.json()}
+  catch(error){
+    if(!response.ok)throw new ApiError(null,response.status)
+    if(error instanceof TypeError)throw new TransportError()
+    throw new Error('پاسخ سرویس قابل خواندن نبود؛ دوباره تلاش کنید.')
+  }
   if (!response.ok) throw new ApiError(typeof value.detail === 'string' ? value.detail : null,response.status)
   return value as T
 }
 export const api = {
-  get: <T,>(path: string)=>request<T>(path,'GET'),
+  get: <T,>(path: string,signal?:AbortSignal)=>request<T>(path,'GET',undefined,signal),
   post: <T,>(path: string,body: unknown = {})=>request<T>(path,'POST',body),
   patch: <T,>(path: string,body: unknown)=>request<T>(path,'PATCH',body),
+}
+
+
+/** Three READ retries shared across this exact owned turn, within its original deadline.
+ * POST creation/confirmation and non-transient HTTP failures are never replayed here.
+ */
+export function createTurnReader(id:string,deadline:number,isCurrent:()=>boolean,options?:{now:()=>number;wait:(ms:number)=>Promise<void>}){
+  const now=options?.now||(()=>performance.now()),wait=options?.wait||((ms:number)=>new Promise<void>(resolve=>setTimeout(resolve,ms)))
+  let retries=0,deadlineAbort=false
+  function remaining(){const left=deadline-now();if(deadlineAbort||left<=0)throw new ApiError('expired',408);return left}
+  return async function read<T>():Promise<T|null>{
+    while(isCurrent()){
+      const controller=new AbortController(),timer=setTimeout(()=>{deadlineAbort=true;controller.abort()},remaining())
+      try{
+        const value=await api.get<T>(`/api/turns/${encodeURIComponent(id)}`,controller.signal)
+        if(!isCurrent())return null
+        if(deadlineAbort)throw new ApiError('expired',408)
+        remaining()
+        return value
+      }catch(error){
+        if(!isCurrent())return null
+        if(deadlineAbort)throw new ApiError('expired',408)
+        remaining()
+        const transient=error instanceof TransportError||(error instanceof ApiError&&[502,503,504].includes(error.status))
+        if(!transient||retries>=3)throw error
+        retries++
+        await wait(Math.min(500*retries,remaining()))
+      }finally{clearTimeout(timer)}
+    }
+    return null
+  }
 }

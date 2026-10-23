@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Search, Sparkles, ShoppingBag, MapPin, Navigation, RefreshCcw, X, Copy, ExternalLink, Check, LoaderCircle, ArrowLeft, SlidersHorizontal } from 'lucide-react'
-import { api, ApiError, errorText } from './api'
+import { api, ApiError, createTurnReader, errorText } from './api'
 import { faDate, formatToman, localInput, normalizeDigits, parseToman, visitIso } from './format'
 import { SellerCard, outcomeLabels, reasonLabels } from './SellerCard'
 import type { Constraints, Delta, ExternalAction, Followup, Mission, MissionResponse, Observation, Plan, Product, Recommendation, SearchDiagnostic, Turn } from './types'
@@ -144,7 +144,7 @@ export default function App(){
   }
   async function startAI(kind:'needs'|'reply'){
     setError('');await cancelAI(true)
-    const epoch=aiEpoch.current;setAiPending(true)
+    const epoch=aiEpoch.current,deadline=performance.now()+120000;setAiPending(true)
     const target=kind==='reply'?followup:aiScope==='mission'&&mission?{missionId:mission.id,baseRevision:mission.revision}:null
     try{
       const message=kind==='reply'?replyText:need
@@ -153,7 +153,9 @@ export default function App(){
       const body={kind,message,mission_id:target?.missionId||null,base_revision:target?.baseRevision||null,followup_id:kind==='reply'?followup?.id:null,constraints:readDraft(draft),...(kind==='needs'&&!target&&discoveryParent?{discovery_parent_turn_id:discoveryParent}:{})}
       let state=await api.post<Turn>('/api/turns',body);if(aiEpoch.current!==epoch){void api.post(`/api/turns/${state.id}/cancel`).catch(()=>undefined);return}setAiPending(false);activeTurn.current=state.id;setTurn(state);setAiMessage('');setProposal(null)
       const id=state.id
-      while(['running','advancing'].includes(state.state)&&activeTurn.current===id){await sleep(1000);if(activeTurn.current!==id)return;state=await api.get<Turn>(`/api/turns/${id}`);if(activeTurn.current!==id)return;setTurn(state)}
+      const isCurrent=()=>activeTurn.current===id&&aiEpoch.current===epoch
+      const readTurn=createTurnReader(id,deadline,isCurrent)
+      while(['running','advancing'].includes(state.state)&&isCurrent()){await sleep(1000);if(!isCurrent())return;const next=await readTurn<Turn>();if(!next||!isCurrent())return;state=next;setTurn(state)}
       if(activeTurn.current!==id)return
       activeTurn.current=null;setTurn(null)
       if(state.state!=='completed'){setAiMessage(errorText(state.error_code));if(kind==='needs'){setDiscoveryParent(null);setComparisonSuggestion(null)}if(state.result?.products.length)setProducts(state.result.products);return}

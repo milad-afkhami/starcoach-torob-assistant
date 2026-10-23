@@ -1,0 +1,70 @@
+{
+  "scope": "Actual final hosted app, real isolated Codex, source-backed products and clearly simulated seller reply; actual wall-clock footage, no API interception",
+  "started_at": "2026-10-23T04:00:23.468Z",
+  "chapters": [
+    {
+      "number": 1,
+      "label": "Introduction and evidence boundaries",
+      "elapsed_ms": 0
+    },
+    {
+      "number": 2,
+      "label": "Genuine needs and source-bound conversational comparison",
+      "elapsed_ms": 45002
+    }
+  ],
+  "turns": [
+    {
+      "label": "discovery",
+      "elapsed_ms": 24715,
+      "turn": {
+        "id": "9574db90fe62432480fbea5cd68d0d28",
+        "state": "completed",
+        "stage": "interpret",
+        "result": {
+          "products": [],
+          "recommendations": [],
+          "clarification_fa": "در بودجه شما گزینه‌ای پیدا نشد؛ کمترین قیمت ثبت‌شده برای این جست‌وجو 50,985,500 تومان است. بودجه تغییر نکرده؛ اگر خواستید خودتان شرط را ویرایش کنید.",
+          "proposed_constraints": {
+            "query": "سامسونگ A16",
+            "category": "گوشی موبایل",
+            "max_price_toman": "40000000",
+            "lat": 35.69508821734553,
+            "lon": 51.41148102579503,
+            "radius_km": 1,
+            "payment_provider": null,
+            "visit_at": "2026-10-23T17:00:00+03:30",
+            "require_declared_open": true,
+            "contactable_only": false,
+            "origin_label": "محدوده جمهوری (نقطه پیش‌فرض)"
+          },
+          "proposal_summary": null,
+          "observation": null,
+          "degraded": false
+        },
+        "error_code": null,
+        "trace": [
+          {
+            "tool": "interpret",
+            "provenance": {
+              "provider": "codex_cli",
+              "model": "gpt-6.1-sol",
+              "cli_version": "codex-cli 0.163.0",
+              "elapsed_ms": 22543
+            },
+            "status": "validated"
+          },
+          {
+            "tool": "search_products",
+            "query": "سامسونگ A16",
+            "product_ids": []
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [],
+  "status": "fail",
+  "failure": "Error: expect(received).toBeGreaterThanOrEqual(expected)\n\nExpected: >= 2\nReceived:    0",
+  "classification": "Recording-driver expectation failed; app correctly returned no match with unchanged40M budget and disclosed50,985,500 source minimum. No product fix."
+}

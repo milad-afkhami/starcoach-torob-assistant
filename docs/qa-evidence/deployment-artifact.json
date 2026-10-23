@@ -1,7 +1,7 @@
 {
-  "artifact": "/home/milad/Desktop/projects/starcoach-torob-assistant/data/deployment-context-final.tar.gz",
-  "bytes": 102884464,
-  "sha256": "799c7e04c6ed87089486a2ca68f5c97d4904bfcf06c9eaf67e30428eff384827",
+  "artifact": "/home/milad/Desktop/projects/starcoach-torob-assistant/data/deployment-polling-final.tar.gz",
+  "bytes": 102885081,
+  "sha256": "58877c47fb4a0d960426f0959f4456337cd7e7b8d766f68447b17597cf421ca5",
   "members": [
     "Dockerfile",
     "backend/torob/__init__.py",
@@ -23,8 +23,8 @@
     "backend/torob/worker_api.py",
     "data/catalogue-build.json",
     "data/catalogue.sqlite.xz",
-    "frontend/dist/assets/index-C_bR1QYL.js",
     "frontend/dist/assets/index-_QK26oEd.css",
+    "frontend/dist/assets/index-qle9BpO9.js",
     "frontend/dist/favicon.svg",
     "frontend/dist/fonts/OFL.txt",
     "frontend/dist/fonts/Vazirmatn.woff2",

@@ -1,0 +1,70 @@
+{
+  "recorded_at_host_utc": "2026-10-23T04:21:21.145700+00:00",
+  "scope": "Frontend transient owned-turn GET recovery only; no genuine model/provider/cloud calls by this implementation owner",
+  "contract": {
+    "bound": "One exact owned turn ID; three read retries total across the entire turn, not per poll",
+    "eligible_failures": [
+      "TransportError",
+      "HTTP502",
+      "HTTP503",
+      "HTTP504"
+    ],
+    "excluded_failures": [
+      "HTTP401",
+      "HTTP403",
+      "HTTP404",
+      "HTTP409",
+      "HTTP429",
+      "HTTP500",
+      "HTTP501",
+      "malformed successful JSON"
+    ],
+    "deadline": "Original performance.now monotonic120seconds from interactive request start, never extended; fetch abort uses remaining deadline",
+    "cancellation": "Active turn ID and interaction epoch checked before/after reads, waits and completion; cancellation cannot restore stale UI",
+    "write_policy": "No turn-creation POST, observation confirmation, other mutation or inference replay is retried",
+    "backoff_ms": [
+      500,
+      1000,
+      1500
+    ]
+  },
+  "red_evidence": {
+    "unit_log": "/tmp/torob-polling-unit-red.log",
+    "rendered_failure_log": "/tmp/torob-polling-red-actual.log",
+    "rendered_failure": "One aborted polling GET leaves typed reply preview absent, matching the observed deployed failure",
+    "initial_setup_failure": "/tmp/torob-polling-red.log records missing isolated server before actual red reproduction; not counted as behavioral proof",
+    "native_deadline_rounding_log": "/tmp/torob-polling-unit-final22.log",
+    "native_deadline_rounding_failure": "Native setTimeout fractional rounding originally permitted two GETs instead of one; the original-deadline abort latch now terminates without a retry."
+  },
+  "verification": {
+    "frontend_unit_passed": 22,
+    "unit_log": "/tmp/torob-polling-unit-final22-green.log",
+    "browser_passed": 37,
+    "browser_log": "/tmp/torob-polling-browser.log",
+    "browser_duration": "2.3minutes",
+    "new_rendered_cases": 4,
+    "browser_worker": "Explicit deterministic no-model fixture; transport/error/completion payloads controlled only in four new cases",
+    "typescript": "passed after all four new browser cases were written",
+    "production_build_log": "/tmp/torob-polling-build-final.log",
+    "ruff": "passed",
+    "whitespace": "passed",
+    "backend": "Prior256passed reused: backend unchanged; source hash checked",
+    "deadline_abort": "Native hanging fetch aborted at original100ms test deadline; the original-deadline abort is latched across the turn. Exactly one GET, explicit408, no retry.",
+    "affected_final_passed": 4,
+    "affected_final_log": "/tmp/torob-polling-final4.log",
+    "affected_final_duration": "14.9seconds",
+    "browser_qualification": "Full37case run passed before native deadline latch; after the latch-only API change all four affected polling browser cases passed. Other33cases reused because this change is scoped to timeout recovery."
+  },
+  "source_sha256": {
+    "frontend/src/api.ts": "acfc11b1e9ec96d464f7631a849d7cd16e6ec13ad3cd79d5b2618a493c75673d",
+    "frontend/src/App.tsx": "53ea56e7d00fa9bae1d60372748e38b95fd7b18413b7faa8f0a43ccb3e987e7a",
+    "frontend/dist/index.html": "53b1e05751e3fd34aca774885b51b3e7d3acf7e0f4920e3fe5c9ca30ed6af310",
+    "frontend/dist/assets/index-qle9BpO9.js": "bab7f2b81d33a210aee753f003d339e86e197a3df472d8dbf0b37d5e32cdeb44",
+    "backend/torob/agent.py": "c8dd1a17ddd0415adeb299b8bc07cbd0e7d80476918d35a5c4e020d0a38c2b47"
+  },
+  "limitations": [
+    "Controlled transport recovery proves client behavior, not uninterrupted real-provider/network availability",
+    "Root owns repackaging, hosted acceptance and genuine narrated demo",
+    "After retry exhaustion or original deadline the explicit error/manual controls remain; no new inference is started automatically"
+  ]
+}
