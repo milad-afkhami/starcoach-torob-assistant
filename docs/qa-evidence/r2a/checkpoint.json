@@ -1,0 +1,56 @@
+{
+  "phase": "R2A verified source checkpoint; awaiting user wrapup/resume",
+  "date": "2026-10-23",
+  "branch": "usability/r2a-torob",
+  "baseline_commit": "4ddab1a457ba1072ae30a4b8a488eaf4c0cdae60",
+  "locked_review_sha256": "47792196b5ae80154875ecb0eb93d0b64181ccef9af9beae8b8d3c16decaf6cf",
+  "checks": {
+    "backend_passed": 334,
+    "backend_warning": "existing upstream Starlette/httpx deprecation",
+    "frontend_logic_passed": 22,
+    "browser_full_passed": 53,
+    "browser_focused_guard_passed": 3,
+    "ruff": "pass",
+    "typescript_vite_scratch_build": "pass",
+    "whitespace": "pass",
+    "independent_mobile_source_reprobe_comparison_continuation": "pass"
+  },
+  "prompt_version_needs": "torob-semantic-v2",
+  "needs_schema": "torob-needs-v3",
+  "reply_prompt_schema": "unchanged torob-v1 / torob-reply-v1",
+  "source_sha256": {
+    "backend/torob/agent.py": "333a6368eca564814fb503ac2830bb4526c00391741f5557b53c98f90ed6ba36",
+    "backend/torob/api.py": "c7b0c6416d55098d5470bc49e34ab7a0fa8b139f26e2d8a93b09ba75439e3992",
+    "backend/torob/semantic.py": "99481ec3932927e0c4a484890de3ac48aa2c6e1bfe532e941c589a310d64b53e",
+    "frontend/src/App.tsx": "f794a177e32ef55ff036df45b66be5953991b897b5c1133e32556c8f3c2a25e7",
+    "frontend/src/ProductComparison.tsx": "6ad4dabfa82c43fa2fe823ab5aead54f960d604b9a56fef1be68fff297eca710",
+    "frontend/src/style.css": "0b73dbaa47b48a9d030005a762ba6d0c460f050d21b5fcfffbdb77a08e9bdc6c",
+    "frontend/src/types.ts": "4d5a01d3fa8997a734dd8894ff4ecfdd5429274e4eac73343dc1e8c9498c278a",
+    "tests/discovery_fixture_server.py": "f1f52b1c4cb674fa5ab34730901c2bbe88a0f2365fdb3986c49a8ea88b360966",
+    "tests/test_agent.py": "87be01c56540217aa60a9e27a114d76221f0483ce178b4a39c67c91c33f3944b",
+    "tests/test_discovery_context.py": "fa924cd203b3fbc50e095f379dda3e0bf314d02f2cad7a603ff50cbea0cf1d80",
+    "tests/test_semantic_continuation.py": "5b5bdb6346f9289e8a04d0aaec2a3e381f65dbe0d6c1dded10a7642f830038c7",
+    "tests/test_semantic_requirements.py": "4657cda7c1ff63b813dd8a407a97c124a0f44d4282f038c11f5b5e23e33dfa3d",
+    "frontend/e2e/r2a.spec.ts": "4714f72d1beec50618261fddb35df7fa560f486a0bcda4c1bddd0181af296bae"
+  },
+  "scratch_frontend": "/tmp/starcoach-ui-revision-20261023/r2a-dist",
+  "scratch_referenced_assets_sha256": {
+    "index.html": "55720978de520ed2a39b359b1ea0312ea52be7e7a959044888ce1d9afb2a96a8",
+    "assets/index-B-3RuyXv.js": "d3a2229e54ad84f1d72b0b964445f79b8bd1ba362f80b76539388139d251ad83",
+    "assets/index-ChqT6ChB.css": "c8e5893b93be9255a98a30dfe63ee5863c13fd876e47e40a44b2314a543b8209"
+  },
+  "canonical_frontend_dist": "left unchanged; current published/local preview remains previous verified release",
+  "optional_unchanged_findings": [
+    "raw warranty JSON display",
+    "additional equivalent RAM label rows"
+  ],
+  "intentionally_unrun": [
+    "new-version genuine model cases",
+    "current-version provider upload/release/hosted checks",
+    "new public video/README hero publication",
+    "new scoring or blind-review replacement"
+  ],
+  "resume_actions_file": "resume-after-user-checkpoint.md",
+  "original_failures": "negative-results.json; original locked review unchanged",
+  "provider_model_quota_actions_in_this_phase": 0
+}

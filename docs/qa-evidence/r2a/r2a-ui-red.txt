@@ -1,0 +1,44 @@
+
+> torob-plan-b-ui@0.1.0 test:e2e
+> playwright test --grep mobile composer stays compact
+
+
+Running 1 test using 1 worker
+
+(node:3431284) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 e2e/r2a.spec.ts:3:1 › mobile composer stays compact and filters never become a sticky overlay (2.4s)
+
+
+  1) e2e/r2a.spec.ts:3:1 › mobile composer stays compact and filters never become a sticky overlay ─
+
+    Error: expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 180
+    Received:    347.1875
+
+      3 | test('mobile composer stays compact and filters never become a sticky overlay',async({page})=>{
+      4 |  await page.setViewportSize({width:390,height:844});await page.goto('/');await page.getByRole('button',{name:'دیدن سناریوی نمونه'}).click();await expect(page.getByTestId('primary-card')).toBeVisible()
+    > 5 |  const composer=page.locator('.chat-composer');expect((await composer.boundingBox())!.height).toBeLessThanOrEqual(180)
+        |                                                                                               ^
+      6 |  await page.locator('.manual-search>summary').click();await expect(page.getByLabel('جست‌وجوی کالا')).toBeVisible()
+      7 |  expect(await page.locator('.manual-search').evaluate(node=>!!node.closest('.chat-composer'))).toBe(false)
+      8 |  expect((await composer.boundingBox())!.height).toBeLessThanOrEqual(180)
+        at /home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/r2a.spec.ts:5:95
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/r2a-mobile-composer-stays--d38cd-ver-become-a-sticky-overlay/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/r2a-mobile-composer-stays--d38cd-ver-become-a-sticky-overlay/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/r2a-mobile-composer-stays--d38cd-ver-become-a-sticky-overlay/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/r2a-mobile-composer-stays--d38cd-ver-become-a-sticky-overlay/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    e2e/r2a.spec.ts:3:1 › mobile composer stays compact and filters never become a sticky overlay ──

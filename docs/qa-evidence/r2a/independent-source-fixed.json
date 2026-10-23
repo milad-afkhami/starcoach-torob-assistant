@@ -1,0 +1,59 @@
+{
+  "numeric_binding": {
+    "quote": "وزن کمتر از 1.5 کیلوگرم و رم کمتر از 16 گیگابایت",
+    "interpreted_bound": {
+      "operator": "lt",
+      "value": "16",
+      "unit": "kg"
+    },
+    "source_weight": "2 کیلوگرم",
+    "check": {
+      "id": "",
+      "label_fa": "وزن کمتر از 1.5 کیلوگرم و رم کمتر از 16 گیگابایت",
+      "hard": true,
+      "status": "unresolved",
+      "facts": [
+        {
+          "id": "fixture:spec:0",
+          "label": "وزن",
+          "value": "2 کیلوگرم"
+        }
+      ]
+    }
+  },
+  "omitted_explicit_requirement": {
+    "semantic_requirements": [
+      {
+        "id": "13d58568e7e47e3e9984",
+        "label_fa": "وزن حتما کمتر از 1.5 کیلوگرم باشد",
+        "source_quote": "وزن حتما کمتر از 1.5 کیلوگرم باشد",
+        "kind": "other",
+        "hard": true,
+        "spec_terms": [],
+        "numeric": null,
+        "unparsed_user_condition": true
+      }
+    ],
+    "recommendation_state": "unresolved",
+    "recommendation_count": 0,
+    "candidate_checks": [
+      {
+        "product_id": "p1",
+        "status": "unresolved",
+        "requirements": [
+          {
+            "id": "13d58568e7e47e3e9984",
+            "label_fa": "وزن حتما کمتر از 1.5 کیلوگرم باشد",
+            "hard": true,
+            "status": "unresolved",
+            "facts": []
+          }
+        ]
+      }
+    ]
+  },
+  "removal_reintroduced": {
+    "removed_id": "48e0e897491e1b0eebea",
+    "remaining_ids": []
+  }
+}

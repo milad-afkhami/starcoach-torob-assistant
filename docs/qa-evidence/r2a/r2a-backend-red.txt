@@ -1,0 +1,390 @@
+FFFFFFFF                                                                 [100%]
+=================================== FAILURES ===================================
+_ test_empty_clarification_is_a_valid_owned_semantic_parent_and_keeps_pending_area _
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-277/test_empty_clarification_is_a_0')
+
+    def test_empty_clarification_is_a_valid_owned_semantic_parent_and_keeps_pending_area(tmp_path):
+>       a,s,q,owner,clock=env(tmp_path);first=clarify(a,q,owner,clock)
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_semantic_continuation.py:20:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/test_semantic_continuation.py:15: in clarify
+    finish(q,clock,out)
+tests/test_agent.py:23: in finish
+    queue.complete(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <torob.model_jobs.JobQueue object at 0x78c5953b8950>
+job_id = '8ba89ce05ee34188873e719856d9a96b'
+lease = 'c48582aabc374dc0915aa9e3c7436af4'
+token = 'Op7SCirnkiLBFZhSnTtyYw84fWQdeMHDfruyPDzYy0A'
+value = {'action': 'clarify', 'comparison_queries': [], 'query': 'لپ تاپ', 'category': 'لپ تاپ و نوت بوک', ...}
+now = 101.0
+provenance = {'provider': 'codex_cli', 'model': 'test', 'cli_version': 'test', 'elapsed_ms': 1}
+
+    def complete(self, job_id, lease, token, value, now, provenance=None):
+        invalid = False
+        with self.connect() as db:
+            db.execute("BEGIN IMMEDIATE")
+            row = self._leased(db, job_id, lease, token, now)
+            raw = json.dumps(value, ensure_ascii=False)
+            try:
+                if len(raw.encode()) > 16 * 1024:
+                    raise ValueError()
+                Draft202012Validator(json.loads(row["schema_json"])).validate(value)
+            except (ValueError, ValidationError):
+                db.execute(
+                    "UPDATE model_jobs SET state='failed',error_code='invalid_output' WHERE id=?", (job_id,)
+                )
+                invalid = True
+            else:
+                db.execute(
+                    "UPDATE model_jobs SET state='completed',result=?,provenance=? WHERE id=?",
+                    (raw, json.dumps(provenance) if provenance else None, job_id),
+                )
+            result = self._public(db.execute("SELECT * FROM model_jobs WHERE id=?", (job_id,)).fetchone())
+        if invalid:
+>           raise ModelError("invalid_output")
+E           torob.model_types.ModelError: invalid_output
+
+backend/torob/model_jobs.py:257: ModelError
+___________ test_invalid_semantic_parent_never_queues_work[foreign] ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-277/test_invalid_semantic_parent_n0')
+kind = 'foreign'
+
+    @pytest.mark.parametrize('kind',['foreign','expired','future','failed','reply'])
+    def test_invalid_semantic_parent_never_queues_work(tmp_path,kind):
+        import json
+>       a,s,q,owner,clock=env(tmp_path);p=clarify(a,q,owner,clock);caller=owner
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_semantic_continuation.py:33:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/test_semantic_continuation.py:15: in clarify
+    finish(q,clock,out)
+tests/test_agent.py:23: in finish
+    queue.complete(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <torob.model_jobs.JobQueue object at 0x78c594690e30>
+job_id = '1c5d2ccd0a7c4474a63067011471a81a'
+lease = '0e03db6f78e248bfae641f56f30a8c05'
+token = 'YbpersAslLsNZcH-JDt3RdA_Jn8y9g37NKNpaSDROhQ'
+value = {'action': 'clarify', 'comparison_queries': [], 'query': 'لپ تاپ', 'category': 'لپ تاپ و نوت بوک', ...}
+now = 101.0
+provenance = {'provider': 'codex_cli', 'model': 'test', 'cli_version': 'test', 'elapsed_ms': 1}
+
+    def complete(self, job_id, lease, token, value, now, provenance=None):
+        invalid = False
+        with self.connect() as db:
+            db.execute("BEGIN IMMEDIATE")
+            row = self._leased(db, job_id, lease, token, now)
+            raw = json.dumps(value, ensure_ascii=False)
+            try:
+                if len(raw.encode()) > 16 * 1024:
+                    raise ValueError()
+                Draft202012Validator(json.loads(row["schema_json"])).validate(value)
+            except (ValueError, ValidationError):
+                db.execute(
+                    "UPDATE model_jobs SET state='failed',error_code='invalid_output' WHERE id=?", (job_id,)
+                )
+                invalid = True
+            else:
+                db.execute(
+                    "UPDATE model_jobs SET state='completed',result=?,provenance=? WHERE id=?",
+                    (raw, json.dumps(provenance) if provenance else None, job_id),
+                )
+            result = self._public(db.execute("SELECT * FROM model_jobs WHERE id=?", (job_id,)).fetchone())
+        if invalid:
+>           raise ModelError("invalid_output")
+E           torob.model_types.ModelError: invalid_output
+
+backend/torob/model_jobs.py:257: ModelError
+___________ test_invalid_semantic_parent_never_queues_work[expired] ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-277/test_invalid_semantic_parent_n1')
+kind = 'expired'
+
+    @pytest.mark.parametrize('kind',['foreign','expired','future','failed','reply'])
+    def test_invalid_semantic_parent_never_queues_work(tmp_path,kind):
+        import json
+>       a,s,q,owner,clock=env(tmp_path);p=clarify(a,q,owner,clock);caller=owner
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_semantic_continuation.py:33:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/test_semantic_continuation.py:15: in clarify
+    finish(q,clock,out)
+tests/test_agent.py:23: in finish
+    queue.complete(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <torob.model_jobs.JobQueue object at 0x78c5946693a0>
+job_id = 'a762831ebacc44b286004e796a926267'
+lease = '904cad15af0147b0921f4ac53cabbb5c'
+token = 'JbKh4fCNQTYPPLHcZbab3I09bM2YVO02Je7ia5VZBXE'
+value = {'action': 'clarify', 'comparison_queries': [], 'query': 'لپ تاپ', 'category': 'لپ تاپ و نوت بوک', ...}
+now = 101.0
+provenance = {'provider': 'codex_cli', 'model': 'test', 'cli_version': 'test', 'elapsed_ms': 1}
+
+    def complete(self, job_id, lease, token, value, now, provenance=None):
+        invalid = False
+        with self.connect() as db:
+            db.execute("BEGIN IMMEDIATE")
+            row = self._leased(db, job_id, lease, token, now)
+            raw = json.dumps(value, ensure_ascii=False)
+            try:
+                if len(raw.encode()) > 16 * 1024:
+                    raise ValueError()
+                Draft202012Validator(json.loads(row["schema_json"])).validate(value)
+            except (ValueError, ValidationError):
+                db.execute(
+                    "UPDATE model_jobs SET state='failed',error_code='invalid_output' WHERE id=?", (job_id,)
+                )
+                invalid = True
+            else:
+                db.execute(
+                    "UPDATE model_jobs SET state='completed',result=?,provenance=? WHERE id=?",
+                    (raw, json.dumps(provenance) if provenance else None, job_id),
+                )
+            result = self._public(db.execute("SELECT * FROM model_jobs WHERE id=?", (job_id,)).fetchone())
+        if invalid:
+>           raise ModelError("invalid_output")
+E           torob.model_types.ModelError: invalid_output
+
+backend/torob/model_jobs.py:257: ModelError
+____________ test_invalid_semantic_parent_never_queues_work[future] ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-277/test_invalid_semantic_parent_n2')
+kind = 'future'
+
+    @pytest.mark.parametrize('kind',['foreign','expired','future','failed','reply'])
+    def test_invalid_semantic_parent_never_queues_work(tmp_path,kind):
+        import json
+>       a,s,q,owner,clock=env(tmp_path);p=clarify(a,q,owner,clock);caller=owner
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_semantic_continuation.py:33:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/test_semantic_continuation.py:15: in clarify
+    finish(q,clock,out)
+tests/test_agent.py:23: in finish
+    queue.complete(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <torob.model_jobs.JobQueue object at 0x78c5948dff80>
+job_id = 'ededbef6554341e4b5a8cfe074e07cec'
+lease = '3c1ac46962be44e9b1187ea4fc302520'
+token = 'l8zPEsJwTPTcKu_iP_5avf5Jf3gvqLQptWs3OYPYJMA'
+value = {'action': 'clarify', 'comparison_queries': [], 'query': 'لپ تاپ', 'category': 'لپ تاپ و نوت بوک', ...}
+now = 101.0
+provenance = {'provider': 'codex_cli', 'model': 'test', 'cli_version': 'test', 'elapsed_ms': 1}
+
+    def complete(self, job_id, lease, token, value, now, provenance=None):
+        invalid = False
+        with self.connect() as db:
+            db.execute("BEGIN IMMEDIATE")
+            row = self._leased(db, job_id, lease, token, now)
+            raw = json.dumps(value, ensure_ascii=False)
+            try:
+                if len(raw.encode()) > 16 * 1024:
+                    raise ValueError()
+                Draft202012Validator(json.loads(row["schema_json"])).validate(value)
+            except (ValueError, ValidationError):
+                db.execute(
+                    "UPDATE model_jobs SET state='failed',error_code='invalid_output' WHERE id=?", (job_id,)
+                )
+                invalid = True
+            else:
+                db.execute(
+                    "UPDATE model_jobs SET state='completed',result=?,provenance=? WHERE id=?",
+                    (raw, json.dumps(provenance) if provenance else None, job_id),
+                )
+            result = self._public(db.execute("SELECT * FROM model_jobs WHERE id=?", (job_id,)).fetchone())
+        if invalid:
+>           raise ModelError("invalid_output")
+E           torob.model_types.ModelError: invalid_output
+
+backend/torob/model_jobs.py:257: ModelError
+____________ test_invalid_semantic_parent_never_queues_work[failed] ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-277/test_invalid_semantic_parent_n3')
+kind = 'failed'
+
+    @pytest.mark.parametrize('kind',['foreign','expired','future','failed','reply'])
+    def test_invalid_semantic_parent_never_queues_work(tmp_path,kind):
+        import json
+>       a,s,q,owner,clock=env(tmp_path);p=clarify(a,q,owner,clock);caller=owner
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_semantic_continuation.py:33:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/test_semantic_continuation.py:15: in clarify
+    finish(q,clock,out)
+tests/test_agent.py:23: in finish
+    queue.complete(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <torob.model_jobs.JobQueue object at 0x78c594691070>
+job_id = '311b34df37d14b71838fc87f394b3d4e'
+lease = '250eba6a29e24959afa9b45aa2f17414'
+token = 'Bx5tDmsCtMiew2RkgF3vDSrcgDzOnb66t_i_SxkkIUA'
+value = {'action': 'clarify', 'comparison_queries': [], 'query': 'لپ تاپ', 'category': 'لپ تاپ و نوت بوک', ...}
+now = 101.0
+provenance = {'provider': 'codex_cli', 'model': 'test', 'cli_version': 'test', 'elapsed_ms': 1}
+
+    def complete(self, job_id, lease, token, value, now, provenance=None):
+        invalid = False
+        with self.connect() as db:
+            db.execute("BEGIN IMMEDIATE")
+            row = self._leased(db, job_id, lease, token, now)
+            raw = json.dumps(value, ensure_ascii=False)
+            try:
+                if len(raw.encode()) > 16 * 1024:
+                    raise ValueError()
+                Draft202012Validator(json.loads(row["schema_json"])).validate(value)
+            except (ValueError, ValidationError):
+                db.execute(
+                    "UPDATE model_jobs SET state='failed',error_code='invalid_output' WHERE id=?", (job_id,)
+                )
+                invalid = True
+            else:
+                db.execute(
+                    "UPDATE model_jobs SET state='completed',result=?,provenance=? WHERE id=?",
+                    (raw, json.dumps(provenance) if provenance else None, job_id),
+                )
+            result = self._public(db.execute("SELECT * FROM model_jobs WHERE id=?", (job_id,)).fetchone())
+        if invalid:
+>           raise ModelError("invalid_output")
+E           torob.model_types.ModelError: invalid_output
+
+backend/torob/model_jobs.py:257: ModelError
+____________ test_invalid_semantic_parent_never_queues_work[reply] _____________
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-277/test_invalid_semantic_parent_n4')
+kind = 'reply'
+
+    @pytest.mark.parametrize('kind',['foreign','expired','future','failed','reply'])
+    def test_invalid_semantic_parent_never_queues_work(tmp_path,kind):
+        import json
+>       a,s,q,owner,clock=env(tmp_path);p=clarify(a,q,owner,clock);caller=owner
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_semantic_continuation.py:33:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/test_semantic_continuation.py:15: in clarify
+    finish(q,clock,out)
+tests/test_agent.py:23: in finish
+    queue.complete(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <torob.model_jobs.JobQueue object at 0x78c594723320>
+job_id = 'fc512b4038a9491dbb37c623609b651f'
+lease = 'be6ddd34fd68418ebe86f1f425bde5c3'
+token = 'ilfDM8v0CdPYcbX5l1eq2i2314_4QP-fc-Artj-u18k'
+value = {'action': 'clarify', 'comparison_queries': [], 'query': 'لپ تاپ', 'category': 'لپ تاپ و نوت بوک', ...}
+now = 101.0
+provenance = {'provider': 'codex_cli', 'model': 'test', 'cli_version': 'test', 'elapsed_ms': 1}
+
+    def complete(self, job_id, lease, token, value, now, provenance=None):
+        invalid = False
+        with self.connect() as db:
+            db.execute("BEGIN IMMEDIATE")
+            row = self._leased(db, job_id, lease, token, now)
+            raw = json.dumps(value, ensure_ascii=False)
+            try:
+                if len(raw.encode()) > 16 * 1024:
+                    raise ValueError()
+                Draft202012Validator(json.loads(row["schema_json"])).validate(value)
+            except (ValueError, ValidationError):
+                db.execute(
+                    "UPDATE model_jobs SET state='failed',error_code='invalid_output' WHERE id=?", (job_id,)
+                )
+                invalid = True
+            else:
+                db.execute(
+                    "UPDATE model_jobs SET state='completed',result=?,provenance=? WHERE id=?",
+                    (raw, json.dumps(provenance) if provenance else None, job_id),
+                )
+            result = self._public(db.execute("SELECT * FROM model_jobs WHERE id=?", (job_id,)).fetchone())
+        if invalid:
+>           raise ModelError("invalid_output")
+E           torob.model_types.ModelError: invalid_output
+
+backend/torob/model_jobs.py:257: ModelError
+___ test_a_fresh_thread_does_not_receive_previous_owners_completed_requests ____
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-277/test_a_fresh_thread_does_not_r0')
+
+    def test_a_fresh_thread_does_not_receive_previous_owners_completed_requests(tmp_path):
+>       a,s,q,owner,clock=env(tmp_path);clarify(a,q,owner,clock)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_semantic_continuation.py:49:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/test_semantic_continuation.py:15: in clarify
+    finish(q,clock,out)
+tests/test_agent.py:23: in finish
+    queue.complete(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <torob.model_jobs.JobQueue object at 0x78c594720b30>
+job_id = '967ce5564883408189dedf7975b36823'
+lease = '298bc32323224e62ac4ef7fca8d25fa6'
+token = '3db1Uctm1wbXAV6aej0gHEVGscVswMOsT7ar0QI0ckA'
+value = {'action': 'clarify', 'comparison_queries': [], 'query': 'لپ تاپ', 'category': 'لپ تاپ و نوت بوک', ...}
+now = 101.0
+provenance = {'provider': 'codex_cli', 'model': 'test', 'cli_version': 'test', 'elapsed_ms': 1}
+
+    def complete(self, job_id, lease, token, value, now, provenance=None):
+        invalid = False
+        with self.connect() as db:
+            db.execute("BEGIN IMMEDIATE")
+            row = self._leased(db, job_id, lease, token, now)
+            raw = json.dumps(value, ensure_ascii=False)
+            try:
+                if len(raw.encode()) > 16 * 1024:
+                    raise ValueError()
+                Draft202012Validator(json.loads(row["schema_json"])).validate(value)
+            except (ValueError, ValidationError):
+                db.execute(
+                    "UPDATE model_jobs SET state='failed',error_code='invalid_output' WHERE id=?", (job_id,)
+                )
+                invalid = True
+            else:
+                db.execute(
+                    "UPDATE model_jobs SET state='completed',result=?,provenance=? WHERE id=?",
+                    (raw, json.dumps(provenance) if provenance else None, job_id),
+                )
+            result = self._public(db.execute("SELECT * FROM model_jobs WHERE id=?", (job_id,)).fetchone())
+        if invalid:
+>           raise ModelError("invalid_output")
+E           torob.model_types.ModelError: invalid_output
+
+backend/torob/model_jobs.py:257: ModelError
+_________ test_no_recommendation_becomes_an_explicit_unresolved_result _________
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-277/test_no_recommendation_becomes0')
+
+    def test_no_recommendation_becomes_an_explicit_unresolved_result(tmp_path):
+        a,s,q,owner,clock=env(tmp_path);t=a.start_turn(owner,'گوشی A07')
+        finish(q,clock,intent());a.get_turn(owner,t['id']);finish(q,clock,{'recommendations':[]})
+        done=a.get_turn(owner,t['id'])
+>       assert done['result']['recommendation_state']=='unresolved'
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'recommendation_state'
+
+tests/test_semantic_continuation.py:58: KeyError
+=========================== short test summary info ============================
+FAILED tests/test_semantic_continuation.py::test_empty_clarification_is_a_valid_owned_semantic_parent_and_keeps_pending_area
+FAILED tests/test_semantic_continuation.py::test_invalid_semantic_parent_never_queues_work[foreign]
+FAILED tests/test_semantic_continuation.py::test_invalid_semantic_parent_never_queues_work[expired]
+FAILED tests/test_semantic_continuation.py::test_invalid_semantic_parent_never_queues_work[future]
+FAILED tests/test_semantic_continuation.py::test_invalid_semantic_parent_never_queues_work[failed]
+FAILED tests/test_semantic_continuation.py::test_invalid_semantic_parent_never_queues_work[reply]
+FAILED tests/test_semantic_continuation.py::test_a_fresh_thread_does_not_receive_previous_owners_completed_requests
+FAILED tests/test_semantic_continuation.py::test_no_recommendation_becomes_an_explicit_unresolved_result
+8 failed in 2.82s

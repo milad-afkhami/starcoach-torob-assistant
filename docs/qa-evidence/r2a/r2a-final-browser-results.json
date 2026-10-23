@@ -1,0 +1,341 @@
+{
+  "knownWeightPendingCandidates": [
+    {
+      "product_id": "product_b88247c1b582556dcddb4391",
+      "status": "unresolved",
+      "requirements": [
+        {
+          "id": "64e8c4be8177c8d80e77",
+          "label_fa": "نزدیک انقلاب",
+          "hard": true,
+          "status": "unresolved",
+          "facts": []
+        },
+        {
+          "id": "48e0e897491e1b0eebea",
+          "label_fa": "وزن کمتر از 1.5 کیلوگرم",
+          "hard": true,
+          "status": "matched",
+          "facts": [
+            {
+              "id": "product_b88247c1b582556dcddb4391:spec:12",
+              "label": "وزن",
+              "value": "522گرم",
+              "evidence_ids": [
+                "product_b88247c1b582556dcddb4391"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pendingCandidateStatuses": [
+    {
+      "product_id": "product_9bf59a3cf5d8d647146d1da2",
+      "status": "unresolved",
+      "requirements": [
+        {
+          "id": "64e8c4be8177c8d80e77",
+          "label_fa": "نزدیک انقلاب",
+          "hard": true,
+          "status": "unresolved",
+          "facts": []
+        },
+        {
+          "id": "48e0e897491e1b0eebea",
+          "label_fa": "وزن کمتر از 1.5 کیلوگرم",
+          "hard": true,
+          "status": "unresolved",
+          "facts": []
+        }
+      ]
+    },
+    {
+      "product_id": "product_7647b9de16a9c6c8b5830dcb",
+      "status": "unresolved",
+      "requirements": [
+        {
+          "id": "64e8c4be8177c8d80e77",
+          "label_fa": "نزدیک انقلاب",
+          "hard": true,
+          "status": "unresolved",
+          "facts": []
+        },
+        {
+          "id": "48e0e897491e1b0eebea",
+          "label_fa": "وزن کمتر از 1.5 کیلوگرم",
+          "hard": true,
+          "status": "unresolved",
+          "facts": []
+        }
+      ]
+    },
+    {
+      "product_id": "product_b75e79b1f1a4e4139f4b2b70",
+      "status": "unresolved",
+      "requirements": [
+        {
+          "id": "64e8c4be8177c8d80e77",
+          "label_fa": "نزدیک انقلاب",
+          "hard": true,
+          "status": "unresolved",
+          "facts": []
+        },
+        {
+          "id": "48e0e897491e1b0eebea",
+          "label_fa": "وزن کمتر از 1.5 کیلوگرم",
+          "hard": true,
+          "status": "unresolved",
+          "facts": []
+        }
+      ]
+    },
+    {
+      "product_id": "product_a8be3f473d2a26b64bc3573b",
+      "status": "unresolved",
+      "requirements": [
+        {
+          "id": "64e8c4be8177c8d80e77",
+          "label_fa": "نزدیک انقلاب",
+          "hard": true,
+          "status": "unresolved",
+          "facts": []
+        },
+        {
+          "id": "48e0e897491e1b0eebea",
+          "label_fa": "وزن کمتر از 1.5 کیلوگرم",
+          "hard": true,
+          "status": "unresolved",
+          "facts": []
+        }
+      ]
+    },
+    {
+      "product_id": "product_4e750b9d3b81b6b09780b2a9",
+      "status": "unresolved",
+      "requirements": [
+        {
+          "id": "64e8c4be8177c8d80e77",
+          "label_fa": "نزدیک انقلاب",
+          "hard": true,
+          "status": "unresolved",
+          "facts": []
+        },
+        {
+          "id": "48e0e897491e1b0eebea",
+          "label_fa": "وزن کمتر از 1.5 کیلوگرم",
+          "hard": true,
+          "status": "unresolved",
+          "facts": []
+        }
+      ]
+    },
+    {
+      "product_id": "product_56cead647b43c0ad4086662d",
+      "status": "unresolved",
+      "requirements": [
+        {
+          "id": "64e8c4be8177c8d80e77",
+          "label_fa": "نزدیک انقلاب",
+          "hard": true,
+          "status": "unresolved",
+          "facts": []
+        },
+        {
+          "id": "48e0e897491e1b0eebea",
+          "label_fa": "وزن کمتر از 1.5 کیلوگرم",
+          "hard": true,
+          "status": "unresolved",
+          "facts": []
+        }
+      ]
+    },
+    {
+      "product_id": "product_59fff459c0764ed8d32637e3",
+      "status": "unresolved",
+      "requirements": [
+        {
+          "id": "64e8c4be8177c8d80e77",
+          "label_fa": "نزدیک انقلاب",
+          "hard": true,
+          "status": "unresolved",
+          "facts": []
+        },
+        {
+          "id": "48e0e897491e1b0eebea",
+          "label_fa": "وزن کمتر از 1.5 کیلوگرم",
+          "hard": true,
+          "status": "unresolved",
+          "facts": []
+        }
+      ]
+    },
+    {
+      "product_id": "product_1951e9fe6cd38a9a8475c68b",
+      "status": "unresolved",
+      "requirements": [
+        {
+          "id": "64e8c4be8177c8d80e77",
+          "label_fa": "نزدیک انقلاب",
+          "hard": true,
+          "status": "unresolved",
+          "facts": []
+        },
+        {
+          "id": "48e0e897491e1b0eebea",
+          "label_fa": "وزن کمتر از 1.5 کیلوگرم",
+          "hard": true,
+          "status": "unresolved",
+          "facts": []
+        }
+      ]
+    },
+    {
+      "product_id": "product_89b7096848b091bf54e2f943",
+      "status": "unresolved",
+      "requirements": [
+        {
+          "id": "64e8c4be8177c8d80e77",
+          "label_fa": "نزدیک انقلاب",
+          "hard": true,
+          "status": "unresolved",
+          "facts": []
+        },
+        {
+          "id": "48e0e897491e1b0eebea",
+          "label_fa": "وزن کمتر از 1.5 کیلوگرم",
+          "hard": true,
+          "status": "unresolved",
+          "facts": [
+            {
+              "id": "product_89b7096848b091bf54e2f943:spec:2",
+              "label": "وزن",
+              "value": "600 گرم (بینهایت سبک و ظریف)",
+              "evidence_ids": [
+                "product_89b7096848b091bf54e2f943"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "product_b88247c1b582556dcddb4391",
+      "status": "unresolved",
+      "requirements": [
+        {
+          "id": "64e8c4be8177c8d80e77",
+          "label_fa": "نزدیک انقلاب",
+          "hard": true,
+          "status": "unresolved",
+          "facts": []
+        },
+        {
+          "id": "48e0e897491e1b0eebea",
+          "label_fa": "وزن کمتر از 1.5 کیلوگرم",
+          "hard": true,
+          "status": "matched",
+          "facts": [
+            {
+              "id": "product_b88247c1b582556dcddb4391:spec:12",
+              "label": "وزن",
+              "value": "522گرم",
+              "evidence_ids": [
+                "product_b88247c1b582556dcddb4391"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "product_f341fab9a99a0fe79418624a",
+      "status": "excluded",
+      "requirements": [
+        {
+          "id": "64e8c4be8177c8d80e77",
+          "label_fa": "نزدیک انقلاب",
+          "hard": true,
+          "status": "unresolved",
+          "facts": []
+        },
+        {
+          "id": "48e0e897491e1b0eebea",
+          "label_fa": "وزن کمتر از 1.5 کیلوگرم",
+          "hard": true,
+          "status": "excluded",
+          "facts": [
+            {
+              "id": "product_f341fab9a99a0fe79418624a:spec:0",
+              "label": "وزن",
+              "value": "2.10 کیلوگرم",
+              "evidence_ids": [
+                "product_f341fab9a99a0fe79418624a"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "product_id": "product_8ade8ddb2a7fabe8e6612a96",
+      "status": "unresolved",
+      "requirements": [
+        {
+          "id": "64e8c4be8177c8d80e77",
+          "label_fa": "نزدیک انقلاب",
+          "hard": true,
+          "status": "unresolved",
+          "facts": []
+        },
+        {
+          "id": "48e0e897491e1b0eebea",
+          "label_fa": "وزن کمتر از 1.5 کیلوگرم",
+          "hard": true,
+          "status": "unresolved",
+          "facts": []
+        }
+      ]
+    }
+  ],
+  "modalBlocked": 2,
+  "inlineBlocked": 2,
+  "historicalBlocked": true,
+  "missionsBeforeOrigin": 0,
+  "remaining": "نیاز و شرط‌ها در همین گفت‌وگو می‌مانند\n\nسازگاری مشخصات از داده هر کارت بررسی می‌شود؛ مورد نامشخص تأیید محسوب نمی‌شود.\n\nنزدیک انقلاب؛ مبدأ هنوز انتخاب نشده\nحذف شرط\nپیدا کردن نشانی برای این درخواست",
+  "confirmedConstraints": {
+    "query": "لپ تاپ",
+    "category": "لپ تاپ و نوت بوک",
+    "max_price_toman": "45000000",
+    "lat": 35.70107874455727,
+    "lon": 51.409557443047795,
+    "radius_km": 1,
+    "payment_provider": null,
+    "visit_at": "2026-10-23T17:00:00+03:30",
+    "require_declared_open": true,
+    "contactable_only": false,
+    "origin_label": "خیابان انقلاب اسلامی، نرسیده به خط ویژه و نرسیده به پل کالج، پلاک ۹۶۶، طبقه اول، واحد ۱"
+  },
+  "missionRequests": [
+    {
+      "product_id": "product_9bf59a3cf5d8d647146d1da2",
+      "constraints": {
+        "query": "لپ تاپ",
+        "category": "لپ تاپ و نوت بوک",
+        "max_price_toman": "45000000",
+        "lat": 35.70107874455727,
+        "lon": 51.409557443047795,
+        "radius_km": 1,
+        "payment_provider": null,
+        "visit_at": "2026-10-23T17:00:00+03:30",
+        "require_declared_open": true,
+        "contactable_only": false,
+        "origin_label": "خیابان انقلاب اسلامی، نرسیده به خط ویژه و نرسیده به پل کالج، پلاک ۹۶۶، طبقه اول، واحد ۱"
+      },
+      "mode": "assisted"
+    }
+  ],
+  "planOrigin": "بودجه ۴۵٬۰۰۰٬۰۰۰\nشعاع ۱ کیلومتر\nمبدأ برنامه: خیابان انقلاب اسلامی، نرسیده به خط ویژه و نرسیده به پل کالج، پلاک ۹۶۶، طبقه اول، واحد ۱\n۱ آبان ۱۴۰۵ 17:00",
+  "errors": []
+}

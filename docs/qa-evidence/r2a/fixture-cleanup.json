@@ -1,0 +1,32 @@
+[
+  {
+    "port": 8684,
+    "pid": 3388166,
+    "verified_owned_fixture": true,
+    "signal": "SIGTERM"
+  },
+  {
+    "port": 8685,
+    "pid": 3395642,
+    "verified_owned_fixture": true,
+    "signal": "SIGTERM"
+  },
+  {
+    "port": 8697,
+    "pid": 3432590,
+    "verified_owned_fixture": true,
+    "signal": "SIGTERM"
+  },
+  {
+    "port": 8699,
+    "pid": 3436698,
+    "verified_owned_fixture": true,
+    "signal": "SIGTERM"
+  },
+  {
+    "port": 8700,
+    "pid": 3442853,
+    "verified_owned_fixture": true,
+    "signal": "SIGTERM"
+  }
+]

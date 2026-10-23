@@ -34,6 +34,8 @@ def finish(queue, clock, value):
 def intent(action="search"):
     return {
         "action": action,
+        "semantic_requirements": [],
+        "spec_focus_terms": [],
         "comparison_queries": [],
         "query": "A07",
         "category": "گوشی موبایل",
@@ -289,68 +291,86 @@ def test_retention_runs_without_a_new_shopping_turn(tmp_path, trigger):
 def test_requested_radius_visit_and_payment_are_previewed_without_mutating_mission(tmp_path):
     a, store, queue, owner, clock = env(tmp_path)
     mission = new_mission(store, owner)
-    before = store.get_mission(owner, mission.id).constraints.model_dump(mode='json')
-    turn = a.start_turn(owner, 'شعاع پنج کیلومتر فردا ساعت یازده با ترب پی', mission_id=mission.id, base_revision=mission.revision)
-    value = intent('clarify')
-    value['condition_changes'] = {'radius_km': 5, 'visit_at': '2026-10-23T11:00:00+03:30', 'payment_provider': 'ترب‌پی', 'require_declared_open': True}
+    before = store.get_mission(owner, mission.id).constraints.model_dump(mode="json")
+    turn = a.start_turn(
+        owner,
+        "شعاع پنج کیلومتر فردا ساعت یازده با ترب پی",
+        mission_id=mission.id,
+        base_revision=mission.revision,
+    )
+    value = intent("clarify")
+    value["condition_changes"] = {
+        "radius_km": 5,
+        "visit_at": "2026-10-23T11:00:00+03:30",
+        "payment_provider": "ترب‌پی",
+        "require_declared_open": True,
+    }
     finish(queue, clock, value)
-    done = a.get_turn(owner, turn['id'])
-    assert done['state'] == 'completed'
-    assert done['result']['proposed_constraints']['radius_km'] == 5
-    assert done['result']['proposed_constraints']['visit_at'] == '2026-10-23T11:00:00+03:30'
-    assert done['result']['proposed_constraints']['payment_provider'] == 'ترب‌پی'
-    assert store.get_mission(owner, mission.id).constraints.model_dump(mode='json') == before
+    done = a.get_turn(owner, turn["id"])
+    assert done["state"] == "completed"
+    assert done["result"]["proposed_constraints"]["radius_km"] == 5
+    assert done["result"]["proposed_constraints"]["visit_at"] == "2026-10-23T11:00:00+03:30"
+    assert done["result"]["proposed_constraints"]["payment_provider"] == "ترب‌پی"
+    assert store.get_mission(owner, mission.id).constraints.model_dump(mode="json") == before
 
 
 def test_invalid_requested_visit_without_timezone_fails_closed(tmp_path):
     a, store, queue, owner, clock = env(tmp_path)
-    turn = a.start_turn(owner, 'فردا ساعت یازده')
-    value = intent('clarify')
-    value['condition_changes'] = {'radius_km': None, 'visit_at': '2026-10-23T11:00:00', 'payment_provider': None, 'require_declared_open': None}
+    turn = a.start_turn(owner, "فردا ساعت یازده")
+    value = intent("clarify")
+    value["condition_changes"] = {
+        "radius_km": None,
+        "visit_at": "2026-10-23T11:00:00",
+        "payment_provider": None,
+        "require_declared_open": None,
+    }
     finish(queue, clock, value)
-    assert a.get_turn(owner, turn['id'])['state'] == 'failed'
+    assert a.get_turn(owner, turn["id"])["state"] == "failed"
 
 
 def test_no_product_under_budget_explains_the_price_blocker_without_raising_budget(tmp_path):
     a, store, queue, owner, clock = env(tmp_path)
-    turn = a.start_turn(owner, 'A07 تا پنجاه تومان')
+    turn = a.start_turn(owner, "A07 تا پنجاه تومان")
     value = intent()
-    value['max_price_toman'] = '50'
+    value["max_price_toman"] = "50"
     finish(queue, clock, value)
-    done = a.get_turn(owner, turn['id'])
-    assert done['state'] == 'completed'
-    assert done['result']['products'] == []
-    assert 'بودجه' in done['result']['clarification_fa']
-    assert '100' in done['result']['clarification_fa']
-    assert done['result']['proposed_constraints']['max_price_toman'] == '50'
+    done = a.get_turn(owner, turn["id"])
+    assert done["state"] == "completed"
+    assert done["result"]["products"] == []
+    assert "بودجه" in done["result"]["clarification_fa"]
+    assert "100" in done["result"]["clarification_fa"]
+    assert done["result"]["proposed_constraints"]["max_price_toman"] == "50"
 
 
-def test_existing_product_condition_update_finishes_after_interpretation_without_recommending_it_again(tmp_path):
+def test_existing_product_condition_update_finishes_after_interpretation_without_recommending_it_again(
+    tmp_path,
+):
     a, store, queue, owner, clock = env(tmp_path)
-    mission = new_mission(store, owner, max_price_toman='400')
-    turn = a.start_turn(owner, 'بودجه را به چهارصد و ده تغییر بده', mission_id=mission.id, base_revision=1)
+    mission = new_mission(store, owner, max_price_toman="400")
+    turn = a.start_turn(owner, "بودجه را به چهارصد و ده تغییر بده", mission_id=mission.id, base_revision=1)
     value = intent()
-    value['max_price_toman'] = '410'
+    value["max_price_toman"] = "410"
     finish(queue, clock, value)
-    done = a.get_turn(owner, turn['id'])
-    assert done['state'] == 'completed'
-    assert done['result']['products'][0]['product_id'] == 'p1'
-    assert done['result']['recommendations'] == []
-    assert 'فروشگاه' in done['result']['clarification_fa']
-    assert 'موجودی' in done['result']['clarification_fa']
-    assert queue.claim('w', clock[0]) is None
-    assert store.get_mission(owner, mission.id).constraints.max_price_toman == '400'
+    done = a.get_turn(owner, turn["id"])
+    assert done["state"] == "completed"
+    assert done["result"]["products"][0]["product_id"] == "p1"
+    assert done["result"]["recommendations"] == []
+    assert "فروشگاه" in done["result"]["clarification_fa"]
+    assert "موجودی" in done["result"]["clarification_fa"]
+    assert queue.claim("w", clock[0]) is None
+    assert store.get_mission(owner, mission.id).constraints.max_price_toman == "400"
 
 
 def test_recommendation_facts_prioritize_decision_specs_but_keep_original_source_indexes():
     from torob.agent import source_facts
-    specs = [{'key':f'detail-{i}','value':str(i)} for i in range(15)] + [
-        {'key':'ظرفیت باتری','value':'۵۰۰۰ میلی‌آمپر ساعت'},
-        {'key':'حافظه داخلی','value':'۱۲۸ گیگابایت'},
-        {'key':'حافظه رم','value':'۴ گیگابایت'},
-        {'key':'رزولوشن دوربین اصلی','value':'۵۰ مگاپیکسل'},
+
+    specs = [{"key": f"detail-{i}", "value": str(i)} for i in range(15)] + [
+        {"key": "ظرفیت باتری", "value": "۵۰۰۰ میلی‌آمپر ساعت"},
+        {"key": "حافظه داخلی", "value": "۱۲۸ گیگابایت"},
+        {"key": "حافظه رم", "value": "۴ گیگابایت"},
+        {"key": "رزولوشن دوربین اصلی", "value": "۵۰ مگاپیکسل"},
     ]
-    facts=source_facts({'product_id':'p','title':'گوشی','specs':specs,'evidence_ids':['p']})
-    assert {'p:spec:15','p:spec:16','p:spec:17','p:spec:18'} <= {f['id'] for f in facts}
-    assert next(f for f in facts if f['id']=='p:spec:16')['value'] == '۱۲۸ گیگابایت'
-    assert all(f['evidence_ids']==['p'] for f in facts)
+    facts = source_facts({"product_id": "p", "title": "گوشی", "specs": specs, "evidence_ids": ["p"]})
+    assert {"p:spec:15", "p:spec:16", "p:spec:17", "p:spec:18"} <= {f["id"] for f in facts}
+    assert next(f for f in facts if f["id"] == "p:spec:16")["value"] == "۱۲۸ گیگابایت"
+    assert all(f["evidence_ids"] == ["p"] for f in facts)

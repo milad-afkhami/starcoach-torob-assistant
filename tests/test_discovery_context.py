@@ -33,7 +33,7 @@ def test_reference_order_is_display_order_not_recommendation_order(tmp_path):
     assert [x["product_id"] for x in p["result"]["recommendations"]] == ["p2", "p1"]
     t = a.start_turn(owner, "دومی را با اولی مقایسه کن", discovery_parent_turn_id=p["id"])
     job = q.claim("w", clock[0])
-    assert job["prompt_version"] == "torob-context-v1"
+    assert job["prompt_version"] == "torob-semantic-v2"
     refs = job["payload"]["discovery_context"]["products"]
     assert [(r["display_position"], r["product_id"]) for r in refs] == [(1, "p1"), (2, "p2")]
     assert job["schema"]["properties"]["reference_product_ids"]["items"]["enum"] == ["p1", "p2"]

@@ -1,0 +1,42 @@
+import {test,expect} from './fixtures'
+
+test('mobile composer stays compact and filters never become a sticky overlay',async({page})=>{
+ await page.setViewportSize({width:390,height:844});await page.goto('/');await page.getByRole('button',{name:'دیدن سناریوی نمونه'}).click();await expect(page.getByTestId('primary-card')).toBeVisible()
+ const composer=page.locator('.chat-composer');expect((await composer.boundingBox())!.height).toBeLessThanOrEqual(180)
+ await page.locator('.manual-search>summary').click();await expect(page.getByLabel('جست‌وجوی کالا')).toBeVisible()
+ expect(await page.locator('.manual-search').evaluate(node=>!!node.closest('.chat-composer'))).toBe(false)
+ expect((await composer.boundingBox())!.height).toBeLessThanOrEqual(180)
+ await page.getByTestId('primary-card').scrollIntoViewIfNeeded();await expect(page.getByTestId('primary-card')).toBeVisible()
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false)
+})
+
+test('semantic continuation keeps the pending area and hard condition and exposes the address chooser',async({page})=>{
+ await page.goto('/');const input=page.getByLabel('نیاز شما')
+ await input.fill('برای دانشگاه یک لپ تاپ نزدیک انقلاب تا شصت میلیون می‌خواهم');await page.getByRole('button',{name:'کمک برای انتخاب'}).click()
+ await expect(page.getByRole('button',{name:'پیدا کردن نشانی برای این درخواست'})).toBeVisible()
+ await input.fill('بودجه را چهل و پنج میلیون کن و وزن کمتر از 1.5 کیلوگرم باشد');await page.getByRole('button',{name:'کمک برای انتخاب'}).click()
+ const conditions=page.getByRole('region',{name:'شرط‌های همین گفت‌وگو'}).last()
+ await expect(conditions).toContainText('نزدیک انقلاب');await expect(conditions).toContainText('وزن کمتر از 1.5 کیلوگرم')
+ await expect(page.locator('.ai-message')).toContainText('تأییدپذیری ندارم')
+ await expect(page.getByRole('button',{name:'ابتدا شرط‌های بررسی‌نشده را روشن کن'}).first()).toBeDisabled()
+ await page.getByRole('button',{name:'پیدا کردن نشانی برای این درخواست'}).click();await page.getByLabel('نام خیابان یا نشانی').fill('انقلاب');await page.getByRole('dialog').getByRole('button',{name:'پیدا کردن نشانی',exact:true}).click()
+ await page.getByTestId('location-result').first().click();await page.getByRole('button',{name:'ادامه با مبدأ انتخاب‌شده'}).click()
+ await expect(page.getByRole('region',{name:'شرط‌های همین گفت‌وگو'}).last()).toContainText('مبدأ را خودت انتخاب کرده‌ای')
+ await expect(page.getByRole('button',{name:'توقف بررسی'})).toHaveCount(0)
+ await page.getByRole('button',{name:'حذف شرط وزن کمتر از 1.5 کیلوگرم',exact:true}).click()
+ await expect(page.getByRole('button',{name:'توقف بررسی'})).toHaveCount(0)
+ await expect(page.getByTestId('product-card').first().getByRole('button',{name:'انتخاب این کالا'})).toBeEnabled()
+ await page.getByRole('button',{name:'گفت‌وگوی تازه'}).click();await expect(page.locator('.semantic-needs')).toHaveCount(0)
+})
+
+test('comparison cannot select a candidate with unresolved hard conditions',async({page})=>{
+ await page.goto('/');await page.getByLabel('نیاز شما').fill('برای دانشگاه یک لپ تاپ نزدیک انقلاب تا شصت میلیون می‌خواهم');await page.getByRole('button',{name:'کمک برای انتخاب'}).click()
+ await expect(page.getByRole('button',{name:'پیدا کردن نشانی برای این درخواست'})).toBeVisible()
+ await page.getByLabel('نیاز شما').fill('وزن کمتر از 1.5 کیلوگرم باشد');await page.getByRole('button',{name:'کمک برای انتخاب'}).click()
+ await expect(page.getByTestId('product-card').first()).toBeVisible()
+ await page.getByTestId('product-card').nth(0).getByRole('checkbox',{name:'مقایسه',exact:true}).check();await page.getByTestId('product-card').nth(1).getByRole('checkbox',{name:'مقایسه',exact:true}).check()
+ let missions=0;page.on('request',r=>{if(r.method()==='POST'&&new URL(r.url()).pathname==='/api/missions')missions++})
+ await page.getByRole('button',{name:/مقایسه دو کالا/}).click();const dialog=page.getByRole('dialog',{name:'مقایسه دو کالا'})
+ await expect(dialog.getByRole('button',{name:'شرط‌های بررسی‌نشده مانع انتخاب‌اند'}).first()).toBeDisabled()
+ expect(missions).toBe(0);await page.keyboard.press('Escape');await expect(page.locator('#mission')).toHaveCount(0)
+})

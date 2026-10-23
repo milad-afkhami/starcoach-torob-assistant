@@ -1,0 +1,101 @@
+
+> torob-plan-b-ui@0.1.0 test:e2e
+> playwright test
+
+
+Running 52 tests using 1 worker
+
+(node:3433495) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 e2e/agent-workspace.spec.ts:3:1 › agent is the first useful mobile input, with search still available (715ms)
+  ✓   2 e2e/agent-workspace.spec.ts:11:1 › search composite owns a single visible focus treatment (548ms)
+  ✓   3 e2e/agent-workspace.spec.ts:16:1 › designed select supports keyboard choice escape and disabled choices (3.4s)
+  ✓   4 e2e/agent-workspace.spec.ts:27:1 › comparison checkbox retains keyboard semantics and designed appearance (1.8s)
+  ✓   5 e2e/agent-workspace.spec.ts:35:1 › excluded sellers are grouped by the reason instead of one unbounded list (2.3s)
+  ✓   6 e2e/conversation.spec.ts:5:1 › welcome is a chat and each response remains in the timeline (5.5s)
+  ✓   7 e2e/conversation.spec.ts:17:1 › sample embeds a real geographic shop map with equivalent keyboard list (2.3s)
+  ✓   8 e2e/conversation.spec.ts:28:1 › map failure keeps source addresses and explicitly warns (2.2s)
+  ✓   9 e2e/conversation.spec.ts:36:1 › mobile welcome and composer stay within the viewport (487ms)
+  ✓  10 e2e/conversation.spec.ts:43:1 › Enter sends once, Shift Enter inserts a line, and IME Enter does not send (4.1s)
+  ✓  11 e2e/conversation.spec.ts:51:1 › fresh conversation clears the plan, proposals, draft and continuation without deleting audit state (3.3s)
+  ✓  12 e2e/conversation.spec.ts:64:1 › fresh conversation cancels a pending initial turn and rejects its late completion (1.3s)
+  ✓  13 e2e/conversation.spec.ts:73:1 › reload restores only an owned plan and clearly says previous chat was not restored (4.2s)
+  ✓  14 e2e/conversation.spec.ts:79:1 › ordinary no-match uses the conversation and keeps search repair accessible (1.5s)
+  ✓  15 e2e/conversation.spec.ts:85:1 › new message with a visible plan preserves its revision until explicit approval (4.3s)
+  ✓  16 e2e/conversation.spec.ts:94:1 › the reply closing text and actions can scroll fully above the composer (2.3s)
+  ✓  17 e2e/conversation.spec.ts:101:1 › map marker keyboard selection matches the list without changing the purchase destination (2.4s)
+  ✓  18 e2e/conversation.spec.ts:109:1 › ordinary assistant no-match and help replies stay usable in one conversation (4.5s)
+  ✓  19 e2e/discovery-context.spec.ts:5:1 › follow-up compares exact previous displayed cards through actual owned HTTP context (5.2s)
+  ✓  20 e2e/discovery-context.spec.ts:20:1 › ambiguous memory keeps exact cards and manual search clears continuation (5.6s)
+  ✓  21 e2e/discovery-context.spec.ts:35:1 › loading a sample clears the previous discovery parent instead of relabelling its cards (5.4s)
+  ✓  22 e2e/discovery-context.spec.ts:46:1 › a late completed discovery cannot attach its parent to replacement sample cards (5.2s)
+  ✓  23 e2e/discovery-context.spec.ts:64:1 › accepting a newer manual diagnostic cancels and ignores an older completed AI result (5.2s)
+  ✓  24 e2e/polling-recovery.spec.ts:3:1 › a dropped polling read recovers the same typed reply preview with exactly one turn POST (4.9s)
+  ✓  25 e2e/polling-recovery.spec.ts:17:1 › persistent polling transport loss stops after three retries and never creates another turn (5.5s)
+  ✓  26 e2e/polling-recovery.spec.ts:28:1 › cancel during a polling retry prevents a completed stale result from returning (2.8s)
+  ✓  27 e2e/polling-recovery.spec.ts:40:1 › turn creation transport loss is not retried and does not start polling (1.2s)
+  ✓  28 e2e/purchase-completion.spec.ts:3:1 › budget recovery proposes minimum increase and only applies after acceptance (5.0s)
+  ✓  29 e2e/purchase-completion.spec.ts:16:1 › location chooser selects a recorded address point without silently applying mission (5.5s)
+  ✓  30 e2e/purchase-completion.spec.ts:33:1 › startup rate limit offers explicit successful retry (1.4s)
+  ✓  31 e2e/purchase-completion.spec.ts:41:1 › late new mission never steals a later composer focus (2.2s)
+  ✓  32 e2e/purchase-completion.spec.ts:51:1 › comparison aligns source facts and shows same-condition seller feasibility (1.9s)
+  ✓  33 e2e/purchase-completion.spec.ts:64:1 › empty literal search explains a budget mismatch and recovers only on selection (1.7s)
+  ✓  34 e2e/purchase-completion.spec.ts:72:1 › contact-only discovery leads to a real supplied website route without a synthetic phone (2.3s)
+  ✓  35 e2e/purchase-completion.spec.ts:87:1 › radius recovery only changes radius and retains the chosen origin and budget (5.4s)
+  ✓  36 e2e/purchase-completion.spec.ts:108:1 › global comparison prices never reuse contact-filtered search prices (1.9s)
+  ✓  37 e2e/purchase-completion.spec.ts:116:1 › comparison failure is unknown rather than zero and retries the unchanged snapshot (2.1s)
+  ✓  38 e2e/purchase-completion.spec.ts:127:1 › planned visits default to declared hours and an explicit opt-out persists (5.4s)
+  ✓  39 e2e/purchase-completion.spec.ts:139:1 › stale recovery refreshes current plan without autoaccepting or discarding draft edits (6.7s)
+  ✓  40 e2e/purchase-completion.spec.ts:153:1 › pending sample load cannot overwrite a later manual budget edit (2.3s)
+  ✓  41 e2e/purchase-completion.spec.ts:164:1 › late condition save preserves a newer selected origin as an uncommitted draft (4.6s)
+  ✓  42 e2e/purchase-completion.spec.ts:183:1 › late sample loading preserves a newer origin separately from its sample mission (2.4s)
+  ✓  43 e2e/r2a.spec.ts:3:1 › mobile composer stays compact and filters never become a sticky overlay (2.8s)
+  ✘  44 e2e/r2a.spec.ts:13:1 › semantic continuation keeps the pending area and hard condition and exposes the address chooser (5.9s)
+(node:3435810) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  45 e2e/shopping.spec.ts:3:1 › real demo recovery preserves mission and price arithmetic (7.5s)
+  ✓  46 e2e/shopping.spec.ts:23:1 › search fields work and mobile does not overflow (1.7s)
+  ✓  47 e2e/shopping.spec.ts:35:1 › reply dialog keeps keyboard focus and returns to the repaired plan (4.8s)
+  ✓  48 e2e/shopping.spec.ts:54:1 › cancel during initial AI request prevents a late answer from replacing search (1.6s)
+  ✓  49 e2e/shopping.spec.ts:75:1 › clipboard denial is explained inside the reply dialog (3.1s)
+  ✓  50 e2e/shopping.spec.ts:86:1 › unanswered sellers can be rechecked after all options are exhausted (7.9s)
+  ✓  51 e2e/shopping.spec.ts:107:39 › late saved-mission restore cannot replace a new choice (success) (5.3s)
+  ✓  52 e2e/shopping.spec.ts:107:39 › late saved-mission restore cannot replace a new choice (failure) (5.3s)
+
+
+  1) e2e/r2a.spec.ts:13:1 › semantic continuation keeps the pending area and hard condition and exposes the address chooser
+
+    Error: locator.click: Error: strict mode violation: getByRole('button', { name: 'پیدا کردن نشانی' }) resolved to 2 elements:
+        1) <button class="button soft-button">پیدا کردن نشانی برای این درخواست</button> aka getByRole('button', { name: 'پیدا کردن نشانی برای این درخواست' })
+        2) <button class="button primary-button">…</button> aka getByRole('button', { name: 'پیدا کردن نشانی', exact: true })
+
+    Call log:
+      - waiting for getByRole('button', { name: 'پیدا کردن نشانی' })
+
+
+      20 |  await expect(page.locator('.ai-message')).toContainText('تأییدپذیری ندارم')
+      21 |  await expect(page.getByRole('button',{name:'ابتدا شرط‌های بررسی‌نشده را روشن کن'}).first()).toBeDisabled()
+    > 22 |  await page.getByRole('button',{name:'پیدا کردن نشانی برای این درخواست'}).click();await page.getByLabel('نام خیابان یا نشانی').fill('انقلاب');await page.getByRole('button',{name:'پیدا کردن نشانی'}).click()
+         |                                                                                                                                                                                                       ^
+      23 |  await page.getByTestId('location-result').first().click();await page.getByRole('button',{name:'ادامه با مبدأ انتخاب‌شده'}).click()
+      24 |  await expect(page.getByRole('region',{name:'شرط‌های همین گفت‌وگو'}).last()).toContainText('مبدأ را خودت انتخاب کرده‌ای')
+      25 |  await expect(page.getByRole('button',{name:'توقف بررسی'})).toHaveCount(0)
+        at /home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/r2a.spec.ts:22:199
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/r2a-semantic-continuation--c2461-exposes-the-address-chooser/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/r2a-semantic-continuation--c2461-exposes-the-address-chooser/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/r2a-semantic-continuation--c2461-exposes-the-address-chooser/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/r2a-semantic-continuation--c2461-exposes-the-address-chooser/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    e2e/r2a.spec.ts:13:1 › semantic continuation keeps the pending area and hard condition and exposes the address chooser
+  51 passed (3.1m)

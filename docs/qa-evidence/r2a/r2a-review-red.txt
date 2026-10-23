@@ -1,0 +1,110 @@
+..........FF...........FF                                                [100%]
+=================================== FAILURES ===================================
+___ test_bound_unit_and_operator_must_bind_to_the_requested_property_clause ____
+
+    def test_bound_unit_and_operator_must_bind_to_the_requested_property_clause():
+        from torob.semantic import check_requirement
+
+        req = numeric("وزن کمتر از 1.5 کیلوگرم و رم کمتر از 16 گیگابایت", value="16")
+>       assert (
+            check_requirement(req, [{"id": "p:spec:0", "label": "وزن", "value": "2 کیلوگرم"}])["status"]
+            == "unresolved"
+        )
+E       AssertionError: assert 'matched' == 'unresolved'
+E
+E         - unresolved
+E         + matched
+
+tests/test_semantic_requirements.py:92: AssertionError
+__ test_explicit_removal_wins_even_when_model_repeats_the_quote_in_same_turn ___
+
+    def test_explicit_removal_wins_even_when_model_repeats_the_quote_in_same_turn():
+        from torob.semantic import merge_requirements
+
+        req = numeric()
+        state = merge_requirements({}, [req], req["source_quote"])
+        rid = state["requirements"][0]["id"]
+        removed = merge_requirements(state, [req], "شرط " + req["source_quote"] + " را حذف کن", removed=[rid])
+>       assert removed["requirements"] == []
+E       AssertionError: assert [{'label_fa':...': True, ...}] == []
+E
+E         Left contains one more item: {'label_fa': 'وزن کمتر از 1.5 کیلوگرم', 'source_quote': 'وزن کمتر از 1.5 کیلوگرم', 'kind': 'spec', 'hard': True, ...}
+E         Use -v to get more diff
+
+tests/test_semantic_requirements.py:105: AssertionError
+_ test_omitted_or_downgraded_explicit_hard_condition_never_becomes_verified[False] _
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-285/test_omitted_or_downgraded_exp0')
+downgrade = False
+
+    @pytest.mark.parametrize("downgrade", [False, True])
+    def test_omitted_or_downgraded_explicit_hard_condition_never_becomes_verified(tmp_path, downgrade):
+        from test_agent import recommendation
+
+        a, s, q, owner, clock = env(tmp_path)
+        t = a.start_turn(owner, "گوشی A07 میخواهم و وزن حتما کمتر از 1.5 کیلوگرم باشد")
+        out = intent()
+        if downgrade:
+            out["semantic_requirements"] = [
+                requirement(
+                    "وزن حتما کمتر از 1.5 کیلوگرم باشد",
+                    "spec",
+                    False,
+                    ["وزن"],
+                    {"operator": "lt", "value": "1.5", "unit": "kg"},
+                )
+            ]
+        finish(q, clock, out)
+        a.get_turn(owner, t["id"])
+        job = q.claim("w", clock[0])
+        assert job
+        q.complete(job["id"], job["lease_id"], job["completion_token"], recommendation(job), clock[0])
+        result = a.get_turn(owner, t["id"])["result"]
+>       assert result["recommendation_state"] == "unresolved" and result["recommendations"] == []
+E       AssertionError: assert ('verified' == 'unresolved'
+E
+E         - unresolved
+E         + verified)
+
+tests/test_semantic_continuation.py:216: AssertionError
+_ test_omitted_or_downgraded_explicit_hard_condition_never_becomes_verified[True] _
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-285/test_omitted_or_downgraded_exp1')
+downgrade = True
+
+    @pytest.mark.parametrize("downgrade", [False, True])
+    def test_omitted_or_downgraded_explicit_hard_condition_never_becomes_verified(tmp_path, downgrade):
+        from test_agent import recommendation
+
+        a, s, q, owner, clock = env(tmp_path)
+        t = a.start_turn(owner, "گوشی A07 میخواهم و وزن حتما کمتر از 1.5 کیلوگرم باشد")
+        out = intent()
+        if downgrade:
+            out["semantic_requirements"] = [
+                requirement(
+                    "وزن حتما کمتر از 1.5 کیلوگرم باشد",
+                    "spec",
+                    False,
+                    ["وزن"],
+                    {"operator": "lt", "value": "1.5", "unit": "kg"},
+                )
+            ]
+        finish(q, clock, out)
+        a.get_turn(owner, t["id"])
+        job = q.claim("w", clock[0])
+        assert job
+        q.complete(job["id"], job["lease_id"], job["completion_token"], recommendation(job), clock[0])
+        result = a.get_turn(owner, t["id"])["result"]
+>       assert result["recommendation_state"] == "unresolved" and result["recommendations"] == []
+E       AssertionError: assert ('verified' == 'unresolved'
+E
+E         - unresolved
+E         + verified)
+
+tests/test_semantic_continuation.py:216: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_semantic_requirements.py::test_bound_unit_and_operator_must_bind_to_the_requested_property_clause
+FAILED tests/test_semantic_requirements.py::test_explicit_removal_wins_even_when_model_repeats_the_quote_in_same_turn
+FAILED tests/test_semantic_continuation.py::test_omitted_or_downgraded_explicit_hard_condition_never_becomes_verified[False]
+FAILED tests/test_semantic_continuation.py::test_omitted_or_downgraded_explicit_hard_condition_never_becomes_verified[True]
+4 failed, 21 passed in 4.94s

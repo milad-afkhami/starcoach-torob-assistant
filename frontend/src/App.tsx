@@ -3,7 +3,7 @@ import { Search, Sparkles, ShoppingBag, MapPin, Navigation, RefreshCcw, X, Copy,
 import { api, ApiError, createTurnReader, errorText } from './api'
 import { faDate, formatToman, localInput, normalizeDigits, parseToman, visitIso } from './format'
 import { SellerCard, outcomeLabels, reasonLabels } from './SellerCard'
-import type { Constraints, Delta, ExternalAction, Followup, Mission, MissionResponse, Observation, Plan, Product, Recommendation, SearchDiagnostic, Turn } from './types'
+import type { CandidateCheck, SemanticContext, Constraints, Delta, ExternalAction, Followup, Mission, MissionResponse, Observation, Plan, Product, Recommendation, SearchDiagnostic, Turn } from './types'
 import './style.css'
 import { Dialog } from './Dialog'
 import { Select } from './Select'
@@ -33,18 +33,20 @@ function ExcludedSellers({options,onFollowup,busy}:{options:Plan['excluded'];onF
  return <>{[...groups].sort(([,a],[,b])=>Number(b.some(x=>x.offer.observations.length>0))-Number(a.some(x=>x.offer.observations.length>0))).map(([reason,items])=><details className="excluded-group" key={reason} open={items.some(x=>x.offer.observations.length>0)}><summary>{reasonLabels[reason]||'نیازمند بررسی'}<span>{items.length} پیشنهاد</span></summary>{items.map(o=><SellerCard key={o.offer.offer_id} option={o} role="excluded" compact disabled={busy} onFollowup={onFollowup}/>)}</details>)}</>
 }
 
-function ProductCard({product,recommendation,compared,onCompare,onSelect,busy,current=true}:{product:Product;current?:boolean;recommendation?:Recommendation;compared:boolean;busy:boolean;onCompare:()=>void;onSelect:()=>void}){
+function ProductCard({product,recommendation,compared,onCompare,onSelect,busy,current=true,checks}:{product:Product;checks?:CandidateCheck;current?:boolean;recommendation?:Recommendation;compared:boolean;busy:boolean;onCompare:()=>void;onSelect:()=>void}){
+  const blocked=checks?.requirements.some(r=>r.hard&&r.status!=='matched')
   return <article className="product-card" data-testid={current?"product-card":"historical-product-card"}>
     <div className="product-image"><ShoppingBag size={38} aria-hidden="true"/>{product.image_urls[0]&&<img src={product.image_urls[0]} alt={product.title||'تصویر کالای داده'} loading="lazy" referrerPolicy="no-referrer" onError={e=>{e.currentTarget.style.display='none'}}/>}</div>
     <div className="product-body"><span className="category-label">{product.category||'دسته‌بندی ثبت نشده'}</span><h3>{product.title||'عنوان کالا ثبت نشده'}</h3>
       <p className="product-price"><bdi>{formatToman(product.min_recorded_price)}</bdi>{product.min_recorded_price!==null&&<small>تومان</small>}</p><p className="source-note">قیمت ثبت‌شده؛ موجودی نامشخص</p>
       {recommendation&&<details className="recommendation"><summary><Sparkles size={13}/>چرا این گزینه؟</summary><p>{recommendation.reason_fa}</p>{recommendation.facts.map(f=><p key={f.id}><b>{f.label}: </b>{f.id.endsWith(':price')?formatToman(f.value)+' تومان':f.value}</p>)}</details>}
-      <div className="product-actions"><button className="button soft-button" disabled={busy} onClick={onSelect}>انتخاب این کالا<ArrowLeft size={15}/></button><label className="compare-check"><input type="checkbox" checked={compared} onChange={onCompare}/>مقایسه</label></div>
+      {checks&&checks.requirements.filter(r=>r.hard).map(r=><div className="candidate-check" key={r.id}><b>{r.label_fa}</b><span>{r.status==='matched'?'با داده ثبت‌شده سازگار':r.status==='excluded'?'با داده ثبت‌شده ناسازگار':'تأیید نشده'}</span>{r.facts.map(f=><p key={f.id}>{f.label}: {f.value}</p>)}</div>)}
+      <div className="product-actions"><button className="button soft-button" disabled={busy||blocked} onClick={onSelect}>{blocked?'ابتدا شرط‌های بررسی‌نشده را روشن کن':'انتخاب این کالا'}<ArrowLeft size={15}/></button><label className="compare-check"><input type="checkbox" checked={compared} onChange={onCompare}/>مقایسه</label></div>
     </div>
   </article>
 }
 
-type ChatEntry={id:number;role:'user'|'assistant';text:string;products?:Product[];recommendations?:Recommendation[];constraints?:Constraints;mission?:Mission;plan?:Plan;product?:Product;delta?:Delta;ai?:boolean;comparison?:{products:Product[];constraints:Constraints}}
+type ChatEntry={id:number;role:'user'|'assistant';text:string;products?:Product[];recommendations?:Recommendation[];constraints?:Constraints;mission?:Mission;plan?:Plan;product?:Product;delta?:Delta;ai?:boolean;turnId?:string;semantic?:SemanticContext;checks?:CandidateCheck[];locationAction?:boolean;recommendationState?:string;comparison?:{products:Product[];constraints:Constraints}}
 
 function initialDraft(){return draftOf({...DEMO,query:'',category:null,max_price_toman:null,require_declared_open:true,visit_at:localInput(new Date()).slice(0,10)+'T17:00:00+03:30'})}
 
@@ -63,6 +65,7 @@ export default function App(){
   const [actions,setActions]=useState<ExternalAction[]>([]),[transportOpen,setTransportOpen]=useState(false)
   const [revealTick,setRevealTick]=useState(0)
   const revealOrigin=useRef<Element|null>(null)
+  const [semanticParent,setSemanticParent]=useState<string|null>(null),[originConfirmed,setOriginConfirmed]=useState(false)
   const [discoveryParent,setDiscoveryParent]=useState<string|null>(null),[comparisonSuggestion,setComparisonSuggestion]=useState<{products:Product[];constraints:Constraints}|null>(null)
   const [need,setNeed]=useState(''),[aiScope,setAiScope]=useState<'discovery'|'mission'>('discovery'),[turn,setTurn]=useState<Turn|null>(null)
   const [aiMessage,setAiMessage]=useState(''),[proposal,setProposal]=useState<{constraints:Constraints;missionId:string|null;baseRevision:number|null;summary?:number}|null>(null)
@@ -81,11 +84,11 @@ export default function App(){
     interactionEpoch.current++;void cancelAI(true)
     for(const selector of ['.manual-search','.location-settings']){const drawer=document.querySelector<HTMLDetailsElement>(selector);if(drawer)drawer.open=false}
     setCompareConstraints(null);setDraft(initialDraft());setTransportOpen(false);setLocationOpen(false);setReplyText('');setQuote('');setOutcome('unavailable');setSearchDiagnostics([])
-    setMessages([]);setMission(null);setPlan(null);setProduct(null);setDelta(null);setHistory([]);setFollowup(null);setPreview(null);setProposal(null);setComparisonSuggestion(null);setDiscoveryParent(null);setCompared([]);setShowCompare(false);setNeed('');setAiMessage('');setError('');setToast('');setStaleMissionId(null);setAiScope('discovery')
+    setSemanticParent(null);setOriginConfirmed(false);setMessages([]);setMission(null);setPlan(null);setProduct(null);setDelta(null);setHistory([]);setFollowup(null);setPreview(null);setProposal(null);setComparisonSuggestion(null);setDiscoveryParent(null);setCompared([]);setShowCompare(false);setNeed('');setAiMessage('');setError('');setToast('');setStaleMissionId(null);setAiScope('discovery')
     try{localStorage.removeItem('plan-b:last-mission')}catch{/* optional browser storage */}
     document.getElementById('need')?.focus()
   }
-  function updateDraft<K extends keyof Draft>(key:K,value:Draft[K]){interactionEpoch.current++;setDraft(d=>({...d,[key]:value,...(key==='lat'||key==='lon'?{originLabel:''}:{})}))}
+  function updateDraft<K extends keyof Draft>(key:K,value:Draft[K]){interactionEpoch.current++;if(key==='lat'||key==='lon')setOriginConfirmed(false);setDraft(d=>({...d,[key]:value,...(key==='lat'||key==='lon'?{originLabel:''}:{})}))}
   function accept(response:MissionResponse,selected?:Product,restored=false){
     setMission(response.mission);setPlan(response.plan);setStaleMissionId(null)
     if(selected||response.product)setProduct(selected||response.product!)
@@ -126,21 +129,22 @@ export default function App(){
   },[mission?.id,mission?.revision])
 
   async function manualSearch(event?:React.FormEvent){
-    event?.preventDefault();setDiscoveryParent(null);setComparisonSuggestion(null);setError('');setBusy(true);await cancelAI(true)
+    event?.preventDefault();setSemanticParent(null);setOriginConfirmed(false);setDiscoveryParent(null);setComparisonSuggestion(null);setError('');setBusy(true);await cancelAI(true)
     try{const c=readDraft(draft);const r=await api.post<{products:Product[];diagnostics:SearchDiagnostic[]}>('/api/search',c);setSearchDiagnostics(r.diagnostics||[]);setAiMessage('');setProposal(null);addMessage(`جست‌وجوی مستقیم: ${c.query}`,{role:'user'});addMessage(r.products.length?'این کالاها در داده ثبت شده‌اند. قیمت‌ها تاریخی‌اند؛ یک کالا را انتخاب کن تا فروشنده‌های همان مدل را بررسی کنیم.':'برای این عبارت و شرایط نتیجه‌ای پیدا نشد؛ این به معنی نبود کالا در بازار نیست.',{products:r.products,constraints:c})}catch(e){setError(shortError(e))}finally{setBusy(false)}
   }
-  async function selectProduct(p:Product,c?:Constraints,mode:'assisted'|'simulation'='assisted',origin:Element|null=document.activeElement){
+  async function selectProduct(p:Product,c?:Constraints,mode:'assisted'|'simulation'='assisted',origin:Element|null=document.activeElement,fresh=false){
+    if(!fresh&&(active||semanticSelectionBlocked(p.product_id))){setError('این نامزد هنوز با همه شرط‌های الزامی همین گفت‌وگو تأیید نشده؛ ابتدا شرط‌ها یا مبدأ را روشن کن.');return}
     interactionEpoch.current++
     setError('');setBusy(true);await cancelAI(true)
     addMessage(`${mode==='simulation'?'سناریوی شبیه‌سازی؛ بدون تماس: ':'این کالا را انتخاب می‌کنم: '}${p.title||'عنوان ثبت نشده'}`,{role:'user'})
     try{const r=await api.post<MissionResponse>('/api/missions',{product_id:p.product_id,constraints:c||readDraft(draft),mode});accept(r,p);setDelta(null);setFollowup(null);setPreview(null);setTransportOpen(false);setToast('کالا انتخاب شد؛ حالا شرایط مراجعه و گزینه دوم را بررسی کنید.');revealFrom(origin)}catch(e){setError(shortError(e))}finally{setBusy(false)}
   }
   async function loadDemo(){
-    setDiscoveryParent(null);setComparisonSuggestion(null)
+    setSemanticParent(null);setOriginConfirmed(false);setDiscoveryParent(null);setComparisonSuggestion(null)
     const origin=document.activeElement
     const editEpoch=++interactionEpoch.current
     setError('');setBusy(true);setSearchDiagnostics([]);await cancelAI(true)
-    try{const p=await api.get<Product>(`/api/products/${FIXTURE}`);if(interactionEpoch.current===editEpoch)setDraft(draftOf(DEMO));setDiscoveryParent(null);setComparisonSuggestion(null);await selectProduct(p,DEMO,'simulation',origin)}catch(e){setError(shortError(e));setBusy(false)}
+    try{const p=await api.get<Product>(`/api/products/${FIXTURE}`);if(interactionEpoch.current===editEpoch)setDraft(draftOf(DEMO));setDiscoveryParent(null);setComparisonSuggestion(null);await selectProduct(p,DEMO,'simulation',origin,true)}catch(e){setError(shortError(e));setBusy(false)}
   }
   async function applyConditions(c?:Constraints,expected?:number){
     if(!mission||staleMissionId)return
@@ -159,15 +163,15 @@ export default function App(){
     if(proposal.missionId){if(mission?.id!==proposal.missionId){setError('این پیشنهاد برای برنامه دیگری است.');return}await applyConditions(proposal.constraints,proposal.baseRevision!)}
     else{setDraft(draftOf(proposal.constraints));setToast('پیشنهاد در فرم قرار گرفت؛ برای انتخاب کالا یا تغییر برنامه، دکمه مربوط را بزنید.');setProposal(null)}
   }
-  async function startAI(kind:'needs'|'reply'){
+  async function startAI(kind:'needs'|'reply', messageOverride?:string, options?:{origin?:boolean;removed?:string[]}){
     setError('');await cancelAI(true)
     const epoch=aiEpoch.current,deadline=performance.now()+120000;setAiPending(true)
     const target=kind==='reply'?followup:aiScope==='mission'&&mission?{missionId:mission.id,baseRevision:mission.revision}:null
     try{
-      const message=kind==='reply'?replyText:need
+      const message=kind==='reply'?replyText:messageOverride??need
       if(!message.trim())throw new Error('ابتدا متن درخواست یا پاسخ را بنویسید.')
       if(kind==='needs'){addMessage(message,{role:'user'});setNeed('')}
-      const body={kind,message,mission_id:target?.missionId||null,base_revision:target?.baseRevision||null,followup_id:kind==='reply'?followup?.id:null,constraints:readDraft(draft),...(kind==='needs'&&!target&&discoveryParent?{discovery_parent_turn_id:discoveryParent}:{})}
+      const body={kind,message,...(kind==='needs'?{semantic_parent_turn_id:semanticParent,origin_confirmed:!!options?.origin&&originConfirmed,removed_requirement_ids:options?.removed||[]}:{}),mission_id:target?.missionId||null,base_revision:target?.baseRevision||null,followup_id:kind==='reply'?followup?.id:null,constraints:readDraft(draft),...(kind==='needs'&&!target&&discoveryParent?{discovery_parent_turn_id:discoveryParent}:{})}
       let state=await api.post<Turn>('/api/turns',body);if(aiEpoch.current!==epoch){void api.post(`/api/turns/${state.id}/cancel`).catch(()=>undefined);return}setAiPending(false);activeTurn.current=state.id;setTurn(state);setAiMessage('');setProposal(null)
       const id=state.id
       const isCurrent=()=>activeTurn.current===id&&aiEpoch.current===epoch
@@ -175,17 +179,18 @@ export default function App(){
       while(['running','advancing'].includes(state.state)&&isCurrent()){await sleep(1000);if(!isCurrent())return;const next=await readTurn<Turn>();if(!next||!isCurrent())return;state=next;setTurn(state)}
       if(activeTurn.current!==id)return
       activeTurn.current=null;setTurn(null)
-      if(state.state!=='completed'){setAiMessage(errorText(state.error_code));if(kind==='needs')addMessage(errorText(state.error_code),{products:state.result?.products||[],constraints:readDraft(draft)});if(kind==='needs'){setDiscoveryParent(null);setComparisonSuggestion(null)}return}
+      if(state.state!=='completed'){setAiMessage(errorText(state.error_code));if(kind==='needs')addMessage(errorText(state.error_code),{products:state.result?.products||[],constraints:readDraft(draft)});if(kind==='needs'){setNeed(n=>n||message);setDiscoveryParent(null);setComparisonSuggestion(null)}return}
       const r=state.result!
       if(kind==='reply'){setPreview(r.observation);setAiMessage(r.clarification_fa||'برداشت آماده بررسی شماست.');return}
+      setSemanticParent(state.id);if(options?.origin)setOriginConfirmed(false)
       setSearchDiagnostics([])
       setDiscoveryParent(!target&&r.products.length?state.id:null)
       const comparisonIDs=r.comparison_product_ids||[]
       setComparisonSuggestion(comparisonIDs.length===2?{products:comparisonIDs.map(id=>r.products.find(p=>p.product_id===id)!).filter(Boolean),constraints:r.proposed_constraints}:null)
       setAiMessage(r.clarification_fa||'این گزینه‌ها از داده موجود پیدا شدند؛ شواهد هر پیشنهاد را می‌توانید ببینید.')
-      addMessage(r.clarification_fa||'این گزینه‌ها را از داده ثبت‌شده پیدا کردم. مشخصات و قیمت ثبت‌شده را ببین؛ بعد یک کالا را انتخاب کن یا درباره همین گزینه‌ها بپرس.',{ai:true,products:r.products.slice(0,6),recommendations:r.recommendations,constraints:r.proposed_constraints,comparison:comparisonIDs.length===2?{products:comparisonIDs.map(id=>r.products.find(p=>p.product_id===id)!).filter(Boolean),constraints:r.proposed_constraints}:undefined})
+      addMessage(r.clarification_fa||(r.recommendations.length?'این گزینه‌ها از داده ثبت‌شده قابل بررسی‌اند؛ موجودی زنده تأیید نشده است.':'برای این نیاز هنوز پیشنهاد تأییدپذیری ندارم؛ کارت‌ها فقط نامزدهای داده‌اند.'),{ai:true,turnId:state.id,semantic:r.semantic_context,checks:r.candidate_checks,locationAction:r.location_action,recommendationState:r.recommendation_state,products:r.products.slice(0,6),recommendations:r.recommendations,constraints:r.proposed_constraints,comparison:comparisonIDs.length===2?{products:comparisonIDs.map(id=>r.products.find(p=>p.product_id===id)!).filter(Boolean),constraints:r.proposed_constraints}:undefined})
       setProposal({constraints:r.proposed_constraints,missionId:target?.missionId||null,baseRevision:target?.baseRevision||null,summary:r.proposal_summary?.eligible_shops})
-    }catch(e){if(aiEpoch.current===epoch){setAiPending(false);activeTurn.current=null;setTurn(null);setError(shortError(e));if(kind==='needs'){addMessage(shortError(e)+' می‌توانی از جست‌وجوی مستقیم استفاده کنی.');setDiscoveryParent(null);setComparisonSuggestion(null)}}}
+    }catch(e){if(aiEpoch.current===epoch){setAiPending(false);activeTurn.current=null;setTurn(null);setError(shortError(e));if(kind==='needs'){setNeed(n=>n||messageOverride||need);addMessage(shortError(e)+' می‌توانی از جست‌وجوی مستقیم استفاده کنی.');setDiscoveryParent(null);setComparisonSuggestion(null)}}}
   }
   async function openReply(offerId:string){
     if(!mission)return
@@ -208,8 +213,9 @@ export default function App(){
   }
   async function reset(){if(!mission)return;setError('');setBusy(true);await cancelAI(true);try{const r=await api.post<MissionResponse>(`/api/missions/${mission.id}/reset`,{expected_revision:mission.revision});accept(r);setDelta(null);setFollowup(null);setPreview(null);setToast('فقط گزارش‌های این شبیه‌سازی پاک شدند.')}catch(e){setError(shortError(e))}finally{setBusy(false)}}
   async function copy(text:string){try{await navigator.clipboard.writeText(text);setToast('متن کپی شد.')}catch{setToast('کپی خودکار ممکن نیست؛ متن نمایش‌داده‌شده را انتخاب و کپی کنید.')}}
-  function openCompare(){try{setCompareConstraints(readDraft(draft));setShowCompare(true)}catch(e){setError(shortError(e))}}
-  async function useSearchDiagnostic(d:SearchDiagnostic){setDiscoveryParent(null);setComparisonSuggestion(null);setDraft(draftOf(d.constraints));setBusy(true);setError('');await cancelAI(true);try{const r=await api.post<{products:Product[];diagnostics:SearchDiagnostic[]}>('/api/search',d.constraints);setDiscoveryParent(null);setComparisonSuggestion(null);setSearchDiagnostics(r.diagnostics||[]);addMessage('جست‌وجو را فقط با شرطی که انتخاب کردی تکرار کردم؛ برنامه خرید قبلی تغییر نکرد.',{products:r.products,constraints:d.constraints});setToast('فقط شرایط جست‌وجو با انتخاب شما تغییر کرد؛ برنامه قبلی تغییر نکرد.')}catch(e){setError(shortError(e))}finally{setBusy(false)}}
+  function semanticSelectionBlocked(productId:string){const entry=messages.find(m=>m.turnId===semanticParent);return !!entry?.semantic?.requirements.some(r=>r.hard)&&entry.checks?.find(c=>c.product_id===productId)?.status!=='matched'}
+  function openCompare(){try{const entry=messages.find(m=>m.turnId===semanticParent);setCompareConstraints(entry?.constraints||readDraft(draft));setShowCompare(true)}catch(e){setError(shortError(e))}}
+  async function useSearchDiagnostic(d:SearchDiagnostic){setSemanticParent(null);setOriginConfirmed(false);setDiscoveryParent(null);setComparisonSuggestion(null);setDraft(draftOf(d.constraints));setBusy(true);setError('');await cancelAI(true);try{const r=await api.post<{products:Product[];diagnostics:SearchDiagnostic[]}>('/api/search',d.constraints);setDiscoveryParent(null);setComparisonSuggestion(null);setSearchDiagnostics(r.diagnostics||[]);addMessage('جست‌وجو را فقط با شرطی که انتخاب کردی تکرار کردم؛ برنامه خرید قبلی تغییر نکرد.',{products:r.products,constraints:d.constraints});setToast('فقط شرایط جست‌وجو با انتخاب شما تغییر کرد؛ برنامه قبلی تغییر نکرد.')}catch(e){setError(shortError(e))}finally{setBusy(false)}}
   function locate(){if(!navigator.geolocation){setError('موقعیت‌یابی در دسترس نیست؛ مختصات یا محدوده جمهوری را انتخاب کنید.');return}navigator.geolocation.getCurrentPosition(p=>{interactionEpoch.current++;setDraft(d=>({...d,lat:String(p.coords.latitude),lon:String(p.coords.longitude),originLabel:'موقعیت دستگاه'}));setToast('موقعیت در فرم قرار گرفت؛ برای تغییر برنامه آن را اعمال کنید.')},()=>setError('دسترسی موقعیت در دسترس نیست؛ از محدوده جمهوری یا مختصات دستی استفاده کنید.'),{timeout:7000})}
   function toggleCompare(p:Product){setCompared(items=>items.some(x=>x.product_id===p.product_id)?items.filter(x=>x.product_id!==p.product_id):items.length<2?[...items,p]:[items[1],p])}
   const active=aiPending||!!(turn&&['running','advancing'].includes(turn.state))
@@ -249,21 +255,22 @@ export default function App(){
       <section className="chat-timeline" aria-label="گفت‌وگوی خرید">
         {messages.map(entry=><article key={entry.id} className={`chat-message ${entry.role}`} data-testid="chat-message">
           <span className="message-author">{entry.role==='user'?'شما':'پلن بی'}</span><p className={entry.ai&&entry.id===latestAI?'ai-message':'message-text'}>{entry.text}</p>
+          {entry.semantic&&!!entry.semantic.requirements.length&&<section className="semantic-needs" aria-label="شرط‌های همین گفت‌وگو"><b>نیاز و شرط‌ها در همین گفت‌وگو می‌مانند</b><p>سازگاری مشخصات از داده هر کارت بررسی می‌شود؛ مورد نامشخص تأیید محسوب نمی‌شود.</p>{entry.semantic.requirements.map(r=><div key={r.id}><span>{r.label_fa}{r.kind==='location'?(r.origin_resolved?'؛ مبدأ را خودت انتخاب کرده‌ای':'؛ مبدأ هنوز انتخاب نشده'):r.hard?'؛ الزامی':'؛ ترجیح شما'}</span>{entry.turnId===semanticParent&&<button disabled={busy||active} onClick={()=>void startAI('needs','با حذف شرطی که انتخاب کردم ادامه بده.',{removed:[r.id]})} aria-label={`حذف شرط ${r.label_fa}`}>حذف شرط</button>}</div>)}{entry.turnId===semanticParent&&entry.locationAction&&<div className="semantic-location"><button className="button soft-button" onClick={()=>setLocationOpen(true)}>پیدا کردن نشانی برای این درخواست</button>{originConfirmed&&<button className="button primary-button" disabled={active||busy} onClick={()=>void startAI('needs','با مبدأ انتخاب‌شده ادامه بده.',{origin:true})}>ادامه با مبدأ انتخاب‌شده</button>}</div>}</section>}
           {entry.products&&<div className={entry.id===latestProducts?'current-products':'historical-products'}>
             {!!entry.products.length&&<div className="results-heading"><h2>گزینه‌های ثبت‌شده</h2>{entry.id===latestProducts&&compared.length>0&&<button className="button compact-button" onClick={openCompare} disabled={compared.length!==2}>مقایسه دو کالا ({new Intl.NumberFormat('fa-IR').format(compared.length)})</button>}</div>}
-            <div className="product-grid">{entry.products.map(p=><div key={p.product_id} data-current={entry.id===latestProducts}><ProductCard product={p} current={entry.id===latestProducts} busy={busy} recommendation={entry.recommendations?.find(r=>r.product_id===p.product_id)} compared={compared.some(x=>x.product_id===p.product_id)} onCompare={()=>toggleCompare(p)} onSelect={()=>void selectProduct(p,entry.constraints)}/></div>)}</div>
+            <div className="product-grid">{entry.products.map(p=><div key={p.product_id} data-current={entry.id===latestProducts}><ProductCard product={p} checks={entry.checks?.find(c=>c.product_id===p.product_id)} current={entry.id===latestProducts} busy={busy} recommendation={entry.recommendations?.find(r=>r.product_id===p.product_id)} compared={compared.some(x=>x.product_id===p.product_id)} onCompare={()=>toggleCompare(p)} onSelect={()=>void selectProduct(p,entry.constraints)}/></div>)}</div>
             {entry.id===latestProducts&&!entry.products.length&&<div className="search-diagnostics">{searchDiagnostics.map(d=><div key={d.kind}><p>{d.kind==='category'?'همین عبارت در دسته‌های دیگر نتیجه دارد.':`برای همین عبارت، قیمت ثبت‌شده از ${formatToman(d.minimum_toman)} تومان شروع می‌شود.`}</p><button className="button soft-button" disabled={busy} onClick={()=>void useSearchDiagnostic(d)}>{d.kind==='category'?'جست‌وجو در همه دسته‌ها':'جست‌وجو با این بودجه'}</button></div>)}</div>}
           </div>}
-          {entry.comparison?.products.length===2&&<><ProductComparison inline products={entry.comparison.products} constraints={entry.comparison.constraints} onClose={()=>undefined} onSelect={p=>void selectProduct(p,entry.comparison!.constraints)}/>{entry.id===latestAI&&comparisonSuggestion&&<button className="button soft-button" onClick={()=>{setCompared(comparisonSuggestion.products);setCompareConstraints(comparisonSuggestion.constraints);setShowCompare(true)}}>مقایسه همین دو گزینه</button>}</>}
+          {entry.comparison?.products.length===2&&<><ProductComparison disabledIds={entry.products?.filter(p=>semanticSelectionBlocked(p.product_id)).map(p=>p.product_id)} inline products={entry.comparison.products} constraints={entry.comparison.constraints} onClose={()=>undefined} onSelect={p=>void selectProduct(p,entry.comparison!.constraints)}/>{entry.id===latestAI&&comparisonSuggestion&&<button className="button soft-button" onClick={()=>{setCompared(comparisonSuggestion.products);setCompareConstraints(comparisonSuggestion.constraints);setShowCompare(true)}}>مقایسه همین دو گزینه</button>}</>}
           {entry.id===latestAI&&!followup&&proposal&&<div className="proposal"><b>پیشنهاد؛ هنوز اعمال نشده</b><span>بودجه: {proposal.constraints.max_price_toman?formatToman(proposal.constraints.max_price_toman)+' تومان':'بدون سقف'}</span><span>شعاع: {proposal.constraints.radius_km} کیلومتر</span><span>مراجعه: {faDate(proposal.constraints.visit_at)} {proposal.constraints.visit_at?localInput(proposal.constraints.visit_at).slice(11):'نامشخص'}</span><span>پرداخت: {proposal.constraints.payment_provider||'بدون شرط خاص'}</span>{proposal.summary!==undefined&&<span>گزینه‌های سازگار در این پیشنهاد: {new Intl.NumberFormat('fa-IR').format(proposal.summary)}</span>}<button className="button soft-button" onClick={()=>void applyProposal()} disabled={busy}>استفاده از پیشنهاد</button></div>}
           {entry.id===latestAI&&discoveryParent&&<p className="source-note discovery-context">می‌توانی درباره همین شش گزینه اول بپرسی؛ «اولی» و «دومی» با ترتیب کارت‌ها مشخص‌اند.</p>}
           {entry.mission&&entry.plan&&(entry.id===latestPlan?missionView:<details className="historical-plan"><summary>برنامه قبلی: {entry.product?.title||'همین کالا'} · نسخه {new Intl.NumberFormat('fa-IR').format(entry.mission.revision)}</summary><p>این نسخه تاریخی است؛ کنترل‌های برنامه فعلی در آخرین پاسخ‌اند.</p>{entry.plan.primary&&<SellerCard option={entry.plan.primary} role="primary" compact historical/>}{entry.plan.fallback&&<SellerCard option={entry.plan.fallback} role="fallback" compact historical/>}</details>)}
-          {entry.role==='assistant'&&!!(entry.products?.length||entry.mission)&&<p className="message-next">{entry.mission?'قبل از مراجعه، قیمت و موجودی را بررسی کن. اگر پاسخی گرفتی، «بررسی پاسخ فروشنده» را بزن تا قدم بعد را با هم ببینیم.':'قدم بعد: یک کالا را انتخاب کن، یا در پیام بعد بگو کدام دو گزینه را مقایسه کنیم.'}</p>}
+          {entry.role==='assistant'&&!!(entry.products?.length||entry.mission)&&<p className="message-next">{entry.mission?'قبل از مراجعه، قیمت و موجودی را بررسی کن. اگر پاسخی گرفتی، «بررسی پاسخ فروشنده» را بزن تا قدم بعد را با هم ببینیم.':entry.recommendationState==='unresolved'?'قدم بعد: شرط‌های بررسی‌نشده یا مبدأ را روشن کن؛ می‌توانی داده نامزدها را هم مقایسه کنی.':'قدم بعد: یک کالا را انتخاب کن، یا در پیام بعد بگو کدام دو گزینه را مقایسه کنیم.'}</p>}
         </article>)}
         {active&&!followup&&<div className="ai-progress" role="status"><LoaderCircle className="spin" size={17}/>{turn?.stage==='interpret'?'در حال فهم نیاز شما…':'در حال بررسی شواهد کالاها…'}<button onClick={()=>void cancelAI()}>توقف بررسی</button></div>}
         <div ref={conversationEnd}/>
       </section>
-      <section className="chat-composer" aria-label="نوشتن پیام">
+      <section className="conversation-tools" aria-label="ابزارهای جست‌وجو و شرایط">
         <details className="manual-search"><summary><Search size={16}/>جست‌وجوی مستقیم و فیلترها</summary>
           <form className="search-form" onSubmit={e=>void manualSearch(e)}><fieldset disabled={busy}><label htmlFor="query">جست‌وجوی کالا</label><div className="search-row"><Search size={20}/><input id="query" value={draft.query} onChange={e=>updateDraft('query',e.target.value)} placeholder="مدل، برند یا نام کالا؛ مثلاً A07" autoComplete="off"/><button className="button primary-button" disabled={!ready||busy} type="submit">{busy?<LoaderCircle className="spin" size={18}/>:'جست‌وجو'}</button></div>
             <div className="filter-grid"><label>دسته‌بندی<Select label="دسته‌بندی" value={draft.category} onChange={e=>updateDraft('category',e.target.value)}><option value="">همه دسته‌ها</option><option>گوشی موبایل</option><option>لپ تاپ و نوت بوک</option></Select></label><label>بودجه به تومان<input value={draft.budget} onChange={e=>updateDraft('budget',e.target.value)} inputMode="numeric" placeholder="بدون سقف"/><small>{draft.budget?budgetHint+' تومان':'بدون محدودیت بودجه'}</small></label><label>شعاع، کیلومتر<input value={draft.radius} onChange={e=>updateDraft('radius',e.target.value)} inputMode="decimal"/></label><label>زمان مراجعه، تهران<input type="datetime-local" value={draft.visit} onChange={e=>updateDraft('visit',e.target.value)}/></label></div>
@@ -271,11 +278,14 @@ export default function App(){
             {mission&&<button type="button" className="button apply-conditions" disabled={busy||!!staleMissionId} onClick={()=>void applyConditions()}>اعمال شرایط روی همین برنامه</button>}
           </fieldset></form>
           </details>
-        <form onSubmit={e=>{e.preventDefault();void startAI('needs')}}><label className="sr-only" htmlFor="need">نیاز شما</label><textarea id="need" disabled={!ready} onKeyDown={e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.nativeEvent.isComposing){e.preventDefault();if(ready&&modelAvailable&&!active&&!busy&&need.trim())void startAI('needs')}}} value={need} onChange={e=>setNeed(e.target.value)} placeholder={mission?'درباره گزینه‌ها بپرس یا شرایط خریدت را بگو…':'چی می‌خواهی بخری؟ بودجه و محدوده‌ات را هم بگو…'} rows={2}/>
-          <div className="composer-actions"><button className="button compact-button" type="button" onClick={()=>setLocationOpen(true)}><MapPin size={15}/>انتخاب محدوده</button>{mission&&<label className="scope-control">موضوع درخواست<Select label="موضوع درخواست" value={aiScope} onChange={e=>setAiScope(e.target.value as 'discovery'|'mission')}><option value="discovery">پیدا کردن کالا</option><option value="mission">شرایط همین کالا</option></Select></label>}<button className="button primary-button send-message" disabled={!ready||!modelAvailable||active||busy} type="submit"><ArrowLeft size={17}/>کمک برای انتخاب</button></div>
-        </form><p className="composer-context origin-control origin-label">مبدأ جست‌وجو: {draft.originLabel||'نقطه انتخاب‌شده'} <bdi>{Number(draft.lat).toFixed(4)}, {Number(draft.lon).toFixed(4)}</bdi>{mission?' · تغییر فرم تا تأیید، برنامه را تغییر نمی‌دهد.':''}</p>
+<p className="composer-context origin-control origin-label">مبدأ جست‌وجو: {draft.originLabel||'نقطه انتخاب‌شده'} <bdi>{Number(draft.lat).toFixed(4)}, {Number(draft.lon).toFixed(4)}</bdi>{mission?' · تغییر فرم تا تأیید، برنامه را تغییر نمی‌دهد.':''}</p>
         {!modelAvailable&&<p className="source-note">دستیار فعلاً آنلاین نیست؛ «جست‌وجوی مستقیم و فیلترها» همچنان کار می‌کند.</p>}
         <button className="sample-link" onClick={()=>void loadDemo()} disabled={busy||!ready}>دیدن سناریوی نمونه <small>آزمایشی، بدون تماس</small></button>
+      </section>
+      <section className="chat-composer" aria-label="نوشتن پیام">
+        <form onSubmit={e=>{e.preventDefault();void startAI('needs')}}><label className="sr-only" htmlFor="need">نیاز شما</label><textarea id="need" disabled={!ready} onKeyDown={e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.nativeEvent.isComposing){e.preventDefault();if(ready&&modelAvailable&&!active&&!busy&&need.trim())void startAI('needs')}}} value={need} onChange={e=>setNeed(e.target.value)} placeholder={mission?'درباره گزینه‌ها بپرس یا شرایط خریدت را بگو…':'چی می‌خواهی بخری؟ بودجه و محدوده‌ات را هم بگو…'} rows={2}/>
+          <div className="composer-actions"><button className="button compact-button" type="button" onClick={()=>setLocationOpen(true)}><MapPin size={15}/>انتخاب محدوده</button>{mission&&<label className="scope-control"><span className="sr-only">موضوع درخواست</span><Select label="موضوع درخواست" value={aiScope} onChange={e=>setAiScope(e.target.value as 'discovery'|'mission')}><option value="discovery">پیدا کردن کالا</option><option value="mission">شرایط همین کالا</option></Select></label>}<button className="button primary-button send-message" disabled={!ready||!modelAvailable||active||busy} type="submit"><ArrowLeft size={17}/>کمک برای انتخاب</button></div>
+        </form>
       </section>
       {followup&&mission&&<Dialog className="reply-panel" label="بررسی پاسخ فروشنده" initialFocus="textarea" returnFocus={replyTrigger.current} onClose={()=>{setFollowup(null);setPreview(null);void cancelAI(true)}}><div className="section-heading"><div><h2>یک پاسخ، یک تصمیم روشن‌تر</h2><p>{mission.mode==='simulation'?'این بخش شبیه‌سازی است؛ هیچ پیامی ارسال نشده.':'متن را خودت ارسال و پاسخ را وارد کن؛ این برنامه پیامی ارسال نمی‌کند.'}</p></div><button className="icon-button" aria-label="بستن بررسی پاسخ" onClick={()=>{setFollowup(null);setPreview(null);void cancelAI(true)}}><X/></button></div>
         {error&&<div className="notice error" role="alert">{error}</div>}
@@ -289,7 +299,7 @@ export default function App(){
     </main>
 
     <footer><span>پلن بی • نمونه چالش خرید حضوری ترب</span><p>قیمت و ساعت ثبت‌شده با موجودی و تأیید زنده متفاوت‌اند.</p></footer>
-    {locationOpen&&<LocationChooser onClose={()=>setLocationOpen(false)} onSelect={p=>{interactionEpoch.current++;setDraft(d=>({...d,lat:String(p.lat),lon:String(p.lon),originLabel:p.label.slice(0,300)}));setLocationOpen(false);setToast('نقطه ثبت‌شده در فرم قرار گرفت؛ برای تغییر برنامه، شرایط را اعمال کن.')}}/>}
-    {showCompare&&compareConstraints&&<ProductComparison products={compared} constraints={compareConstraints} onClose={()=>setShowCompare(false)} onSelect={p=>{setShowCompare(false);void selectProduct(p,compareConstraints)}}/>}
+    {locationOpen&&<LocationChooser onClose={()=>setLocationOpen(false)} onSelect={p=>{interactionEpoch.current++;setDraft(d=>({...d,lat:String(p.lat),lon:String(p.lon),originLabel:p.label.slice(0,300)}));setOriginConfirmed(true);setLocationOpen(false);setToast('نقطه ثبت‌شده در فرم قرار گرفت؛ برای تغییر برنامه، شرایط را اعمال کن.')}}/>}
+    {showCompare&&compareConstraints&&<ProductComparison disabledIds={compared.filter(p=>semanticSelectionBlocked(p.product_id)).map(p=>p.product_id)} products={compared} constraints={compareConstraints} onClose={()=>setShowCompare(false)} onSelect={p=>{setShowCompare(false);void selectProduct(p,compareConstraints)}}/>}
   </div>
 }

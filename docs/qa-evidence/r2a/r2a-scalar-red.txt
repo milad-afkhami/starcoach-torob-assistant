@@ -1,0 +1,96 @@
+FFFFFFFFF                                                                [100%]
+=================================== FAILURES ===================================
+_ test_single_explicit_source_scalar_checks_hard_requirement_without_inference[1.4 \u06a9\u06cc\u0644\u0648\u06af\u0631\u0645-matched] _
+
+value = '1.4 کیلوگرم', status = 'matched'
+
+    @pytest.mark.parametrize('value,status',[('1.4 کیلوگرم','matched'),('1500 گرم','excluded'),('1.5 کیلوگرم','excluded'),('1.4 تا 1.6 کیلوگرم','unresolved'),('1.4','unresolved'),('نامشخص','unresolved')])
+    def test_single_explicit_source_scalar_checks_hard_requirement_without_inference(value,status):
+>       from torob.semantic import check_requirement
+E       ModuleNotFoundError: No module named 'torob.semantic'
+
+tests/test_semantic_requirements.py:12: ModuleNotFoundError
+_ test_single_explicit_source_scalar_checks_hard_requirement_without_inference[1500 \u06af\u0631\u0645-excluded] _
+
+value = '1500 گرم', status = 'excluded'
+
+    @pytest.mark.parametrize('value,status',[('1.4 کیلوگرم','matched'),('1500 گرم','excluded'),('1.5 کیلوگرم','excluded'),('1.4 تا 1.6 کیلوگرم','unresolved'),('1.4','unresolved'),('نامشخص','unresolved')])
+    def test_single_explicit_source_scalar_checks_hard_requirement_without_inference(value,status):
+>       from torob.semantic import check_requirement
+E       ModuleNotFoundError: No module named 'torob.semantic'
+
+tests/test_semantic_requirements.py:12: ModuleNotFoundError
+_ test_single_explicit_source_scalar_checks_hard_requirement_without_inference[1.5 \u06a9\u06cc\u0644\u0648\u06af\u0631\u0645-excluded] _
+
+value = '1.5 کیلوگرم', status = 'excluded'
+
+    @pytest.mark.parametrize('value,status',[('1.4 کیلوگرم','matched'),('1500 گرم','excluded'),('1.5 کیلوگرم','excluded'),('1.4 تا 1.6 کیلوگرم','unresolved'),('1.4','unresolved'),('نامشخص','unresolved')])
+    def test_single_explicit_source_scalar_checks_hard_requirement_without_inference(value,status):
+>       from torob.semantic import check_requirement
+E       ModuleNotFoundError: No module named 'torob.semantic'
+
+tests/test_semantic_requirements.py:12: ModuleNotFoundError
+_ test_single_explicit_source_scalar_checks_hard_requirement_without_inference[1.4 \u062a\u0627 1.6 \u06a9\u06cc\u0644\u0648\u06af\u0631\u0645-unresolved] _
+
+value = '1.4 تا 1.6 کیلوگرم', status = 'unresolved'
+
+    @pytest.mark.parametrize('value,status',[('1.4 کیلوگرم','matched'),('1500 گرم','excluded'),('1.5 کیلوگرم','excluded'),('1.4 تا 1.6 کیلوگرم','unresolved'),('1.4','unresolved'),('نامشخص','unresolved')])
+    def test_single_explicit_source_scalar_checks_hard_requirement_without_inference(value,status):
+>       from torob.semantic import check_requirement
+E       ModuleNotFoundError: No module named 'torob.semantic'
+
+tests/test_semantic_requirements.py:12: ModuleNotFoundError
+_ test_single_explicit_source_scalar_checks_hard_requirement_without_inference[1.4-unresolved] _
+
+value = '1.4', status = 'unresolved'
+
+    @pytest.mark.parametrize('value,status',[('1.4 کیلوگرم','matched'),('1500 گرم','excluded'),('1.5 کیلوگرم','excluded'),('1.4 تا 1.6 کیلوگرم','unresolved'),('1.4','unresolved'),('نامشخص','unresolved')])
+    def test_single_explicit_source_scalar_checks_hard_requirement_without_inference(value,status):
+>       from torob.semantic import check_requirement
+E       ModuleNotFoundError: No module named 'torob.semantic'
+
+tests/test_semantic_requirements.py:12: ModuleNotFoundError
+_ test_single_explicit_source_scalar_checks_hard_requirement_without_inference[\u0646\u0627\u0645\u0634\u062e\u0635-unresolved] _
+
+value = 'نامشخص', status = 'unresolved'
+
+    @pytest.mark.parametrize('value,status',[('1.4 کیلوگرم','matched'),('1500 گرم','excluded'),('1.5 کیلوگرم','excluded'),('1.4 تا 1.6 کیلوگرم','unresolved'),('1.4','unresolved'),('نامشخص','unresolved')])
+    def test_single_explicit_source_scalar_checks_hard_requirement_without_inference(value,status):
+>       from torob.semantic import check_requirement
+E       ModuleNotFoundError: No module named 'torob.semantic'
+
+tests/test_semantic_requirements.py:12: ModuleNotFoundError
+_________ test_unknown_bound_operator_and_foreign_field_never_qualify __________
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-278/test_unknown_bound_operator_an0')
+
+    def test_unknown_bound_operator_and_foreign_field_never_qualify(tmp_path):
+>       from torob.semantic import check_requirement
+E       ModuleNotFoundError: No module named 'torob.semantic'
+
+tests/test_semantic_requirements.py:19: ModuleNotFoundError
+___ test_numeric_class_is_not_weight_specific_and_preserves_unit_uncertainty ___
+
+    def test_numeric_class_is_not_weight_specific_and_preserves_unit_uncertainty():
+>       from torob.semantic import check_requirement
+E       ModuleNotFoundError: No module named 'torob.semantic'
+
+tests/test_semantic_requirements.py:27: ModuleNotFoundError
+_ test_contradictory_source_values_and_unsupported_requirement_are_unresolved __
+
+    def test_contradictory_source_values_and_unsupported_requirement_are_unresolved():
+>       from torob.semantic import check_requirement
+E       ModuleNotFoundError: No module named 'torob.semantic'
+
+tests/test_semantic_requirements.py:34: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_semantic_requirements.py::test_single_explicit_source_scalar_checks_hard_requirement_without_inference[1.4 \u06a9\u06cc\u0644\u0648\u06af\u0631\u0645-matched]
+FAILED tests/test_semantic_requirements.py::test_single_explicit_source_scalar_checks_hard_requirement_without_inference[1500 \u06af\u0631\u0645-excluded]
+FAILED tests/test_semantic_requirements.py::test_single_explicit_source_scalar_checks_hard_requirement_without_inference[1.5 \u06a9\u06cc\u0644\u0648\u06af\u0631\u0645-excluded]
+FAILED tests/test_semantic_requirements.py::test_single_explicit_source_scalar_checks_hard_requirement_without_inference[1.4 \u062a\u0627 1.6 \u06a9\u06cc\u0644\u0648\u06af\u0631\u0645-unresolved]
+FAILED tests/test_semantic_requirements.py::test_single_explicit_source_scalar_checks_hard_requirement_without_inference[1.4-unresolved]
+FAILED tests/test_semantic_requirements.py::test_single_explicit_source_scalar_checks_hard_requirement_without_inference[\u0646\u0627\u0645\u0634\u062e\u0635-unresolved]
+FAILED tests/test_semantic_requirements.py::test_unknown_bound_operator_and_foreign_field_never_qualify
+FAILED tests/test_semantic_requirements.py::test_numeric_class_is_not_weight_specific_and_preserves_unit_uncertainty
+FAILED tests/test_semantic_requirements.py::test_contradictory_source_values_and_unsupported_requirement_are_unresolved
+9 failed in 0.15s

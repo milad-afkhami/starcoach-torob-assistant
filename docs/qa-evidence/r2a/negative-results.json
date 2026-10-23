@@ -1,0 +1,25 @@
+{
+  "initial_semantic_parent_tdd": "8 expected failures before implementation",
+  "initial_scalar_tdd": "9 expected failures before implementation",
+  "initial_mobile_red": "composer exceeded180px and filter lived inside it",
+  "first_core_milestone": "78 focused backend cases passed",
+  "first_rendered_inventory": {
+    "passed": 51,
+    "failed": 1,
+    "cause": "test locator matched background contextual address action plus dialog search button; scoped to exact dialog button",
+    "product_trace": "pending Enghelab and hard weight retained; source522g surfaced; no false verified recommendation"
+  },
+  "independent_source_batch": "independent-source-red.json retains the three real source counterexamples; comparison bypass also confirmed by source review",
+  "guard_reds": "4 explicit regression failures for omission/downgrade, cross-property number binding and same-turn removal; all corrected",
+  "repair_inventory": [
+    "early fallback duplicated full location quote before semantic extraction; moved fallback accounting after interpretation",
+    "mechanical signature patch missed compact function definition; Ruff/explicit apply_patch corrected before final suite",
+    "one-property quote could cover a second property; coverage now requires the same requested-property clause; ambiguous/omitted parts remain unresolved"
+  ],
+  "final": "334 backend,22 frontend,53 browser,3 focused browser,TS/Vite/Ruff/whitespace pass",
+  "original_locked_review_sha256": "47792196b5ae80154875ecb0eb93d0b64181ccef9af9beae8b8d3c16decaf6cf",
+  "original_locked_review": "/tmp/starcoach-ui-revision-20261023/r2-torob/review.md remains immutable",
+  "genuine_model_calls": 0,
+  "quota_resets": 0,
+  "provider_writes": 0
+}

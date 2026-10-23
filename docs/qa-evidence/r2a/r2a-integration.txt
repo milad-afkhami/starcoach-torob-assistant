@@ -1,0 +1,36 @@
+.........F.                                                              [100%]
+=================================== FAILURES ===================================
+_ test_only_explicit_origin_resolution_clears_pending_location_without_mutating_a_mission _
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-282/test_only_explicit_origin_reso0')
+
+    def test_only_explicit_origin_resolution_clears_pending_location_without_mutating_a_mission(tmp_path):
+        from test_search import constraints
+
+        a, s, q, owner, clock = env(tmp_path)
+        p = clarify(a, q, owner, clock)
+        t = a.start_turn(
+            owner,
+            "با مبدأ انتخاب‌شده ادامه بده",
+            semantic_parent_turn_id=p["id"],
+            origin_confirmed=True,
+>           constraints=constraints(lat=35.8, lon=51.5, origin_label="نقطه انتخابی"),
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+
+tests/test_semantic_continuation.py:176:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+kw = {'lat': 35.8, 'lon': 51.5, 'origin_label': 'نقطه انتخابی'}
+
+    def constraints(**kw):
+        from torob.types import SearchConstraints
+
+>       return SearchConstraints(lat=35.7, lon=51.4, visit_at="2026-10-22T20:15:00+03:30", **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: torob.types.SearchConstraints() got multiple values for keyword argument 'lat'
+
+tests/test_search.py:17: TypeError
+=========================== short test summary info ============================
+FAILED tests/test_semantic_continuation.py::test_only_explicit_origin_resolution_clears_pending_location_without_mutating_a_mission
+1 failed, 10 passed in 4.11s

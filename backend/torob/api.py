@@ -67,6 +67,9 @@ class CompareInput(Input):
 
 
 class TurnInput(Input):
+    semantic_parent_turn_id: str | None = Field(default=None, min_length=1, max_length=100)
+    origin_confirmed: bool = False
+    removed_requirement_ids: list[str] = Field(default_factory=list, max_length=6)
     discovery_parent_turn_id: str | None = Field(default=None, min_length=1, max_length=100)
     message: str = Field(min_length=1, max_length=4000)
     kind: Literal["needs", "reply"] = "needs"

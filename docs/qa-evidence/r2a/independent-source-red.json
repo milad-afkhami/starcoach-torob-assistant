@@ -1,0 +1,42 @@
+{
+  "numeric_binding": {
+    "quote": "وزن کمتر از 1.5 کیلوگرم و رم کمتر از 16 گیگابایت",
+    "interpreted_bound": {
+      "operator": "lt",
+      "value": "16",
+      "unit": "kg"
+    },
+    "source_weight": "2 کیلوگرم",
+    "check": {
+      "id": "",
+      "label_fa": "وزن کمتر از 1.5 کیلوگرم و رم کمتر از 16 گیگابایت",
+      "hard": true,
+      "status": "matched",
+      "facts": [
+        {
+          "id": "fixture:spec:0",
+          "label": "وزن",
+          "value": "2 کیلوگرم"
+        }
+      ]
+    }
+  },
+  "omitted_explicit_requirement": {
+    "semantic_requirements": [],
+    "recommendation_state": "verified",
+    "recommendation_count": 1,
+    "candidate_checks": [
+      {
+        "product_id": "p1",
+        "status": "matched",
+        "requirements": []
+      }
+    ]
+  },
+  "removal_reintroduced": {
+    "removed_id": "48e0e897491e1b0eebea",
+    "remaining_ids": [
+      "48e0e897491e1b0eebea"
+    ]
+  }
+}

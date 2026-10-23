@@ -18,11 +18,12 @@ def fixture_application():
 
     return create_app(
         catalogue_path=root / "data/catalogue.sqlite",
-        state_db_path=Path(tempfile.gettempdir()) / os.environ.get("TOROB_FIXTURE_STATE", "torob-discovery-fixture.sqlite"),
+        state_db_path=Path(tempfile.gettempdir())
+        / os.environ.get("TOROB_FIXTURE_STATE", "torob-discovery-fixture.sqlite"),
         session_secret="controlled-discovery-fixture-session-secret-32-chars",
         worker_token="controlled-discovery-fixture-worker-secret-32-chars",
-        public_origin=f"http://127.0.0.1:{os.environ.get("TOROB_FIXTURE_PORT", "8672")}",
-        frontend_dist=root / "frontend/dist",
+        public_origin=f"http://127.0.0.1:{os.environ.get('TOROB_FIXTURE_PORT', '8672')}",
+        frontend_dist=Path(os.environ.get("TOROB_FIXTURE_DIST", str(root / "frontend/dist"))),
     )
 
 
@@ -43,6 +44,8 @@ def worker():
                 context = payload.get("discovery_context")
                 value = {
                     "action": "search",
+                    "semantic_requirements": [],
+                    "spec_focus_terms": [],
                     "comparison_queries": [],
                     "query": "A07",
                     "category": "گوشی موبایل",
@@ -54,8 +57,51 @@ def worker():
                     value.update(query="zzfixture_not_in_cataloguezz", category=None)
                 if payload["message"].strip() == "کمکم کن":
                     value.update(
-                        action="clarify", query="", category=None,
+                        action="clarify",
+                        query="",
+                        category=None,
                         clarification_fa="چه کالایی می‌خواهی؟ نام یا کاربرد و بودجه‌ات را بگو.",
+                    )
+                semantic = payload.get("semantic_context") or {}
+                if semantic.get("requirements"):
+                    value.update(
+                        query=payload["current_constraints"]["query"],
+                        category=payload["current_constraints"]["category"],
+                    )
+                if "دانشگاه" in payload["message"] and "نزدیک انقلاب" in payload["message"]:
+                    value.update(
+                        action="clarify",
+                        query="لپ تاپ",
+                        category="لپ تاپ و نوت بوک",
+                        max_price_toman="60000000",
+                        clarification_fa="مبدأ نزدیک انقلاب را از نشانی ثبت‌شده انتخاب کن.",
+                        semantic_requirements=[
+                            {
+                                "label_fa": "نزدیک انقلاب",
+                                "source_quote": "نزدیک انقلاب",
+                                "kind": "location",
+                                "hard": True,
+                                "spec_terms": [],
+                                "numeric": None,
+                            }
+                        ],
+                    )
+                if "وزن کمتر از 1.5 کیلوگرم" in payload["message"]:
+                    value.update(
+                        query="لپ تاپ",
+                        category="لپ تاپ و نوت بوک",
+                        max_price_toman="45000000",
+                        spec_focus_terms=["وزن"],
+                        semantic_requirements=[
+                            {
+                                "label_fa": "وزن کمتر از 1.5 کیلوگرم",
+                                "source_quote": "وزن کمتر از 1.5 کیلوگرم",
+                                "kind": "spec",
+                                "hard": True,
+                                "spec_terms": ["وزن"],
+                                "numeric": {"operator": "lt", "value": "1.5", "unit": "kg"},
+                            }
+                        ],
                     )
                 if context:
                     value["reference_product_ids"] = []
@@ -99,4 +145,6 @@ def worker():
 
 if not os.environ.get("TOROB_FIXTURE_NO_WORKER"):
     threading.Thread(target=worker, daemon=True).start()
-uvicorn.run(app, host="127.0.0.1", port=int(os.environ.get("TOROB_FIXTURE_PORT", "8672")), log_level="warning")
+uvicorn.run(
+    app, host="127.0.0.1", port=int(os.environ.get("TOROB_FIXTURE_PORT", "8672")), log_level="warning"
+)

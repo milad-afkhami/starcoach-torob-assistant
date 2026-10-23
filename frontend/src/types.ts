@@ -31,9 +31,14 @@ export interface Turn { id: string; state: string; stage: string; error_code: st
   products: Product[]; recommendations: Recommendation[]; comparison_product_ids?:string[]; clarification_fa: string | null;
   proposed_constraints: Constraints; proposal_summary?: {eligible_shops: number; applied: boolean} | null;
   observation: Observation | null; degraded: boolean;
+  semantic_context?:SemanticContext; candidate_checks?:CandidateCheck[]; location_action?:boolean; recommendation_state?:string;
 } | null }
 
 export interface ConstraintSuggestion {field:'max_price_toman'|'radius_km';value:string|number;delta:string;base_revision:number;constraints:Constraints;eligible_shops:number;supporting_offer_ids:string[]}
 export interface LocationPoint {shop_id:string;label:string;lat:number;lon:number;source:'catalogue_shop_coordinate'}
 export interface SearchDiagnostic {kind:'category'|'budget';constraints:Constraints;minimum_toman?:string}
 export interface ProductFeasibility {product:Product;eligible_shops:number;distinct_shops:number;best_offer:Offer|null;exclusion_reasons:Record<string,number>}
+
+export interface SemanticRequirement {id:string;label_fa:string;source_quote:string;kind:'spec'|'location'|'purpose'|'other';hard:boolean;spec_terms:string[];origin_resolved?:boolean}
+export interface SemanticContext {requirements:SemanticRequirement[];user_messages:string[];pending_clarification_fa:string|null}
+export interface CandidateCheck {product_id:string;status:'matched'|'unresolved'|'excluded';requirements:{id:string;label_fa:string;hard:boolean;status:'matched'|'unresolved'|'excluded';facts:{id:string;label:string;value:string}[]}[]}

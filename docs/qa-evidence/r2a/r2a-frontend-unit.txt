@@ -1,0 +1,34 @@
+
+> torob-plan-b-ui@0.1.0 test
+> node --experimental-strip-types --test src/*.test.ts
+
+✔ transient owned-turn reads recover the same completed observation without replaying POST (57.261645ms)
+✔ persistent transport loss consumes at most three retries across the complete turn (2.141878ms)
+✔ cancellation during retry wait cannot fetch or resurrect the completed turn (1.193774ms)
+✔ original monotonic deadline prevents retry after backoff or a late completed response (3.891813ms)
+✔ HTTP 401 is never silently retried (1.592137ms)
+✔ HTTP 403 is never silently retried (1.353717ms)
+✔ HTTP 404 is never silently retried (1.356482ms)
+✔ HTTP 409 is never silently retried (0.986155ms)
+✔ HTTP 429 is never silently retried (0.930131ms)
+✔ HTTP 500 is never silently retried (0.90608ms)
+✔ HTTP 501 is never silently retried (0.974274ms)
+✔ HTTP 502 permits bounded same-turn read recovery (1.204889ms)
+✔ HTTP 503 permits bounded same-turn read recovery (1.388888ms)
+✔ HTTP 504 permits bounded same-turn read recovery (0.567358ms)
+✔ failed mutation remains single attempt and has a precise transport error (0.480889ms)
+✔ a hanging owned-turn GET is aborted at the original deadline without a retry (99.662449ms)
+✔ RAM and storage aliases align only compatible unit families and retain source labels (4.440302ms)
+✔ RAM type, different units and absent values never become inferred capacities (0.820097ms)
+✔ capacity units attached to numbers align with their full Persian spelling (0.724511ms)
+✔ exact large price survives Persian formatting (24.132424ms)
+✔ Persian/Arabic input becomes exact integer string, never Number (1.047622ms)
+✔ visit uses explicit Tehran offset and input preserves digits (13.735828ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 372.09397

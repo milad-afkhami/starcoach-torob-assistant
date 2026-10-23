@@ -14,7 +14,7 @@
 | Reply dialog | Inquiry draft, pasted reply, manual outcome, preview, confirm | A stored observation, then the revised plan |
 | Destination and history | Torob search, Get there, recorded deltas | Handoffs follow the current primary |
 
-Desktop and mobile use one conversation. Replies introduce product cards, comparisons and purchase plans, then explain the next step. The composer stays at the bottom; direct search and filters are a secondary drawer. Enter sends, Shift+Enter adds a line, and input-method composition does not send a message. Assistant discovery displays at most six cards so ordinal references match what you see.
+Desktop and mobile use one conversation. Replies introduce product cards, comparisons and purchase plans, then explain the next step. The composer stays at the bottom; direct search and filters are a bounded, nonsticky tools region outside the compact message composer. Enter sends, Shift+Enter adds a line, and input-method composition does not send a message. Assistant discovery displays at most six cards so ordinal references match what you see.
 
 ## Choose a product
 
@@ -136,3 +136,11 @@ After an assistant discovery, ask about the first or second displayed card—for
 All displayed cards remain visible while the assistant asks a clarification. References cover at most the first six cards from the same recent response, with an assistant-selected thirty-minute limit. A missing card, old context or unclear “more memory” request asks for clarification instead of guessing RAM, internal storage or a variant. Manual search, an accepted search diagnostic and the sample start a fresh context and stop the pending assistant request; previous options cannot silently become references for replacement cards. New product variants still require your explicit selection.
 
 A brief connection failure while reading an assistant result retries that same review up to three times within its original time limit. It does not send another request to the model or confirm the seller response. Stop remains available; persistent failure is shown explicitly, and the manual controls remain usable.
+
+## Refine a need without losing unresolved conditions
+
+A completed assistant clarification can be continued even when it showed no cards. The same recent owned conversation retains the earlier purpose, proposed budget/category, pending area and quoted hard requirements. A new conversation, direct search or sample is an explicit fresh start. Reload still restores only the saved purchase mission; it does not restore page conversation messages.
+
+Each candidate shows its checks against the quoted requirements. “Compatible with recorded data” refers only to the particular recorded specification. Missing units, unsupported or contradictory values and ambiguous numeric clauses stay unconfirmed. An empty verified recommendation set is presented as unresolved, with source candidates rather than a success claim. A still-required unresolved condition blocks choosing through cards or comparisons; it is not silently dropped. **حذف شرط** is an explicit removal action.
+
+For an unresolved area, **پیدا کردن نشانی برای این درخواست** opens the existing recorded-address chooser. After choosing an actual source point, **ادامه با مبدأ انتخاب‌شده** explicitly uses that origin for discovery. It does not geocode the area name or change an existing mission's location without its ordinary condition-application action. Comparison within an assistant continuation uses the current conversation conditions; a direct-search comparison uses its form conditions. Neither silently changes the form or mission.

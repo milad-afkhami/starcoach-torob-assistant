@@ -7,7 +7,7 @@ import {faDate,formatToman,localInput} from './format'
 import {reasonLabels} from './SellerCard'
 import type {Constraints,Product,ProductFeasibility} from './types'
 
-export function ProductComparison({products,constraints,onClose,onSelect,inline=false}:{products:Product[];constraints:Constraints;onClose:()=>void;onSelect:(p:Product)=>void;inline?:boolean}){
+export function ProductComparison({products,constraints,onClose,onSelect,inline=false,disabledIds=[]}:{products:Product[];constraints:Constraints;onClose:()=>void;onSelect:(p:Product)=>void;inline?:boolean;disabledIds?:string[]}){
  const [items,setItems]=useState<ProductFeasibility[]|null>(null),[state,setState]=useState<'loading'|'ready'|'failed'>('loading'),[error,setError]=useState(''),[allSpecs,setAllSpecs]=useState(false),[attempt,setAttempt]=useState(0)
  useEffect(()=>{
   let alive=true;setState('loading');setError('');setItems(null)
@@ -36,7 +36,7 @@ export function ProductComparison({products,constraints,onClose,onSelect,inline=
     {rows.slice(0,allSpecs?undefined:12).map(row=><tr key={row.id}><th scope="row">{row.label}</th>{row.values.map((value,i)=><td key={products[i].product_id}>{value||'در داده ثبت نشده'}{value&&row.sourceLabels[i].length>0&&<small className="comparison-source-label">عنوان منبع: {row.sourceLabels[i].join('، ')}</small>}</td>)}</tr>)}
     {rows.length===0&&<tr><th scope="row">مشخصات فنی</th>{products.map(p=><td key={p.product_id}>در داده ثبت نشده؛ از عنوان مدل قابلیت حدس نمی‌زنیم</td>)}</tr>}
     <tr><th scope="row">موجودی</th>{products.map(p=><td key={p.product_id}>نامشخص؛ نیازمند استعلام</td>)}</tr>
-    <tr><th scope="row">انتخاب شما</th>{products.map(p=><td key={p.product_id}><button className="button primary-button" onClick={()=>onSelect(p)}>انتخاب این کالا</button></td>)}</tr>
+    <tr><th scope="row">انتخاب شما</th>{products.map(p=><td key={p.product_id}><button className="button primary-button" disabled={disabledIds.includes(p.product_id)} onClick={()=>onSelect(p)}>{disabledIds.includes(p.product_id)?'شرط‌های بررسی‌نشده مانع انتخاب‌اند':'انتخاب این کالا'}</button></td>)}</tr>
    </tbody>
   </table></div>
   {rows.length>12&&<button className="button soft-button" onClick={()=>setAllSpecs(x=>!x)}>{allSpecs?'فقط مشخصات کلیدی':'نمایش همه مشخصات ثبت‌شده'}</button>}
