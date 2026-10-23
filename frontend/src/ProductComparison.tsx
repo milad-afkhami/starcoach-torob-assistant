@@ -7,7 +7,7 @@ import {faDate,formatToman,localInput} from './format'
 import {reasonLabels} from './SellerCard'
 import type {Constraints,Product,ProductFeasibility} from './types'
 
-export function ProductComparison({products,constraints,onClose,onSelect}:{products:Product[];constraints:Constraints;onClose:()=>void;onSelect:(p:Product)=>void}){
+export function ProductComparison({products,constraints,onClose,onSelect,inline=false}:{products:Product[];constraints:Constraints;onClose:()=>void;onSelect:(p:Product)=>void;inline?:boolean}){
  const [items,setItems]=useState<ProductFeasibility[]|null>(null),[state,setState]=useState<'loading'|'ready'|'failed'>('loading'),[error,setError]=useState(''),[allSpecs,setAllSpecs]=useState(false),[attempt,setAttempt]=useState(0)
  useEffect(()=>{
   let alive=true;setState('loading');setError('');setItems(null)
@@ -19,8 +19,9 @@ export function ProductComparison({products,constraints,onClose,onSelect}:{produ
  },[attempt])
  const rows=comparisonRows(products),pending=state==='failed'?'بررسی انجام نشد؛ نامشخص':'در حال بررسی'
  function derived(i:number,render:(item:ProductFeasibility)=>string){return state==='ready'&&items?render(items[i]):pending}
- return <Dialog className="comparison-modal" label="مقایسه دو کالا" onClose={onClose}>
-  <div className="section-heading"><h2>کدام گزینه برای خرید تو عملی‌تر است؟</h2><button className="icon-button" aria-label="بستن مقایسه" onClick={onClose}><X/></button></div>
+ const Wrapper=inline?'section':Dialog
+ return <Wrapper className={inline?"inline-comparison":"comparison-modal"} label="مقایسه دو کالا" onClose={onClose}>
+  <div className="section-heading"><h2>کدام گزینه برای خرید تو عملی‌تر است؟</h2>{!inline&&<button className="icon-button" aria-label="بستن مقایسه" onClick={onClose}><X/></button>}</div>
   <p className="comparison-context">همان شرایط فرم: بودجه {constraints.max_price_toman?formatToman(constraints.max_price_toman)+' تومان':'بدون سقف'}، شعاع {new Intl.NumberFormat('fa-IR').format(constraints.radius_km)} کیلومتر، مبدأ {constraints.origin_label||'نقطه انتخاب‌شده'} (<bdi>{constraints.lat.toFixed(4)}, {constraints.lon.toFixed(4)}</bdi>)، مراجعه {faDate(constraints.visit_at)} {constraints.visit_at?`ساعت ${localInput(constraints.visit_at).slice(11)} تهران`:''}. {constraints.payment_provider&&`پرداخت ${constraints.payment_provider}. `}{constraints.contactable_only&&'فقط فروشگاه با مسیر تماس ثبت‌شده.'}</p>
   {state==='failed'&&<div className="notice error"><p role="alert">{error} نتیجه امکان خرید نامشخص است؛ خطا به معنی نبود فروشنده نیست.</p><button className="button soft-button" onClick={()=>setAttempt(x=>x+1)}>تلاش دوباره برای مقایسه</button></div>}
   {state==='loading'&&<p role="status"><LoaderCircle size={16} className="spin"/>در حال بررسی امکان مراجعه…</p>}
@@ -40,5 +41,5 @@ export function ProductComparison({products,constraints,onClose,onSelect}:{produ
   </table></div>
   {rows.length>12&&<button className="button soft-button" onClick={()=>setAllSpecs(x=>!x)}>{allSpecs?'فقط مشخصات کلیدی':'نمایش همه مشخصات ثبت‌شده'}</button>}
   <p className="source-note">مقایسه از کاتالوگ است و گزارش‌های خصوصی برنامه را وارد نمی‌کند. سازگاری بر اساس قیمت تاریخی، موقعیت و ساعت اعلام‌شده است؛ تضمین موجودی، اصالت یا کیفیت نیست. نام‌های هم‌معنی محدود با واحد یکسان کنار هم‌اند؛ مقدارها و عنوان منبع حفظ شده‌اند. نبود مشخصه به معنی نداشتن آن قابلیت نیست.</p>
- </Dialog>
+ </Wrapper>
 }

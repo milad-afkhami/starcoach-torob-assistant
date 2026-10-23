@@ -2,30 +2,36 @@
 
 [← Documentation](README.md) · [Run locally](getting-started.md) · [Record the demo](demo.md)
 
-**Keep the product and requirements; change the plan when the facts change.** Plan B is a purchase workspace, not a guarantee that a seller has stock.
+**Keep the product and requirements; change the plan when the facts change.** Plan B is a conversational purchase assistant, not a guarantee that a seller has stock.
 
 ## Screen map
 
 | Area | Main controls | What changes |
 |---|---|---|
-| Product discovery | Search, category, comparison, AI needs box | Retrieved products and proposed conditions |
+| Conversation | Bottom composer, source product cards, inline comparisons and purchase replies | Chronological user requests and assistant responses |
 | Purchase conditions | Budget, radius, Tehran visit time, coordinates and payment requirement | The plan only after explicit application |
-| Purchase notebook | Selected product, primary, nearby fallback and excluded sellers | Eligibility based on known conditions and confirmed reports |
+| Inline purchase plan | Selected product, source-coordinate map, primary, nearby fallback and excluded sellers | Eligibility based on known conditions and confirmed reports |
 | Reply dialog | Inquiry draft, pasted reply, manual outcome, preview, confirm | A stored observation, then the revised plan |
 | Destination and history | Torob search, Get there, recorded deltas | Handoffs follow the current primary |
 
-On desktop, discovery is on the right and the purchase notebook on the left. On mobile they stack; selecting a product brings its mission into view.
+Desktop and mobile use one conversation. Replies introduce product cards, comparisons and purchase plans, then explain the next step. The composer stays at the bottom; direct search and filters are a secondary drawer. Enter sends, Shift+Enter adds a line, and input-method composition does not send a message. Assistant discovery displays at most six cards so ordinal references match what you see.
 
 ## Choose a product
 
 1. Start with the leading assistant composer. For direct search, expand **جست‌وجوی مستقیم و فیلترها**, enter a model/name in **جست‌وجوی کالا**, then press **جست‌وجو**.
 2. For help choosing, describe the need in the assistant box and press **کمک برای انتخاب**. Inspect **چرا این گزینه؟** for recorded evidence.
-3. Tick **مقایسه** on two cards and open **مقایسه دو کالا**. The comparison aligns a small set of equivalent RAM/internal-storage labels when their units match, retains original source labels/values, and shows how many distinct sellers meet the current form conditions, with a separate price/distance for the best eligible recorded offer. Key specifications lead; **نمایش همه مشخصات ثبت‌شده** expands the rest. Missing specifications are unknown, not proof of absence. Global recorded minima come from fresh exact-product responses, while the compatible price refers to the current location/time/payment/contact conditions. Private mission observations are not included in this catalogue comparison. A failed feasibility read remains unknown across all derived cells; **تلاش دوباره برای مقایسه** retries the same selected products and conditions without silently changing them.
+3. Ask to compare the first and second displayed options for an inline comparison, or tick **مقایسه** on two cards and open **مقایسه دو کالا**. The comparison aligns a small set of equivalent RAM/internal-storage labels when their units match, retains original source labels/values, and shows how many distinct sellers meet the current form conditions, with a separate price/distance for the best eligible recorded offer. Key specifications lead; **نمایش همه مشخصات ثبت‌شده** expands the rest. Missing specifications are unknown, not proof of absence. Global recorded minima come from fresh exact-product responses, while the compatible price refers to the current location/time/payment/contact conditions. Private mission observations are not included in this catalogue comparison. A failed feasibility read remains unknown across all derived cells; **تلاش دوباره برای مقایسه** retries the same selected products and conditions without silently changing them.
 4. Use **انتخاب این کالا** to choose the exact variant. Another variant is not silently substituted later.
 
 For a selected product, **شرایط همین کالا** can propose a budget, radius, visit time or payment change; the full proposed values are shown before confirmation. Relative dates resolve against an explicit Tehran clock. A selected-product condition update uses one model interpretation call and a deterministic eligibility summary rather than recommending the same product again.
 
 An AI proposal is explicitly labelled **پیشنهاد؛ هنوز اعمال نشده**. **استفاده از پیشنهاد** requires your action; changing an existing mission's conditions is explicit as well.
+
+## See the shops on the map
+
+A selected product's purchase reply embeds an interactive Leaflet map using actual catalogue shop coordinates. Red marks the primary; blue marks the fallback. Pan or zoom normally, or use keyboard-focused markers and the equivalent shop list. Selecting a marker changes the inspected address, not the current purchase destination. “Get there” always follows the active primary. Historical prices, unknown stock and anonymous shop names remain explicitly labelled.
+
+The basemap uses OpenStreetMap tiles with visible attribution. Loading and bounded failure states are explicit; a tile outage leaves source markers and the address list available. No route, journey duration or guessed location is generated.
 
 ## Set the conditions
 
@@ -109,22 +115,23 @@ After excluding the original primary, lower the budget to **39,400,000** and app
 | Report no response | Unknown/recheckable, not proof of stock or permanent unavailability |
 | Report a closure | Date-scoped information, not a permanent closure claim |
 | Confirm a later recheck | Can supersede an earlier report within its scope |
+| **گفت‌وگوی تازه** | Cancels the pending assistant request and clears the conversation, selected plan, unsent proposals, draft filters and destination controls; existing server audit records are not deleted |
 | **بازنشانی شبیه‌سازی** | Clears this simulation's observations; retains edited constraints |
 | **دیدن سناریوی نمونه** | Creates a fresh sample mission with the fixed original conditions |
 | **شروع برنامه بدون شبیه‌سازی** | Starts a separate assisted mission; does not turn simulation into verified fact |
 
 > [!TIP]
-> Use a fresh sample mission for each recording take. Refreshing restores your saved private mission rather than necessarily starting over.
+> Use a fresh sample mission for each recording take. Refreshing restores your saved private mission and explicitly says that prior conversation messages were not restored. Messages remain in the current open page; older plans become read-only when a newer plan is accepted.
 
 ## When AI is unavailable
 
-You can still search, compare, choose products, set conditions, preview manual outcomes and recover the plan. The interface discloses the worker's absence. Canceling an AI request leaves the plan unchanged; stale/late results cannot apply to a newer mission.
+You can still search, compare, choose products, set conditions, preview manual outcomes and recover the plan. The interface discloses that the assistant is unavailable. Canceling an AI request leaves the plan unchanged; stale/late results cannot apply to a newer mission.
 
 [Contact limitations](contact-limitations.md) · [Troubleshooting](reference.md#troubleshooting) · [Evidence and results](evaluation.md)
 
 ## Continue from the displayed options
 
-After an assistant discovery, ask about the first or second displayed card—for example, compare their recorded memory and price. **مقایسه همین دو گزینه** opens the existing source-backed comparison table without changing your form or purchase mission. The reference is to card order, not recommendation ranking.
+After an assistant discovery, ask about the first or second displayed card—for example, compare their recorded memory and price. The assistant embeds a source-backed comparison table in its reply; **مقایسه همین دو گزینه** can also open it in a dialog without changing your form or purchase mission. The reference is to card order, not recommendation ranking.
 
 All displayed cards remain visible while the assistant asks a clarification. References cover at most the first six cards from the same recent response, with an assistant-selected thirty-minute limit. A missing card, old context or unclear “more memory” request asks for clarification instead of guessing RAM, internal storage or a variant. Manual search, an accepted search diagnostic and the sample start a fresh context and stop the pending assistant request; previous options cannot silently become references for replacement cards. New product variants still require your explicit selection.
 

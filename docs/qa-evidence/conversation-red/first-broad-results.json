@@ -1,0 +1,1692 @@
+{
+  "config": {
+    "argv": [
+      "/usr/bin/node",
+      "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/node_modules/.bin/playwright",
+      "test"
+    ],
+    "configFile": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/playwright.config.ts",
+    "rootDir": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e",
+        "snapshotDir": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "storageState": "/home/milad/Desktop/projects/starcoach-torob-assistant/data/ui-test-session.json",
+          "baseURL": "http://127.0.0.1:8683",
+          "channel": "chrome",
+          "headless": true,
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "agent-workspace.spec.ts",
+      "file": "agent-workspace.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "agent is the first useful mobile input, with search still available",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 957,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m242.03125\u001b[39m\nReceived:   \u001b[31m505.21875\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m242.03125\u001b[39m\nReceived:   \u001b[31m505.21875\u001b[39m\n    at /home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/agent-workspace.spec.ts:7:25",
+                    "location": {
+                      "file": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/agent-workspace.spec.ts",
+                      "column": 25,
+                      "line": 7
+                    },
+                    "snippet": "   5 |  const composer=page.getByLabel('نیاز شما');await expect(composer).toBeInViewport()\n   6 |  const composerBox=await composer.boundingBox();await page.locator('.manual-search>summary').click();const searchBox=await page.getByLabel('جست‌وجوی کالا').boundingBox()\n>  7 |  expect(composerBox!.y).toBeLessThan(searchBox!.y)\n     |                         ^\n   8 |  await expect(page.getByRole('region',{name:'گفت‌وگوی خرید'})).toBeVisible()\n   9 |  expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false)\n  10 | })"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/agent-workspace.spec.ts",
+                        "column": 25,
+                        "line": 7
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m242.03125\u001b[39m\nReceived:   \u001b[31m505.21875\u001b[39m\n\n   5 |  const composer=page.getByLabel('نیاز شما');await expect(composer).toBeInViewport()\n   6 |  const composerBox=await composer.boundingBox();await page.locator('.manual-search>summary').click();const searchBox=await page.getByLabel('جست‌وجوی کالا').boundingBox()\n>  7 |  expect(composerBox!.y).toBeLessThan(searchBox!.y)\n     |                         ^\n   8 |  await expect(page.getByRole('region',{name:'گفت‌وگوی خرید'})).toBeVisible()\n   9 |  expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false)\n  10 | })\n    at /home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/agent-workspace.spec.ts:7:25"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T07:58:31.299Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results/agent-workspace-agent-is-t-376e6-with-search-still-available/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results/agent-workspace-agent-is-t-376e6-with-search-still-available/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results/agent-workspace-agent-is-t-376e6-with-search-still-available/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/agent-workspace.spec.ts",
+                    "column": 25,
+                    "line": 7
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "5620cb976a6fc299e8ad-172cca5867765632c614",
+          "file": "agent-workspace.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "search composite owns a single visible focus treatment",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1003,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T07:58:33.227Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5620cb976a6fc299e8ad-aa16ca23c993af6e7378",
+          "file": "agent-workspace.spec.ts",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "designed select supports keyboard choice escape and disabled choices",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4390,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T07:58:34.557Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5620cb976a6fc299e8ad-53fd0e93db10ad8a1f42",
+          "file": "agent-workspace.spec.ts",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "comparison checkbox retains keyboard semantics and designed appearance",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30432,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/agent-workspace.spec.ts",
+                        "column": 76,
+                        "line": 29
+                      },
+                      "message": "Error: locator.focus: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('checkbox', { name: 'مقایسه', exact: true })\u001b[22m\n\n\n  27 | test('comparison checkbox retains keyboard semantics and designed appearance',async({page})=>{\n  28 |  await page.goto('/');await page.getByRole('button',{name:'دیدن سناریوی نمونه'}).click()\n> 29 |  const box=page.getByRole('checkbox',{name:'مقایسه',exact:true});await box.focus();await box.press('Space')\n     |                                                                            ^\n  30 |  await expect(box).toBeChecked();await expect(box).toBeFocused()\n  31 |  expect(await box.evaluate(x=>getComputedStyle(x).appearance)).toBe('none')\n  32 |  await box.press('Space');await expect(box).not.toBeChecked()\n    at /home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/agent-workspace.spec.ts:29:76"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T07:58:38.979Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results/agent-workspace-comparison-fcb2e-ics-and-designed-appearance/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results/agent-workspace-comparison-fcb2e-ics-and-designed-appearance/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results/agent-workspace-comparison-fcb2e-ics-and-designed-appearance/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "5620cb976a6fc299e8ad-65f142d183b393308723",
+          "file": "agent-workspace.spec.ts",
+          "line": 27,
+          "column": 1
+        },
+        {
+          "title": "excluded sellers are grouped by the reason instead of one unbounded list",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4286,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T07:59:10.476Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5620cb976a6fc299e8ad-210f0fedab19d7ce4a56",
+          "file": "agent-workspace.spec.ts",
+          "line": 35,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "conversation.spec.ts",
+      "file": "conversation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "welcome is a chat and each response remains in the timeline",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5437,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T07:59:15.032Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e7085d83df82ab600126-51a56cddb2260dca9ae8",
+          "file": "conversation.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "sample embeds a real geographic shop map with equivalent keyboard list",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2629,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T07:59:20.494Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e7085d83df82ab600126-246c072018aaa187975f",
+          "file": "conversation.spec.ts",
+          "line": 17,
+          "column": 1
+        },
+        {
+          "title": "map failure keeps source addresses and explicitly warns",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2349,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T07:59:23.145Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e7085d83df82ab600126-3e44b92b4b0f9a3d1873",
+          "file": "conversation.spec.ts",
+          "line": 28,
+          "column": 1
+        },
+        {
+          "title": "mobile welcome and composer stay within the viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 592,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T07:59:25.520Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e7085d83df82ab600126-28340551dffd5db73a64",
+          "file": "conversation.spec.ts",
+          "line": 36,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "discovery-context.spec.ts",
+      "file": "discovery-context.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "follow-up compares exact previous displayed cards through actual owned HTTP context",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5509,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T07:59:26.151Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "554e463698b00713e3f3-3744b32e8a5ad9ab7469",
+          "file": "discovery-context.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "ambiguous memory keeps exact cards and manual search clears continuation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5420,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T07:59:31.678Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "554e463698b00713e3f3-1860bc6b2b44caa88a3c",
+          "file": "discovery-context.spec.ts",
+          "line": 20,
+          "column": 1
+        },
+        {
+          "title": "loading a sample clears the previous discovery parent instead of relabelling its cards",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5976,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T07:59:37.115Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "554e463698b00713e3f3-d3543c3cd753dccec9dc",
+          "file": "discovery-context.spec.ts",
+          "line": 35,
+          "column": 1
+        },
+        {
+          "title": "a late completed discovery cannot attach its parent to replacement sample cards",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5094,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T07:59:43.108Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "554e463698b00713e3f3-03a1e35b92627f3dfd78",
+          "file": "discovery-context.spec.ts",
+          "line": 46,
+          "column": 1
+        },
+        {
+          "title": "accepting a newer manual diagnostic cancels and ignores an older completed AI result",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5938,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T07:59:48.219Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "554e463698b00713e3f3-7494bb1251792f94c842",
+          "file": "discovery-context.spec.ts",
+          "line": 64,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "polling-recovery.spec.ts",
+      "file": "polling-recovery.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "a dropped polling read recovers the same typed reply preview with exactly one turn POST",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5150,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T07:59:54.187Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d4d74db233909e1d9fcf-51e00fa1be9cf7fa272c",
+          "file": "polling-recovery.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "persistent polling transport loss stops after three retries and never creates another turn",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5726,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T07:59:59.354Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d4d74db233909e1d9fcf-472af57311e36726dea9",
+          "file": "polling-recovery.spec.ts",
+          "line": 17,
+          "column": 1
+        },
+        {
+          "title": "cancel during a polling retry prevents a completed stale result from returning",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2945,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:00:05.102Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d4d74db233909e1d9fcf-7e492b206277742dedc5",
+          "file": "polling-recovery.spec.ts",
+          "line": 28,
+          "column": 1
+        },
+        {
+          "title": "turn creation transport loss is not retried and does not start polling",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1482,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:00:08.065Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d4d74db233909e1d9fcf-4d4924a2c7fd2bf0ac5c",
+          "file": "polling-recovery.spec.ts",
+          "line": 40,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "purchase-completion.spec.ts",
+      "file": "purchase-completion.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "budget recovery proposes minimum increase and only applies after acceptance",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4813,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:00:09.593Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32ff31bd2a1af122f2da-c9bf490b41ef2d2cb1e3",
+          "file": "purchase-completion.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "location chooser selects a recorded address point without silently applying mission",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9236,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.origin-control')\nExpected substring: \u001b[32m\"خیابان جمهوری اسلامی، بعد از پل حافظ، ساختمان امجد، طبقه چهارم، پلاک6\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.origin-control') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.origin-control')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.origin-control')\nExpected substring: \u001b[32m\"خیابان جمهوری اسلامی، بعد از پل حافظ، ساختمان امجد، طبقه چهارم، پلاک6\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.origin-control') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.origin-control')\u001b[22m\n\n    at /home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/purchase-completion.spec.ts:25:48",
+                    "location": {
+                      "file": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/purchase-completion.spec.ts",
+                      "column": 48,
+                      "line": 25
+                    },
+                    "snippet": "  23 |  const label=(await result.locator('span').innerText()).split('\\n')[0]\n  24 |  await result.click();await expect(page.getByRole('dialog')).toHaveCount(0)\n> 25 |  await expect(page.locator('.origin-control')).toContainText(label)\n     |                                                ^\n  26 |  const after=(await (await apiGet(page.request,`/api/missions/${missionId}`)).json()).mission;expect(after.constraints).toEqual(before.constraints);expect(after.revision).toBe(before.revision)\n  27 |  await expect(page.getByRole('status').filter({hasText:'در فرم قرار گرفت'})).toBeVisible()\n  28 |  await page.locator('.manual-search>summary').click();await page.getByRole('button',{name:'اعمال شرایط روی همین برنامه'}).click();await expect(page.locator('.locked-chips')).toContainText(label)"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/purchase-completion.spec.ts",
+                        "column": 48,
+                        "line": 25
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.origin-control')\nExpected substring: \u001b[32m\"خیابان جمهوری اسلامی، بعد از پل حافظ، ساختمان امجد، طبقه چهارم، پلاک6\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('.origin-control') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.origin-control')\u001b[22m\n\n\n  23 |  const label=(await result.locator('span').innerText()).split('\\n')[0]\n  24 |  await result.click();await expect(page.getByRole('dialog')).toHaveCount(0)\n> 25 |  await expect(page.locator('.origin-control')).toContainText(label)\n     |                                                ^\n  26 |  const after=(await (await apiGet(page.request,`/api/missions/${missionId}`)).json()).mission;expect(after.constraints).toEqual(before.constraints);expect(after.revision).toBe(before.revision)\n  27 |  await expect(page.getByRole('status').filter({hasText:'در فرم قرار گرفت'})).toBeVisible()\n  28 |  await page.locator('.manual-search>summary').click();await page.getByRole('button',{name:'اعمال شرایط روی همین برنامه'}).click();await expect(page.locator('.locked-chips')).toContainText(label)\n    at /home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/purchase-completion.spec.ts:25:48"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:00:14.422Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results/purchase-completion-locati-e8b93-t-silently-applying-mission/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results/purchase-completion-locati-e8b93-t-silently-applying-mission/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results/purchase-completion-locati-e8b93-t-silently-applying-mission/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/purchase-completion.spec.ts",
+                    "column": 48,
+                    "line": 25
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "32ff31bd2a1af122f2da-2d99d7a12609716314ce",
+          "file": "purchase-completion.spec.ts",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "startup rate limit offers explicit successful retry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1726,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:00:24.802Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32ff31bd2a1af122f2da-63ca28c8a92bf71d451b",
+          "file": "purchase-completion.spec.ts",
+          "line": 33,
+          "column": 1
+        },
+        {
+          "title": "late new mission never steals a later product checkbox focus",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30216,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/purchase-completion.spec.ts",
+                        "column": 86,
+                        "line": 46
+                      },
+                      "message": "Error: locator.focus: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('checkbox', { name: 'مقایسه', exact: true })\u001b[22m\n\n\n  44 |  await page.route('**/api/missions',async route=>{arrived();await held;await route.fallback()})\n  45 |  await page.goto('/');await page.getByRole('button',{name:'دیدن سناریوی نمونه'}).click();await started\n> 46 |  const checkbox=page.getByRole('checkbox',{name:'مقایسه',exact:true});await checkbox.focus();await checkbox.press('Space')\n     |                                                                                      ^\n  47 |  release();await expect(page.getByTestId('primary-card')).toBeVisible();await expect(checkbox).toBeFocused()\n  48 | })\n  49 |\n    at /home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/purchase-completion.spec.ts:46:86"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:00:26.778Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results/purchase-completion-late-n-7935c-ater-product-checkbox-focus/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results/purchase-completion-late-n-7935c-ater-product-checkbox-focus/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results/purchase-completion-late-n-7935c-ater-product-checkbox-focus/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "32ff31bd2a1af122f2da-390d71ab3c2eb2b6f055",
+          "file": "purchase-completion.spec.ts",
+          "line": 41,
+          "column": 1
+        },
+        {
+          "title": "comparison aligns source facts and shows same-condition seller feasibility",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2775,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:00:57.733Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32ff31bd2a1af122f2da-c9a99116b8eec7ec3517",
+          "file": "purchase-completion.spec.ts",
+          "line": 50,
+          "column": 1
+        },
+        {
+          "title": "empty literal search explains a budget mismatch and recovers only on selection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1877,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:01:00.744Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32ff31bd2a1af122f2da-8b9d1ff1532a45623f86",
+          "file": "purchase-completion.spec.ts",
+          "line": 63,
+          "column": 1
+        },
+        {
+          "title": "contact-only discovery leads to a real supplied website route without a synthetic phone",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4223,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:01:02.643Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32ff31bd2a1af122f2da-888d43500ed5a270511b",
+          "file": "purchase-completion.spec.ts",
+          "line": 71,
+          "column": 1
+        },
+        {
+          "title": "radius recovery only changes radius and retains the chosen origin and budget",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5533,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:01:06.897Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32ff31bd2a1af122f2da-6c3d8dacd73434e9d0a4",
+          "file": "purchase-completion.spec.ts",
+          "line": 86,
+          "column": 1
+        },
+        {
+          "title": "global comparison prices never reuse contact-filtered search prices",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2220,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:01:12.468Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32ff31bd2a1af122f2da-eecc7db797ad3089054f",
+          "file": "purchase-completion.spec.ts",
+          "line": 107,
+          "column": 1
+        },
+        {
+          "title": "comparison failure is unknown rather than zero and retries the unchanged snapshot",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2710,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:01:14.710Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32ff31bd2a1af122f2da-2fbf96ae179ebb1eda84",
+          "file": "purchase-completion.spec.ts",
+          "line": 115,
+          "column": 1
+        },
+        {
+          "title": "planned visits default to declared hours and an explicit opt-out persists",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5353,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:01:17.435Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32ff31bd2a1af122f2da-02515aef51472503a8c1",
+          "file": "purchase-completion.spec.ts",
+          "line": 126,
+          "column": 1
+        },
+        {
+          "title": "stale recovery refreshes current plan without autoaccepting or discarding draft edits",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6925,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:01:22.805Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32ff31bd2a1af122f2da-b11657dd2aed593336a2",
+          "file": "purchase-completion.spec.ts",
+          "line": 138,
+          "column": 1
+        },
+        {
+          "title": "pending sample load cannot overwrite a later manual budget edit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2541,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:01:29.745Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32ff31bd2a1af122f2da-e1eea9e87ea8597f05fb",
+          "file": "purchase-completion.spec.ts",
+          "line": 152,
+          "column": 1
+        },
+        {
+          "title": "late condition save preserves a newer selected origin as an uncommitted draft",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4693,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:01:32.301Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32ff31bd2a1af122f2da-769e94012bb49148f3a4",
+          "file": "purchase-completion.spec.ts",
+          "line": 163,
+          "column": 1
+        },
+        {
+          "title": "late sample loading preserves a newer origin separately from its sample mission",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2939,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:01:37.013Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "32ff31bd2a1af122f2da-224af4d796927368c525",
+          "file": "purchase-completion.spec.ts",
+          "line": 182,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "shopping.spec.ts",
+      "file": "shopping.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "real demo recovery preserves mission and price arithmetic",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7657,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:01:39.988Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f177f4eaa9abb9f5894f-853213ac12786e54276e",
+          "file": "shopping.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "search fields work and mobile does not overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1841,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:01:47.660Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f177f4eaa9abb9f5894f-088b919306e381bf7d6e",
+          "file": "shopping.spec.ts",
+          "line": 23,
+          "column": 1
+        },
+        {
+          "title": "reply dialog keeps keyboard focus and returns to the repaired plan",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4584,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:01:49.522Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f177f4eaa9abb9f5894f-215b6599005995658e1b",
+          "file": "shopping.spec.ts",
+          "line": 35,
+          "column": 1
+        },
+        {
+          "title": "cancel during initial AI request prevents a late answer from replacing search",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2140,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:01:54.129Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f177f4eaa9abb9f5894f-babd77233fca81aa285e",
+          "file": "shopping.spec.ts",
+          "line": 54,
+          "column": 1
+        },
+        {
+          "title": "clipboard denial is explained inside the reply dialog",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3286,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:01:56.294Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f177f4eaa9abb9f5894f-c6e2d283da2100b84c36",
+          "file": "shopping.spec.ts",
+          "line": 75,
+          "column": 1
+        },
+        {
+          "title": "unanswered sellers can be rechecked after all options are exhausted",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9301,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:01:59.605Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f177f4eaa9abb9f5894f-fc71f95833b82fcc9e3a",
+          "file": "shopping.spec.ts",
+          "line": 86,
+          "column": 1
+        },
+        {
+          "title": "late saved-mission restore cannot replace a new choice (success)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5369,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:02:08.924Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f177f4eaa9abb9f5894f-a6e27df0686871a6b356",
+          "file": "shopping.spec.ts",
+          "line": 107,
+          "column": 39
+        },
+        {
+          "title": "late saved-mission restore cannot replace a new choice (failure)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5133,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:02:14.312Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f177f4eaa9abb9f5894f-1fa310c945cdf131a446",
+          "file": "shopping.spec.ts",
+          "line": 107,
+          "column": 39
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-23T07:58:30.633Z",
+    "duration": 229035.296,
+    "expected": 37,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

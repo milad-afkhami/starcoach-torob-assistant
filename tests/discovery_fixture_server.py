@@ -1,6 +1,7 @@
 """Isolated real HTTP/domain QA with a deterministic fixture worker; NO model calls."""
 
 import sys
+import os
 import threading
 import time
 import tempfile
@@ -17,10 +18,10 @@ def fixture_application():
 
     return create_app(
         catalogue_path=root / "data/catalogue.sqlite",
-        state_db_path=Path(tempfile.gettempdir()) / "torob-discovery-fixture.sqlite",
+        state_db_path=Path(tempfile.gettempdir()) / os.environ.get("TOROB_FIXTURE_STATE", "torob-discovery-fixture.sqlite"),
         session_secret="controlled-discovery-fixture-session-secret-32-chars",
         worker_token="controlled-discovery-fixture-worker-secret-32-chars",
-        public_origin="http://127.0.0.1:8672",
+        public_origin=f"http://127.0.0.1:{os.environ.get("TOROB_FIXTURE_PORT", "8672")}",
         frontend_dist=root / "frontend/dist",
     )
 
@@ -49,6 +50,13 @@ def worker():
                     "clarification_fa": None,
                     "condition_changes": None,
                 }
+                if "بدون نتیجه" in payload["message"]:
+                    value.update(query="zzfixture_not_in_cataloguezz", category=None)
+                if payload["message"].strip() == "کمکم کن":
+                    value.update(
+                        action="clarify", query="", category=None,
+                        clarification_fa="چه کالایی می‌خواهی؟ نام یا کاربرد و بودجه‌ات را بگو.",
+                    )
                 if context:
                     value["reference_product_ids"] = []
                     if "مقایسه" in payload["message"]:
@@ -89,5 +97,6 @@ def worker():
         time.sleep(0.1)
 
 
-threading.Thread(target=worker, daemon=True).start()
-uvicorn.run(app, host="127.0.0.1", port=8672, log_level="warning")
+if not os.environ.get("TOROB_FIXTURE_NO_WORKER"):
+    threading.Thread(target=worker, daemon=True).start()
+uvicorn.run(app, host="127.0.0.1", port=int(os.environ.get("TOROB_FIXTURE_PORT", "8672")), log_level="warning")

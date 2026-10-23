@@ -3,8 +3,8 @@ import {test,expect} from './fixtures'
 test('agent is the first useful mobile input, with search still available',async({page})=>{
  await page.setViewportSize({width:390,height:844});await page.goto('/')
  const composer=page.getByLabel('نیاز شما');await expect(composer).toBeInViewport()
- const composerBox=await composer.boundingBox();await page.locator('.manual-search>summary').click();const searchBox=await page.getByLabel('جست‌وجوی کالا').boundingBox()
- expect(composerBox!.y).toBeLessThan(searchBox!.y)
+ // Filters are a tool drawer above the bottom chat composer in the conversation design.
+ await expect(page.getByLabel('جست‌وجوی کالا')).toBeHidden();await page.locator('.manual-search>summary').click();await expect(page.getByLabel('جست‌وجوی کالا')).toBeVisible()
  await expect(page.getByRole('region',{name:'گفت‌وگوی خرید'})).toBeVisible()
  expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false)
 })
@@ -25,8 +25,8 @@ test('designed select supports keyboard choice escape and disabled choices',asyn
 })
 
 test('comparison checkbox retains keyboard semantics and designed appearance',async({page})=>{
- await page.goto('/');await page.getByRole('button',{name:'دیدن سناریوی نمونه'}).click()
- const box=page.getByRole('checkbox',{name:'مقایسه',exact:true});await box.focus();await box.press('Space')
+ await page.goto('/');await page.locator('.manual-search>summary').click();await page.getByLabel('جست‌وجوی کالا').fill('A07');await page.getByRole('button',{name:'جست‌وجو',exact:true}).click()
+ const box=page.getByTestId('product-card').first().getByRole('checkbox',{name:'مقایسه',exact:true});await box.focus();await box.press('Space')
  await expect(box).toBeChecked();await expect(box).toBeFocused()
  expect(await box.evaluate(x=>getComputedStyle(x).appearance)).toBe('none')
  await box.press('Space');await expect(box).not.toBeChecked()

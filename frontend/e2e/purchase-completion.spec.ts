@@ -38,13 +38,14 @@ test('startup rate limit offers explicit successful retry',async({page})=>{
  await expect(page.getByRole('button',{name:'دیدن سناریوی نمونه'})).toBeEnabled()
 })
 
-test('late new mission never steals a later product checkbox focus',async({page})=>{
+test('late new mission never steals a later composer focus',async({page})=>{
  let release!:()=>void;const held=new Promise<void>(r=>{release=r})
  let arrived!:()=>void;const started=new Promise<void>(r=>{arrived=r})
  await page.route('**/api/missions',async route=>{arrived();await held;await route.fallback()})
  await page.goto('/');await page.getByRole('button',{name:'دیدن سناریوی نمونه'}).click();await started
- const checkbox=page.getByRole('checkbox',{name:'مقایسه',exact:true});await checkbox.focus();await checkbox.press('Space')
- release();await expect(page.getByTestId('primary-card')).toBeVisible();await expect(checkbox).toBeFocused()
+ await expect(page.getByRole('button',{name:'گفت‌وگوی تازه'})).toBeDisabled()
+ const composer=page.getByLabel('نیاز شما');await composer.focus();await composer.fill('درخواست بعدی من')
+ release();await expect(page.getByTestId('primary-card')).toBeVisible();await expect(composer).toBeFocused();await expect(composer).toHaveValue('درخواست بعدی من')
 })
 
 test('comparison aligns source facts and shows same-condition seller feasibility',async({page})=>{

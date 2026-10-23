@@ -24,7 +24,7 @@ This implementation adopts a coherent subset of its foundations and interaction 
 | Select | Same field height, radius, text alignment, selected/check and disabled states | Button/listbox semantics; arrows, Home/End, Enter/Space, Escape, Tab and outside dismissal; Escape does not close the containing modal |
 | Checkbox | Consistent border, red checked surface and drawn checkmark | Native checkbox semantics, keyboard Space and visible focus retained |
 | Agent composer | Leading mobile input with supported text and typed UI responses | User turn, bounded progress/cancel, explicit proposal application; no model-generated executable UI |
-| Mission notebook | Primary/fallback roles and visible change delta | Same responsive workflow on desktop; mobile jump; no trapped nested notebook scroll |
+| Inline purchase plan | Primary/fallback roles, source-coordinate map and visible change delta | Chronological assistant response; old revisions read-only; current controls preserve revision guards |
 
 ## Persian digits and exact data
 
@@ -34,8 +34,8 @@ Numeric parsing/validation and exact decimal-string/BigInt money handling remain
 
 ## Product decisions
 
-- **One responsive application:** prioritize the mobile in-person use case; use desktop width for the mission beside the agent. No separate desktop product or parallel feature set.
+- **One responsive application:** prioritize the mobile in-person use case; use one chronological conversation on desktop and mobile with bounded inline evidence components. No separate desktop product or parallel feature set.
 - **Plan B is a builder-selected name:** it communicates recovery, but is not an organizer-provided product name and implies no official affiliation.
 - **Agent-led, bounded GenUI:** the assistant presents source-backed cards and explicit condition proposals. Manual controls are secondary and reachable when AI is offline; they are not removed in favor of opaque chat.
 
-Actual checks and remaining delivery work are owned by [the kanban](insured-vibe-coding/kanban.md) and [the UI revision ledger](insured-vibe-coding/test-plans/agent-workspace.md).
+Actual checks and remaining delivery work are owned by [the kanban](insured-vibe-coding/kanban.md) and [the conversation QA ledger](insured-vibe-coding/test-plans/conversation.md).

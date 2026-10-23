@@ -1,0 +1,11 @@
+# Conversation-first correction
+
+The buyer should recognize a chat app immediately: one quiet opening question, a bottom composer, and a single chronological conversation. Assistant prose introduces grounded cards, comparisons and purchase plans, then gives a concrete next step. Search and filters remain a collapsed tool beside the composer. There is no separate results dashboard or permanent empty plan sidebar.
+
+Tokens retain the subject's Torob red #C62835 for primary actions, white #FFFFFF conversation surface, slate #1E293B text, muted #64748B labels, pale #F8FAFC page and blue #2563EB fallback marker. Local Vazirmatn carries all Persian text; headings 26/20px, body 15px, disclosures 12px. Assistant replies are unboxed prose; bounded data components carry borders. User messages have a pale slate bubble, aligned to the opposite edge. Desktop conversation width is 880px; mobile is one column with reachable controls and no page overflow.
+
+The timeline owns immutable typed snapshots (user text, assistant text, retrieved products, comparison, mission/plan/delta). Active controls use the current mission revision; historical plans are read-only. Model output never becomes HTML or JavaScript. The map is Leaflet 1.9.4 with OpenStreetMap tiles, visible attribution, keyboard markers and equivalent labelled list controls. Markers use only actual finite catalogue coordinates; primary and backup have different labels and colors. Tile failure retains markers and addresses and states the limitation. No current location, route, stock or price is invented.
+
+Implementation: first prove missing conversation/map behavior red; add typed snapshots and map, relocate existing guarded controls into chronological response blocks; run canonical checks and deterministic real HTTP/browser QA. Preserve all existing failures. No genuine model starts or deployment changes are authorized in this phase.
+
+Design review: a dashboard with a chat-looking input still fails this brief. The initial screen therefore hides the purchase panel entirely, and new results are appended to the conversation rather than replacing a disconnected grid. A model-directed arbitrary component runtime is unnecessary: the existing validated evidence IDs supply a closed set of React components.

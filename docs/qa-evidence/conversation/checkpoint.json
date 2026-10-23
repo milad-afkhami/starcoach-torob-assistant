@@ -1,0 +1,60 @@
+{
+  "phase": "conversation-first correction",
+  "date": "2026-10-23",
+  "branch": "usability/r2-torob",
+  "baseline": "e70297f7e4a6fa256fbd58c8aa2f6ed8dfa49cf6",
+  "checks": {
+    "backend": {
+      "passed": 256,
+      "warning": "existing Starlette/httpx deprecation",
+      "scope": "first runnable milestone; backend source unchanged thereafter"
+    },
+    "frontend_logic": {
+      "passed": 22
+    },
+    "browser": {
+      "startTime": "2026-10-23T08:20:57.539Z",
+      "duration": 187265.05,
+      "expected": 50,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "ruff": "pass",
+    "typescript_vite": "pass",
+    "whitespace": "pass",
+    "planned_rendered_qa": "18/18 verified",
+    "independent_desktop_mobile": "pass",
+    "actual_no_worker_manual_and_owner_isolation": "pass"
+  },
+  "source_and_dist_sha256": {
+    "frontend/dist/assets/index-D26G9fRL.css": "327d27def518f3ba384546d48c647ab31c38493f36593d6672b4edbcfebc0982",
+    "frontend/dist/assets/index-GqLlXUXz.js": "819f3e9093fc8f55f86e25fbed669dcd4235cab20e2f16705a18139daffd8ea8",
+    "frontend/dist/favicon.svg": "959912309efd9c043ba7e825ee7b9ff25bcdf5f9358029e28e4bea486c4106ab",
+    "frontend/dist/fonts/OFL.txt": "17e355067c8284f47743a1ee3b1ef7ff684ff0601eda357f9353b10b3016ab31",
+    "frontend/dist/fonts/Vazirmatn.woff2": "4e3fa217d38fdafc1fea4414ceb58ca5e662cf0ab5fa735a8c8c20e8b42cad92",
+    "frontend/dist/index.html": "0ff584e5cc05d51e988c773a3e3679a131ac688f4655abe1e709a93fdf5d1bf9",
+    "frontend/e2e/conversation.spec.ts": "218ffa754b1cfd15892c489ad05bb24ed667e6f68d162499011ca7a9ddcea3ee",
+    "frontend/e2e/fixtures.ts": "2da0dd5fee9ef117d8319817023c901d43abe9bacb1fa5d541f71e75ac2ad881",
+    "frontend/e2e/setup.ts": "c5adeecbcc7a5077e1be6262a2f59e716bf459de17d0b8176e02b0615cabf94a",
+    "frontend/package-lock.json": "2532bf0ceb3b4262fbb289a3c02ad2f6d2f19593983f8558c04e7b5eee7b1618",
+    "frontend/src/App.tsx": "86135905ecfd61b96c698978022a7ffdc184fe3276d21621dcd168f67e834c15",
+    "frontend/src/ProductComparison.tsx": "3994f11adc195958443abb16431084e4568d512e3595f51c6cca81618d14e34c",
+    "frontend/src/SellerCard.tsx": "8f013b983f7b47497d0e3ad9c88fe5540f2e098277be0eb462754286282e1a26",
+    "frontend/src/ShopMap.tsx": "550ec641d0fd38ea45a1d387e687e130f6f16d8e128844121350fee05109b767",
+    "frontend/src/style.css": "60bfec9741238a1fb01561e390f7f3593ff5f5acc1a014cadf0e64b977270983",
+    "tests/discovery_fixture_server.py": "da0f5bb9c68b1ea08ad5f64127c124a2545ce911f579ca74135f9bcbf0c87488"
+  },
+  "unrun": [
+    "genuine model calls for this UI revision",
+    "hosted deployment/acceptance for this UI revision",
+    "new public recording/publication",
+    "actual OS input-method automation (controlled composing-key event tested)"
+  ],
+  "limitations": [
+    "Conversation messages persist only while the page remains open; reload explicitly restores the saved owned mission without old messages.",
+    "OpenStreetMap tiles are best effort; loading/failure preserves source coordinates and addresses."
+  ],
+  "failures_preserved": "../conversation-red/ plus raw traces in /tmp/starcoach-ui-revision-20261023/",
+  "no_model_budget_or_app_limiter_reset": true
+}

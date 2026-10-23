@@ -14,9 +14,9 @@ export const outcomeLabels: Record<string,string> = {
   price_change: 'قیمت تغییر کرده', variant_mismatch: 'مدل یا مشخصات متفاوت است', payment_conflict: 'شرط پرداخت پذیرفته نشد', closed: 'فروشگاه تعطیل است',
 }
 
-export function SellerCard({option,role,onFollowup,compact=false,disabled=false}:{option:Option;role:'primary'|'fallback'|'excluded';onFollowup?:(id:string)=>void;compact?:boolean;disabled?:boolean}) {
+export function SellerCard({option,role,onFollowup,compact=false,disabled=false,historical=false}:{option:Option;role:'primary'|'fallback'|'excluded';onFollowup?:(id:string)=>void;compact?:boolean;disabled?:boolean;historical?:boolean}) {
   const o=option.offer
-  return <article className={`seller-card ${role} ${compact?'compact':''}`} data-testid={`${role}-card`}>
+  return <article className={`seller-card ${role} ${compact?'compact':''}`} data-testid={historical?`historical-${role}-card`:`${role}-card`}>
     <div className="seller-top"><span className="seller-role">{role==='primary'?'گزینه اول':role==='fallback'?'گزینه دوم، نزدیک شما':'نیازمند توجه'}</span>
       <span className="distance"><MapPin size={13}/>{o.straight_line_km===null?'فاصله نامشخص':`${new Intl.NumberFormat('fa-IR',{maximumFractionDigits:2}).format(o.straight_line_km)} کیلومتر`}</span></div>
     <h3>{o.shop_name || 'فروشگاه بدون نام'}</h3>

@@ -1,0 +1,258 @@
+{
+  "config": {
+    "argv": [
+      "/usr/bin/node",
+      "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/node_modules/.bin/playwright",
+      "test",
+      "--grep",
+      "Enter sends|closing text|map marker keyboard"
+    ],
+    "configFile": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/playwright.config.ts",
+    "rootDir": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e",
+        "snapshotDir": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "storageState": "/home/milad/Desktop/projects/starcoach-torob-assistant/data/ui-test-session.json",
+          "baseURL": "http://127.0.0.1:8683",
+          "channel": "chrome",
+          "headless": true,
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "conversation.spec.ts",
+      "file": "conversation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Enter sends once, Shift Enter inserts a line, and IME Enter does not send",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3935,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:13:39.034Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e7085d83df82ab600126-717f57899b976c5df3d4",
+          "file": "conversation.spec.ts",
+          "line": 43,
+          "column": 1
+        },
+        {
+          "title": "the reply closing text and actions can scroll fully above the composer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2415,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:13:43.194Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e7085d83df82ab600126-5e9ba74ebcbaf45f5914",
+          "file": "conversation.spec.ts",
+          "line": 94,
+          "column": 1
+        },
+        {
+          "title": "map marker keyboard selection matches the list without changing the purchase destination",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7612,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.leaflet-marker-icon.fallback')\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('.leaflet-marker-icon.fallback') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.leaflet-marker-icon.fallback')\u001b[22m\n\u001b[2m    14 × locator resolved to <div tabindex=\"0\" role=\"button\" aria-pressed=\"false\" title=\"گزینه دوم: ماهیار نیکینا\" class=\"leaflet-marker-icon shop-marker fallback leaflet-zoom-animated leaflet-interactive\">۲</div>\u001b[22m\n\u001b[2m       - unexpected value \"false\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.leaflet-marker-icon.fallback')\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('.leaflet-marker-icon.fallback') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.leaflet-marker-icon.fallback')\u001b[22m\n\u001b[2m    14 × locator resolved to <div tabindex=\"0\" role=\"button\" aria-pressed=\"false\" title=\"گزینه دوم: ماهیار نیکینا\" class=\"leaflet-marker-icon shop-marker fallback leaflet-zoom-animated leaflet-interactive\">۲</div>\u001b[22m\n\u001b[2m       - unexpected value \"false\"\u001b[22m\n\n    at /home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/conversation.spec.ts:105:23",
+                    "location": {
+                      "file": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/conversation.spec.ts",
+                      "column": 23,
+                      "line": 105
+                    },
+                    "snippet": "  103 |  const primary=await page.getByTestId('primary-card').locator('h3').innerText()\n  104 |  const backup=page.locator('.leaflet-marker-icon.fallback');await backup.focus();await backup.press('Enter')\n> 105 |  await expect(backup).toHaveAttribute('aria-pressed','true');await expect(page.locator('.map-shop-list button.fallback')).toHaveAttribute('aria-pressed','true')\n      |                       ^\n  106 |  await page.getByRole('button',{name:'رفتن به فروشگاه'}).click();await expect(page.locator('.transport-panel')).toContainText('مقصد گزینه اول');await expect(page.getByTestId('primary-card').locator('h3')).toHaveText(primary)\n  107 | })\n  108 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/conversation.spec.ts",
+                        "column": 23,
+                        "line": 105
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.leaflet-marker-icon.fallback')\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" locator('.leaflet-marker-icon.fallback') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.leaflet-marker-icon.fallback')\u001b[22m\n\u001b[2m    14 × locator resolved to <div tabindex=\"0\" role=\"button\" aria-pressed=\"false\" title=\"گزینه دوم: ماهیار نیکینا\" class=\"leaflet-marker-icon shop-marker fallback leaflet-zoom-animated leaflet-interactive\">۲</div>\u001b[22m\n\u001b[2m       - unexpected value \"false\"\u001b[22m\n\n\n  103 |  const primary=await page.getByTestId('primary-card').locator('h3').innerText()\n  104 |  const backup=page.locator('.leaflet-marker-icon.fallback');await backup.focus();await backup.press('Enter')\n> 105 |  await expect(backup).toHaveAttribute('aria-pressed','true');await expect(page.locator('.map-shop-list button.fallback')).toHaveAttribute('aria-pressed','true')\n      |                       ^\n  106 |  await page.getByRole('button',{name:'رفتن به فروشگاه'}).click();await expect(page.locator('.transport-panel')).toContainText('مقصد گزینه اول');await expect(page.getByTestId('primary-card').locator('h3')).toHaveText(primary)\n  107 | })\n  108 |\n    at /home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/conversation.spec.ts:105:23"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T08:13:45.633Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results/conversation-map-marker-ke-58419-ng-the-purchase-destination/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results/conversation-map-marker-ke-58419-ng-the-purchase-destination/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results/conversation-map-marker-ke-58419-ng-the-purchase-destination/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/conversation.spec.ts",
+                    "column": 23,
+                    "line": 105
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e7085d83df82ab600126-d8ebab086e7d3c81b767",
+          "file": "conversation.spec.ts",
+          "line": 101,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-23T08:13:38.247Z",
+    "duration": 15455.479,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

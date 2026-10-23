@@ -1,0 +1,26 @@
+{
+  "layout": {
+    "composer": {
+      "x": 280,
+      "y": 660.4375,
+      "width": 880,
+      "height": 293,
+      "top": 660.4375,
+      "right": 1160,
+      "bottom": 953.4375,
+      "left": 280
+    },
+    "closing": {
+      "x": 280,
+      "y": 564.4375,
+      "width": 880,
+      "height": 28,
+      "top": 564.4375,
+      "right": 1160,
+      "bottom": 592.4375,
+      "left": 280
+    },
+    "overflow": false
+  },
+  "errors": []
+}

@@ -1,0 +1,264 @@
+{
+  "config": {
+    "argv": [
+      "/usr/bin/node",
+      "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/node_modules/.bin/playwright",
+      "test",
+      "--grep",
+      "welcome is a chat|sample embeds"
+    ],
+    "configFile": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/playwright.config.ts",
+    "rootDir": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e",
+        "snapshotDir": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "storageState": "/home/milad/Desktop/projects/starcoach-torob-assistant/data/ui-test-session.json",
+          "baseURL": "http://127.0.0.1:8683",
+          "channel": "chrome",
+          "headless": true,
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "conversation.spec.ts",
+      "file": "conversation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "welcome is a chat and each response remains in the timeline",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5849,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'برای خرید چی در نظر داری؟' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'برای خرید چی در نظر داری؟' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'برای خرید چی در نظر داری؟' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'برای خرید چی در نظر داری؟' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'برای خرید چی در نظر داری؟' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'برای خرید چی در نظر داری؟' })\u001b[22m\n\n    at /home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/conversation.spec.ts:6:98",
+                    "location": {
+                      "file": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/conversation.spec.ts",
+                      "column": 98,
+                      "line": 6
+                    },
+                    "snippet": "  4 |\n  5 | test('welcome is a chat and each response remains in the timeline',async({page})=>{\n> 6 |  await page.goto('/');await expect(page.getByRole('heading',{name:'برای خرید چی در نظر داری؟'})).toBeVisible()\n    |                                                                                                  ^\n  7 |  await expect(page.locator('.mission-panel')).toHaveCount(0)\n  8 |  const composer=page.getByLabel('نیاز شما');await composer.fill('گوشی A07');await page.getByRole('button',{name:'کمک برای انتخاب'}).click()\n  9 |  await expect(page.getByTestId('product-card').first()).toBeVisible()"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/conversation.spec.ts",
+                        "column": 98,
+                        "line": 6
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'برای خرید چی در نظر داری؟' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'برای خرید چی در نظر داری؟' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'برای خرید چی در نظر داری؟' })\u001b[22m\n\n\n  4 |\n  5 | test('welcome is a chat and each response remains in the timeline',async({page})=>{\n> 6 |  await page.goto('/');await expect(page.getByRole('heading',{name:'برای خرید چی در نظر داری؟'})).toBeVisible()\n    |                                                                                                  ^\n  7 |  await expect(page.locator('.mission-panel')).toHaveCount(0)\n  8 |  const composer=page.getByLabel('نیاز شما');await composer.fill('گوشی A07');await page.getByRole('button',{name:'کمک برای انتخاب'}).click()\n  9 |  await expect(page.getByTestId('product-card').first()).toBeVisible()\n    at /home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/conversation.spec.ts:6:98"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T07:54:18.858Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results/conversation-welcome-is-a--16240-nse-remains-in-the-timeline/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results/conversation-welcome-is-a--16240-nse-remains-in-the-timeline/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results/conversation-welcome-is-a--16240-nse-remains-in-the-timeline/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/conversation.spec.ts",
+                    "column": 98,
+                    "line": 6
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e7085d83df82ab600126-51a56cddb2260dca9ae8",
+          "file": "conversation.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "sample embeds a real geographic shop map with equivalent keyboard list",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7649,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.shop-map .leaflet-container')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.shop-map .leaflet-container') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.shop-map .leaflet-container')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.shop-map .leaflet-container')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.shop-map .leaflet-container') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.shop-map .leaflet-container')\u001b[22m\n\n    at /home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/conversation.spec.ts:20:61",
+                    "location": {
+                      "file": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/conversation.spec.ts",
+                      "column": 61,
+                      "line": 20
+                    },
+                    "snippet": "  18 |  await page.goto('/');await page.getByRole('button',{name:'دیدن سناریوی نمونه'}).click()\n  19 |  await expect(page.getByTestId('simulation-banner')).toBeVisible()\n> 20 |  await expect(page.locator('.shop-map .leaflet-container')).toBeVisible()\n     |                                                             ^\n  21 |  await expect(page.locator('.shop-map .leaflet-marker-icon')).toHaveCount(2)\n  22 |  await expect(page.locator('.shop-map')).toContainText('OpenStreetMap')\n  23 |  const backup=page.locator('.map-shop-list button').filter({hasText:'گزینه دوم'})"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/conversation.spec.ts",
+                        "column": 61,
+                        "line": 20
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.shop-map .leaflet-container')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" locator('.shop-map .leaflet-container') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.shop-map .leaflet-container')\u001b[22m\n\n\n  18 |  await page.goto('/');await page.getByRole('button',{name:'دیدن سناریوی نمونه'}).click()\n  19 |  await expect(page.getByTestId('simulation-banner')).toBeVisible()\n> 20 |  await expect(page.locator('.shop-map .leaflet-container')).toBeVisible()\n     |                                                             ^\n  21 |  await expect(page.locator('.shop-map .leaflet-marker-icon')).toHaveCount(2)\n  22 |  await expect(page.locator('.shop-map')).toContainText('OpenStreetMap')\n  23 |  const backup=page.locator('.map-shop-list button').filter({hasText:'گزینه دوم'})\n    at /home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/conversation.spec.ts:20:61"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T07:54:25.607Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results/conversation-sample-embeds-66fa1-th-equivalent-keyboard-list/test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results/conversation-sample-embeds-66fa1-th-equivalent-keyboard-list/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/test-results/conversation-sample-embeds-66fa1-th-equivalent-keyboard-list/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/milad/Desktop/projects/starcoach-torob-assistant/frontend/e2e/conversation.spec.ts",
+                    "column": 61,
+                    "line": 20
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e7085d83df82ab600126-246c072018aaa187975f",
+          "file": "conversation.spec.ts",
+          "line": 17,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-23T07:54:18.104Z",
+    "duration": 15763.786,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

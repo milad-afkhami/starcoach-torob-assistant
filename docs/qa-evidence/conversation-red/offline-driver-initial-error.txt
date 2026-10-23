@@ -1,0 +1,6 @@
+Retained initial offline QA harness failure (before successful rerun):
+apiRequestContext.get: Invalid URL
+at /tmp/torob-conversation-offline-qa.mjs:9:37
+cause: the scratch Playwright browser context omitted baseURL for a relative API request.
+correction: explicitly configure the isolated fixture origin on both contexts.
+The application was unchanged. Successful actual no-worker/manual/isolation evidence: ../conversation/offline-isolation.json.
