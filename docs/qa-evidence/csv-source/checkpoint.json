@@ -1,0 +1,48 @@
+{
+  "phase": "complete private CSV source packaging",
+  "date": "2026-10-23",
+  "branch": "packaging/csv-source-build",
+  "baseline_commit": "1df525d29b269d3fe89767b864e8ebf9e5255316",
+  "artifact": "data/deployment-csv-source-r2.tar.gz",
+  "private_manifest": "data/deployment-csv-source-r2.json",
+  "artifact_sha256": "8a12bba6fe58dc2b7a029d6f17bbca42fdf98b479cf52a7c09b021709e4da7dd",
+  "artifact_bytes": 60504615,
+  "artifact_evidence": "artifact-inspection.json",
+  "legacy_build": "build.json",
+  "catalogue_equivalence": "semantic-equivalence.json",
+  "container_acceptance": [
+    "container-named.json",
+    "container-root-bind.json"
+  ],
+  "checks": {
+    "backend_passed": 296,
+    "backend_warning": "existing upstream Starlette/httpx deprecation",
+    "targeted_packaging_equivalence_build_passed": 44,
+    "ruff": "pass",
+    "whitespace": "pass",
+    "frontend_and_domain": "unchanged; frozen delivered frontend hashes verified in both real containers"
+  },
+  "local_gates": "all passed",
+  "build_evidence_reuse": "every archived member SHA256 equals the successfully built CSV candidate; only packaging writer/report changed after review, neither is a runtime archive input",
+  "source_sha256": {
+    "Dockerfile.csv-source": "1911b65fb0adc0fa4793b44ff1e8428f904cc14572fb8d4f1ae283bc32a1c6e5",
+    "scripts/package_deployment.py": "0559e1b6f34adfbe818f5cdbc5659b051dc37ba9fbdda2e4b1dd1fa9dcc833e5",
+    "scripts/build_catalogue.py": "ea5e3c38e3cc4f8ba10892ad93d1f415f55b9713baeeac9363895875b8b697c2",
+    "scripts/compare_catalogues.py": "8e10c536fa794a1056c62353e3f0b0f79aa16528151ba89e94e763b6b4e7f696",
+    "scripts/qa_container.py": "822e42f6f2217eb2c1be7b8aa3f08ab6fad0446663af92bb702536b37162df20",
+    "tests/test_deployment_package.py": "5f6bd9657de043b631d9f32a6f4a4b5f83456a313c3f6a818d08295b5b966834",
+    "tests/test_catalogue_equivalence.py": "82e0b0b7bcf16f765d5a0d4ca6a492233ddcda7c94576ade0f6152285aeb42dd",
+    "tests/test_csv_build.py": "379aa6829297df37ecb7cb856fdeb5a4830ada459d532b03aa3f07e58af59861"
+  },
+  "unrun": [
+    "provider source upload/release and hosted acceptance of this distinct artifact"
+  ],
+  "not_touched": [
+    "original unknown/unreleased103MB source intent/artifact",
+    "root-owned dirty docs/qa-evidence/deployment-artifact.json",
+    "application/domain/frontend code",
+    "cloud or private registry",
+    "real model runtime/quota"
+  ],
+  "negative_evidence": "negative-results.json"
+}

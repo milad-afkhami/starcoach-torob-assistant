@@ -1,0 +1,158 @@
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            BuildKit is currently disabled; enable it by removing the DOCKER_BUILDKIT=0
+            environment-variable.
+
+Sending build context to Docker daemon  60.99MB
+
+Step 1/22 : FROM public.ecr.aws/docker/library/python:3.12-slim-bookworm@sha256:6a0e06f5ba0b373d051aabd3fffb9b873f27f9a2a3a14bcbe37dee6f0e3bbc70 AS catalogue-build
+ ---> 6a0e06f5ba0b
+Step 2/22 : WORKDIR /catalogue
+ ---> Using cache
+ ---> 77acb5deea71
+Step 3/22 : ENV PYTHONPATH=/catalogue/backend
+ ---> Running in f70f90f15c08
+ ---> Removed intermediate container f70f90f15c08
+ ---> 7f6ffb74ffdd
+Step 4/22 : COPY backend/torob/__init__.py backend/torob/ingest.py backend/torob/normalize.py backend/torob/
+ ---> 0d32cfdae7d6
+Step 5/22 : COPY scripts/build_catalogue.py scripts/build_catalogue.py
+ ---> 4567144d2b5f
+Step 6/22 : COPY data/catalogue-source.zip data/catalogue-source.json ./
+ ---> 629f6d418a14
+Step 7/22 : RUN python scripts/build_catalogue.py --archive catalogue-source.zip --source-manifest catalogue-source.json --output catalogue.sqlite --manifest import-report.json
+ ---> Running in d93f9e247695
+{
+  "counts": {
+    "shops": 6476,
+    "products": 225903,
+    "offers": 331506
+  },
+  "missing": {
+    "shops": {
+      "instagram": 6454,
+      "supports_fast_delivery": 4875,
+      "website_url": 6386
+    },
+    "products": {
+      "model": 221847,
+      "brand_name": 168269
+    },
+    "offers": {
+      "warranty": 272563,
+      "price_toman": 15083,
+      "last_price_changed_at": 769
+    }
+  },
+  "payload_hashes": {
+    "products.csv": "e4a9749529d1e032c1dc2c4e275a8793a1edd702a194cb8de9abafc0649cc9c9",
+    "offers.csv": "664d256ed04b37cfb268d89eb605afda4a3b76179324b39d2dbaef21439f09b9",
+    "shops.csv": "1a292d6180e2a28cd0bbec57b1bb575a440e5afcc3ec3f5af5b1e13172aebaa1"
+  },
+  "archive_sha256": "37a25fbd4cdb30aec265d6367e7ebafd8673364ffc90e74411a5f13cd7d94013",
+  "duration_seconds": 71.123,
+  "rejected_rows": 0,
+  "database_bytes": 732311552,
+  "peak_rss_kib": 30988
+}
+ ---> Removed intermediate container d93f9e247695
+ ---> aef70b6f350e
+Step 8/22 : FROM public.ecr.aws/docker/library/python:3.12-slim-bookworm@sha256:6a0e06f5ba0b373d051aabd3fffb9b873f27f9a2a3a14bcbe37dee6f0e3bbc70 AS runtime
+ ---> 6a0e06f5ba0b
+Step 9/22 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PYTHONPATH=/app/backend     CATALOGUE_DB_PATH=/app/data/catalogue.sqlite STATE_DB_PATH=/data/state.sqlite
+ ---> Using cache
+ ---> 92d901bcadf7
+Step 10/22 : WORKDIR /app
+ ---> Using cache
+ ---> 8f8f42b28cdd
+Step 11/22 : COPY requirements.lock ./
+ ---> 67d3b4b9327a
+Step 12/22 : RUN pip install --no-cache-dir --require-hashes -r requirements.lock     && groupadd --gid 10001 app && useradd --uid 10001 --gid app --no-create-home app     && mkdir /data && chown app:app /data
+ ---> Running in b43e40f98ac4
+Collecting annotated-doc==0.0.5 (from -r requirements.lock (line 3))
+  Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+Collecting annotated-types==0.8.0 (from -r requirements.lock (line 7))
+  Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Collecting anyio==4.15.1 (from -r requirements.lock (line 11))
+  Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+Collecting attrs==26.1.0 (from -r requirements.lock (line 17))
+  Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+Collecting certifi==2026.10.19 (from -r requirements.lock (line 23))
+  Downloading certifi-2026.10.19-py3-none-any.whl (136 kB)
+Collecting click==8.5.0 (from -r requirements.lock (line 29))
+  Downloading click-8.5.0-py3-none-any.whl (125 kB)
+Collecting fastapi==0.159.1 (from -r requirements.lock (line 33))
+  Downloading fastapi-0.159.1-py3-none-any.whl (149 kB)
+Collecting h11==0.16.0 (from -r requirements.lock (line 37))
+  Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Collecting httpcore==1.0.9 (from -r requirements.lock (line 43))
+  Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+Collecting httpx==0.28.1 (from -r requirements.lock (line 47))
+  Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+Collecting idna==3.20 (from -r requirements.lock (line 51))
+  Downloading idna-3.20-py3-none-any.whl (69 kB)
+Collecting jsonschema==4.26.0 (from -r requirements.lock (line 57))
+  Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+Collecting jsonschema-specifications==2025.9.1 (from -r requirements.lock (line 61))
+  Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+Collecting opentelemetry-api==1.45.1 (from -r requirements.lock (line 65))
+  Downloading opentelemetry_api-1.45.1-py3-none-any.whl (60 kB)
+Collecting pydantic==2.14.1 (from -r requirements.lock (line 69))
+  Downloading pydantic-2.14.1-py3-none-any.whl (488 kB)
+Collecting pydantic-core==2.50.1 (from -r requirements.lock (line 75))
+  Downloading pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 645.7 kB/s eta 0:00:00
+Collecting referencing==0.37.0 (from -r requirements.lock (line 97))
+  Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+Collecting rpds-py==2026.9.1 (from -r requirements.lock (line 103))
+  Downloading rpds_py-2026.9.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (371 kB)
+Collecting starlette==1.9.0 (from -r requirements.lock (line 135))
+  Downloading starlette-1.9.0-py3-none-any.whl (80 kB)
+Collecting typing-extensions==4.16.0 (from -r requirements.lock (line 139))
+  Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Collecting typing-inspection==0.4.4 (from -r requirements.lock (line 151))
+  WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='files.pythonhosted.org', port=443): Read timed out. (read timeout=15)")': /packages/67/81/4add07e5172b7ac40d8ed5ff580409a7801a4fe26d529bdd915401dabfbe/typing_inspection-0.4.4-py3-none-any.whl
+  Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+Collecting uvicorn==0.54.0 (from -r requirements.lock (line 157))
+  Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
+Installing collected packages: typing-extensions, rpds-py, idna, h11, click, certifi, attrs, annotated-types, annotated-doc, uvicorn, typing-inspection, referencing, pydantic-core, opentelemetry-api, httpcore, anyio, starlette, pydantic, jsonschema-specifications, httpx, jsonschema, fastapi
+Successfully installed annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 attrs-26.1.0 certifi-2026.10.19 click-8.5.0 fastapi-0.159.1 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.20 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 opentelemetry-api-1.45.1 pydantic-2.14.1 pydantic-core-2.50.1 referencing-0.37.0 rpds-py-2026.9.1 starlette-1.9.0 typing-extensions-4.16.0 typing-inspection-0.4.4 uvicorn-0.54.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.2.2
+[notice] To update, run: pip install --upgrade pip
+ ---> Removed intermediate container b43e40f98ac4
+ ---> a6be99172b19
+Step 13/22 : COPY backend/torob/ backend/torob/
+ ---> bd579c79b2ed
+Step 14/22 : COPY frontend/dist/ frontend/dist/
+ ---> 80b30e1b4ffd
+Step 15/22 : COPY --from=catalogue-build /catalogue/catalogue.sqlite data/catalogue.sqlite
+ ---> 16cdea0418ba
+Step 16/22 : COPY scripts/container_entrypoint.py scripts/container_entrypoint.py
+ ---> c2c4e698fbec
+Step 17/22 : RUN chmod 755 /app/data && chmod 444 /app/data/catalogue.sqlite /app/scripts/container_entrypoint.py
+ ---> Running in 423e8d65bd85
+ ---> Removed intermediate container 423e8d65bd85
+ ---> 8bbd5e2f69c5
+Step 18/22 : USER 0:0
+ ---> Running in 645078f658b9
+ ---> Removed intermediate container 645078f658b9
+ ---> 96f3603e293a
+Step 19/22 : ENTRYPOINT ["python", "/app/scripts/container_entrypoint.py"]
+ ---> Running in 56972450b26c
+ ---> Removed intermediate container 56972450b26c
+ ---> 65fe7d32edb7
+Step 20/22 : EXPOSE 8000
+ ---> Running in b26d9d202bb3
+ ---> Removed intermediate container b26d9d202bb3
+ ---> 13499279662c
+Step 21/22 : HEALTHCHECK --interval=30s --timeout=5s --start-period=15s CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/readyz',timeout=3)"
+ ---> Running in 88ac11069c08
+ ---> Removed intermediate container 88ac11069c08
+ ---> fc03ab138854
+Step 22/22 : CMD ["uvicorn", "torob.api:create_app", "--factory", "--host", "0.0.0.0", "--port", "8000", "--workers", "1", "--no-access-log"]
+ ---> Running in 021fcd0a052c
+ ---> Removed intermediate container 021fcd0a052c
+ ---> 15904aa35d56
+Successfully built 15904aa35d56
+Successfully tagged starcoach-torob:csv-source-r2

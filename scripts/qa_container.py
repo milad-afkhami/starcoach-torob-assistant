@@ -16,10 +16,9 @@ def docker(*args):
     return subprocess.check_output(["docker", *args], text=True).strip()
 
 
-def main(state_storage="named", report_path=Path("docs/qa-evidence/container.json")):
+def main(state_storage="named", report_path=Path("docs/qa-evidence/container.json"), *, image="starcoach-torob:local", port=8653, catalogue_reference=Path("data/catalogue.sqlite")):
     name = "torob-container-qa-" + secrets.token_hex(4)
     volume = name + "-state"
-    port = 8653
     origin = f"http://127.0.0.1:{port}"
     report = {}
     with tempfile.TemporaryDirectory(prefix="torob-container-qa-") as temp:
@@ -46,7 +45,7 @@ def main(state_storage="named", report_path=Path("docs/qa-evidence/container.jso
                 "python",
                 "-v",
                 str(state) + ":/data",
-                "starcoach-torob:local",
+                image,
                 "-c",
                 "import os; os.chown('/data',0,0); os.chmod('/data',0o755)",
             )
@@ -73,7 +72,7 @@ def main(state_storage="named", report_path=Path("docs/qa-evidence/container.jso
                 f"127.0.0.1:{port}:8000",
                 "-v",
                 mount,
-                "starcoach-torob:local",
+                image,
             )
             with httpx.Client(base_url=origin, headers={"origin": origin}, timeout=20) as client:
                 for _ in range(40):
@@ -175,6 +174,9 @@ def main(state_storage="named", report_path=Path("docs/qa-evidence/container.jso
                     "/data/catalogue.sqlite",
                     "/data/catalogue.sqlite.xz",
                     "/data/catalogue-build.json",
+                    "/data/catalogue-source.zip",
+                    "/data/catalogue-source.json",
+                    "/scripts/build_catalogue.py",
                     "/scripts/unpack_catalogue.py",
                     "/.env",
                     "/backend/torob/api.py",
@@ -190,7 +192,7 @@ def main(state_storage="named", report_path=Path("docs/qa-evidence/container.jso
                 report["catalogue_sha256"] = docker(
                     "exec", name, "sha256sum", "/app/data/catalogue.sqlite"
                 ).split()[0]
-                local = hashlib.file_digest(Path("data/catalogue.sqlite").open("rb"), "sha256").hexdigest()
+                local = hashlib.file_digest(catalogue_reference.open("rb"), "sha256").hexdigest()
                 assert report["catalogue_sha256"] == local
                 docker("restart", name)
                 for _ in range(40):
@@ -206,14 +208,14 @@ def main(state_storage="named", report_path=Path("docs/qa-evidence/container.jso
                 report["persistence"] = True
                 report["private_paths_404"] = True
                 report["worker_offline_search_and_recovery"] = True
-                report["image"] = json.loads(docker("image", "inspect", "starcoach-torob:local"))[0]["Id"]
-                report["image_bytes"] = json.loads(docker("image", "inspect", "starcoach-torob:local"))[0][
+                report["image"] = json.loads(docker("image", "inspect", image))[0]["Id"]
+                report["image_bytes"] = json.loads(docker("image", "inspect", image))[0][
                     "Size"
                 ]
-                report["catalogue_bytes"] = Path("data/catalogue.sqlite").stat().st_size
+                report["catalogue_bytes"] = catalogue_reference.stat().st_size
         except Exception:
             logs = subprocess.run(["docker", "logs", name], capture_output=True, text=True)
-            Path("docs/qa-evidence/container-failure.txt").write_text(logs.stdout + logs.stderr)
+            Path(report_path).with_suffix(".failure.txt").write_text(logs.stdout + logs.stderr)
             print((logs.stdout + logs.stderr)[-4000:])
             raise
         finally:
@@ -230,7 +232,7 @@ def main(state_storage="named", report_path=Path("docs/qa-evidence/container.jso
                         "sh",
                         "-v",
                         str(Path(temp)) + ":/qa",
-                        "starcoach-torob:local",
+                        image,
                         "-c",
                         "rm -rf /qa/state",
                     ],
@@ -251,5 +253,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--state-storage", choices=["named", "root-bind"], default="named")
     parser.add_argument("--report", type=Path, default=Path("docs/qa-evidence/container.json"))
+    parser.add_argument("--image", default="starcoach-torob:local")
+    parser.add_argument("--port", type=int, default=8653)
+    parser.add_argument("--catalogue-reference", type=Path, default=Path("data/catalogue.sqlite"))
     args = parser.parse_args()
-    main(args.state_storage, args.report)
+    main(args.state_storage, args.report, image=args.image, port=args.port, catalogue_reference=args.catalogue_reference)

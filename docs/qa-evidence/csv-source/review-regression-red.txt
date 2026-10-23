@@ -1,0 +1,680 @@
+............FFFFFFFFFFFFFFFFFF                                           [100%]
+=================================== FAILURES ===================================
+_____ test_untrusted_predictable_partial_never_overwrites_its_target[zip] ______
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-266/test_untrusted_predictable_par0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f803f943b60>
+mode = 'zip'
+
+    @pytest.mark.parametrize('mode', ['zip', 'xz'])
+    def test_untrusted_predictable_partial_never_overwrites_its_target(tmp_path, monkeypatch, mode):
+        root = csv_repo(tmp_path)
+        (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+        source, _ = trusted_zip(tmp_path, monkeypatch)
+        out = tmp_path / 'output.tar.gz'
+        sentinel = tmp_path / 'outside-secret'
+        sentinel.write_bytes(b'DO NOT OVERWRITE')
+        out.with_suffix('.gz.partial').symlink_to(sentinel)
+        module().package(root, out, **({'source_zip': source} if mode == 'zip' else {}))
+>       assert sentinel.read_bytes() == b'DO NOT OVERWRITE'
+E       AssertionError: assert b'\x1f\x8b\x0...\x00x\x00\x00' == b'DO NOT OVERWRITE'
+E
+E         At index 0 diff: b'\x1f' != b'D'
+E         Use -v to get more diff
+
+tests/test_deployment_package.py:268: AssertionError
+______ test_untrusted_predictable_partial_never_overwrites_its_target[xz] ______
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-266/test_untrusted_predictable_par1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f803f943590>
+mode = 'xz'
+
+    @pytest.mark.parametrize('mode', ['zip', 'xz'])
+    def test_untrusted_predictable_partial_never_overwrites_its_target(tmp_path, monkeypatch, mode):
+        root = csv_repo(tmp_path)
+        (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+        source, _ = trusted_zip(tmp_path, monkeypatch)
+        out = tmp_path / 'output.tar.gz'
+        sentinel = tmp_path / 'outside-secret'
+        sentinel.write_bytes(b'DO NOT OVERWRITE')
+        out.with_suffix('.gz.partial').symlink_to(sentinel)
+        module().package(root, out, **({'source_zip': source} if mode == 'zip' else {}))
+>       assert sentinel.read_bytes() == b'DO NOT OVERWRITE'
+E       AssertionError: assert b'\x1f\x8b\x0...\x00x\x00\x00' == b'DO NOT OVERWRITE'
+E
+E         At index 0 diff: b'\x1f' != b'D'
+E         Use -v to get more diff
+
+tests/test_deployment_package.py:268: AssertionError
+_ test_destination_cannot_alias_any_input_before_cache_or_output_writes[source-zip] _
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-266/test_destination_cannot_alias_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f803f940620>
+mode = 'zip', kind = 'source'
+
+    @pytest.mark.parametrize('mode', ['zip', 'xz'])
+    @pytest.mark.parametrize('kind', ['source', 'runtime', 'hardlink', 'symlink', 'parent_symlink'])
+    def test_destination_cannot_alias_any_input_before_cache_or_output_writes(tmp_path, monkeypatch, mode, kind):
+        import os
+
+        root = csv_repo(tmp_path)
+        (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+        source, _ = trusted_zip(tmp_path, monkeypatch)
+        target = source if mode == 'zip' else root / 'data/catalogue.sqlite'
+        before_source = target.read_bytes()
+        before_cache = (root / 'data/catalogue.sqlite.xz').read_bytes()
+        before_api = (root / 'backend/torob/api.py').read_bytes()
+        if kind == 'source':
+            out = target
+        elif kind == 'runtime':
+            out = root / 'backend/torob/api.py'
+        elif kind == 'hardlink':
+            out = tmp_path / 'hardlinked-output'
+            os.link(target, out)
+        elif kind == 'symlink':
+            out = tmp_path / 'linked-output'
+            out.symlink_to(target)
+        else:
+            link = tmp_path / 'linked-parent'
+            link.symlink_to(target.parent, target_is_directory=True)
+            out = link / target.name
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_deployment_package.py:298: Failed
+_ test_destination_cannot_alias_any_input_before_cache_or_output_writes[source-xz] _
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-266/test_destination_cannot_alias_1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f803f9422a0>
+mode = 'xz', kind = 'source'
+
+    @pytest.mark.parametrize('mode', ['zip', 'xz'])
+    @pytest.mark.parametrize('kind', ['source', 'runtime', 'hardlink', 'symlink', 'parent_symlink'])
+    def test_destination_cannot_alias_any_input_before_cache_or_output_writes(tmp_path, monkeypatch, mode, kind):
+        import os
+
+        root = csv_repo(tmp_path)
+        (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+        source, _ = trusted_zip(tmp_path, monkeypatch)
+        target = source if mode == 'zip' else root / 'data/catalogue.sqlite'
+        before_source = target.read_bytes()
+        before_cache = (root / 'data/catalogue.sqlite.xz').read_bytes()
+        before_api = (root / 'backend/torob/api.py').read_bytes()
+        if kind == 'source':
+            out = target
+        elif kind == 'runtime':
+            out = root / 'backend/torob/api.py'
+        elif kind == 'hardlink':
+            out = tmp_path / 'hardlinked-output'
+            os.link(target, out)
+        elif kind == 'symlink':
+            out = tmp_path / 'linked-output'
+            out.symlink_to(target)
+        else:
+            link = tmp_path / 'linked-parent'
+            link.symlink_to(target.parent, target_is_directory=True)
+            out = link / target.name
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_deployment_package.py:298: Failed
+_ test_destination_cannot_alias_any_input_before_cache_or_output_writes[runtime-zip] _
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-266/test_destination_cannot_alias_2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f803f942510>
+mode = 'zip', kind = 'runtime'
+
+    @pytest.mark.parametrize('mode', ['zip', 'xz'])
+    @pytest.mark.parametrize('kind', ['source', 'runtime', 'hardlink', 'symlink', 'parent_symlink'])
+    def test_destination_cannot_alias_any_input_before_cache_or_output_writes(tmp_path, monkeypatch, mode, kind):
+        import os
+
+        root = csv_repo(tmp_path)
+        (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+        source, _ = trusted_zip(tmp_path, monkeypatch)
+        target = source if mode == 'zip' else root / 'data/catalogue.sqlite'
+        before_source = target.read_bytes()
+        before_cache = (root / 'data/catalogue.sqlite.xz').read_bytes()
+        before_api = (root / 'backend/torob/api.py').read_bytes()
+        if kind == 'source':
+            out = target
+        elif kind == 'runtime':
+            out = root / 'backend/torob/api.py'
+        elif kind == 'hardlink':
+            out = tmp_path / 'hardlinked-output'
+            os.link(target, out)
+        elif kind == 'symlink':
+            out = tmp_path / 'linked-output'
+            out.symlink_to(target)
+        else:
+            link = tmp_path / 'linked-parent'
+            link.symlink_to(target.parent, target_is_directory=True)
+            out = link / target.name
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_deployment_package.py:298: Failed
+_ test_destination_cannot_alias_any_input_before_cache_or_output_writes[runtime-xz] _
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-266/test_destination_cannot_alias_3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f803f9425d0>
+mode = 'xz', kind = 'runtime'
+
+    @pytest.mark.parametrize('mode', ['zip', 'xz'])
+    @pytest.mark.parametrize('kind', ['source', 'runtime', 'hardlink', 'symlink', 'parent_symlink'])
+    def test_destination_cannot_alias_any_input_before_cache_or_output_writes(tmp_path, monkeypatch, mode, kind):
+        import os
+
+        root = csv_repo(tmp_path)
+        (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+        source, _ = trusted_zip(tmp_path, monkeypatch)
+        target = source if mode == 'zip' else root / 'data/catalogue.sqlite'
+        before_source = target.read_bytes()
+        before_cache = (root / 'data/catalogue.sqlite.xz').read_bytes()
+        before_api = (root / 'backend/torob/api.py').read_bytes()
+        if kind == 'source':
+            out = target
+        elif kind == 'runtime':
+            out = root / 'backend/torob/api.py'
+        elif kind == 'hardlink':
+            out = tmp_path / 'hardlinked-output'
+            os.link(target, out)
+        elif kind == 'symlink':
+            out = tmp_path / 'linked-output'
+            out.symlink_to(target)
+        else:
+            link = tmp_path / 'linked-parent'
+            link.symlink_to(target.parent, target_is_directory=True)
+            out = link / target.name
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_deployment_package.py:298: Failed
+_ test_destination_cannot_alias_any_input_before_cache_or_output_writes[hardlink-zip] _
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-266/test_destination_cannot_alias_4')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f803f90fcb0>
+mode = 'zip', kind = 'hardlink'
+
+    @pytest.mark.parametrize('mode', ['zip', 'xz'])
+    @pytest.mark.parametrize('kind', ['source', 'runtime', 'hardlink', 'symlink', 'parent_symlink'])
+    def test_destination_cannot_alias_any_input_before_cache_or_output_writes(tmp_path, monkeypatch, mode, kind):
+        import os
+
+        root = csv_repo(tmp_path)
+        (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+        source, _ = trusted_zip(tmp_path, monkeypatch)
+        target = source if mode == 'zip' else root / 'data/catalogue.sqlite'
+        before_source = target.read_bytes()
+        before_cache = (root / 'data/catalogue.sqlite.xz').read_bytes()
+        before_api = (root / 'backend/torob/api.py').read_bytes()
+        if kind == 'source':
+            out = target
+        elif kind == 'runtime':
+            out = root / 'backend/torob/api.py'
+        elif kind == 'hardlink':
+            out = tmp_path / 'hardlinked-output'
+            os.link(target, out)
+        elif kind == 'symlink':
+            out = tmp_path / 'linked-output'
+            out.symlink_to(target)
+        else:
+            link = tmp_path / 'linked-parent'
+            link.symlink_to(target.parent, target_is_directory=True)
+            out = link / target.name
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_deployment_package.py:298: Failed
+_ test_destination_cannot_alias_any_input_before_cache_or_output_writes[hardlink-xz] _
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-266/test_destination_cannot_alias_5')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f803f90d100>
+mode = 'xz', kind = 'hardlink'
+
+    @pytest.mark.parametrize('mode', ['zip', 'xz'])
+    @pytest.mark.parametrize('kind', ['source', 'runtime', 'hardlink', 'symlink', 'parent_symlink'])
+    def test_destination_cannot_alias_any_input_before_cache_or_output_writes(tmp_path, monkeypatch, mode, kind):
+        import os
+
+        root = csv_repo(tmp_path)
+        (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+        source, _ = trusted_zip(tmp_path, monkeypatch)
+        target = source if mode == 'zip' else root / 'data/catalogue.sqlite'
+        before_source = target.read_bytes()
+        before_cache = (root / 'data/catalogue.sqlite.xz').read_bytes()
+        before_api = (root / 'backend/torob/api.py').read_bytes()
+        if kind == 'source':
+            out = target
+        elif kind == 'runtime':
+            out = root / 'backend/torob/api.py'
+        elif kind == 'hardlink':
+            out = tmp_path / 'hardlinked-output'
+            os.link(target, out)
+        elif kind == 'symlink':
+            out = tmp_path / 'linked-output'
+            out.symlink_to(target)
+        else:
+            link = tmp_path / 'linked-parent'
+            link.symlink_to(target.parent, target_is_directory=True)
+            out = link / target.name
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_deployment_package.py:298: Failed
+_ test_destination_cannot_alias_any_input_before_cache_or_output_writes[symlink-zip] _
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-266/test_destination_cannot_alias_6')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f803f90c2f0>
+mode = 'zip', kind = 'symlink'
+
+    @pytest.mark.parametrize('mode', ['zip', 'xz'])
+    @pytest.mark.parametrize('kind', ['source', 'runtime', 'hardlink', 'symlink', 'parent_symlink'])
+    def test_destination_cannot_alias_any_input_before_cache_or_output_writes(tmp_path, monkeypatch, mode, kind):
+        import os
+
+        root = csv_repo(tmp_path)
+        (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+        source, _ = trusted_zip(tmp_path, monkeypatch)
+        target = source if mode == 'zip' else root / 'data/catalogue.sqlite'
+        before_source = target.read_bytes()
+        before_cache = (root / 'data/catalogue.sqlite.xz').read_bytes()
+        before_api = (root / 'backend/torob/api.py').read_bytes()
+        if kind == 'source':
+            out = target
+        elif kind == 'runtime':
+            out = root / 'backend/torob/api.py'
+        elif kind == 'hardlink':
+            out = tmp_path / 'hardlinked-output'
+            os.link(target, out)
+        elif kind == 'symlink':
+            out = tmp_path / 'linked-output'
+            out.symlink_to(target)
+        else:
+            link = tmp_path / 'linked-parent'
+            link.symlink_to(target.parent, target_is_directory=True)
+            out = link / target.name
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_deployment_package.py:298: Failed
+_ test_destination_cannot_alias_any_input_before_cache_or_output_writes[symlink-xz] _
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-266/test_destination_cannot_alias_7')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f803f90de80>
+mode = 'xz', kind = 'symlink'
+
+    @pytest.mark.parametrize('mode', ['zip', 'xz'])
+    @pytest.mark.parametrize('kind', ['source', 'runtime', 'hardlink', 'symlink', 'parent_symlink'])
+    def test_destination_cannot_alias_any_input_before_cache_or_output_writes(tmp_path, monkeypatch, mode, kind):
+        import os
+
+        root = csv_repo(tmp_path)
+        (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+        source, _ = trusted_zip(tmp_path, monkeypatch)
+        target = source if mode == 'zip' else root / 'data/catalogue.sqlite'
+        before_source = target.read_bytes()
+        before_cache = (root / 'data/catalogue.sqlite.xz').read_bytes()
+        before_api = (root / 'backend/torob/api.py').read_bytes()
+        if kind == 'source':
+            out = target
+        elif kind == 'runtime':
+            out = root / 'backend/torob/api.py'
+        elif kind == 'hardlink':
+            out = tmp_path / 'hardlinked-output'
+            os.link(target, out)
+        elif kind == 'symlink':
+            out = tmp_path / 'linked-output'
+            out.symlink_to(target)
+        else:
+            link = tmp_path / 'linked-parent'
+            link.symlink_to(target.parent, target_is_directory=True)
+            out = link / target.name
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_deployment_package.py:298: Failed
+_ test_destination_cannot_alias_any_input_before_cache_or_output_writes[parent_symlink-zip] _
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-266/test_destination_cannot_alias_8')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f803f90eb10>
+mode = 'zip', kind = 'parent_symlink'
+
+    @pytest.mark.parametrize('mode', ['zip', 'xz'])
+    @pytest.mark.parametrize('kind', ['source', 'runtime', 'hardlink', 'symlink', 'parent_symlink'])
+    def test_destination_cannot_alias_any_input_before_cache_or_output_writes(tmp_path, monkeypatch, mode, kind):
+        import os
+
+        root = csv_repo(tmp_path)
+        (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+        source, _ = trusted_zip(tmp_path, monkeypatch)
+        target = source if mode == 'zip' else root / 'data/catalogue.sqlite'
+        before_source = target.read_bytes()
+        before_cache = (root / 'data/catalogue.sqlite.xz').read_bytes()
+        before_api = (root / 'backend/torob/api.py').read_bytes()
+        if kind == 'source':
+            out = target
+        elif kind == 'runtime':
+            out = root / 'backend/torob/api.py'
+        elif kind == 'hardlink':
+            out = tmp_path / 'hardlinked-output'
+            os.link(target, out)
+        elif kind == 'symlink':
+            out = tmp_path / 'linked-output'
+            out.symlink_to(target)
+        else:
+            link = tmp_path / 'linked-parent'
+            link.symlink_to(target.parent, target_is_directory=True)
+            out = link / target.name
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_deployment_package.py:298: Failed
+_ test_destination_cannot_alias_any_input_before_cache_or_output_writes[parent_symlink-xz] _
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-266/test_destination_cannot_alias_9')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f803f90e270>
+mode = 'xz', kind = 'parent_symlink'
+
+    @pytest.mark.parametrize('mode', ['zip', 'xz'])
+    @pytest.mark.parametrize('kind', ['source', 'runtime', 'hardlink', 'symlink', 'parent_symlink'])
+    def test_destination_cannot_alias_any_input_before_cache_or_output_writes(tmp_path, monkeypatch, mode, kind):
+        import os
+
+        root = csv_repo(tmp_path)
+        (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+        source, _ = trusted_zip(tmp_path, monkeypatch)
+        target = source if mode == 'zip' else root / 'data/catalogue.sqlite'
+        before_source = target.read_bytes()
+        before_cache = (root / 'data/catalogue.sqlite.xz').read_bytes()
+        before_api = (root / 'backend/torob/api.py').read_bytes()
+        if kind == 'source':
+            out = target
+        elif kind == 'runtime':
+            out = root / 'backend/torob/api.py'
+        elif kind == 'hardlink':
+            out = tmp_path / 'hardlinked-output'
+            os.link(target, out)
+        elif kind == 'symlink':
+            out = tmp_path / 'linked-output'
+            out.symlink_to(target)
+        else:
+            link = tmp_path / 'linked-parent'
+            link.symlink_to(target.parent, target_is_directory=True)
+            out = link / target.name
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_deployment_package.py:298: Failed
+_ test_runtime_input_identity_and_bytes_are_frozen_until_publish[symlink-zip] __
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-266/test_runtime_input_identity_an0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f803f842390>
+mode = 'zip', kind = 'symlink'
+
+    @pytest.mark.parametrize('mode', ['zip', 'xz'])
+    @pytest.mark.parametrize('kind', ['symlink', 'same_size_inplace', 'parent_swap'])
+    def test_runtime_input_identity_and_bytes_are_frozen_until_publish(tmp_path, monkeypatch, mode, kind):
+        root = csv_repo(tmp_path)
+        (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+        source, _ = trusted_zip(tmp_path, monkeypatch)
+        api = root / 'backend/torob/api.py'
+        sentinel = tmp_path / 'outside'
+        sentinel.mkdir()
+        for path in (root / 'backend/torob').glob('*.py'):
+            (sentinel / path.name).write_bytes(b'SECRET!')
+        original = tarfile.TarFile.addfile
+        altered = False
+
+        def swap(archive, info, fileobj=None):
+            nonlocal altered
+            if info.name == 'backend/torob/api.py' and not altered:
+                altered = True
+                if kind == 'symlink':
+                    api.unlink()
+                    api.symlink_to(sentinel / 'api.py')
+                elif kind == 'same_size_inplace':
+                    api.write_bytes(b'SECRET!')
+                else:
+                    parent = api.parent
+                    parent.rename(root / 'backend/old-torob')
+                    parent.symlink_to(sentinel, target_is_directory=True)
+            original(archive, info, fileobj)
+
+        monkeypatch.setattr(tarfile.TarFile, 'addfile', swap)
+        out = tmp_path / 'output.tar.gz'
+        out.write_bytes(b'previous accepted artifact')
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_deployment_package.py:337: Failed
+__ test_runtime_input_identity_and_bytes_are_frozen_until_publish[symlink-xz] __
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-266/test_runtime_input_identity_an1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f803f840140>
+mode = 'xz', kind = 'symlink'
+
+    @pytest.mark.parametrize('mode', ['zip', 'xz'])
+    @pytest.mark.parametrize('kind', ['symlink', 'same_size_inplace', 'parent_swap'])
+    def test_runtime_input_identity_and_bytes_are_frozen_until_publish(tmp_path, monkeypatch, mode, kind):
+        root = csv_repo(tmp_path)
+        (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+        source, _ = trusted_zip(tmp_path, monkeypatch)
+        api = root / 'backend/torob/api.py'
+        sentinel = tmp_path / 'outside'
+        sentinel.mkdir()
+        for path in (root / 'backend/torob').glob('*.py'):
+            (sentinel / path.name).write_bytes(b'SECRET!')
+        original = tarfile.TarFile.addfile
+        altered = False
+
+        def swap(archive, info, fileobj=None):
+            nonlocal altered
+            if info.name == 'backend/torob/api.py' and not altered:
+                altered = True
+                if kind == 'symlink':
+                    api.unlink()
+                    api.symlink_to(sentinel / 'api.py')
+                elif kind == 'same_size_inplace':
+                    api.write_bytes(b'SECRET!')
+                else:
+                    parent = api.parent
+                    parent.rename(root / 'backend/old-torob')
+                    parent.symlink_to(sentinel, target_is_directory=True)
+            original(archive, info, fileobj)
+
+        monkeypatch.setattr(tarfile.TarFile, 'addfile', swap)
+        out = tmp_path / 'output.tar.gz'
+        out.write_bytes(b'previous accepted artifact')
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_deployment_package.py:337: Failed
+_ test_runtime_input_identity_and_bytes_are_frozen_until_publish[same_size_inplace-zip] _
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-266/test_runtime_input_identity_an2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f803f90c9e0>
+mode = 'zip', kind = 'same_size_inplace'
+
+    @pytest.mark.parametrize('mode', ['zip', 'xz'])
+    @pytest.mark.parametrize('kind', ['symlink', 'same_size_inplace', 'parent_swap'])
+    def test_runtime_input_identity_and_bytes_are_frozen_until_publish(tmp_path, monkeypatch, mode, kind):
+        root = csv_repo(tmp_path)
+        (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+        source, _ = trusted_zip(tmp_path, monkeypatch)
+        api = root / 'backend/torob/api.py'
+        sentinel = tmp_path / 'outside'
+        sentinel.mkdir()
+        for path in (root / 'backend/torob').glob('*.py'):
+            (sentinel / path.name).write_bytes(b'SECRET!')
+        original = tarfile.TarFile.addfile
+        altered = False
+
+        def swap(archive, info, fileobj=None):
+            nonlocal altered
+            if info.name == 'backend/torob/api.py' and not altered:
+                altered = True
+                if kind == 'symlink':
+                    api.unlink()
+                    api.symlink_to(sentinel / 'api.py')
+                elif kind == 'same_size_inplace':
+                    api.write_bytes(b'SECRET!')
+                else:
+                    parent = api.parent
+                    parent.rename(root / 'backend/old-torob')
+                    parent.symlink_to(sentinel, target_is_directory=True)
+            original(archive, info, fileobj)
+
+        monkeypatch.setattr(tarfile.TarFile, 'addfile', swap)
+        out = tmp_path / 'output.tar.gz'
+        out.write_bytes(b'previous accepted artifact')
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_deployment_package.py:337: Failed
+_ test_runtime_input_identity_and_bytes_are_frozen_until_publish[same_size_inplace-xz] _
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-266/test_runtime_input_identity_an3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f803f90e3f0>
+mode = 'xz', kind = 'same_size_inplace'
+
+    @pytest.mark.parametrize('mode', ['zip', 'xz'])
+    @pytest.mark.parametrize('kind', ['symlink', 'same_size_inplace', 'parent_swap'])
+    def test_runtime_input_identity_and_bytes_are_frozen_until_publish(tmp_path, monkeypatch, mode, kind):
+        root = csv_repo(tmp_path)
+        (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+        source, _ = trusted_zip(tmp_path, monkeypatch)
+        api = root / 'backend/torob/api.py'
+        sentinel = tmp_path / 'outside'
+        sentinel.mkdir()
+        for path in (root / 'backend/torob').glob('*.py'):
+            (sentinel / path.name).write_bytes(b'SECRET!')
+        original = tarfile.TarFile.addfile
+        altered = False
+
+        def swap(archive, info, fileobj=None):
+            nonlocal altered
+            if info.name == 'backend/torob/api.py' and not altered:
+                altered = True
+                if kind == 'symlink':
+                    api.unlink()
+                    api.symlink_to(sentinel / 'api.py')
+                elif kind == 'same_size_inplace':
+                    api.write_bytes(b'SECRET!')
+                else:
+                    parent = api.parent
+                    parent.rename(root / 'backend/old-torob')
+                    parent.symlink_to(sentinel, target_is_directory=True)
+            original(archive, info, fileobj)
+
+        monkeypatch.setattr(tarfile.TarFile, 'addfile', swap)
+        out = tmp_path / 'output.tar.gz'
+        out.write_bytes(b'previous accepted artifact')
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_deployment_package.py:337: Failed
+_ test_runtime_input_identity_and_bytes_are_frozen_until_publish[parent_swap-zip] _
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-266/test_runtime_input_identity_an4')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f803f90e7e0>
+mode = 'zip', kind = 'parent_swap'
+
+    @pytest.mark.parametrize('mode', ['zip', 'xz'])
+    @pytest.mark.parametrize('kind', ['symlink', 'same_size_inplace', 'parent_swap'])
+    def test_runtime_input_identity_and_bytes_are_frozen_until_publish(tmp_path, monkeypatch, mode, kind):
+        root = csv_repo(tmp_path)
+        (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+        source, _ = trusted_zip(tmp_path, monkeypatch)
+        api = root / 'backend/torob/api.py'
+        sentinel = tmp_path / 'outside'
+        sentinel.mkdir()
+        for path in (root / 'backend/torob').glob('*.py'):
+            (sentinel / path.name).write_bytes(b'SECRET!')
+        original = tarfile.TarFile.addfile
+        altered = False
+
+        def swap(archive, info, fileobj=None):
+            nonlocal altered
+            if info.name == 'backend/torob/api.py' and not altered:
+                altered = True
+                if kind == 'symlink':
+                    api.unlink()
+                    api.symlink_to(sentinel / 'api.py')
+                elif kind == 'same_size_inplace':
+                    api.write_bytes(b'SECRET!')
+                else:
+                    parent = api.parent
+                    parent.rename(root / 'backend/old-torob')
+                    parent.symlink_to(sentinel, target_is_directory=True)
+            original(archive, info, fileobj)
+
+        monkeypatch.setattr(tarfile.TarFile, 'addfile', swap)
+        out = tmp_path / 'output.tar.gz'
+        out.write_bytes(b'previous accepted artifact')
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_deployment_package.py:337: Failed
+_ test_runtime_input_identity_and_bytes_are_frozen_until_publish[parent_swap-xz] _
+
+tmp_path = PosixPath('/tmp/pytest-of-milad/pytest-266/test_runtime_input_identity_an5')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f803f90c290>
+mode = 'xz', kind = 'parent_swap'
+
+    @pytest.mark.parametrize('mode', ['zip', 'xz'])
+    @pytest.mark.parametrize('kind', ['symlink', 'same_size_inplace', 'parent_swap'])
+    def test_runtime_input_identity_and_bytes_are_frozen_until_publish(tmp_path, monkeypatch, mode, kind):
+        root = csv_repo(tmp_path)
+        (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+        source, _ = trusted_zip(tmp_path, monkeypatch)
+        api = root / 'backend/torob/api.py'
+        sentinel = tmp_path / 'outside'
+        sentinel.mkdir()
+        for path in (root / 'backend/torob').glob('*.py'):
+            (sentinel / path.name).write_bytes(b'SECRET!')
+        original = tarfile.TarFile.addfile
+        altered = False
+
+        def swap(archive, info, fileobj=None):
+            nonlocal altered
+            if info.name == 'backend/torob/api.py' and not altered:
+                altered = True
+                if kind == 'symlink':
+                    api.unlink()
+                    api.symlink_to(sentinel / 'api.py')
+                elif kind == 'same_size_inplace':
+                    api.write_bytes(b'SECRET!')
+                else:
+                    parent = api.parent
+                    parent.rename(root / 'backend/old-torob')
+                    parent.symlink_to(sentinel, target_is_directory=True)
+            original(archive, info, fileobj)
+
+        monkeypatch.setattr(tarfile.TarFile, 'addfile', swap)
+        out = tmp_path / 'output.tar.gz'
+        out.write_bytes(b'previous accepted artifact')
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_deployment_package.py:337: Failed
+=========================== short test summary info ============================
+FAILED tests/test_deployment_package.py::test_untrusted_predictable_partial_never_overwrites_its_target[zip]
+FAILED tests/test_deployment_package.py::test_untrusted_predictable_partial_never_overwrites_its_target[xz]
+FAILED tests/test_deployment_package.py::test_destination_cannot_alias_any_input_before_cache_or_output_writes[source-zip]
+FAILED tests/test_deployment_package.py::test_destination_cannot_alias_any_input_before_cache_or_output_writes[source-xz]
+FAILED tests/test_deployment_package.py::test_destination_cannot_alias_any_input_before_cache_or_output_writes[runtime-zip]
+FAILED tests/test_deployment_package.py::test_destination_cannot_alias_any_input_before_cache_or_output_writes[runtime-xz]
+FAILED tests/test_deployment_package.py::test_destination_cannot_alias_any_input_before_cache_or_output_writes[hardlink-zip]
+FAILED tests/test_deployment_package.py::test_destination_cannot_alias_any_input_before_cache_or_output_writes[hardlink-xz]
+FAILED tests/test_deployment_package.py::test_destination_cannot_alias_any_input_before_cache_or_output_writes[symlink-zip]
+FAILED tests/test_deployment_package.py::test_destination_cannot_alias_any_input_before_cache_or_output_writes[symlink-xz]
+FAILED tests/test_deployment_package.py::test_destination_cannot_alias_any_input_before_cache_or_output_writes[parent_symlink-zip]
+FAILED tests/test_deployment_package.py::test_destination_cannot_alias_any_input_before_cache_or_output_writes[parent_symlink-xz]
+FAILED tests/test_deployment_package.py::test_runtime_input_identity_and_bytes_are_frozen_until_publish[symlink-zip]
+FAILED tests/test_deployment_package.py::test_runtime_input_identity_and_bytes_are_frozen_until_publish[symlink-xz]
+FAILED tests/test_deployment_package.py::test_runtime_input_identity_and_bytes_are_frozen_until_publish[same_size_inplace-zip]
+FAILED tests/test_deployment_package.py::test_runtime_input_identity_and_bytes_are_frozen_until_publish[same_size_inplace-xz]
+FAILED tests/test_deployment_package.py::test_runtime_input_identity_and_bytes_are_frozen_until_publish[parent_swap-zip]
+FAILED tests/test_deployment_package.py::test_runtime_input_identity_and_bytes_are_frozen_until_publish[parent_swap-xz]
+18 failed, 12 passed in 0.50s

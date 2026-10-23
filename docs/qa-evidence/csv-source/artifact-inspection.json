@@ -1,0 +1,100 @@
+{
+  "artifact": "/home/milad/Desktop/projects/starcoach-torob-assistant/data/deployment-csv-source-r2.tar.gz",
+  "bytes": 60504615,
+  "sha256": "8a12bba6fe58dc2b7a029d6f17bbca42fdf98b479cf52a7c09b021709e4da7dd",
+  "members": [
+    "Dockerfile",
+    "backend/torob/__init__.py",
+    "backend/torob/agent.py",
+    "backend/torob/api.py",
+    "backend/torob/catalogue.py",
+    "backend/torob/codex_cli.py",
+    "backend/torob/external_actions.py",
+    "backend/torob/followup.py",
+    "backend/torob/hours.py",
+    "backend/torob/ingest.py",
+    "backend/torob/model_jobs.py",
+    "backend/torob/model_types.py",
+    "backend/torob/model_worker.py",
+    "backend/torob/normalize.py",
+    "backend/torob/planner.py",
+    "backend/torob/session.py",
+    "backend/torob/types.py",
+    "backend/torob/worker_api.py",
+    "data/catalogue-source.json",
+    "data/catalogue-source.zip",
+    "frontend/dist/assets/index-D26G9fRL.css",
+    "frontend/dist/assets/index-GqLlXUXz.js",
+    "frontend/dist/favicon.svg",
+    "frontend/dist/fonts/OFL.txt",
+    "frontend/dist/fonts/Vazirmatn.woff2",
+    "frontend/dist/index.html",
+    "requirements.lock",
+    "scripts/build_catalogue.py",
+    "scripts/container_entrypoint.py"
+  ],
+  "private_catalogue_included": true,
+  "credentials_included": false,
+  "max_source_bytes": 128000000,
+  "catalogue": {
+    "compression": "zip",
+    "archive_sha256": "37a25fbd4cdb30aec265d6367e7ebafd8673364ffc90e74411a5f13cd7d94013",
+    "compressed_bytes": 60178644,
+    "payload_hashes": {
+      "products.csv": "e4a9749529d1e032c1dc2c4e275a8793a1edd702a194cb8de9abafc0649cc9c9",
+      "offers.csv": "664d256ed04b37cfb268d89eb605afda4a3b76179324b39d2dbaef21439f09b9",
+      "shops.csv": "1a292d6180e2a28cd0bbec57b1bb575a440e5afcc3ec3f5af5b1e13172aebaa1"
+    },
+    "expected_counts": {
+      "shops": 6476,
+      "products": 225903,
+      "offers": 331506
+    }
+  },
+  "archive_member_sha256": {
+    "Dockerfile": "1911b65fb0adc0fa4793b44ff1e8428f904cc14572fb8d4f1ae283bc32a1c6e5",
+    "backend/torob/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/torob/agent.py": "c8dd1a17ddd0415adeb299b8bc07cbd0e7d80476918d35a5c4e020d0a38c2b47",
+    "backend/torob/api.py": "e4499e7b334c90bc1f75ea1ab2226d1013706ab18e5d9a819ee39b1498bfa292",
+    "backend/torob/catalogue.py": "cdc27b7f1842d6be3a16783839bf65b0fdb4e74988930879bb383896b09f5f99",
+    "backend/torob/codex_cli.py": "2df46feaee040cb08164f04e79a208c5bc695b4cb84c27b150a4556aff317227",
+    "backend/torob/external_actions.py": "f02a205f659b8fe1c3b7ed9874dbb3926bb398d3b7f68e16fc67ea4c959b7f5f",
+    "backend/torob/followup.py": "08897696737a9b7b8daa0c6ca013e8a32bbc5b62360d4dc0c51fccaeee1a4a8a",
+    "backend/torob/hours.py": "fd4a9722b1b3d6ca79ef139dc59da73e7b0bcc3dc17e9db82c84d1b35fc7f26c",
+    "backend/torob/ingest.py": "68d0ef77cb5f68f479a692ee4ff3706de891edb9ef2903a1b8a8ba4e4cc442b2",
+    "backend/torob/model_jobs.py": "96c08cbdeb74672f84edd9a7f87616d9ac5edb4d32a88e071bd4662fc42c6a21",
+    "backend/torob/model_types.py": "3ae777a99da18054ba38e929d4387efccbb9eda296caa9b55d1f990f4bc627f7",
+    "backend/torob/model_worker.py": "3716b603b395f37ba0f7aad1832f94700c00d0beb996f65c6e08dc94ac4181a6",
+    "backend/torob/normalize.py": "2a9384d9974439e2bd68fb2d67c8848ebae27a4eac6a46d12bacdb8d76c9a7dd",
+    "backend/torob/planner.py": "dfab34c3303daefab15432e467205d9516692efa7708713d9f892d5beffa7bc9",
+    "backend/torob/session.py": "55d463ad8012837d236ae30dd56d4fd316cf3d8caf9012fbc8614fd6c50a687a",
+    "backend/torob/types.py": "83118077abc752ba7a0e9349dbfb789ecda305f433c80d3a5891ca6f07d8b234",
+    "backend/torob/worker_api.py": "14ad49e4af7fd8d7f5319e0221d3600ba5b307824c84eeaa83b52e38654450b8",
+    "data/catalogue-source.zip": "37a25fbd4cdb30aec265d6367e7ebafd8673364ffc90e74411a5f13cd7d94013",
+    "frontend/dist/assets/index-D26G9fRL.css": "327d27def518f3ba384546d48c647ab31c38493f36593d6672b4edbcfebc0982",
+    "frontend/dist/assets/index-GqLlXUXz.js": "819f3e9093fc8f55f86e25fbed669dcd4235cab20e2f16705a18139daffd8ea8",
+    "frontend/dist/favicon.svg": "959912309efd9c043ba7e825ee7b9ff25bcdf5f9358029e28e4bea486c4106ab",
+    "frontend/dist/fonts/OFL.txt": "17e355067c8284f47743a1ee3b1ef7ff684ff0601eda357f9353b10b3016ab31",
+    "frontend/dist/fonts/Vazirmatn.woff2": "4e3fa217d38fdafc1fea4414ceb58ca5e662cf0ab5fa735a8c8c20e8b42cad92",
+    "frontend/dist/index.html": "0ff584e5cc05d51e988c773a3e3679a131ac688f4655abe1e709a93fdf5d1bf9",
+    "requirements.lock": "b73369074b5464ce2818e86544608e57febb5c9514ec681eee5f9f87d1f8ce8d",
+    "scripts/build_catalogue.py": "ea5e3c38e3cc4f8ba10892ad93d1f415f55b9713baeeac9363895875b8b697c2",
+    "scripts/container_entrypoint.py": "f017465dd7f90cb5e441a94507b213f2454d102aa6aeb723b516c62f75e27567",
+    "data/catalogue-source.json": "19973b2e0d914bc1ff591851a8348d5a98439193734ecdc49950dec53d5f7aa4"
+  },
+  "archived_inputs_identical_to_successful_build": true,
+  "build_artifact_sha256": "63c96c7a55e1a7aaf12cccd3c037d289b26e5b0cab2cd97c25013df19ec97f3d",
+  "runtime_privacy": {
+    "absent_build_and_secret_inputs": [
+      "/catalogue",
+      "/app/data/catalogue-source.zip",
+      "/app/data/catalogue-source.json",
+      "/app/scripts/build_catalogue.py",
+      "/app/.env",
+      "/app/data/state.sqlite"
+    ],
+    "runtime_data_entries": [
+      "catalogue.sqlite"
+    ]
+  }
+}

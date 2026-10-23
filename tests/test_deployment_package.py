@@ -134,3 +134,261 @@ def test_compressed_cache_is_revalidated_and_source_change_is_never_hidden(tmp_p
         updated["catalogue"]["uncompressed_sha256"] == hashlib.sha256(b"changed complete payload").hexdigest()
     )
     assert lzma.decompress(cached.read_bytes()) == b"changed complete payload"
+
+
+def csv_repo(tmp_path):
+    root = tmp_path / 'repo'
+    for name, value in {
+        'Dockerfile': 'XZBUILD', 'Dockerfile.csv-source': 'CSVBUILD',
+        'requirements.lock': 'fixture', 'backend/torob/__init__.py': '',
+        'backend/torob/ingest.py': 'fixture', 'backend/torob/normalize.py': 'fixture',
+        'backend/torob/api.py': 'fixture', 'scripts/build_catalogue.py': 'fixture',
+        'scripts/container_entrypoint.py': 'fixture', 'frontend/dist/index.html': 'frozen UI',
+        '.env': 'SECRET', 'data/state.sqlite': 'PRIVATE', 'data/catalogue.sqlite': 'OLD_DB',
+        'data/catalogue.sqlite.xz': 'OLD_XZ',
+    }.items():
+        p = root / name
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(value)
+    return root
+
+
+def trusted_zip(tmp_path, monkeypatch):
+    import hashlib
+    import zipfile
+    from catalogue_fixtures import archive
+    from torob import ingest
+
+    source = archive(tmp_path)
+    with zipfile.ZipFile(source) as z:
+        hashes = {name: hashlib.sha256(z.read(name)).hexdigest() for name in ingest.KNOWN_HASHES}
+    monkeypatch.setattr(ingest, 'KNOWN_HASHES', hashes)
+    return source, hashes
+
+
+def test_csv_mode_keeps_complete_original_zip_and_only_private_allowlisted_inputs(tmp_path, monkeypatch):
+    import hashlib
+    import json
+
+    root = csv_repo(tmp_path)
+    source, hashes = trusted_zip(tmp_path, monkeypatch)
+    out = tmp_path / 'csv-source.tar.gz'
+    report = module().package(root, out, source_zip=source)
+    with tarfile.open(out) as archive:
+        assert archive.extractfile('Dockerfile').read() == b'CSVBUILD'
+        assert archive.extractfile('data/catalogue-source.zip').read() == source.read_bytes()
+        manifest = json.load(archive.extractfile('data/catalogue-source.json'))
+        assert manifest['archive_sha256'] == hashlib.sha256(source.read_bytes()).hexdigest()
+        assert manifest['payload_hashes'] == hashes
+        assert set(archive.getnames()) == {
+            'Dockerfile', 'requirements.lock', 'backend/torob/__init__.py',
+            'backend/torob/ingest.py', 'backend/torob/normalize.py', 'backend/torob/api.py',
+            'scripts/build_catalogue.py', 'scripts/container_entrypoint.py',
+            'frontend/dist/index.html', 'data/catalogue-source.zip', 'data/catalogue-source.json',
+        }
+    assert report['catalogue']['compression'] == 'zip'
+    assert report['bytes'] < 128_000_000
+    assert out.stat().st_mode & 0o777 == 0o600
+    assert (root / 'data/catalogue.sqlite').read_text() == 'OLD_DB'
+    assert (root / 'data/catalogue.sqlite.xz').read_text() == 'OLD_XZ'
+
+
+@pytest.mark.parametrize('kind', ['bad_hash', 'bad_zip', 'symlink_zip', 'symlink_parent', 'symlink_ui_dir'])
+def test_csv_mode_rejects_untrusted_or_symlink_inputs_before_publishing(tmp_path, monkeypatch, kind):
+    import zipfile
+
+    root = csv_repo(tmp_path)
+    source, _ = trusted_zip(tmp_path, monkeypatch)
+    if kind == 'bad_hash':
+        with zipfile.ZipFile(source) as z:
+            contents = {name: z.read(name) for name in z.namelist()}
+        with zipfile.ZipFile(source, 'w') as z:
+            for name, data in contents.items():
+                z.writestr(name, b'unexpected data' if name == 'products.csv' else data)
+    elif kind == 'bad_zip':
+        source.write_bytes(b'not a zip')
+    elif kind == 'symlink_zip':
+        link = tmp_path / 'linked.zip'
+        link.symlink_to(source)
+        source = link
+    elif kind == 'symlink_parent':
+        link = tmp_path / 'linked-dir'
+        link.symlink_to(source.parent, target_is_directory=True)
+        source = link / source.name
+    elif kind == 'symlink_ui_dir':
+        secret = root / 'private'
+        secret.mkdir()
+        (secret / 'secret.txt').write_text('SECRET')
+        (root / 'frontend/dist/linked').symlink_to(secret, target_is_directory=True)
+    out = tmp_path / 'new.tar.gz'
+    with pytest.raises(ValueError):
+        module().package(root, out, source_zip=source)
+    assert not out.exists()
+
+
+def test_csv_mode_size_failure_preserves_previous_artifact(tmp_path, monkeypatch):
+    root = csv_repo(tmp_path)
+    source, _ = trusted_zip(tmp_path, monkeypatch)
+    out = tmp_path / 'new.tar.gz'
+    out.write_bytes(b'previous accepted artifact')
+    with pytest.raises(ValueError, match='source.*limit'):
+        module().package(root, out, source_zip=source, max_source_bytes=10)
+    assert out.read_bytes() == b'previous accepted artifact'
+    assert not out.with_suffix('.gz.partial').exists()
+
+
+def test_csv_change_during_tar_write_rejects_new_output_and_preserves_previous(tmp_path, monkeypatch):
+    root = csv_repo(tmp_path)
+    source, _ = trusted_zip(tmp_path, monkeypatch)
+    original = tarfile.TarFile.addfile
+
+    def mutate(archive, info, fileobj=None):
+        original(archive, info, fileobj)
+        if info.name == 'data/catalogue-source.zip':
+            source.write_bytes(b'changed during write')
+
+    monkeypatch.setattr(tarfile.TarFile, 'addfile', mutate)
+    out = tmp_path / 'previous.tar.gz'
+    out.write_bytes(b'accepted previous')
+    with pytest.raises(ValueError, match='changed during packaging'):
+        module().package(root, out, source_zip=source)
+    assert out.read_bytes() == b'accepted previous'
+
+
+@pytest.mark.parametrize('mode', ['zip', 'xz'])
+def test_untrusted_predictable_partial_never_overwrites_its_target(tmp_path, monkeypatch, mode):
+    root = csv_repo(tmp_path)
+    (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+    source, _ = trusted_zip(tmp_path, monkeypatch)
+    out = tmp_path / 'output.tar.gz'
+    sentinel = tmp_path / 'outside-secret'
+    sentinel.write_bytes(b'DO NOT OVERWRITE')
+    out.with_suffix('.gz.partial').symlink_to(sentinel)
+    module().package(root, out, **({'source_zip': source} if mode == 'zip' else {}))
+    assert sentinel.read_bytes() == b'DO NOT OVERWRITE'
+    assert out.is_file() and not out.is_symlink()
+
+
+@pytest.mark.parametrize('mode', ['zip', 'xz'])
+@pytest.mark.parametrize('kind', ['source', 'runtime', 'hardlink', 'symlink', 'parent_symlink'])
+def test_destination_cannot_alias_any_input_before_cache_or_output_writes(tmp_path, monkeypatch, mode, kind):
+    import os
+
+    root = csv_repo(tmp_path)
+    (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+    source, _ = trusted_zip(tmp_path, monkeypatch)
+    target = source if mode == 'zip' else root / 'data/catalogue.sqlite'
+    before_source = target.read_bytes()
+    before_cache = (root / 'data/catalogue.sqlite.xz').read_bytes()
+    before_api = (root / 'backend/torob/api.py').read_bytes()
+    if kind == 'source':
+        out = target
+    elif kind == 'runtime':
+        out = root / 'backend/torob/api.py'
+    elif kind == 'hardlink':
+        out = tmp_path / 'hardlinked-output'
+        os.link(target, out)
+    elif kind == 'symlink':
+        out = tmp_path / 'linked-output'
+        out.symlink_to(target)
+    else:
+        link = tmp_path / 'linked-parent'
+        link.symlink_to(target.parent, target_is_directory=True)
+        out = link / target.name
+    with pytest.raises(ValueError):
+        module().package(root, out, **({'source_zip': source} if mode == 'zip' else {}))
+    assert target.read_bytes() == before_source
+    assert (root / 'data/catalogue.sqlite.xz').read_bytes() == before_cache
+    assert (root / 'backend/torob/api.py').read_bytes() == before_api
+
+
+@pytest.mark.parametrize('mode', ['zip', 'xz'])
+@pytest.mark.parametrize('kind', ['symlink', 'same_size_inplace', 'parent_swap'])
+def test_runtime_input_identity_and_bytes_are_frozen_until_publish(tmp_path, monkeypatch, mode, kind):
+    root = csv_repo(tmp_path)
+    (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+    source, _ = trusted_zip(tmp_path, monkeypatch)
+    api = root / 'backend/torob/api.py'
+    sentinel = tmp_path / 'outside'
+    sentinel.mkdir()
+    for path in (root / 'backend/torob').glob('*.py'):
+        (sentinel / path.name).write_bytes(b'SECRET!')
+    original = tarfile.TarFile.addfile
+    altered = False
+
+    def swap(archive, info, fileobj=None):
+        nonlocal altered
+        if info.name == 'backend/torob/api.py' and not altered:
+            altered = True
+            if kind == 'symlink':
+                api.unlink()
+                api.symlink_to(sentinel / 'api.py')
+            elif kind == 'same_size_inplace':
+                api.write_bytes(b'SECRET!')
+            else:
+                parent = api.parent
+                parent.rename(root / 'backend/old-torob')
+                parent.symlink_to(sentinel, target_is_directory=True)
+        original(archive, info, fileobj)
+
+    monkeypatch.setattr(tarfile.TarFile, 'addfile', swap)
+    out = tmp_path / 'output.tar.gz'
+    out.write_bytes(b'previous accepted artifact')
+    with pytest.raises(ValueError):
+        module().package(root, out, **({'source_zip': source} if mode == 'zip' else {}))
+    assert altered
+    assert out.read_bytes() == b'previous accepted artifact'
+    assert (sentinel / 'api.py').read_bytes() == b'SECRET!'
+
+
+@pytest.mark.parametrize('mode', ['zip', 'xz'])
+def test_exclusive_temp_collision_never_changes_preexisting_node_or_target(tmp_path, monkeypatch, mode):
+    root = csv_repo(tmp_path)
+    (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+    source, _ = trusted_zip(tmp_path, monkeypatch)
+    packer = module()
+    monkeypatch.setattr(packer.secrets, 'token_hex', lambda _: 'controlled-collision')
+    out = tmp_path / 'output.tar.gz'
+    out.write_bytes(b'previous accepted artifact')
+    sentinel = tmp_path / 'sentinel'
+    sentinel.write_bytes(b'private sentinel')
+    collision = tmp_path / '.output.tar.gz.controlled-collision.tmp'
+    collision.symlink_to(sentinel)
+    with pytest.raises(ValueError):
+        packer.package(root, out, **({'source_zip': source} if mode == 'zip' else {}))
+    assert out.read_bytes() == b'previous accepted artifact'
+    assert sentinel.read_bytes() == b'private sentinel'
+    assert collision.is_symlink()
+
+
+@pytest.mark.parametrize('name', ['catalogue.sqlite.xz', 'catalogue-build.json'])
+def test_destination_alias_to_existing_xz_cache_is_rejected_before_regeneration(tmp_path, name):
+    import os
+
+    root = csv_repo(tmp_path)
+    (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+    cache = root / 'data' / name
+    cache.write_bytes(b'old invalid cache')
+    out = tmp_path / 'hardlinked-output'
+    os.link(cache, out)
+    before = {p: p.read_bytes() for p in (root / 'data').iterdir()}
+    with pytest.raises(ValueError):
+        module().package(root, out)
+    assert {p: p.read_bytes() for p in (root / 'data').iterdir()} == before
+
+
+def test_cli_report_alias_is_rejected_before_any_package_or_cache_write(tmp_path):
+    import subprocess
+    import sys
+
+    root = csv_repo(tmp_path)
+    (root / 'scripts/unpack_catalogue.py').write_text('fixture')
+    source = root / 'data/catalogue.sqlite'
+    before = source.read_bytes()
+    out = tmp_path / 'output.tar.gz'
+    script = Path(__file__).parents[1] / 'scripts/package_deployment.py'
+    result = subprocess.run([sys.executable, str(script), '--root', str(root), '--output', str(out), '--report', str(source)], capture_output=True, text=True)
+    assert result.returncode != 0 and 'aliases' in result.stderr
+    assert source.read_bytes() == before
+    assert not out.exists()
+    assert (root / 'data/catalogue.sqlite.xz').read_bytes() == b'OLD_XZ'

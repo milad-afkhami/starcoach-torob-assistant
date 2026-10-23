@@ -1,0 +1,11 @@
+{
+  "returncode": 0,
+  "elapsed_seconds": 217.077,
+  "context": "/home/milad/Desktop/projects/starcoach-torob-assistant/data/csv-source-build-8cxcyk6k",
+  "log": "/tmp/starcoach-ui-revision-20261023/csv-source-build.log",
+  "image": "starcoach-torob:csv-source-r2",
+  "image_id": "sha256:15904aa35d56f364f7cfa6a6f46332b37d72b337896c6335da16d63656ca4bae",
+  "import_seconds": 71.123,
+  "import_peak_rss_kib": 30988,
+  "log_sha256": "6ce60f0d12e252c073521f82725e5fd8132f0e1dcfa0948d1773ab266535210d"
+}

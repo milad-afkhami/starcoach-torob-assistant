@@ -1,0 +1,28 @@
+{
+  "partial_symlink": {
+    "accepted": true,
+    "output_is_symlink": false,
+    "sentinel_changed": false,
+    "source_changed": false,
+    "source_still_zip": true
+  },
+  "output_alias_source": {
+    "accepted": false,
+    "error": "ValueError: Destination aliases a deployment input"
+  },
+  "input_race": {
+    "accepted": true,
+    "output_is_symlink": false,
+    "sentinel_changed": false,
+    "source_changed": false,
+    "source_still_zip": true,
+    "outside_fixture_included": false
+  },
+  "fts_index_corruption": {
+    "accepted": false,
+    "comparison_error": "Catalogue integrity differs from required ok state",
+    "quick_check": "malformed inverted index for FTS5 table main.product_search",
+    "search_error": "database disk image is malformed",
+    "reference_search_matches": 2
+  }
+}

@@ -17,13 +17,13 @@ flowchart LR
     I --> J[Serve as UID10001]
 ```
 
-## Source format and integrity
+## Default XZ format and integrity
 
 | Concern | Contract |
 |---|---|
 | Complete data | XZ preserves the original SQLite bytes; restored size/hash and actual table counts are verified |
 | Private upload | Explicit allowlist includes Dockerfile, locked requirements, backend, compiled frontend, compressed catalogue/manifest and two build/startup helpers |
-| Excluded inputs | No environment, authentication, mission state, source ZIP, personal records or general workspace directory |
+| Excluded inputs | No environment, authentication, mission state, personal records or general workspace directory; default XZ mode also excludes the source ZIP |
 | Source limit | Packager rejects an artifact above the conservative decimal bound recorded in its manifest before replacing the destination |
 | Decoder memory | One-MiB chunks and a64-MiB decoder memory limit; no full database loaded into Python memory |
 | Incorrect/truncated payload | Compressed hash, decoded size and decoded hash must all match; trailing bytes fail; atomic output replacement preserves any prior destination on failure |
@@ -57,3 +57,13 @@ The application and compiled UI were kept frozen throughout this packaging repai
 The provider completed source restoration and dependency installation, then rejected BuildKit-only `COPY --chmod` syntax. Both copies now use ordinary Docker syntax followed by explicit permission-setting in `RUN`. This keeps the same complete catalogue, immutable0444 files and bounded state initializer without requiring a provider setting change.
 
 An actual `DOCKER_BUILDKIT=0` build reproduced the original failure and completed all20steps after the narrow fix. Fresh named-volume and root-owned-bind acceptance ran against that legacy-built image. [Compatibility evidence](qa-evidence/packaging-legacy-compatibility.json) owns the new private artifact hash, complete local logs and acceptance references. The previous failed archive is retained separately. No successful provider deployment is implied by this local result.
+
+## Complete CSV ZIP build mode
+
+An explicit `--source-zip` option packages the original complete private organizer ZIP instead of the generated XZ database. `Dockerfile.csv-source` becomes `Dockerfile` inside that package; the default Dockerfile/XZ mode remains unchanged for reproduction. The alternate build stage runs the existing hash-validating ingester and creates the same full runtime catalogue. The runtime image receives only that database, not the ZIP, source manifest or import script. Application source, compiled frontend, exact-money/planning contracts and the existing privilege-drop/state behavior remain unchanged.
+
+ZIP mode validates all three authoritative CSV payload hashes and records the exact original archive hash, reads only held no-follow regular-file descriptors through validated parent directories, rejects output/report aliases by path and inode, uses exclusive random temporary files and a fixed private ZIP member name, and verifies every input identity and content hash before atomic publication. It includes no credentials, mission state or arbitrary repository files. Use a separate `--report` path so recording this artifact does not overwrite an earlier deployment record. All generated files remain private and Git-ignored; neither the catalogue-containing image nor the original ZIP is for a public registry.
+
+The database's metadata includes measured import duration. SQLite physical layout can also differ between library versions, so a rebuild gets its own binary SHA-256 rather than claiming byte identity with an earlier database. `scripts/compare_catalogues.py` reads both databases without modification and compares canonical ordered digests of every SQL column in shops/products/offers/FTS, all schema/index definitions and source metadata. Only `duration_seconds` is excluded. Row counts alone are insufficient.
+
+The private archive and build-stage manifest prove source identity and complete data; constrained image/API acceptance proves runtime behavior. Their results are owned by `qa-evidence/csv-source/` and `insured-vibe-coding/test-plans/csv-source-packaging.md`. This is a distinct packaging/build contract, not an idempotent retry or reconciliation of any upload whose response was lost. A retained unknown/unreleased upload remains unknown; root delivery owns new provider intents and actual hosted acceptance.

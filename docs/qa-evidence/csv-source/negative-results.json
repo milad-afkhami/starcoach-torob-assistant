@@ -1,0 +1,34 @@
+{
+  "initial_packaging_tdd": {
+    "failed": 7,
+    "passed": 4,
+    "reason": "new CSV mode not implemented"
+  },
+  "semantic_tool_tdd": {
+    "failed": 7,
+    "reason": "new semantic comparison module absent"
+  },
+  "initial_cli_failure": {
+    "error": "ModuleNotFoundError: torob",
+    "fix": "package ZIP validation explicitly adds trusted repository backend path"
+  },
+  "first_ruff_failure": {
+    "error": "parameterization accidentally produced image=image default",
+    "fix": "restore explicit existing default before runtime acceptance"
+  },
+  "independent_review": "independent-review-red.json",
+  "review_regression_red": {
+    "failed": 18,
+    "passed": 12,
+    "log": "review-regression-red.txt"
+  },
+  "intermediate_output_size_regression": {
+    "failed": 2,
+    "passed": 37,
+    "reason": "buffered output fstat before flush bypassed existing source-size bound",
+    "fix": "flush before measuring and retain canonical size tests"
+  },
+  "provider_or_model_writes": 0,
+  "successful_build_warning": "one normal pip files.pythonhosted.org read-timeout retry; completed same build successfully",
+  "git_fetch": "initial bounded fetch could not connect; no retry or upstream mutation"
+}
