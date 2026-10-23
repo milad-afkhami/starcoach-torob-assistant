@@ -99,3 +99,5 @@ Monetary API values are **exact decimal strings**, not floating-point JSON numbe
 | `data/` | Local generated catalogue/state/private packages; not public source |
 
 No full catalogue, runtime database, private environment or Codex authentication should enter Git or a public image registry.
+
+`POST /api/turns` optionally accepts `discovery_parent_turn_id`. The [architecture](architecture.md#bounded-discovery-continuation) owns its session/TTL/display-order contract. Old clients may omit it. A successful exact-reference comparison can add `comparison_product_ids` to the turn result; the existing product objects supply its facts, and current constraints remain unchanged. Invalid/expired contexts return an explicit error before model enqueue.

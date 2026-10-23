@@ -6,7 +6,7 @@
 
 Persian · RTL · Torob dataset · FastAPI · React · Isolated Codex worker
 
-[Try it locally](docs/getting-started.md) · [User guide](docs/user-guide.md) · [Architecture](docs/architecture.md) · [Results](docs/evaluation.md)
+[Open the live app](https://torob-plan-b-2026.liara.run) · [Run locally](docs/getting-started.md) · [User guide](docs/user-guide.md) · [Architecture](docs/architecture.md) · [Results](docs/evaluation.md)
 
 </div>
 
@@ -15,7 +15,7 @@ Persian · RTL · Torob dataset · FastAPI · React · Isolated Codex worker
 A low price is only useful if the right product, shop, budget and visit time work together. Plan B helps a buyer choose an exact product, prepare a nearby alternative, and recover when a seller is unavailable or changes terms—without entering the same requirements again.
 
 > [!IMPORTANT]
-> **Verified locally; public hosting is pending.** The catalogue, shopping journey, genuine local Codex calls and container persistence have been exercised. Prices are historical, stock is unknown, and the sample seller replies are simulated. No seller is contacted automatically. [Current delivery state](docs/insured-vibe-coding/kanban.md).
+> **Live on HTTPS with the full contest catalogue.** Hosted search/recovery, genuine isolated local Codex needs/reply calls, reconnection and privacy checks have been exercised. The reviewed conversational-continuation batch is deployed; its new assets/backend contract, prior mission continuity and competing-edit checks passed. Genuine continuation demonstration remains separately tracked. Prices are historical, stock is unknown, and the sample seller replies are simulated. No seller is contacted automatically. [Current delivery state](docs/insured-vibe-coding/kanban.md).
 
 <img src="docs/images/overview.png" alt="Actual local Plan B interface showing a Persian purchase mission, a primary seller and a nearby fallback" width="1100">
 
@@ -86,7 +86,7 @@ Codex authentication stays on the local worker. The model receives bounded evide
 
 ## Evidence and current limits
 
-Recorded checks include **191 backend tests**, **23 original independent rendered UI scenarios**, 13 current browser regressions, real model/mission API checks, an eight-case recovery evaluation, and a constrained local container run with restart persistence. These are recorded development results, not a CI badge or proof of live shopping success. [Read the evidence and its scope](docs/evaluation.md).
+Recorded checks include backend/domain and rendered browser regressions, genuine model/mission API runs, an eight-case recovery evaluation, constrained local container persistence, and actual hosted HTTPS/model/offline/reconnect checks. The latest source and exact check counts are owned by [the implementation checkpoint](docs/insured-vibe-coding/kanban.md). The public [CI workflow](https://github.com/milad-afkhami/starcoach-torob-assistant/actions) runs credential-free source checks. These are development results, not proof of live shopping success. [Read the evidence and its scope](docs/evaluation.md).
 
 <details>
 <summary><strong>What this MVP deliberately does not claim</strong></summary>
@@ -95,7 +95,8 @@ Recorded checks include **191 backend tests**, **23 original independent rendere
 - Automated calls/messages, a reservation, financing approval or a booked ride.
 - Route duration or a stock probability inferred from a recorded offer.
 - Uninterrupted hosted AI: a local outbound worker supplies model access.
-- Completed public deployment, final video or contest submission.
+- A completed final video or contest submission; those remain separately tracked in the submission record.
+- An independently proved standalone hosted restart: the provider accepted the request, but restart occurrence remains unconfirmed.
 
 The supplied phone numbers are synthetic. [Seller-contact boundaries](docs/contact-limitations.md) explain how assisted follow-up stays honest.
 

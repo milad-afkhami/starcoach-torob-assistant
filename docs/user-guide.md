@@ -121,3 +121,9 @@ After excluding the original primary, lower the budget to **39,400,000** and app
 You can still search, compare, choose products, set conditions, preview manual outcomes and recover the plan. The interface discloses the worker's absence. Canceling an AI request leaves the plan unchanged; stale/late results cannot apply to a newer mission.
 
 [Contact limitations](contact-limitations.md) · [Troubleshooting](reference.md#troubleshooting) · [Evidence and results](evaluation.md)
+
+## Continue from the displayed options
+
+After an assistant discovery, ask about the first or second displayed card—for example, compare their recorded memory and price. **مقایسه همین دو گزینه** opens the existing source-backed comparison table without changing your form or purchase mission. The reference is to card order, not recommendation ranking.
+
+All displayed cards remain visible while the assistant asks a clarification. References cover at most the first six cards from the same recent response, with an assistant-selected thirty-minute limit. A missing card, old context or unclear “more memory” request asks for clarification instead of guessing RAM, internal storage or a variant. Manual search, an accepted search diagnostic and the sample start a fresh context and stop the pending assistant request; previous options cannot silently become references for replacement cards. New product variants still require your explicit selection.

@@ -1,0 +1,84 @@
+{
+  "recorded_at_host_utc": "2026-10-23T03:37:00.408878+00:00",
+  "scope": "Bounded exact-card discovery continuation; no genuine model/provider/cloud calls by this implementation owner",
+  "contract": {
+    "request_field": "discovery_parent_turn_id",
+    "optional_for_old_clients": true,
+    "context_ttl_seconds": 1800,
+    "ttl_origin": "Assistant-selected design default, not organizer rule",
+    "max_parent_cards": 20,
+    "context_order": "Exact result.products display order, independent of recommendation order",
+    "accepted_parent": "Exact same-session owned recent completed needs turn with no mission and nonempty source cards",
+    "reference_output": "Dynamic catalogue-ID allowlist; exact two-reference comparison uses get_product, not new guessed search",
+    "comparison_mutations": "None: current conditions/owned mission/variant remain unchanged",
+    "ambiguity": "RAM versus storage; missing/out-of-range/unresolved word and ASCII/Persian/Arabic numeric card ordinals; unbound same-model hints clarify without guessed search.",
+    "reset": "Manual search, accepted diagnostic and sample invalidate pending turns before replacing cards; late completed responses cannot overwrite newer cards or regain their parent.",
+    "prompt_version": "torob-context-v1 for context-bearing requests",
+    "max_prompt_reference_cards": 6,
+    "parent_preservation": "A single terminal _result projection owns display provenance: every contextual clarification/degraded result returns full typed original snapshots; exact-reference comparison independently verifies source IDs then projects those snapshots in requested order. Fresh retrieval results remain a distinct grounded search output."
+  },
+  "verification": {
+    "backend": {
+      "passed": 256,
+      "log": "/tmp/torob-context-projection-final256.log",
+      "warning": "One unchanged upstream Starlette TestClient/httpx deprecation"
+    },
+    "domain_context_cases": 39,
+    "new_http_boundary_case": true,
+    "frontend_unit_passed": 6,
+    "typescript_vite": "passed",
+    "ruff": "passed",
+    "whitespace": "passed",
+    "browser": {
+      "distinct_cases": 33,
+      "canonical_run": "32 passed; one test-only cancel observer failure (glob omitted the extra path segment), complete practical inventory retained",
+      "canonical_log": "/tmp/torob-context-repair-browser.log",
+      "affected_final_passed": 5,
+      "affected_final_log": "/tmp/torob-context-projection-browser.log",
+      "affected_final_duration": "27.3 seconds",
+      "worker_kind": "Deterministic no-model fixture using real HTTP/domain/session boundaries; held responses explicitly controlled for races",
+      "unchanged_other_cases": "28 unaffected browser cases passed in canonical run; no frontend/dist change after that run"
+    },
+    "checked_in_fixture_reproducibility": {
+      "path": "tests/discovery_fixture_server.py",
+      "affected_browser_cases_passed": 5,
+      "log": "/tmp/torob-context-projection-browser.log"
+    }
+  },
+  "red_to_green": [
+    "12 initial context tests failed before optional parent/references/clarification behavior",
+    "Displayed order differs from recommendations but context remains exact; pure comparison ignores injected constraint changes",
+    "Cross-owner/expired/failed/canceled/reply/mission/empty parents denied before enqueue",
+    "Unknown IDs denied at queue schema; duplicate IDs denied before source action",
+    "Missing reference IDs cannot fall through to guessed ordinal text search; unavailable ordinal never queues",
+    "Two initial actual browser follow-up cases failed old UI, then passed",
+    "Controlled late completed discovery reattached its old parent to sample cards; clears at actual replacement now pass",
+    "Independent review matrix reproduced15 failures across full-list clarification exits, numeric references and missing same-model bindings before batch repair",
+    "Actual controlled browser diagnostic race replaced newer manual results with obsolete AI cards; cancellation/epoch repair preserves the newer result and emits cancel",
+    "Additional exact-snapshot test reproduced contact-filtered displayed price200 reverting to global100; validated original price and offer evidence now remain intact",
+    "Independent re-review found comparison still projected global price100/evidenceo1 over displayed contact-filtered200/evidenceo2; both comparison orders failed before replacing branch-level preservation with central terminal projection. All six clarification exits assert filtered price/offer evidence as well as full list."
+  ],
+  "source_sha256": {
+    "backend/torob/agent.py": "c8dd1a17ddd0415adeb299b8bc07cbd0e7d80476918d35a5c4e020d0a38c2b47",
+    "backend/torob/api.py": "e4499e7b334c90bc1f75ea1ab2226d1013706ab18e5d9a819ee39b1498bfa292",
+    "frontend/src/App.tsx": "a66ed6c9a88c777353d36470bbf9625283fd1974ae05355269e55b5285cc1366",
+    "frontend/src/api.ts": "577b8a6afe185926d7fb83783559e1bfec266f14726edff2b958d0132ef77890",
+    "frontend/src/types.ts": "1c574f6a84d9d536b445486f05984446a957405f1e0a5ac176cbe5a547306fee",
+    "frontend/dist/index.html": "9e0893c853ae299942fd9dc2d73a8c9eaf1101834de47f7d71c2eca61877b0ce",
+    "frontend/dist/assets/index-C_bR1QYL.js": "e6d3488eaee1a71a1e8f28824f7787881beb2eaea1acd53ce01c13a1f6d82dc4"
+  },
+  "limitations": [
+    "Genuine Persian model understanding/latency and hosted two-turn acceptance remain root-owned; fixture tests do not establish them",
+    "Only first six cards are reference-addressable; full displayed cards remain on clarification, and the owned parent expires after thirty minutes; not a general long-term chat system",
+    "Ambiguous memory requires clarification; no inferred RAM/storage capacity or automatically selected replacement",
+    "No private deployment archive rebuilt in this phase; root must repackage source/dist after freeze"
+  ],
+  "get_product_consumer_audit": {
+    "parent_context": "Checks source IDs exist, then retains typed original displayed snapshot",
+    "reference_comparison": "Central terminal projection checks IDs exist, then selects original snapshots in requested order; does not copy global get_product prices into cards",
+    "mission_paths": "Source identity/selected product only; a mission-bound child cannot supply discovery parent",
+    "related_variant_search": "Uses source model/brand/category as a family guard; successful fresh retrieval has its own source scope",
+    "all_clarification_and_degraded_results": "Central terminal projection restores all original snapshots, independently of temporary context.products",
+    "comparison_component": "Separate API fetch owns global and condition-compatible seller facts; original cards are not relabelled as global prices"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "scope": "Actual public version transition and previously existing signed-session mission; not a standalone restart proof",
+  "started_at": "2026-10-23T03:19:24.780Z",
+  "mission_id": "696577f1bc934d0894115fc6f84586ad",
+  "before": {
+    "at": "2026-10-23T03:19:26.249Z",
+    "html_sha256": "c975d8ded5465cc9be3faf67b461465df756c254f9b3f28f3a5de45eb0f4ecc0",
+    "asset_sha256": {
+      "/assets/index-RWCOG8w-.js": "28ddb150e8ff0f881e9cc6849d9e451795c3f06b146e8df3b42b891fa7869c44",
+      "/assets/index-_QK26oEd.css": "07629d7a73fe111eed6f940b513839d7432aba8c89a75d590a7e8ec037c0c3f8"
+    },
+    "stable": {
+      "mission": {
+        "id": "696577f1bc934d0894115fc6f84586ad",
+        "revision": 2,
+        "mode": "simulation",
+        "selected_product_id": "product_adfdc73bc839d15cd7754318",
+        "constraints": {
+          "query": "A07",
+          "category": "گوشی موبایل",
+          "max_price_toman": "40000000",
+          "lat": 35.69508821734553,
+          "lon": 51.41148102579503,
+          "radius_km": 1,
+          "payment_provider": null,
+          "visit_at": "2026-10-22T20:15:00+03:30",
+          "require_declared_open": true,
+          "contactable_only": false,
+          "origin_label": "محدوده جمهوری (نقطه پیش‌فرض)"
+        },
+        "selected_primary_shop_id": null
+      },
+      "primary": "offer_dd4dc3e07a9bc3b94af79800",
+      "fallback": null,
+      "observations": [
+        {
+          "id": "4bd50904cfdc4d2d87f224b14fcba888",
+          "kind": "unavailable",
+          "provenance": "simulation",
+          "confirmed_at": 1792720017.5340517,
+          "applied_revision": 2,
+          "price_toman": null,
+          "raw_text": "",
+          "effective_visit_date": null
+        }
+      ]
+    }
+  },
+  "status": "pass",
+  "serving_samples": [
+    {
+      "at": "2026-10-23T03:55:25.991Z",
+      "html_sha256": "9e0893c853ae299942fd9dc2d73a8c9eaf1101834de47f7d71c2eca61877b0ce"
+    }
+  ],
+  "new_backend_contract_observed": true,
+  "after": {
+    "at": "2026-10-23T03:55:26.918Z",
+    "html_sha256": "9e0893c853ae299942fd9dc2d73a8c9eaf1101834de47f7d71c2eca61877b0ce",
+    "asset_sha256": {
+      "/assets/index-C_bR1QYL.js": "e6d3488eaee1a71a1e8f28824f7787881beb2eaea1acd53ce01c13a1f6d82dc4",
+      "/assets/index-_QK26oEd.css": "07629d7a73fe111eed6f940b513839d7432aba8c89a75d590a7e8ec037c0c3f8"
+    },
+    "stable": {
+      "mission": {
+        "id": "696577f1bc934d0894115fc6f84586ad",
+        "revision": 2,
+        "mode": "simulation",
+        "selected_product_id": "product_adfdc73bc839d15cd7754318",
+        "constraints": {
+          "query": "A07",
+          "category": "گوشی موبایل",
+          "max_price_toman": "40000000",
+          "lat": 35.69508821734553,
+          "lon": 51.41148102579503,
+          "radius_km": 1,
+          "payment_provider": null,
+          "visit_at": "2026-10-22T20:15:00+03:30",
+          "require_declared_open": true,
+          "contactable_only": false,
+          "origin_label": "محدوده جمهوری (نقطه پیش‌فرض)"
+        },
+        "selected_primary_shop_id": null
+      },
+      "primary": "offer_dd4dc3e07a9bc3b94af79800",
+      "fallback": null,
+      "observations": [
+        {
+          "id": "4bd50904cfdc4d2d87f224b14fcba888",
+          "kind": "unavailable",
+          "provenance": "simulation",
+          "confirmed_at": 1792720017.5340517,
+          "applied_revision": 2,
+          "price_toman": null,
+          "raw_text": "",
+          "effective_visit_date": null
+        }
+      ]
+    }
+  },
+  "conclusion": "Actual changed frontend bytes match the new frozen source; the same preexisting signed cookie reads exactly unchanged mission/revision/constraints/observations after the release. Provider release identity is independently retained in deployment receipts. This is a version-transition continuity test, not proof of the earlier restart POST."
+}

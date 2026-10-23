@@ -1,23 +1,44 @@
-# Deployment preparation
+# Actual HTTPS deployment
 
 [← Documentation](README.md) · [User guide](user-guide.md) · [Getting started](getting-started.md)
 
-Local container acceptance is recorded in [container.json](qa-evidence/container.json). It verifies the real complete-catalogue image, recovery with the worker offline, private-path404 responses, unchanged catalogue hash and session/observation persistence across restart. This is not a hosted acceptance result.
+The full-catalogue application is live at **https://torob-plan-b-2026.liara.run**. It uses one disposable Liara application, an isolated contest network and a persistent state disk. Codex authentication stays on the local outbound worker; it is never uploaded to Liara.
 
-## Build and run
+| Part | Demonstrated configuration | Evidence |
+|---|---|---|
+| Public application | Docker, one replica, port8000;512MiB/0.5CPU base plan | [Actual hosted acceptance](insured-vibe-coding/test-plans/hosted.md) |
+| Catalogue | Private immutable image;6,476shops/225,903products/331,506offers | [Packaging](packaging.md) and [artifact manifest](qa-evidence/deployment-artifact.json) |
+| State |1GB disk named `state`, mounted at `/data` | [Hosted recovery](qa-evidence/hosted-offline.json) |
+| Model | Managed local worker, outbound HTTPS to the hosted job queue | [Genuine needs/reply](qa-evidence/hosted-model.json) and [reconnection](qa-evidence/hosted-reconnect.json) |
+| Browser boundary | Secure/HttpOnly/SameSite=Strict cookie, independent-session404, wrong-origin403, private paths404 | [Hosted boundary checks](qa-evidence/hosted-offline.json) |
 
-Build the catalogue and frontend using the README, then run `scripts/build_image.sh`. It uses lockfiles, an official Python3.12 image pinned by digest and a local frontend build. Docker Hub returned403 on this network; the official ECR mirror worked, and Liara's mirror returned the same digest. The final image is private because it contains the complete contest catalogue. Do not push it to a public image registry.
+```mermaid
+flowchart LR
+    Buyer[Buyer browser] -->|HTTPS| App[Liara application]
+    App --> Catalogue[Private immutable catalogue]
+    App --> State[Persistent state disk]
+    Worker[Local isolated Codex worker] -->|Outbound HTTPS job transport| App
+    Worker --> Codex[Local Codex authentication]
+```
 
-`docker compose up -d` runs one app with a persistent named volume. Put newly generated runtime `SESSION_SECRET`, `MODEL_WORKER_TOKEN` and the exact `PUBLIC_ORIGIN=http://127.0.0.1:8652` into a private environment file; do not reuse another environment's session signing key. The local dev environment uses8651, so deliberately change the origin for Compose. The local Codex worker remains a separate process and must target that same application URL. No authentication file is mounted into the application container.
+## What was actually exercised
 
-`python scripts/package_deployment.py` creates `data/deployment.tar.gz` from an explicit allowlist: Dockerfile, hashed Python requirements, backend source, compiled frontend and validated catalogue. It excludes state, private environment files, personal source paths and Codex authentication. The archive is mode0600 and Git-ignored. Build/package again after final fixes before deployment; the manifest records the actual SHA-256 and members.
+Actual HTTPS acceptance covers the source-data purchase scenario, manual recovery with the worker disconnected, a genuine Persian needs request, genuine interpretation of an explicitly simulated seller reply, preview before confirmation, exact300000toman fallback delta, mobile layout and session/origin isolation. Deliberate worker disconnection was followed by a fresh genuine request after reconnection. These are narrow recorded runs, not continuous-availability or concurrency guarantees.
 
-## Concrete Liara proposal — not provisioned
+The provider accepted a single restart request with HTTP200, and the existing session/mission remained readable. Its history response did not independently establish that a container restarted. [The restart record](qa-evidence/hosted-restart-result.json) therefore remains **partial**, rather than promoting HTTP continuity to proof of a restart. The separately recorded [version-transition test](qa-evidence/hosted-version-transition.json) owns the subsequent source-version/state-continuity result; an awaiting or failed record is not a pass.
 
-Verified22October2026 through the signed-in creation wizard: Nova Prime team still has2,000,000toman credit and no application. Proposed new application name: `torob-plan-b-2026`; Docker, one replica, port8000, base Earth plan512MB/0.5vCPU/5GB included disk. Final console review additionally showed475,000toman/month base plus275,000feature bundle plus75,000VAT:825,000toman/month and1,146toman/hour including10%VAT. Forty-eight hours at that displayed hourly quote is55,008toman. The earlier resource step showed1,040/hour before VAT, and public pricing rounds that pre-tax figure to1,041. An explicitly scoped private network is also a setup prerequisite; no network was created during inspection. These are quoted prices, not incurred charges or a promise about tax/credit treatment. No app, disk, API key, deployment or paid resource has been created.
+## Reproducible private source packaging
 
-Local measured peak process RSS was59,048kB in the smoke workload. This supports beginning with512MB, not a production capacity guarantee. Allocate a1GB persistent disk named `state` from the plan’s5GB reservable space and mount it at `/data`; ephemeral image storage is unsuitable for sessions/jobs. Official disk creation documentation describes allocation from the app’s available quota; if the actual console quotes an additional charge or upgrade, stop before accepting it. Keep the catalogue in the private image. Confirm the exact disk allocation/mount and effective invoice quote when provisioning. Use the chosen HTTPS app hostname as PUBLIC_ORIGIN, runtime-only secrets, one process, and no Codex credential on Liara.
+Build the catalogue and frontend using [getting started](getting-started.md), then use the allowlisted packaging script. The complete catalogue is compressed with XZ, restored during the image build and checked against its original SHA-256 and size. The private source artifact is below the provider's128MB upload limit. State, private environment files, personal records and Codex authentication are excluded. The final image contains the mandatory catalogue and must not be pushed to a public image registry.
 
-The implementation plan explicitly requires concrete approval before paid provisioning. Complete approval for the new app/disk and local-worker target is still pending. Once approved: create the new resource without overwriting an existing name, upload the allowlisted artifact, verify readiness and cookie isolation, then run the actual hosted Persian need/reply, disconnect/search/recovery and reconnect checks. These remain open in the kanban. Existing source/UI tests do not close hosted acceptance.
+An initial144MB archive was rejected at upload. A later archive exposed a legacy-builder incompatibility with `COPY --chmod`; the corrected Dockerfile uses ordinary `COPY` plus `RUN chmod`. These failures and the successful actual legacy build are retained in [packaging evidence](qa-evidence/packaging-legacy-compatibility.json). Runtime startup prepares only the opened state directory, then drops to UID/GID10001 with zero effective capabilities and `NoNewPrivs=1`. Both constrained named-volume and root-owned-bind local acceptance passed.
 
-Sources: [Docker deployment](https://docs.liara.ir/paas/docker/how-tos/deploy-app/), [persistent disks](https://docs.liara.ir/paas/docker/how-tos/use-disk/), [quota-based disk creation](https://docs.liara.ir/paas/disks/create/), [deployment mount paths](https://docs.liara.ir/paas/disks/route/), [public pricing](https://liara.ir/pricing/), [official Liara Docker mirror](https://liara.ir/mirrors/docker/). Console creation wizard was inspected through the final price review, then closed without creating anything.
+`docker compose up -d` remains the local container route. Set a private generated session secret, worker token and exact public origin for that environment; do not reuse cloud credentials. The local Compose URL is `http://127.0.0.1:8652`; the development app uses8651. The worker must target the same chosen application URL.
+
+## Resource scope and lifecycle
+
+The inspected base/basic plan quote was1146toman/hour includingVAT:55008toman for48hours for this app. Combined with the two disposable Liara scenario services, the quoted total is165024toman, within the reviewed200000toman scope. Quotes are not measured charges, a guarantee about retained-disk billing or a current balance. No personal top-up, plan upgrade or unrelated application overwrite was performed.
+
+A best-effort local timer is armed for25October2026 at00:00UTC to request scale zero for only the three recorded disposable app IDs, preserving data. It depends on this workstation/session/network and is not a provider-enforced billing cap. The managed local worker also depends on this workstation and its authenticated Codex session. Deterministic search/recovery remains usable when the worker is unavailable; hosted AI is not promised to be always on.
+
+Sources: [Docker deployment](https://docs.liara.ir/paas/docker/how-tos/deploy-app/), [persistent disks](https://docs.liara.ir/paas/docker/how-tos/use-disk/), [quota-based disk creation](https://docs.liara.ir/paas/disks/create/), [public pricing](https://liara.ir/pricing/). The actual account-specific scope/quote was inspected separately; credentials and private provider receipts remain outside the public repository.

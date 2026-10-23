@@ -1,0 +1,593 @@
+{
+  "scope": "Actual hosted HTTPS app and isolated LOCAL Codex outbound worker; no model/provider fixtures; seller reply explicitly simulated",
+  "started_at": "2026-10-23T01:50:24.457Z",
+  "cases": {
+    "HOST2": {
+      "elapsed_ms": 25704,
+      "turn": {
+        "id": "bcedf27c586e478d9addb77425aaf69d",
+        "state": "completed",
+        "stage": "explain",
+        "result": {
+          "products": [
+            {
+              "product_id": "product_adfdc73bc839d15cd7754318",
+              "title": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
+              "category": "گوشی موبایل",
+              "brand": "سامسونگ",
+              "model": "a 07",
+              "specs": [
+                {
+                  "key": "رنگ",
+                  "section": "مشخصات کلی",
+                  "value": "بنفش, سبز, مشکی"
+                },
+                {
+                  "key": "نوع سیستم‌عامل",
+                  "section": "مشخصات کلی",
+                  "value": "اندروید"
+                },
+                {
+                  "key": "سیستم‌عامل در زمان عرضه",
+                  "section": "مشخصات کلی",
+                  "value": "Android ۱۵"
+                },
+                {
+                  "key": "توضیحات سیستم‌عامل",
+                  "section": "مشخصات کلی",
+                  "value": "One UI"
+                },
+                {
+                  "key": "ابعاد",
+                  "section": "مشخصات کلی",
+                  "value": "۱۶۷.۴ × ۷۷.۴ × ۷.۶ میلی‌متر"
+                },
+                {
+                  "key": "وزن",
+                  "section": "مشخصات کلی",
+                  "value": "۱۸۴ گرم"
+                },
+                {
+                  "key": "جنس پشت",
+                  "section": "مشخصات کلی",
+                  "value": "پلاستیک"
+                },
+                {
+                  "key": "جنس جلو",
+                  "section": "مشخصات کلی",
+                  "value": "شیشه"
+                },
+                {
+                  "key": "جنس فریم",
+                  "section": "مشخصات کلی",
+                  "value": "پلاستیک"
+                },
+                {
+                  "key": "مقاومت دربرابر گردوغبار و آب",
+                  "section": "مشخصات کلی",
+                  "value": "IP54"
+                },
+                {
+                  "key": "نوع نمایشگر",
+                  "section": "مشخصات کلی",
+                  "value": "PLS LCD"
+                },
+                {
+                  "key": "ابعاد نمایشگر",
+                  "section": "مشخصات کلی",
+                  "value": "۶.۷ اینچ"
+                },
+                {
+                  "key": "رزولوشن",
+                  "section": "مشخصات کلی",
+                  "value": "۷۲۰ × ۱۶۰۰ پیکسل"
+                },
+                {
+                  "key": "حداکثر نرخ نوسازی (Refresh Rate)",
+                  "section": "مشخصات کلی",
+                  "value": "۹۰ هرتز"
+                },
+                {
+                  "key": "تراکم پیکسلی",
+                  "section": "مشخصات کلی",
+                  "value": "۲۶۲ پیکسل بر اینچ"
+                },
+                {
+                  "key": "حداکثر روشنایی",
+                  "section": "مشخصات کلی",
+                  "value": "۴۶۸ نیت"
+                },
+                {
+                  "key": "استانداردهای HDR",
+                  "section": "مشخصات کلی",
+                  "value": "ندارد"
+                },
+                {
+                  "key": "نسبت تصویر",
+                  "section": "مشخصات کلی",
+                  "value": "۲۰:۹"
+                },
+                {
+                  "key": "نسبت نمایشگر به بدنه",
+                  "section": "مشخصات کلی",
+                  "value": "۸۴ درصد"
+                },
+                {
+                  "key": "سایر مشخصات نمایشگر",
+                  "section": "مشخصات کلی",
+                  "value": "نسبت تصویر ۲۰:۹"
+                },
+                {
+                  "key": "حافظه داخلی",
+                  "section": "مشخصات کلی",
+                  "value": "۶۴ گیگابایت"
+                },
+                {
+                  "key": "رم اجرایی",
+                  "section": "مشخصات کلی",
+                  "value": "۴ گیگابایت"
+                },
+                {
+                  "key": "نوع حافظه داخلی",
+                  "section": "مشخصات کلی",
+                  "value": "UFS ۲.۲"
+                },
+                {
+                  "key": "درگاه کارت حافظه",
+                  "section": "مشخصات کلی",
+                  "value": "دارد"
+                },
+                {
+                  "key": "حداکثر حجم کارت حافظه پشتیبانی شده",
+                  "section": "مشخصات کلی",
+                  "value": "microSDXC"
+                },
+                {
+                  "key": "مدل تراشه",
+                  "section": "مشخصات کلی",
+                  "value": "Mediatek Helio G99"
+                },
+                {
+                  "key": "پردازنده گرافیکی",
+                  "section": "مشخصات کلی",
+                  "value": "Mali-G57 MC2"
+                },
+                {
+                  "key": "تعداد هسته پردازنده",
+                  "section": "مشخصات کلی",
+                  "value": "هشت‌هسته‌ای"
+                },
+                {
+                  "key": "مشخصات هسته‌ها",
+                  "section": "مشخصات کلی",
+                  "value": "دو هسته ۲.۲ گیگاهرتز Cortex-A76 و شش هسته ۲.۰ گیگاهرتز Cortex-A55"
+                },
+                {
+                  "key": "فرآیند ساخت تراشه",
+                  "section": "مشخصات کلی",
+                  "value": "۶ نانومتر"
+                },
+                {
+                  "key": "سایر مشخصات تراشه",
+                  "section": "مشخصات کلی",
+                  "value": "ساخته‌شده با فناوری ۶ نانومتری"
+                },
+                {
+                  "key": "پیکربندی دوربین پشت",
+                  "section": "مشخصات کلی",
+                  "value": "دوربین دوگانه: ۵۰ مگاپیکسل (اصلی) + ۲ مگاپیکسل (تشخیص عمق)"
+                },
+                {
+                  "key": "دوربین اصلی - واید/استاندارد",
+                  "section": "مشخصات کلی",
+                  "value": "۵۰ مگاپیکسل"
+                },
+                {
+                  "key": "مشخصات دوربین اصلی - واید/استاندارد",
+                  "section": "مشخصات کلی",
+                  "value": "۵۰ مگاپیکسل، f/۱.۸، فوکوس خودکار تشخیص فاز (PDAF)، اندازه سنسور ۱/۲.۷۶ اینچ"
+                },
+                {
+                  "key": "دوربین اولتراواید",
+                  "section": "مشخصات کلی",
+                  "value": "ندارد"
+                },
+                {
+                  "key": "مشخصات دوربین اولتراواید",
+                  "section": "مشخصات کلی",
+                  "value": "ندارد"
+                },
+                {
+                  "key": "دوربین تله‌‌فوتو",
+                  "section": "مشخصات کلی",
+                  "value": "ندارد"
+                },
+                {
+                  "key": "مشخصات دوربین تله‌فوتو",
+                  "section": "مشخصات کلی",
+                  "value": "ندارد"
+                },
+                {
+                  "key": "دوربین ماکرو",
+                  "section": "مشخصات کلی",
+                  "value": "ندارد"
+                },
+                {
+                  "key": "مشخصات دوربین ماکرو",
+                  "section": "مشخصات کلی",
+                  "value": "ندارد"
+                },
+                {
+                  "key": "دوربین تشخیص عمق",
+                  "section": "مشخصات کلی",
+                  "value": "دارد"
+                },
+                {
+                  "key": "مشخصات دوربین تشخیص عمق",
+                  "section": "مشخصات کلی",
+                  "value": "۲ مگاپیکسل، f/۲.۴"
+                },
+                {
+                  "key": "حداکثر رزولوشن فیلم‌برداری دوربین‌ پشت",
+                  "section": "مشخصات کلی",
+                  "value": "1080p با نرخ ۳۰ و ۶۰ فریم"
+                },
+                {
+                  "key": "رزولوشن و نرخ فریم ویدئو",
+                  "section": "مشخصات کلی",
+                  "value": "1080p با نرخ ۳۰ و ۶۰ فریم"
+                },
+                {
+                  "key": "توضیحات فیلم‌برداری",
+                  "section": "مشخصات کلی",
+                  "value": "فیلم‌برداری Full HD با نرخ ۳۰ و ۶۰ فریم بر ثانیه"
+                },
+                {
+                  "key": "سایر دوربین‌ها",
+                  "section": "مشخصات کلی",
+                  "value": "ندارد"
+                },
+                {
+                  "key": "پیکربندی دوربین سلفی",
+                  "section": "مشخصات کلی",
+                  "value": "تک‌دوربین: ۸ مگاپیکسل"
+                },
+                {
+                  "key": "دوربین سلفی اصلی",
+                  "section": "مشخصات کلی",
+                  "value": "۸ مگاپیکسل"
+                },
+                {
+                  "key": "مشخصات دوربین سلفی اصلی",
+                  "section": "مشخصات کلی",
+                  "value": "۸ مگاپیکسل، f/۲.۰، اندازه سنسور ۱/۴.۰ اینچ"
+                },
+                {
+                  "key": "دوربین تشخیص عمق و هویت‌سنجی",
+                  "section": "مشخصات کلی",
+                  "value": "ندارد"
+                },
+                {
+                  "key": "حداکثر رزولوشن فیلم‌برداری دوربین‌ سلفی",
+                  "section": "مشخصات کلی",
+                  "value": "1080p با نرخ ۳۰ فریم"
+                },
+                {
+                  "key": "رزولوشن و نرخ فریم ویدئو سلفی",
+                  "section": "مشخصات کلی",
+                  "value": "1080p با نرخ ۳۰ فریم"
+                },
+                {
+                  "key": "سیم‌کارت",
+                  "section": "مشخصات کلی",
+                  "value": "دو سیم‌کارت نانو (Nano-SIM)"
+                },
+                {
+                  "key": "فناوری‌ ارتباطی",
+                  "section": "مشخصات کلی",
+                  "value": "4G"
+                },
+                {
+                  "key": "پشتیبانی از 5G",
+                  "section": "مشخصات کلی",
+                  "value": "ندارد"
+                },
+                {
+                  "key": "Wi-Fi",
+                  "section": "مشخصات کلی",
+                  "value": "۸۰۲.۱۱ a/b/g/n/ac"
+                },
+                {
+                  "key": "توضیحات Wi-Fi",
+                  "section": "مشخصات کلی",
+                  "value": "دوبانده، Wi-Fi Direct"
+                },
+                {
+                  "key": "بلوتوث",
+                  "section": "مشخصات کلی",
+                  "value": "بلوتوث ۵.۳"
+                },
+                {
+                  "key": "توضیحات بلوتوث",
+                  "section": "مشخصات کلی",
+                  "value": "A2DP، LE"
+                },
+                {
+                  "key": "NFC",
+                  "section": "مشخصات کلی",
+                  "value": "ندارد"
+                },
+                {
+                  "key": "مسیریابی و GPS",
+                  "section": "مشخصات کلی",
+                  "value": "GPS، GLONASS، GALILEO، BDS"
+                },
+                {
+                  "key": "رادیو",
+                  "section": "مشخصات کلی",
+                  "value": "دارد (FM)"
+                },
+                {
+                  "key": "اینفرارد",
+                  "section": "مشخصات کلی",
+                  "value": "ندارد"
+                },
+                {
+                  "key": "نوع حسگر اثر انگشت",
+                  "section": "مشخصات کلی",
+                  "value": "کناری (روی دکمه پاور)"
+                },
+                {
+                  "key": "حسگرها",
+                  "section": "مشخصات کلی",
+                  "value": "شتاب‌سنج، نزدیکی، اثر انگشت"
+                },
+                {
+                  "key": "ظرفیت باتری",
+                  "section": "مشخصات کلی",
+                  "value": "۵۰۰۰ میلی‌آمپرساعت"
+                },
+                {
+                  "key": "نوع باتری",
+                  "section": "مشخصات کلی",
+                  "value": "لیتیوم-یون"
+                },
+                {
+                  "key": "پشتیبانی از شارژ سریع",
+                  "section": "مشخصات کلی",
+                  "value": "دارد"
+                },
+                {
+                  "key": "حداکثر توان شارژ پشتیبانی شده",
+                  "section": "مشخصات کلی",
+                  "value": "۲۵ وات"
+                },
+                {
+                  "key": "زمان موردنیاز برای شارژ",
+                  "section": "مشخصات کلی",
+                  "value": "حدود ۲ ساعت"
+                },
+                {
+                  "key": "پشتیبانی از شارژ بی‌سیم",
+                  "section": "مشخصات کلی",
+                  "value": "ندارد"
+                },
+                {
+                  "key": "حداکثر توان شارژ بی‌سیم",
+                  "section": "مشخصات کلی",
+                  "value": "ندارد"
+                },
+                {
+                  "key": "تعویض‌پذیری باتری",
+                  "section": "مشخصات کلی",
+                  "value": "خیر (غیرقابل تعویض)"
+                },
+                {
+                  "key": "سایر ویژگی‌های شارژ و باتری",
+                  "section": "مشخصات کلی",
+                  "value": "شارژ سریع ۲۵ واتی با کابل"
+                },
+                {
+                  "key": "درگاه اتصال",
+                  "section": "مشخصات کلی",
+                  "value": "USB Type-C"
+                },
+                {
+                  "key": "پشتیبانی از OTG",
+                  "section": "مشخصات کلی",
+                  "value": "دارد"
+                },
+                {
+                  "key": "جک 3.5 میلی‌متری",
+                  "section": "مشخصات کلی",
+                  "value": "دارد"
+                },
+                {
+                  "key": "سایر مشخصات درگاه‌‌",
+                  "section": "مشخصات کلی",
+                  "value": "USB Type-C ۲.۰ با پشتیبانی از OTG"
+                },
+                {
+                  "key": "سایر مشخصات اسپیکر",
+                  "section": "مشخصات کلی",
+                  "value": "تک‌بلندگو"
+                },
+                {
+                  "key": "نوع اسپیکر",
+                  "section": "مشخصات کلی",
+                  "value": "تک‌بلندگو"
+                },
+                {
+                  "key": "سایر مشخصات",
+                  "section": "مشخصات کلی",
+                  "value": "فلش LED پشت"
+                },
+                {
+                  "key": "اقلام همراه",
+                  "section": "مشخصات کلی",
+                  "value": "کابل USB Type-C - آداپتور شارژر - سوزن سیم کارت"
+                }
+              ],
+              "image_urls": [
+                "https://image.torob.com/base/images/0p/ne/0pne36enOZPmyWkM.jpg",
+                "https://image.torob.com/base/images/Se/Nu/SeNuvryg-VHy1eun.webp"
+              ],
+              "min_recorded_price": "38877700",
+              "evidence_ids": [
+                "product_adfdc73bc839d15cd7754318",
+                "offer_37ecb8c104d5767901bcbd11"
+              ]
+            }
+          ],
+          "recommendations": [
+            {
+              "product_id": "product_adfdc73bc839d15cd7754318",
+              "reason_fa": "برند، مدل، حافظه و رم ثبت‌شده با درخواست شما مطابقت دارد و قیمت تاریخی ثبت‌شده به تومان در محدوده بودجه شماست؛ موجودی و قیمت فعلی و امکان خرید حضوری تأیید نشده‌اند.",
+              "fact_ids": [
+                "product_adfdc73bc839d15cd7754318:title",
+                "product_adfdc73bc839d15cd7754318:price"
+              ],
+              "facts": [
+                {
+                  "id": "product_adfdc73bc839d15cd7754318:title",
+                  "label": "عنوان داده",
+                  "value": "گوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت",
+                  "evidence_ids": [
+                    "product_adfdc73bc839d15cd7754318"
+                  ]
+                },
+                {
+                  "id": "product_adfdc73bc839d15cd7754318:price",
+                  "label": "کمترین قیمت ثبت‌شده، نه تأییدشده",
+                  "value": "38877700",
+                  "evidence_ids": [
+                    "product_adfdc73bc839d15cd7754318",
+                    "offer_37ecb8c104d5767901bcbd11"
+                  ]
+                }
+              ]
+            }
+          ],
+          "clarification_fa": null,
+          "proposed_constraints": {
+            "query": "سامسونگ A07 64GB 4GB",
+            "category": "گوشی موبایل",
+            "max_price_toman": "40000000",
+            "lat": 35.69508821734553,
+            "lon": 51.41148102579503,
+            "radius_km": 1,
+            "payment_provider": null,
+            "visit_at": "2026-10-23T17:00:00+03:30",
+            "require_declared_open": true,
+            "contactable_only": false,
+            "origin_label": "محدوده جمهوری (نقطه پیش‌فرض)"
+          },
+          "proposal_summary": null,
+          "observation": null,
+          "degraded": false
+        },
+        "error_code": null,
+        "trace": [
+          {
+            "tool": "interpret",
+            "provenance": {
+              "provider": "codex_cli",
+              "model": "gpt-6.1-sol",
+              "cli_version": "codex-cli 0.163.0",
+              "elapsed_ms": 11875
+            },
+            "status": "validated"
+          },
+          {
+            "tool": "search_products",
+            "query": "سامسونگ A07 64GB 4GB",
+            "product_ids": [
+              "product_adfdc73bc839d15cd7754318"
+            ]
+          },
+          {
+            "tool": "explain",
+            "provenance": {
+              "provider": "codex_cli",
+              "model": "gpt-6.1-sol",
+              "cli_version": "codex-cli 0.163.0",
+              "elapsed_ms": 11177
+            },
+            "status": "validated"
+          }
+        ]
+      }
+    },
+    "HOST3": {
+      "elapsed_ms": 10358,
+      "turn": {
+        "id": "0f6f972b64f549dd8ee07e54d7a8ff56",
+        "state": "completed",
+        "stage": "reply",
+        "result": {
+          "products": [],
+          "recommendations": [],
+          "clarification_fa": "فروشنده صریحاً اعلام کرده این مدل با حافظه ۶۴ و رم ۴ موجود نیست.",
+          "proposed_constraints": {
+            "query": "A07",
+            "category": "گوشی موبایل",
+            "max_price_toman": "40000000",
+            "lat": 35.69508821734553,
+            "lon": 51.41148102579503,
+            "radius_km": 1,
+            "payment_provider": null,
+            "visit_at": "2026-10-22T20:15:00+03:30",
+            "require_declared_open": true,
+            "contactable_only": false,
+            "origin_label": "محدوده جمهوری (نقطه پیش‌فرض)"
+          },
+          "proposal_summary": null,
+          "observation": {
+            "id": "bc0fbc65800042dea8dc3448efc2dd4d",
+            "mission_id": "0736db5e2ca24db0977ec68b407feed4",
+            "followup_id": "c901174637c74d05969764fb5ea608b8",
+            "offer_id": "offer_b08b779f43846d8e8c6aef1d",
+            "shop_id": "shop_1ffc7576fed58fa57cd99a21",
+            "product_id": "product_adfdc73bc839d15cd7754318",
+            "base_revision": 1,
+            "scope": "product_shop",
+            "kind": "unavailable",
+            "price_toman": null,
+            "effective_visit_date": null,
+            "raw_text": "سلام، این مدل با حافظه ۶۴ و رم ۴ موجود نیست.",
+            "provenance": "simulation",
+            "payment_provider": null,
+            "observed_at": 1792720277.8853111,
+            "confirmed_at": null,
+            "applied_revision": null,
+            "confirmed": false,
+            "supersedes_ids": []
+          },
+          "degraded": false
+        },
+        "error_code": null,
+        "trace": [
+          {
+            "tool": "reply",
+            "provenance": {
+              "provider": "codex_cli",
+              "model": "gpt-6.1-sol",
+              "cli_version": "codex-cli 0.163.0",
+              "elapsed_ms": 9301
+            },
+            "status": "validated"
+          }
+        ]
+      }
+    }
+  },
+  "errors": [],
+  "capabilities": {
+    "catalogue_ready": true,
+    "model_available": true,
+    "model_provider": "codex_cli",
+    "seller_contact": "assisted_or_simulated"
+  },
+  "status": "pass",
+  "finished_at": "2026-10-23T01:51:03.693Z"
+}

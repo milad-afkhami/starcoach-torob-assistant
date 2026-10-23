@@ -51,3 +51,9 @@ The initializer supports the new dedicated empty state disk. It does not silentl
 | [Artifact inspection](qa-evidence/packaging-repair.json) | Every actual archived input matched the context used for the successful image; raw SQLite is replaced by its compressed transport form |
 
 The application and compiled UI were kept frozen throughout this packaging repair. No seller communication, model call, provider-resource mutation or public image publication belongs to these local checks.
+
+## Provider legacy-builder compatibility
+
+The provider completed source restoration and dependency installation, then rejected BuildKit-only `COPY --chmod` syntax. Both copies now use ordinary Docker syntax followed by explicit permission-setting in `RUN`. This keeps the same complete catalogue, immutable0444 files and bounded state initializer without requiring a provider setting change.
+
+An actual `DOCKER_BUILDKIT=0` build reproduced the original failure and completed all20steps after the narrow fix. Fresh named-volume and root-owned-bind acceptance ran against that legacy-built image. [Compatibility evidence](qa-evidence/packaging-legacy-compatibility.json) owns the new private artifact hash, complete local logs and acceptance references. The previous failed archive is retained separately. No successful provider deployment is implied by this local result.

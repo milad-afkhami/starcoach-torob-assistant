@@ -56,6 +56,7 @@ export default function App(){
   const [revealTick,setRevealTick]=useState(0)
   const revealOrigin=useRef<Element|null>(null)
   const [userNeed,setUserNeed]=useState('')
+  const [discoveryParent,setDiscoveryParent]=useState<string|null>(null),[comparisonSuggestion,setComparisonSuggestion]=useState<{products:Product[];constraints:Constraints}|null>(null)
   const [need,setNeed]=useState(''),[aiScope,setAiScope]=useState<'discovery'|'mission'>('discovery'),[turn,setTurn]=useState<Turn|null>(null)
   const [aiMessage,setAiMessage]=useState(''),[proposal,setProposal]=useState<{constraints:Constraints;missionId:string|null;baseRevision:number|null;summary?:number}|null>(null)
   const [followup,setFollowup]=useState<(Followup&{missionId:string;baseRevision:number})|null>(null),[replyText,setReplyText]=useState('')
@@ -109,7 +110,7 @@ export default function App(){
   },[mission?.id,mission?.revision])
 
   async function manualSearch(event?:React.FormEvent){
-    event?.preventDefault();setError('');setBusy(true);await cancelAI(true)
+    event?.preventDefault();setDiscoveryParent(null);setComparisonSuggestion(null);setError('');setBusy(true);await cancelAI(true)
     try{const c=readDraft(draft);const r=await api.post<{products:Product[];diagnostics:SearchDiagnostic[]}>('/api/search',c);setProducts(r.products);setSearchDiagnostics(r.diagnostics||[]);setRecommendations([]);setSearched(true);setAiMessage('');setProposal(null)}catch(e){setError(shortError(e))}finally{setBusy(false)}
   }
   async function selectProduct(p:Product,c?:Constraints,mode:'assisted'|'simulation'='assisted',origin:Element|null=document.activeElement){
@@ -118,10 +119,11 @@ export default function App(){
     try{const r=await api.post<MissionResponse>('/api/missions',{product_id:p.product_id,constraints:c||readDraft(draft),mode});accept(r,p);setDelta(null);setFollowup(null);setPreview(null);setTransportOpen(false);setToast('کالا انتخاب شد؛ حالا شرایط مراجعه و گزینه دوم را بررسی کنید.');revealFrom(origin)}catch(e){setError(shortError(e))}finally{setBusy(false)}
   }
   async function loadDemo(){
+    setDiscoveryParent(null);setComparisonSuggestion(null)
     const origin=document.activeElement
     const editEpoch=++interactionEpoch.current
-    setError('');setBusy(true);setSearchDiagnostics([])
-    try{const p=await api.get<Product>(`/api/products/${FIXTURE}`);if(interactionEpoch.current===editEpoch)setDraft(draftOf(DEMO));setProducts([p]);setSearched(true);setRecommendations([]);await selectProduct(p,DEMO,'simulation',origin)}catch(e){setError(shortError(e));setBusy(false)}
+    setError('');setBusy(true);setSearchDiagnostics([]);await cancelAI(true)
+    try{const p=await api.get<Product>(`/api/products/${FIXTURE}`);if(interactionEpoch.current===editEpoch)setDraft(draftOf(DEMO));setDiscoveryParent(null);setComparisonSuggestion(null);setProducts([p]);setSearched(true);setRecommendations([]);await selectProduct(p,DEMO,'simulation',origin)}catch(e){setError(shortError(e));setBusy(false)}
   }
   async function applyConditions(c?:Constraints,expected?:number){
     if(!mission||staleMissionId)return
@@ -148,19 +150,22 @@ export default function App(){
       const message=kind==='reply'?replyText:need
       if(!message.trim())throw new Error('ابتدا متن درخواست یا پاسخ را بنویسید.')
       if(kind==='needs')setUserNeed(message)
-      const body={kind,message,mission_id:target?.missionId||null,base_revision:target?.baseRevision||null,followup_id:kind==='reply'?followup?.id:null,constraints:readDraft(draft)}
+      const body={kind,message,mission_id:target?.missionId||null,base_revision:target?.baseRevision||null,followup_id:kind==='reply'?followup?.id:null,constraints:readDraft(draft),...(kind==='needs'&&!target&&discoveryParent?{discovery_parent_turn_id:discoveryParent}:{})}
       let state=await api.post<Turn>('/api/turns',body);if(aiEpoch.current!==epoch){void api.post(`/api/turns/${state.id}/cancel`).catch(()=>undefined);return}setAiPending(false);activeTurn.current=state.id;setTurn(state);setAiMessage('');setProposal(null)
       const id=state.id
       while(['running','advancing'].includes(state.state)&&activeTurn.current===id){await sleep(1000);if(activeTurn.current!==id)return;state=await api.get<Turn>(`/api/turns/${id}`);if(activeTurn.current!==id)return;setTurn(state)}
       if(activeTurn.current!==id)return
       activeTurn.current=null;setTurn(null)
-      if(state.state!=='completed'){setAiMessage(errorText(state.error_code));if(state.result?.products.length)setProducts(state.result.products);return}
+      if(state.state!=='completed'){setAiMessage(errorText(state.error_code));if(kind==='needs'){setDiscoveryParent(null);setComparisonSuggestion(null)}if(state.result?.products.length)setProducts(state.result.products);return}
       const r=state.result!
       if(kind==='reply'){setPreview(r.observation);setAiMessage(r.clarification_fa||'برداشت آماده بررسی شماست.');return}
       setProducts(r.products);setSearchDiagnostics([]);setRecommendations(r.recommendations);setSearched(true)
+      setDiscoveryParent(!target&&r.products.length?state.id:null)
+      const comparisonIDs=r.comparison_product_ids||[]
+      setComparisonSuggestion(comparisonIDs.length===2?{products:comparisonIDs.map(id=>r.products.find(p=>p.product_id===id)!).filter(Boolean),constraints:r.proposed_constraints}:null)
       setAiMessage(r.clarification_fa||'این گزینه‌ها از داده موجود پیدا شدند؛ شواهد هر پیشنهاد را می‌توانید ببینید.')
       setProposal({constraints:r.proposed_constraints,missionId:target?.missionId||null,baseRevision:target?.baseRevision||null,summary:r.proposal_summary?.eligible_shops})
-    }catch(e){if(aiEpoch.current===epoch){setAiPending(false);activeTurn.current=null;setTurn(null);setError(shortError(e))}}
+    }catch(e){if(aiEpoch.current===epoch){setAiPending(false);activeTurn.current=null;setTurn(null);setError(shortError(e));if(kind==='needs'){setDiscoveryParent(null);setComparisonSuggestion(null)}}}
   }
   async function openReply(offerId:string){
     if(!mission)return
@@ -184,7 +189,7 @@ export default function App(){
   async function reset(){if(!mission)return;setError('');setBusy(true);await cancelAI(true);try{const r=await api.post<MissionResponse>(`/api/missions/${mission.id}/reset`,{expected_revision:mission.revision});accept(r);setDelta(null);setFollowup(null);setPreview(null);setToast('فقط گزارش‌های این شبیه‌سازی پاک شدند.')}catch(e){setError(shortError(e))}finally{setBusy(false)}}
   async function copy(text:string){try{await navigator.clipboard.writeText(text);setToast('متن کپی شد.')}catch{setToast('کپی خودکار ممکن نیست؛ متن نمایش‌داده‌شده را انتخاب و کپی کنید.')}}
   function openCompare(){try{setCompareConstraints(readDraft(draft));setShowCompare(true)}catch(e){setError(shortError(e))}}
-  async function useSearchDiagnostic(d:SearchDiagnostic){setDraft(draftOf(d.constraints));setBusy(true);setError('');try{const r=await api.post<{products:Product[];diagnostics:SearchDiagnostic[]}>('/api/search',d.constraints);setProducts(r.products);setSearchDiagnostics(r.diagnostics||[]);setRecommendations([]);setSearched(true);setToast('فقط شرایط جست‌وجو با انتخاب شما تغییر کرد؛ برنامه قبلی تغییر نکرد.')}catch(e){setError(shortError(e))}finally{setBusy(false)}}
+  async function useSearchDiagnostic(d:SearchDiagnostic){setDiscoveryParent(null);setComparisonSuggestion(null);setDraft(draftOf(d.constraints));setBusy(true);setError('');await cancelAI(true);try{const r=await api.post<{products:Product[];diagnostics:SearchDiagnostic[]}>('/api/search',d.constraints);setDiscoveryParent(null);setComparisonSuggestion(null);setProducts(r.products);setSearchDiagnostics(r.diagnostics||[]);setRecommendations([]);setSearched(true);setToast('فقط شرایط جست‌وجو با انتخاب شما تغییر کرد؛ برنامه قبلی تغییر نکرد.')}catch(e){setError(shortError(e))}finally{setBusy(false)}}
   function locate(){if(!navigator.geolocation){setError('موقعیت‌یابی در دسترس نیست؛ مختصات یا محدوده جمهوری را انتخاب کنید.');return}navigator.geolocation.getCurrentPosition(p=>{interactionEpoch.current++;setDraft(d=>({...d,lat:String(p.coords.latitude),lon:String(p.coords.longitude),originLabel:'موقعیت دستگاه'}));setToast('موقعیت در فرم قرار گرفت؛ برای تغییر برنامه آن را اعمال کنید.')},()=>setError('دسترسی موقعیت در دسترس نیست؛ از محدوده جمهوری یا مختصات دستی استفاده کنید.'),{timeout:7000})}
   function toggleCompare(p:Product){setCompared(items=>items.some(x=>x.product_id===p.product_id)?items.filter(x=>x.product_id!==p.product_id):items.length<2?[...items,p]:[items[1],p])}
   const active=aiPending||!!(turn&&['running','advancing'].includes(turn.state))
@@ -205,7 +210,8 @@ export default function App(){
           <section className="assistant-box" aria-label="گفت‌وگوی خرید"><div className="assistant-title"><Sparkles size={18}/><b>چی لازم داری؟ با هم انتخابش کنیم.</b></div><p className="agent-intro">نیازت را بگو؛ گزینه‌های داده را بررسی می‌کنم و تصمیم نهایی با توست.</p><label className="sr-only" htmlFor="need">نیاز شما</label><textarea id="need" value={need} onChange={e=>setNeed(e.target.value)} placeholder="نیازت را توضیح بده؛ مثل گوشی برای کار روزمره تا چهل میلیون…" rows={2}/><div className="origin-control"><button className="button compact-button" onClick={()=>setLocationOpen(true)}><MapPin size={15}/>انتخاب محدوده</button><span className="origin-label">مبدأ جست‌وجو: {draft.originLabel||'نقطه انتخاب‌شده'}<small><bdi>{Number(draft.lat).toFixed(4)}, {Number(draft.lon).toFixed(4)}</bdi>{mission?' • تغییر فرم تا تأیید، برنامه را تغییر نمی‌دهد.':''}</small></span></div><div className="assistant-actions">{mission&&<label>موضوع درخواست<Select label="موضوع درخواست" value={aiScope} onChange={e=>setAiScope(e.target.value as 'discovery'|'mission')}><option value="discovery">پیدا کردن کالا</option><option value="mission">شرایط همین کالا</option></Select></label>}<button className="button soft-button" disabled={!ready||!modelAvailable||active||busy} onClick={()=>void startAI('needs')}><Sparkles size={15}/>کمک برای انتخاب</button></div>
             {!modelAvailable&&<p className="source-note">دستیار فعلاً آنلاین نیست؛ جست‌وجو و بازچینی دستی در دسترس‌اند.</p>}
             {active&&<div className="ai-progress" role="status"><LoaderCircle className="spin" size={17}/>{turn?.stage==='interpret'?'در حال فهم نیاز شما…':turn?.stage==='reply'?'در حال بررسی پاسخ…':'در حال بررسی شواهد کالاها…'}<button onClick={()=>void cancelAI()}>توقف بررسی</button></div>}
-            {userNeed&&<div className="user-turn"><small>درخواست شما</small><p>{userNeed}</p></div>}{!followup&&aiMessage&&<p className="ai-message" role="status">{aiMessage}</p>}
+            {discoveryParent&&<p className="source-note discovery-context">ادامه گفت‌وگو درباره حداکثر شش گزینه اول همین پاسخ؛ اولی و دومی با ترتیب کارت‌ها مشخص‌اند.</p>}{userNeed&&<div className="user-turn"><small>درخواست شما</small><p>{userNeed}</p></div>}{!followup&&aiMessage&&<p className="ai-message" role="status">{aiMessage}</p>}
+            {comparisonSuggestion&&comparisonSuggestion.products.length===2&&<div className="proposal comparison-suggestion"><b>مقایسه دو گزینه همین گفت‌وگو</b><p>جدول با شرایط نمایش‌داده‌شده باز می‌شود؛ فرم و برنامه خرید تغییر نمی‌کنند.</p><button className="button soft-button" onClick={()=>{setCompared(comparisonSuggestion.products);setCompareConstraints(comparisonSuggestion.constraints);setShowCompare(true)}}>مقایسه همین دو گزینه</button></div>}
             {proposal&&<div className="proposal"><b>پیشنهاد؛ هنوز اعمال نشده</b><span>بودجه: {proposal.constraints.max_price_toman?formatToman(proposal.constraints.max_price_toman)+' تومان':'بدون سقف'}</span><span>شعاع: {proposal.constraints.radius_km} کیلومتر</span><span>مراجعه: {faDate(proposal.constraints.visit_at)} {proposal.constraints.visit_at?localInput(proposal.constraints.visit_at).slice(11):'نامشخص'}</span><span>پرداخت: {proposal.constraints.payment_provider||'بدون شرط خاص'}</span>{proposal.summary!==undefined&&<span>گزینه‌های سازگار در این پیشنهاد: {new Intl.NumberFormat('fa-IR').format(proposal.summary)}</span>}<button className="button soft-button" onClick={()=>void applyProposal()} disabled={busy}>استفاده از پیشنهاد</button></div>}
           </section>
           <details className="manual-search"><summary><Search size={16}/>جست‌وجوی مستقیم و فیلترها</summary>

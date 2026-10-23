@@ -1,0 +1,525 @@
+{
+  "scope": "Actual exact-target restart POST followed by independent lifecycle/ready reads, no repeated write",
+  "intent": {
+    "state": "accepted",
+    "status": 200,
+    "at": 1792720966.1067674,
+    "response": {}
+  },
+  "observations": [
+    {
+      "received_at": 1792721022.8714728,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721028.336483,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721034.0145118,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721039.760882,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721045.1677582,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721050.9110832,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721056.9132445,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721062.5222428,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721068.0370805,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721073.4278822,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721079.0702324,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721084.8051758,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721090.353712,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721096.2145774,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721101.601571,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721107.2814631,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721112.7285829,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721118.350727,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721123.8686395,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721129.532706,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721135.2370002,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721140.91983,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721146.4496021,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721152.1843996,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721157.5521355,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721162.9728146,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    },
+    {
+      "received_at": 1792721168.5566843,
+      "events": [],
+      "current_release": "6adab9ebce14a814504502dd",
+      "release_states": [
+        {
+          "_id": "6adab9ebce14a814504502dd",
+          "state": "READY",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:35:39.518Z"
+        },
+        {
+          "_id": "6adab5bafc09ae5c3ccb1a99",
+          "state": "FAILED",
+          "type": "DEPLOY",
+          "createdAt": "2026-10-23T01:17:46.968Z"
+        }
+      ]
+    }
+  ],
+  "status": "inconclusive"
+}

@@ -67,6 +67,7 @@ class CompareInput(Input):
 
 
 class TurnInput(Input):
+    discovery_parent_turn_id: str | None = Field(default=None, min_length=1, max_length=100)
     message: str = Field(min_length=1, max_length=4000)
     kind: Literal["needs", "reply"] = "needs"
     mission_id: str | None = Field(default=None, max_length=100)
@@ -207,7 +208,10 @@ def create_app(
     @app.post("/api/products/compare")
     def compare(body: CompareInput, source=Depends(ready)):
         try:
-            return {"products": source.compare_products(body.product_ids, body.constraints), "constraints": body.constraints}
+            return {
+                "products": source.compare_products(body.product_ids, body.constraints),
+                "constraints": body.constraints,
+            }
         except KeyError as exc:
             raise HTTPException(404, "product_not_found") from exc
 

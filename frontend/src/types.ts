@@ -28,7 +28,7 @@ export interface Followup { id: string; inquiry: string; offer_id: string; conta
 export interface ExternalAction { kind: string; label: string; url: string; destination_text: string | null; prefill: string; offer_id: string | null; mission_revision: number }
 export interface Recommendation { product_id: string; reason_fa: string; facts: {id: string; label: string; value: string}[] }
 export interface Turn { id: string; state: string; stage: string; error_code: string | null; result: {
-  products: Product[]; recommendations: Recommendation[]; clarification_fa: string | null;
+  products: Product[]; recommendations: Recommendation[]; comparison_product_ids?:string[]; clarification_fa: string | null;
   proposed_constraints: Constraints; proposal_summary?: {eligible_shops: number; applied: boolean} | null;
   observation: Observation | null; degraded: boolean;
 } | null }

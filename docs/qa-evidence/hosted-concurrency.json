@@ -1,0 +1,101 @@
+{
+  "scope": "Four concurrent ordinary read-only searches, plus one owned disposable mission with two competing revision-1 patches; real public HTTPS, no model/seller/cloud actions",
+  "started_at": 1792727726.191035,
+  "status": "pass",
+  "parallel_searches": [
+    {
+      "client": 0,
+      "query": "A07",
+      "status": 200,
+      "elapsed_ms": 452.56,
+      "products": 1
+    },
+    {
+      "client": 1,
+      "query": "A16",
+      "status": 200,
+      "elapsed_ms": 1356.02,
+      "products": 0
+    },
+    {
+      "client": 2,
+      "query": "Lenovo",
+      "status": 200,
+      "elapsed_ms": 1045.28,
+      "products": 0
+    },
+    {
+      "client": 3,
+      "query": "Xiaomi",
+      "status": 200,
+      "elapsed_ms": 1860.6,
+      "products": 0
+    }
+  ],
+  "parallel_batch_ms": 1862.69,
+  "revision_conflict": {
+    "mission_id": "be201acb0cdc4517972f120b985d65cc",
+    "initial_revision": 1,
+    "results": [
+      {
+        "requested_budget": "39000000",
+        "status": 200,
+        "body": {
+          "mission": {
+            "id": "be201acb0cdc4517972f120b985d65cc",
+            "revision": 2,
+            "mode": "simulation",
+            "selected_product_id": "product_adfdc73bc839d15cd7754318",
+            "constraints": {
+              "query": "A07",
+              "category": "گوشی موبایل",
+              "max_price_toman": "39000000",
+              "lat": 35.69508821734553,
+              "lon": 51.41148102579503,
+              "radius_km": 1.0,
+              "payment_provider": null,
+              "visit_at": "2026-10-22T20:15:00+03:30",
+              "require_declared_open": true,
+              "contactable_only": false,
+              "origin_label": "محدوده جمهوری (نقطه پیش‌فرض)"
+            },
+            "selected_primary_shop_id": null
+          }
+        }
+      },
+      {
+        "requested_budget": "41000000",
+        "status": 409,
+        "body": {
+          "detail": "stale_revision"
+        }
+      }
+    ],
+    "final_mission": {
+      "id": "be201acb0cdc4517972f120b985d65cc",
+      "revision": 2,
+      "mode": "simulation",
+      "selected_product_id": "product_adfdc73bc839d15cd7754318",
+      "constraints": {
+        "query": "A07",
+        "category": "گوشی موبایل",
+        "max_price_toman": "39000000",
+        "lat": 35.69508821734553,
+        "lon": 51.41148102579503,
+        "radius_km": 1.0,
+        "payment_provider": null,
+        "visit_at": "2026-10-22T20:15:00+03:30",
+        "require_declared_open": true,
+        "contactable_only": false,
+        "origin_label": "محدوده جمهوری (نقطه پیش‌فرض)"
+      },
+      "selected_primary_shop_id": null
+    },
+    "cross_session_status": [
+      404,
+      404,
+      404
+    ]
+  },
+  "finished_at": 1792727731.8798823
+}

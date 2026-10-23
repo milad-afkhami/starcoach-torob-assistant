@@ -1,0 +1,20 @@
+{
+  "scope": "Exact private source release, reviewed parent binding/projection code and actual observed new frontend/backend contract; no provider credentials",
+  "url": "https://torob-plan-b-2026.liara.run",
+  "app_id": "6adaa99c7ebf55567c9d2541",
+  "source_id": "95b92837-ace2-4f7b-a860-862793e59e73.tar.gz",
+  "artifact_sha256": "799c7e04c6ed87089486a2ca68f5c97d4904bfcf06c9eaf67e30428eff384827",
+  "release_id": "6adad96d4400f7631d7e9709",
+  "before_release": "6adab9ebce14a814504502dd",
+  "disk": {
+    "name": "state",
+    "mount": "/data",
+    "size_gb": 1
+  },
+  "source_agent_sha256": "c8dd1a17ddd0415adeb299b8bc07cbd0e7d80476918d35a5c4e020d0a38c2b47",
+  "frontend_html_sha256": "9e0893c853ae299942fd9dc2d73a8c9eaf1101834de47f7d71c2eca61877b0ce",
+  "version_state_continuity": "hosted-version-transition.json",
+  "actual_concurrency": "hosted-concurrency.json",
+  "standalone_restart": "inconclusive; original accepted restart request preserved separately",
+  "new_genuine_context": "pending final hosted model demonstration"
+}
