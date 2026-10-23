@@ -1,9 +1,9 @@
 # Build kanban — Torob
 
-_Last updated:23October2026. User-requested verified checkpoint is pushed on usability/r2a-torob (source5119f12; delivery1b8c013); public Verify source CI passed. Await user continuation after wrapup. Current public release/source and intentionally unrun R2a integration are owned by docs/deployment.md and qa-evidence/r2a/resume-after-user-checkpoint.md. All isolated QA fixtures are stopped; intended user runtimes remain available._
+_Last updated:23October2026. User-requested verified checkpoint is pushed on usability/r2a-torob (source5119f12; delivery1b8c013); public Verify source CI passed. User resumed Autohelm; R2a runtime/model/artifact integration underway. Current public release/source and intentionally unrun R2a integration are owned by docs/deployment.md and qa-evidence/r2a/resume-after-user-checkpoint.md. All isolated QA fixtures are stopped; intended user runtimes remain available._
 
 ## Doing
-- User checkpoint pause after verified R2A source — feature branch push/CI complete; wait for user continuation after wrapup before dist promotion, main rollout, genuine calls, deployment or scoring. Resume: qa-evidence/r2a/resume-after-user-checkpoint.md.
+- R2a integration resumed — rebuild verified source/dist, refresh idle runtime, perform declared genuine regression and exact-artifact hosted acceptance; scoped review follows. QA: test-plans/r2a-integration.md; preserve original failures and225.
 - Final delivery record/source synchronization — actual hosted version/model/manual/reconnect/privacy/concurrency and reviewed public video are complete. The standalone restart remains inconclusive; submission.md owns final links and uncompleted entry/team/receipt.
 
 ## Todo

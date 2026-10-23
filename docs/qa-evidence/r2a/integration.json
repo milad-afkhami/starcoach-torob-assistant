@@ -1,0 +1,21 @@
+{
+  "source_commit": "5119f12523ed4d1253c85b2bb1cd8003bc6db7e6",
+  "canonical_dist_promoted": true,
+  "frontend_assets_match_verified_checkpoint": true,
+  "model_prompt_version": "torob-semantic-v2",
+  "needs_schema": "torob-needs-v3",
+  "backend": 334,
+  "frontend": 22,
+  "ruff": "pass",
+  "build": "pass",
+  "genuine_refinement": "genuine-refinement.json",
+  "original_failures_retained": true,
+  "image": "sha256:729944953b60434b70e7d5c6f4b42a3288dd2ea25395e0730fb38425a84ff6ea",
+  "container_named": "container-named.json",
+  "container_root_bind": "container-root-bind.json",
+  "image_catalogue_binary_sha256": "2b80a7ba17dae61945a02dd099ae37f6cdaf223831e75787d567b405a56f5094",
+  "catalogue_scope": "unchanged verified cached full catalogue build layer, exact binary hash matches earlier every-row equivalence; new runtime image freshly exercised",
+  "artifact": "deployment-artifact.json",
+  "hosted": "pending",
+  "time_scope": "Current resumed integration; old verified-source checkpoint retained unchanged."
+}
