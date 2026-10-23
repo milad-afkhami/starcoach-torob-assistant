@@ -1,7 +1,7 @@
 {
-  "artifact": "/home/milad/Desktop/projects/starcoach-torob-assistant/data/deployment-polling-final.tar.gz",
-  "bytes": 102885081,
-  "sha256": "58877c47fb4a0d960426f0959f4456337cd7e7b8d766f68447b17597cf421ca5",
+  "artifact": "/home/milad/Desktop/projects/starcoach-torob-assistant/data/deployment-pinned-remote-r2.tar.gz",
+  "bytes": 315502,
+  "sha256": "6d89b0e3c8a329773c80a5b6cccb09c37f1060da9bfff1778d293e4f18c3a441",
   "members": [
     "Dockerfile",
     "backend/torob/__init__.py",
@@ -21,27 +21,40 @@
     "backend/torob/session.py",
     "backend/torob/types.py",
     "backend/torob/worker_api.py",
-    "data/catalogue-build.json",
-    "data/catalogue.sqlite.xz",
-    "frontend/dist/assets/index-_QK26oEd.css",
-    "frontend/dist/assets/index-qle9BpO9.js",
+    "frontend/dist/assets/index-D26G9fRL.css",
+    "frontend/dist/assets/index-GqLlXUXz.js",
     "frontend/dist/favicon.svg",
     "frontend/dist/fonts/OFL.txt",
     "frontend/dist/fonts/Vazirmatn.woff2",
     "frontend/dist/index.html",
     "requirements.lock",
+    "scripts/build_catalogue.py",
     "scripts/container_entrypoint.py",
-    "scripts/unpack_catalogue.py"
+    "scripts/download_catalogue.py",
+    "scripts/package_deployment.py"
   ],
-  "private_catalogue_included": true,
+  "private_catalogue_included": false,
+  "complete_catalogue_build": true,
   "credentials_included": false,
   "max_source_bytes": 128000000,
   "catalogue": {
-    "compression": "xz",
-    "xz_preset": 6,
-    "uncompressed_bytes": 732278784,
-    "uncompressed_sha256": "3ae4f27bf376c90e06b61eb4e70aeded07fc5da2bb6d59c09b44bba1f1f09b01",
-    "compressed_sha256": "45f51f38e698e0c54926fded9c3119213450f9debb70304fb69dd78af255f5a2",
-    "compressed_bytes": 102594448
-  }
+    "compression": "zip",
+    "source_url": "https://startech.s3.ir-central1.arvanstorage.ir/starcoach-dataset-v16-cap300-csv.zip?versionId=",
+    "archive_sha256": "b0afb47b2b70f65c6d8ec07b7423dcc49efc71cd7a27e95606fb81da008c210d",
+    "compressed_bytes": 60176276,
+    "payload_hashes": {
+      "shops.csv": "1a292d6180e2a28cd0bbec57b1bb575a440e5afcc3ec3f5af5b1e13172aebaa1",
+      "products.csv": "e4a9749529d1e032c1dc2c4e275a8793a1edd702a194cb8de9abafc0649cc9c9",
+      "offers.csv": "664d256ed04b37cfb268d89eb605afda4a3b76179324b39d2dbaef21439f09b9"
+    },
+    "expected_counts": {
+      "shops": 6476,
+      "products": 225903,
+      "offers": 331506
+    },
+    "build_source": "pinned_https"
+  },
+  "source_commit": "4ddab1a457ba1072ae30a4b8a488eaf4c0cdae60",
+  "runtime_frontend_commit": "1df525d29b269d3fe89767b864e8ebf9e5255316",
+  "scope": "Current deployed artifact. Torob R2a source5119f12 is verified separately and has not been packaged/deployed or exercised with genuine inference."
 }

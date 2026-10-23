@@ -1,0 +1,53 @@
+{
+  "source_commit": "4ddab1a457ba1072ae30a4b8a488eaf4c0cdae60",
+  "runtime_frontend": "1df525d29b269d3fe89767b864e8ebf9e5255316",
+  "provider_release": "6adb3fbe417e33237eed81ba",
+  "artifact_sha256": "6d89b0e3c8a329773c80a5b6cccb09c37f1060da9bfff1778d293e4f18c3a441",
+  "artifact_bytes": 315502,
+  "served_html_sha256": "0ff584e5cc05d51e988c773a3e3679a131ac688f4655abe1e709a93fdf5d1bf9",
+  "served_js_sha256": "819f3e9093fc8f55f86e25fbed669dcd4235cab20e2f16705a18139daffd8ea8",
+  "actual_browser": {
+    "at": "2026-10-23T11:14:49.150Z",
+    "runtime": "https://torob-plan-b-2026.liara.run",
+    "posts": [
+      "/api/sessions",
+      "/api/missions/7146c4326ce045a8b626339928d83012/followups",
+      "/api/missions/7146c4326ce045a8b626339928d83012/observations/preview",
+      "/api/missions/7146c4326ce045a8b626339928d83012/observations/73adb11067994bc7a2f3eb9516ca1fed/confirm"
+    ],
+    "errors": [],
+    "savedMissionRestored": true,
+    "restored": "برنامه خریدت\nشبیه‌سازی روشن است\nپاسخ‌ها آزمایشی‌اند؛ هیچ تماسی با فروشگاه گرفته نمی‌شود.\nزمان مراجعه انتخاب‌شده: ۳۰ مهر ۱۴۰۵\nکالای انتخاب‌شده\nگوشی سامسونگ (چین) A07 4G | حافظه 64 رم 4 گیگابایت\nبودجه ۴۰٬۰۰۰٬۰۰۰\nشعاع ۱ کیلومتر\nمبدأ برنامه: محدوده جمهوری (نقطه پیش‌فرض)\n۳۰ مهر ۱۴۰۵ 20:15\nفروشگاه‌ها روی نقشه\n\nنقاط ثبت‌شده در داده؛ قرمز گزینه اول، آبی گزینه دوم. مسیر و موجودی زنده بررسی نشده‌اند.\n\n۱\n۲\n+\n−\n Leaflet | © OpenStreetMap contributors\n\nدر حال بارگذاری خیابان‌های نقشه… نشانگرها از مختصات ثبت‌شده‌اند.\n\nگزینه اول: نیآرا آروان\n۳۹٬۲۰۰٬۰۰۰ تومان · 35.69498, 51.41134\nگزینه دوم: ماهیار نیکینا\n۳۹٬۵۰۰٬۰۰۰ تومان · 35.69505, 51.41204\n\nدر حال مشاهده گزینه اول: نیآرا آروان. خیابان جمهوری اسلامی، نرسیده به خیابان حافظ، پاساژ بزرگمهر، طبقه همکف، پلاک ۱۸، واحد ۱۸. انتخاب روی نقشه، ترتیب برنامه خرید را تغییر نمی‌دهد.\n\nگزینه اول\n۰٫۰۲ کیلومتر\nنیآرا آروان\nنام ناشناس‌شده در داده آزمایشی\n۳۹٬۲۰۰٬۰۰۰\nتومان\n\nقیمت ثبت‌شده • ۲۰ مهر ۱۴۰۵\n\nموجودی نامشخص\nسازگار با ساعت اعلام‌شده\n\nخیابان جمهوری اسلامی، نرسیده به خیابان حافظ، پاساژ بزرگمهر، طبقه همکف، پلاک ۱۸، واحد ۱۸\n\nاطلاعات ثبت‌شده و محدودیت‌ها\n\nمسیر تماس واقعی در داده نیست؛ فقط متن استعلام و گزارش شما بررسی می‌شود.\n\nبررسی پاسخ فروشنده\nگزینه دوم، نزدیک شما\n۰٫۰۵ کیلومتر\nماهیار نیکینا\nنام ناشناس‌شده در داده آزمایشی\n۳۹٬۵۰۰٬۰۰۰\nتومان\n\nقیمت ثبت‌شده • ۲۰ مهر ۱۴۰۵\n\nموجودی نامشخص\nسازگار با ساعت اعلام‌شده\n\nخیابان جمهوری اسلامی، تقاطع خیابان حافظ، پاساژ چهارسو، طبقه اول، پلاک c۵۲\n\nاطلاعات ثبت‌شده و محدودیت‌ها\n\nمسیر تماس واقعی در داده نیست؛ فقط متن استعلام و گزارش شما بررسی می‌شود.\n\nبررسی پاسخ فروشنده\nبررسی همین کالا در ترب\nرفتن به فروشگاه\nچه چیزهایی نیازمند بررسی‌اند؟ (۲۸)\nبازنشانی شبیه‌سازی\nشروع برنامه بدون شبیه‌سازی",
+    "map": {
+      "markers": 2,
+      "tiles": 10
+    },
+    "recovery": {
+      "delta": "300000",
+      "primary": "39500000",
+      "constraints": {
+        "query": "A07",
+        "category": "گوشی موبایل",
+        "max_price_toman": "40000000",
+        "lat": 35.69508821734553,
+        "lon": 51.41148102579503,
+        "radius_km": 1,
+        "payment_provider": null,
+        "visit_at": "2026-10-22T20:15:00+03:30",
+        "require_declared_open": true,
+        "contactable_only": false,
+        "origin_label": "محدوده جمهوری (نقطه پیش‌فرض)"
+      },
+      "mode": "simulation"
+    },
+    "mobile": {
+      "width": 390,
+      "scroll": 390
+    },
+    "turnPosts": 0,
+    "pass": true
+  },
+  "dataset": "Actual image build fetched pinned organizerZIP b0afb...; all3CSVpayload hashes/counts and every data column/schema/index match user-supplied archive. Transport envelopes differ truthfully; runtime has no downloader/ZIP.",
+  "inference_scope": "No new inference in this hosted check. Separate local current-UI genuine case and earlier hosted evidence retained; final continuation correction needs new version-specific acceptance.",
+  "unknown_uploads": "Original103MB and60MB attempts remain recorded unknown/unreferenced; no release submitted from either. Independent tiny protocol diagnostic source remains unused. This known sourceID received an exact release request."
+}
