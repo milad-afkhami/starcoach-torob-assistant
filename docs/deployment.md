@@ -41,6 +41,10 @@ An initial144MB archive was rejected at upload. A later archive exposed a legacy
 
 `docker compose up -d` remains the local container route. Set a private generated session secret, worker token and exact public origin for that environment; do not reuse cloud credentials. The local Compose URL is `http://127.0.0.1:8652`; the development app uses8651. The worker must target the same chosen application URL.
 
+## Local review runtime at the pause
+
+The current loopback mirror is `http://127.0.0.1:8651`, managed by `starcoach-torob-preview.service` and `starcoach-torob-preview-worker.service`, using the existing private `.env` and local state. Its canonical frontend/runtime remains the earlier accepted conversation revision; the R2a scratch build was deliberately not promoted. The separate `starcoach-torob-model-worker.service` still serves the public hosted app. All model workers and the private Liara operator share the same persistent100-start rolling24-hour gate and single-process lock; no quota was reset or raised. Keep credentials and private state out of source. Isolated deterministic QA servers were stopped; these intended user runtimes were retained.
+
 ## Resource scope and lifecycle
 
 The inspected base/basic plan quote was1146toman/hour includingVAT:55008toman for48hours for this app. Combined with the two disposable Liara scenario services, the quoted total is165024toman, within the reviewed200000toman scope. Quotes are not measured charges, a guarantee about retained-disk billing or a current balance. No personal top-up, plan upgrade or unrelated application overwrite was performed.

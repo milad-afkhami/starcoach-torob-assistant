@@ -1,9 +1,9 @@
 # Build kanban — Torob
 
-_Last updated:23October2026. Next action: root publication, artifact rebuild and hosted acceptance of the reviewed conversation revision. Current conversation candidate http://127.0.0.1:8684 (deterministic no-model worker), offline fixture :8685; root owns main/cloud rollout and genuine model verification._
+_Last updated:23October2026. User-requested verified checkpoint is pushed on usability/r2a-torob (source5119f12; delivery1b8c013); public Verify source CI passed. Await user continuation after wrapup. Current public release/source and intentionally unrun R2a integration are owned by docs/deployment.md and qa-evidence/r2a/resume-after-user-checkpoint.md. All isolated QA fixtures are stopped; intended user runtimes remain available._
 
 ## Doing
-- User checkpoint pause after verified R2A source — root may push feature branch/CI only; wait for user wrapup/continue before dist promotion, main rollout, genuine calls, deployment or scoring. Resume: qa-evidence/r2a/resume-after-user-checkpoint.md.
+- User checkpoint pause after verified R2A source — feature branch push/CI complete; wait for user continuation after wrapup before dist promotion, main rollout, genuine calls, deployment or scoring. Resume: qa-evidence/r2a/resume-after-user-checkpoint.md.
 - Final delivery record/source synchronization — actual hosted version/model/manual/reconnect/privacy/concurrency and reviewed public video are complete. The standalone restart remains inconclusive; submission.md owns final links and uncompleted entry/team/receipt.
 
 ## Todo
